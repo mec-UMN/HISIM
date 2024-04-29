@@ -1,1 +1,0 @@
-# Analytical_Model_HISIM
