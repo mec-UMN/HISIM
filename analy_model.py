@@ -24,7 +24,6 @@ from Module_Network.orion_power_area import power_summary_router
 from Module_AI_Map.util_chip.util_mapping import model_mapping, smallest_square_greater_than
 from Module_Network.aib_2_5d import  aib
 from itertools import chain
-from Module_Compute.functions import power_density
 if not os.path.exists('./Debug/to_interconnect_analy'):
     os.makedirs('./Debug/to_interconnect_analy')
 if not os.path.exists('./Results/result_thermal'):
@@ -51,6 +50,7 @@ parser.add_argument('--freq_computing', type=float, default=1,help='Computing un
 parser.add_argument('--fclk_noc', type=float, default=1,help='network data communication operation frequency')
 parser.add_argument('--tsvPitch', type=float, default=10,help='TSV pitch um')
 parser.add_argument('--N_tier', type=int, default=4,help='how many tiers')
+parser.add_argument('--volt', type=int, default=0.5,help='Operating Voltage in volt')
 parser.add_argument('--placement_method', type=int, default=5,help='computing tile placement method')
 parser.add_argument('--percent_router', type=float, default=0.5,help='when data route from one tier to next tier, the system will choose how much percent routers for 3D communication')
 parser.add_argument('--no_compute_validate', action='store_false',help='mode to valiate the compute model with neurosim')
@@ -84,6 +84,7 @@ temp=0 #Temperature to be evaluated
 freq_computing=args.freq_computing #GHz
 fclk_noc=args.fclk_noc
 W2d=args.W2d
+volt=args.volt
 scale_factor=args.router_times_scale
 result_list.append(freq_computing)
 result_list.append(fclk_noc)
@@ -92,13 +93,11 @@ result_list.append(xbar_size)
 result_list.append(N_tile)
 result_list.append(N_pe)
 
-#chiplet_size = 9 
-#num_chiplets = 144
-#type = 'Homogeneous Design'
-#scale = 100
+#---------------------------------------------------------------------#
 
-## load the network
-## here is the ViT as example:
+#                               Load AI model
+
+#---------------------------------------------------------------------#
 start = time.time()
 network_params = np.loadtxt('./Module_AI_Map/AI_Networks/Transformer/VIT_base.csv', dtype=int, delimiter=',')
 #network_params = np.loadtxt('./Module_AI_Map/AI_Networks/GCN/NetWork.csv', dtype=int, delimiter=',')
@@ -111,107 +110,17 @@ network_params = np.loadtxt('./Module_AI_Map/AI_Networks/Transformer/VIT_base.cs
 sim_name="GCN_1stack_placement_1"
 
 total_number_layers=network_params.shape[0]
-
-
-filename = "./Debug/to_interconnect_analy/layer_inform.csv"
 filename_results = "./Results/PPA.csv"
-tiles_each_tier = [0]*N_tier
 
 
-
-total_tiles_real=model_mapping(filename,placement_method,total_number_layers,network_params,quant_act,xbar_size,N_crossbar,N_pe,quant_weight,N_tile,N_tier,tiles_each_tier)
-"""
 #---------------------------------------------------------------------#
 
 #         configuration of the AI models mapped to architecture
 
 #---------------------------------------------------------------------#
-placement_method=5 # 1:from the top to the bottom tier
-                    # 2: from the bottom to top tier1
-                    # 3: the hotspot far from each other
-                    # 4: worse case:put all hotspot in the same place
-                    #5:tile-to-tile connection
-
-with open(filename, 'w') as csvfile: 
-    writer = csv.writer(csvfile) 
-    for layer_idx in range(0, total_number_layers):            
-        params_row = network_params[layer_idx]
-        in_x=network_params[layer_idx][0]
-        in_y=network_params[layer_idx][1]
-        in_channel=network_params[layer_idx][2]
-        k_x=network_params[layer_idx][3]
-        k_y=network_params[layer_idx][4]
-        out_channel=network_params[layer_idx][5]
-        enable_pooling=network_params[layer_idx][6]
-        sparsity=1-network_params[layer_idx][7]
-
-        ip_activation=in_x*in_y*in_channel*quant_act
-        input_cycle=(in_x-k_x+1)*(in_y-k_y+1)*quant_act
-        numComputation+=2*(network_params[layer_idx][0] * network_params[layer_idx][1] * network_params[layer_idx][2] * network_params[layer_idx][3] * network_params[layer_idx] * network_params[layer_idx])
-        # for this layer, calculate how many crossbar/tiles to map the weight
-        tile_x_bit=xbar_size*math.sqrt(N_crossbar)*math.sqrt(N_pe)
-        tile_y_bit=xbar_size*math.sqrt(N_crossbar)*math.sqrt(N_pe)
-        layer_num_tile=math.ceil(in_channel*k_x*k_y/tile_x_bit)*math.ceil(out_channel*quant_weight/tile_y_bit)
-        layer_num_crossbar=math.ceil(in_channel*k_x*k_y/xbar_size)*math.ceil(out_channel*quant_weight/xbar_size)
-
-        
-        #print(in_channel*k_x*k_y/xbar_size,out_channel*quant_weight/xbar_size)
-        #print(layer_num_tile)
-
-        n_c_x=math.ceil(in_channel*k_x*k_y/xbar_size) #number of crossbar r
-        n_c_y=math.ceil(out_channel*quant_weight/xbar_size)# number of crossbar c
-
-        total_bit=n_c_x*n_c_y*xbar_size*xbar_size
-        total_bit_real=in_channel*k_x*k_y*out_channel*quant_weight
-        utilization=total_bit_real/total_bit
-        util_row=out_channel*quant_weight/(n_c_y*xbar_size)
-
-        if layer_num_tile>N_tile:
-            print("Alert!!!","layer",layer_idx,"mapped to multiple chiplet/tier")
-            print("please increase crossbar size, PE number, or tile number")
-            sys.exit()
-            # how many extra chiplet
-        if placement_method==5:
-            tier_index_fac=layer_idx%(2*N_tier)
-            if tier_index_fac > N_tier-1:
-                tier_index=2*N_tier-1-tier_index_fac
-            else:
-                tier_index=tier_index_fac
-            tiles_each_tier[tier_index]+=layer_num_tile
-            total_tiles_required+=layer_num_tile
-            if total_tiles_required>N_tile*N_tier or layer_num_tile>N_tile-tiles_each_tier[tier_index]:
-                #import pdb;pdb.set_trace()
-                print("Alert!!!","No available tile/tiers")
-                print("please increase Tiers/tile number")
-                sys.exit()
-            total_tiles_real=total_tiles_required
-            
-        else:
-            if total_tiles_required%N_tile==0 and total_tiles_required//N_tile!=0:
-                tier_index+=1
-            total_tiles_required+=layer_num_tile
-            
-            # the layer tile won't be across two chiplet(tier)
-            if total_tiles_required%(N_tile*(tier_index+1))<layer_num_tile :
-                if total_tiles_required%(N_tile*(tier_index+1))==0:
-                    total_tiles_real=total_tiles_required   
-                else:
-                    total_tiles_real=N_tile*(tier_index+1)+layer_num_tile
-                    total_tiles_required=total_tiles_real
-                    tier_index+=1
-            else:
-                total_tiles_real=total_tiles_required
-
-            # creating a csv writer object  
-            
-        csvfile.write(str(layer_idx)+","+str(layer_num_tile)+","+str(layer_num_crossbar)+","+str(n_c_x)+","+str(n_c_y)+","+str(input_cycle)+","+str(enable_pooling)+","+str(total_tiles_real)+","+str(ip_activation)+","+str(tier_index)+","+str(utilization)+","+str(util_row)+","+str(total_bit_real))
-        csvfile.write('\n')
-       
-        # for computing unit power/latency computing
-        # area easy based on the tile size
-        # latency :each layer ->one tile-> one PE ->subarray latency *vector
-
-"""
+filename = "./Debug/to_interconnect_analy/layer_inform.csv"
+tiles_each_tier = [0]*N_tier
+total_tiles_real=model_mapping(filename,placement_method,total_number_layers,network_params,quant_act,xbar_size,N_crossbar,N_pe,quant_weight,N_tile,N_tier,tiles_each_tier)
 #import pdb;pdb.set_trace()
 
 #---------------------------------------------------------------------#
@@ -231,28 +140,25 @@ computing_data = computing_data.to_numpy()
 total_model_L=0
 total_model_E_dynamic=0
 total_leakage=0
-volt=0.5
 out_peripherial=[]
 
 layer_idx=0
 
 filename = "./Debug/to_interconnect_analy/layer_performance.csv"
+if COMPUTE_VALIDATE:
+    freq_adc=0.005
+else:
+    freq_adc=freq_computing
+imc_analy_fn=imc_analy(xbar_size=xbar_size, volt=volt, freq=freq_computing, freq_adc=freq_adc, compute_ref=COMPUTE_VALIDATE, quant_bits=[quant_weight,quant_act])
     # writing to csv file  
 with open(filename, 'w') as csvfile1: 
     writer_performance = csv.writer(csvfile1) 
     for layer_idx in range(len(computing_data)):
-        # single crossbar
-
-        # LUT table
-
-        mode = 1
-        if COMPUTE_VALIDATE:
-            freq_adc=0.005
-            A_pe, L_layer, E_layer, peripherials, A_peri = imc_analy(computing_data, mode, xbar_size, layer_idx, volt, freq_computing, freq_adc)
-        else:
-            A_pe, L_layer, E_layer, peripherials, A_peri = imc_analy(computing_data, mode, xbar_size, layer_idx, volt, freq_computing, freq_computing)
-        L_layer=L_layer/freq_computing
-        #print("layer",layer_idx,L_chip)
+        A_pe, L_layer, E_layer, peripherials, A_peri = imc_analy_fn.forward(computing_data, layer_idx)
+        #------------------------------------#
+        #             latency                #
+        #------------------------------------#
+        #print("layer",layer_idx,L_layer)
         total_model_L+=L_layer
         if COMPUTE_VALIDATE:
             if len(out_peripherial)==0:
@@ -261,16 +167,13 @@ with open(filename, 'w') as csvfile1:
             else:
                 for i in range(len(peripherials)):
                     out_peripherial[i]+=peripherials[i]
-        pk_power,peak_density =power_density( A_pe, L_layer, E_layer,peripherials, A_peri,computing_data,layer_idx)
+ 
 
         #------------------------------------#
         #          dynamic energy            #
         #------------------------------------#
-        # Volatage user setup
-
         total_model_E_dynamic+=E_layer
         #print("layer",layer_idx,total_model_L,total_model_E_dynamic)
-
 
         #--------------------------#
         #          leakage         #
@@ -296,21 +199,13 @@ print("dynamic energy",total_model_E_dynamic*pow(10,12),"pJ")
 print("Overall Compute Power",total_model_E_dynamic/(total_model_L),"W")
 print("leakage energy",total_leakage*pow(10,12),"pJ")
 
-
-
-
-
-
         #-----------------------------------#
         #         Computing Area            #
         #-----------------------------------#
 # single tile area
-#area_single_tile=33638.9/3*xbar_size/64*N_pe*0.000001 #mm2
 if placement_method==5:
    N_tier_real=N_tier
    N_tile_real=smallest_square_greater_than(max(tiles_each_tier))
-   #N_tile=N_tile_real
-   #result_list.insert(3,N_tile)
 else:
     N_tile_real=N_tile
     if total_tiles_real%N_tile==0:
