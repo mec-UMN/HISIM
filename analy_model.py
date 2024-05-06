@@ -21,7 +21,7 @@ from Module_Compute.functions import imc_analy
 from Module_Thermal.util import *
 from Module_Thermal.H2_5D_thermal import *
 from Module_Network.orion_power_area import power_summary_router
-from Module_AI_Map.util_chip.util_mapping import model_mapping, smallest_square_greater_than
+from Module_AI_Map.util_chip.util_mapping import model_mapping, smallest_square_greater_than, load_ai_network
 from Module_Network.aib_2_5d import  aib
 from itertools import chain
 if not os.path.exists('./Debug/to_interconnect_analy'):
@@ -56,6 +56,8 @@ parser.add_argument('--percent_router', type=float, default=0.5,help='when data 
 parser.add_argument('--no_compute_validate', action='store_false',help='mode to valiate the compute model with neurosim')
 parser.add_argument('--W2d', type=int, default=32,help='Number of links of 2D NoC')
 parser.add_argument('--router_times_scale', type=int, default=1,help='Scaling factor for time components of router: trc, tva, tsa, tst,tl, tenq')
+parser.add_argument('--ai_model', type=str, default="vit",help='AI models:vit, gcn, resnet50, resnet110, vgg16, densenet121, test, roofline')
+
 
 #Take all below parameters as argument
 args = parser.parse_args()
@@ -70,11 +72,11 @@ quant_act=8 # activation quantization bit
 bus_width=64 # in PE and in tile bus width
 chip_architect=args.chip_architect 
 COMPUTE_VALIDATE=args.no_compute_validate
-placement_method=args.placement_method  # 1: from the top to the bottom tier
+placement_method=args.placement_method  # 1: Tier/Chiplet Edge to Tier/Chiplet Edge connection 
                                         # 2: from the bottom to top tier1
                                         # 3: the hotspot far from each other
                                         # 4: worse case:put all hotspot in the same place
-                                        # 5: tile-to-tile connection
+                                        # 5: tile-to-tile 3D connection
 if chip_architect=="H2_5D":
     placement_method=1
 percent_router=args.percent_router
@@ -86,6 +88,7 @@ fclk_noc=args.fclk_noc
 W2d=args.W2d
 volt=args.volt
 scale_factor=args.router_times_scale
+aimodel=args.ai_model
 result_list.append(freq_computing)
 result_list.append(fclk_noc)
 result_list.append(xbar_size)
@@ -99,18 +102,9 @@ result_list.append(N_pe)
 
 #---------------------------------------------------------------------#
 start = time.time()
-network_params = np.loadtxt('./Module_AI_Map/AI_Networks/Transformer/VIT_base.csv', dtype=int, delimiter=',')
-#network_params = np.loadtxt('./Module_AI_Map/AI_Networks/GCN/NetWork.csv', dtype=int, delimiter=',')
-#network_params = np.loadtxt('./Module_AI_Map/AI_Networks/ResNet/50/NetWork.csv', dtype=int, delimiter=',')
-#network_params = np.loadtxt('./Module_AI_Map/AI_Networks/ResNet/110/NetWork.csv', dtype=int, delimiter=',')
-#network_params = np.loadtxt('./Module_AI_Map/AI_Networks/DenseNet_IMG/NetWork_121.csv', dtype=int, delimiter=',')
-#network_params = np.loadtxt('./Module_AI_Map/AI_Networks/VGG/VGG16_IMG/NetWork.csv', dtype=int, delimiter=',')
-#network_params = np.loadtxt('./Module_AI_Map/AI_Networks/Testing/NetWork.csv', dtype=int, delimiter=',')
-#network_params = np.loadtxt('./Module_AI_Map/AI_Networks/Testing/NetWork_roofline_3.csv', dtype=int, delimiter=',')
+network_params=load_ai_network(aimodel)                 #Load AI network parameters from the network csv file
 sim_name="GCN_1stack_placement_1"
-
-total_number_layers=network_params.shape[0]
-filename_results = "./Results/PPA.csv"
+filename_results = "./Results/PPA.csv"                  #Location to store PPA results
 
 
 #---------------------------------------------------------------------#
@@ -120,7 +114,29 @@ filename_results = "./Results/PPA.csv"
 #---------------------------------------------------------------------#
 filename = "./Debug/to_interconnect_analy/layer_inform.csv"
 tiles_each_tier = [0]*N_tier
-total_tiles_real=model_mapping(filename,placement_method,total_number_layers,network_params,quant_act,xbar_size,N_crossbar,N_pe,quant_weight,N_tile,N_tier,tiles_each_tier)
+total_tiles_real=model_mapping(filename,placement_method,network_params,quant_act,xbar_size,N_crossbar,N_pe,quant_weight,N_tile,N_tier,tiles_each_tier)
+#import pdb;pdb.set_trace()
+
+#Placement Method 1: Number of tiers are determined based on the mapping and user defined number of tiles per tier
+#Placement Method 5: Number of tiles per tier are determined based on the mapping and user defined number of tiers
+if placement_method==5:
+   N_tier_real=N_tier
+   #Average of tiles mapped per tier                    
+   N_tile_real=smallest_square_greater_than(max(tiles_each_tier))
+else:
+    N_tile_real=N_tile 
+    #Total number of tiers or chiplets                          
+    if total_tiles_real%N_tile==0:
+        N_tier_real=int(total_tiles_real//N_tile)       
+    else:
+        N_tier_real=int(total_tiles_real//N_tile)+1     
+result_list.append(N_tile_real)                         
+
+if N_tier_real>4:
+    print("Alert!!! too many number of tiers")
+    sys.exit()
+#import pdb;pdb.set_trace()
+result_list.append(N_tier_real)
 #import pdb;pdb.set_trace()
 
 #---------------------------------------------------------------------#
@@ -128,21 +144,17 @@ total_tiles_real=model_mapping(filename,placement_method,total_number_layers,net
 #                         IMC computing units
 
 #---------------------------------------------------------------------#
-
-#
-# area,latency,power
-# every layer-> tile number, input vector
-
-#---------------------------------------------------------------------#
-computing_inform = "./Debug/to_interconnect_analy/layer_inform.csv"
-computing_data = pd.read_csv(computing_inform, header=None)
-computing_data = computing_data.to_numpy()
+#Initialize variables
 total_model_L=0
 total_model_E_dynamic=0
 total_leakage=0
 out_peripherial=[]
-
 layer_idx=0
+
+#Obtain layer information from the csv file
+computing_inform = "./Debug/to_interconnect_analy/layer_inform.csv"
+computing_data = pd.read_csv(computing_inform, header=None)
+computing_data = computing_data.to_numpy()
 
 filename = "./Debug/to_interconnect_analy/layer_performance.csv"
 if COMPUTE_VALIDATE:
@@ -150,16 +162,23 @@ if COMPUTE_VALIDATE:
 else:
     freq_adc=freq_computing
 imc_analy_fn=imc_analy(xbar_size=xbar_size, volt=volt, freq=freq_computing, freq_adc=freq_adc, compute_ref=COMPUTE_VALIDATE, quant_bits=[quant_weight,quant_act])
-    # writing to csv file  
+
+# write the layer performance data to csv file  
 with open(filename, 'w') as csvfile1: 
     writer_performance = csv.writer(csvfile1) 
     for layer_idx in range(len(computing_data)):
-        A_pe, L_layer, E_layer, peripherials, A_peri = imc_analy_fn.forward(computing_data, layer_idx)
-        #------------------------------------#
-        #             latency                #
-        #------------------------------------#
-        #print("layer",layer_idx,L_layer)
+        A_pe, L_layer, E_layer, peripherials, A_peri = imc_analy_fn.forward(computing_data, layer_idx)          
         total_model_L+=L_layer
+        total_model_E_dynamic+=E_layer
+        leak_tile=imc_analy_fn.leakage(N_crossbar,N_pe)
+        total_leakage+=leak_tile*L_layer*computing_data[layer_idx][1]
+
+        # CSV file is written in the following format:
+        #layer index, number of tiles required for this layer, latency of the layer, Energy of the layer, leakage energy of the layer, average power consumption of each tile for the layer
+        csvfile1.write(str(layer_idx)+","+str(computing_data[layer_idx][1])+","+str(L_layer)+","+str(E_layer)+","+str(leak_tile)+","+str('%.3f'% (E_layer/L_layer*1000/computing_data[layer_idx][1])))
+        csvfile1.write('\n')
+        
+        #Save performance data of peripherials for each layer
         if COMPUTE_VALIDATE:
             if len(out_peripherial)==0:
                 out_peripherial.append(peripherials)
@@ -167,30 +186,6 @@ with open(filename, 'w') as csvfile1:
             else:
                 for i in range(len(peripherials)):
                     out_peripherial[i]+=peripherials[i]
- 
-
-        #------------------------------------#
-        #          dynamic energy            #
-        #------------------------------------#
-        total_model_E_dynamic+=E_layer
-        #print("layer",layer_idx,total_model_L,total_model_E_dynamic)
-
-        #--------------------------#
-        #          leakage         #
-        #--------------------------#
-        leak_single_xbar=4e-7*xbar_size+3e-7
-        leak_addtree=1.22016e-05*quant_act/8*N_crossbar/4
-        leak_buffer=(2.59739e-05+5.28E-06)*quant_act/8*N_crossbar/4
-        leak_PE=(4e-7*xbar_size+3e-7)*N_crossbar+1.22016e-05*quant_act/8*N_crossbar/4+(2.59739e-05+5.28E-06)*quant_act/8*N_crossbar/4
-        leak_accum=1.31e-5*math.sqrt(N_pe)/2*xbar_size/64
-        leak_buffer_tile=4.63e-5*quant_act/8*N_pe/4*xbar_size/64
-        leak_tile=(leak_PE*N_pe+leak_accum+leak_buffer_tile)
-        total_leakage+=leak_tile*L_layer*computing_data[layer_idx][1]
-
-        # layer index, number of tiles per layer, latency of this layer, E of this layer, leak of this layer, power of this layer each tile
-        csvfile1.write(str(layer_idx)+","+str(computing_data[layer_idx][1])+","+str(L_layer)+","+str(E_layer)+","+str(leak_tile)+","+str('%.3f'% (E_layer/L_layer*1000/computing_data[layer_idx][1])))
-        #csvfile1.write(str(layer_idx)+","+str(computing_data[layer_idx][1])+","+str(L_layer)+","+str(E_layer)+","+str(leak_tile)+","+str(pk_power)+","+str(peak_density)+","+str('%.3f'% (E_layer/L_layer*1000/computing_data[layer_idx][1])))
-        csvfile1.write('\n')
 
 
 print("----------computing performance---------------------")
@@ -198,36 +193,18 @@ print("latency",total_model_L*pow(10,9),"ns")
 print("dynamic energy",total_model_E_dynamic*pow(10,12),"pJ")
 print("Overall Compute Power",total_model_E_dynamic/(total_model_L),"W")
 print("leakage energy",total_leakage*pow(10,12),"pJ")
+result_list.append(total_model_L*pow(10,9))
+result_list.append(total_model_E_dynamic*pow(10,12))
 
         #-----------------------------------#
         #         Computing Area            #
         #-----------------------------------#
-# single tile area
-if placement_method==5:
-   N_tier_real=N_tier
-   N_tile_real=smallest_square_greater_than(max(tiles_each_tier))
-else:
-    N_tile_real=N_tile
-    if total_tiles_real%N_tile==0:
-        N_tier_real=int(total_tiles_real//N_tile) # num of chiplet
-    else:
-        N_tier_real=int(total_tiles_real//N_tile)+1 # num of chiplet
-result_list.append(N_tile_real)
-
-if N_tier_real>4:
-    print("Alert!!! too many number of tiers")
-    sys.exit()
-#import pdb;pdb.set_trace()
-result_list.append(N_tier_real)
-result_list.append(total_model_L*pow(10,9))
-result_list.append(total_model_E_dynamic*pow(10,12))
-
 area_single_tile=A_pe*N_pe*N_crossbar
 total_tiles_area=N_tier_real*N_tile*area_single_tile
 print("total_tiles_area",total_tiles_area,"mm2")
 print("every tier tiles total area,",total_tiles_area/N_tier_real,"mm2")
 result_list.append(total_tiles_area*pow(10,6))
-# total tier(chiplet) number
+
 end_computing = time.time()
 print("The computing unit sim time is:", (end_computing - start))
 print("----------------------------------------------------")

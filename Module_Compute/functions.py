@@ -164,4 +164,15 @@ class imc_analy():
         A_peripherial=[A_arr, A_adc_t, A_shadd_t, A_accum_t, A_con_t, A_bus_t,self.A_buffer]
 
         return A, L, E, peripherials, A_peripherial
-    
+
+    def leakage(self,N_crossbar,N_pe):
+        
+        leak_single_xbar=4e-7*self.xbar_y+3e-7
+        leak_addtree=1.22016e-05*self.Qact/8*N_crossbar/4
+        leak_buffer=(2.59739e-05+5.28E-06)*self.Qact/8*N_crossbar/4
+        leak_PE=(4e-7*self.xbar_y+3e-7)*N_crossbar+1.22016e-05*self.Qact/8*N_crossbar/4+(2.59739e-05+5.28E-06)*self.Qact/8*N_crossbar/4
+        leak_accum=1.31e-5*math.sqrt(N_pe)/2*self.xbar_y/64
+        leak_buffer_tile=4.63e-5*self.Qact/8*N_pe/4*self.xbar_y/64
+        leak_tile=(leak_PE*N_pe+leak_accum+leak_buffer_tile)
+
+        return leak_tile

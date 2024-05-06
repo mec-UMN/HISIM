@@ -35,6 +35,7 @@ if mode==0:
     #W2d=[i for i in range(1,50,5)]
     W2d=[32]
     chip_arch=["M3D"]
+    ai_model=['vit']
 elif mode==1:
     crossbar_size=[1024] 
     #N_tile=[16,25,36,49,64,81,100,121,144]
@@ -85,18 +86,20 @@ for i in crossbar_size:
                                     for placement in method:
                                         for p_router in percent_router:
                                             for i_arch in chip_arch:
-                                                os.system('python analy_model.py --xbar_size %d \
-                                                    --N_tile %d \
-                                                    --N_tier %d \
-                                                    --N_pe %d \
-                                                    --freq_computing %f \
-                                                    --fclk_noc %f \
-                                                    --placement_method %d \
-                                                    --percent_router %f\
-                                                    --tsvPitch %f \
-                                                    --chip_architect %s\
-                                                    --W2d %d\
-                                                    --router_times_scale %d\
-                                                    --no_compute_validate' %(int(i),int(i_tile),int(i_tier),int(pe),float(fcore),float(fnoc),float(placement),float(p_router),float(tsvpitch), str(i_arch), int(i_w2d),int(i_scale)))
-                                    
+                                                for i_model in ai_model:
+                                                    os.system('python analy_model.py --xbar_size %d \
+                                                        --N_tile %d \
+                                                        --N_tier %d \
+                                                        --N_pe %d \
+                                                        --freq_computing %f \
+                                                        --fclk_noc %f \
+                                                        --placement_method %d \
+                                                        --percent_router %f\
+                                                        --tsvPitch %f \
+                                                        --chip_architect %s\
+                                                        --W2d %d\
+                                                        --router_times_scale %d\
+                                                        --ai_model %s\
+                                                        --no_compute_validate' %(int(i),int(i_tile),int(i_tier),int(pe),float(fcore),float(fnoc),float(placement),float(p_router),float(tsvpitch), str(i_arch), int(i_w2d),int(i_scale), str(i_model)))
+                                        
 
