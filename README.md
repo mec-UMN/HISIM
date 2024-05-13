@@ -35,12 +35,74 @@ layer-wise sparsity: Total Sparsity of the layer
 ```
 
 ### PPA File
+The structure of PPA.csv file is as follows: 
+```
+freq_core,freq_noc,Xbar_size,N_tile,N_pe,N_tile(real),N_tier(chiplet),W2d,W3d,Computing_latency, Computing_energy,compute_area,chip_area,chip_Architecture,2d NoC latency,3d NoC latency,2.5d NoC latency, network_latency,2d NoC energy,3d NoC energy,2.5d NoC energy,network_energy,rcc,TFLOPS,compute_power, 2D_3D_NoC_power,2_5D_power,2d_3d_router_area,peak_temperature,placement_method,percent_router
+```
+
+Input Parameters of the Simulation performed
+```
+freq_core:
+freq_noc:
+Xbar_size:
+N_tile:
+N_pe:
+N_tile(real):
+N_tier(chiplet):
+W2d:
+W3d:
+chip_Architecture:
+placement_method:
+percent_router:
+```
+Outputs from the simulation:
+```
+Computing_latency:
+Computing_energy:
+compute_area:
+chip_area:
+2d NoC latency:
+3d NoC latency:
+2.5d NoC latency:
+network_latency:
+2d NoC energy:
+3d NoC energy:
+2.5d NoC energy:
+network_energy:
+rcc:
+TFLOPS:
+compute_power:
+2D_3D_NoC_power:
+2_5D_power:
+2d_3d_router_area:
+peak_temperature:
+```
 
 ## Installation and Usage
 
 ### Dependencies
+* Python
+* pandas
+* numpy
+* torch
+* matplotlib
+* scipy
+* csv
+* collections
+* json
 
 ### Running analy_model.py file
+
+#### 2D Simulation
+
+
+#### 2.5d Simulation
+
+
+#### 3d simulation
+Placement mode 1:
+
+Placement mode 5:
 
 ### Running run.py file
 
