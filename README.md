@@ -21,6 +21,18 @@ Main directory structure is below
 ## CSV Files
 
 ### Network File
+The structure of network.csv file is as follows:
+IFM_size_x, IFM_size_y, N_IFM, Kx, Ky, NOFM, pool, layer-wise sparsity.
+```
+IFM_Size_x: Size of the input of the Layer in x-dimension
+IFM_Size_y: Size of the input of the Layer in y-dimension
+N_IFM: Number of input channels of the layer   
+Kx: Kernel size in x-dimension of the layer
+Ky: Kernel size in y-dimension of the layer
+NOFM:  number of output feature map
+pool: Parameter indicating if the layer is followed by pooling or not: 0 if not followed by pooling and 1 if followed by pooling
+layer-wise sparsity: Total Sparsity of the layer
+```
 
 ### PPA File
 
@@ -34,6 +46,17 @@ Main directory structure is below
 
 ## Examples
 
+### Configuration
+
+### Commands
+
+### Outputs
+
+#### PPA
+
+#### Terminal
+
+#### Thermal Maps
 ## Citing this work
 If you found this tool useful, please use the following bibtex to cite us
 ```
