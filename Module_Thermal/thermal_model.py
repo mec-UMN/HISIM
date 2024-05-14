@@ -5,7 +5,7 @@ from Module_Thermal.util import *
 from Module_Thermal.H2_5D_thermal import *
 
 
-def thermal_model(temp,chip_architect,chiplet_num,N_tile,placement_method,tier_2d_hop_list_power,tier_3d_hop_list_power,area_single_tile,single_router_area
+def thermal_model(thermal,chip_architect,chiplet_num,N_tile,placement_method,tier_2d_hop_list_power,tier_3d_hop_list_power,area_single_tile,single_router_area
                   ,mesh_edge,sim_name,layer_aib_list):
     #---------------------------------------------------------------------#
 
@@ -13,7 +13,7 @@ def thermal_model(temp,chip_architect,chiplet_num,N_tile,placement_method,tier_2
 
     #---------------------------------------------------------------------#
 
-    if temp and chip_architect!="H2_5D":
+    if thermal and chip_architect!="H2_5D":
 
         # np.set_printoptions(threshold=sys.maxsize)
         torch.set_printoptions(threshold=50_000)
@@ -168,7 +168,7 @@ def thermal_model(temp,chip_architect,chiplet_num,N_tile,placement_method,tier_2
         #result_list.append(peak_temp)
         #end_thermal = time.time()
 
-    elif temp and chip_architect=="H2_5D":
+    elif thermal and chip_architect=="H2_5D":
 
         power_aib_l=[]
         power_emib_l=[]
