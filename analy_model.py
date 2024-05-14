@@ -59,9 +59,9 @@ import collections
 from Module_Compute.functions import imc_analy
 #from Module_Thermal.util import *
 #from Module_Thermal.H2_5D_thermal import *
-from Module_Thermal.thermal_model import *
-from Module_Network.network_model import *
-from Module_Compute.compute_IMC_model import *
+from Module_Thermal.thermal_model import thermal_model
+from Module_Network.network_model import network_model
+from Module_Compute.compute_IMC_model import compute_IMC_model
 #from Module_Network.orion_power_area import power_summary_router
 from Module_AI_Map.util_chip.util_mapping import model_mapping, smallest_square_greater_than, load_ai_network
 from Module_Network.aib_2_5d import  aib
@@ -108,6 +108,7 @@ N_crossbar=1 # 4, 9, 16 # how many crossbar in PE
 quant_weight=8 # weight quantization bi
 quant_act=8 # activation quantization bit
 bus_width=64 # in PE and in tile bus width
+tsvPitch = args.tsvPitch
 chip_architect=args.chip_architect 
 COMPUTE_VALIDATE=args.no_compute_validate
 placement_method=args.placement_method  # 1: Tier/Chiplet Edge to Tier/Chiplet Edge connection 
