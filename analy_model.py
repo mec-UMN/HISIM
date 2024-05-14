@@ -213,7 +213,7 @@ print("The total sim time is:", (end_noc - start))
 
 # thermal_model function will start the simulation for generating the temperature results based on the power and area of the different blocks of the chip
 
-peak_temp=thermal_model(temp,chip_architect,chiplet_num,N_tile,placement_method,tier_2d_hop_list_power,tier_3d_hop_list_power,area_single_tile,single_router_area
+peak_temp=thermal_model(thermal,chip_architect,chiplet_num,N_tile,placement_method,tier_2d_hop_list_power,tier_3d_hop_list_power,area_single_tile,single_router_area
                   ,mesh_edge,sim_name,layer_aib_list)
 
 end_thermal = time.time()
@@ -245,7 +245,7 @@ with open(filename_results, 'a', newline='') as csvfile:
     #writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tier(chiplet)","W2d","W3d","Computing_latency", "Computing_energy","chip_area","network_latency","network_energy","peak_temperature"])
     # Write each row of data from the list
     writer.writerow(result_list)
-if temp:
+if thermal:
 
     print("The noc sim time is:", (end_thermal - end_noc))
     print("whole sim time",(end_thermal-start))
