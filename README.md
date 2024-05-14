@@ -74,7 +74,6 @@ network_latency:       Total Network Latency consisting of 2D NoC, 3D TSV, 2.5D 
 network_energy:        Total Network Energy consisting of 2D NoC, 3D TSV, 2.5D AIB interface energies
 rcc:                   Ratio between computation and communication latencies
 TFLOPS:                Total number of FLOPS divided by latency in TFLOPS/s
-compute_power:         Total Power of the computing core 
 2D_3D_NoC_power:       Total power of the 2D NoC and 3D TSV        
 2_5D_power:            Total power of the 2.5D AIB interface   
 2d_3d_router_area:     Total area of the 2D and 3D router   
