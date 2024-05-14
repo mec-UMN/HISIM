@@ -3,7 +3,7 @@ from Module_Compute.functions import imc_analy,power_density
 import csv
 from itertools import chain
 import math
-from util_chip.util_mapping import model_mapping, smallest_square_greater_than, aib
+from Module_AI_Map.util_chip.util_mapping import model_mapping, smallest_square_greater_than, aib
 import sys
 def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,freq_computing,quant_act,N_crossbar,N_pe,placement_method,N_tier,tiles_each_tier,N_tile,total_tiles_real,result_list):
     #
