@@ -1,7 +1,7 @@
 import math
 import numpy as np
 from Module_Network.orion_power_area import power_summary_router
-from util_chip.util_mapping import model_mapping, smallest_square_greater_than, aib
+from Module_Network.aib_2_5d import aib
 
 def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,percent_router,chip_architect,tsvPitch,
                   area_single_tile,result_list,volt,fclk_noc,total_model_L):
@@ -205,8 +205,8 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     print("2.5d area", area_2_5d)
     print("----------------------------------------")
     result_list.append((edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile+area_2_5d)
-    result_list.insert(6,W2d)
-    result_list.insert(7,W3d)
+    result_list.insert(7,W2d)
+    result_list.insert(8,W3d)
     # Router technology delay 
 
     working_channel=2 # last layer source to dst paths
@@ -319,4 +319,17 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     #single_TSV_area=math.sqrt(area_single_tile)*math.sqrt((1e-6*(4/5*W2d+1/5*W3d)*(4/5*W2d+1/5*W3d)+5e-5*(4/5*W2d+1/5*W3d)+0.0005))
     print("computing latency",total_model_L*pow(10,9),"ns")
     print("total system latency", L_booksim+total_model_L*pow(10,9))
+    result_list.append(total_model_L*pow(10,9)/L_booksim)
+
+    flops=0
+    for j in range(len(computing_data)):
+        flops+=computing_data[j][14]
+    result_list.append(flops*pow(10,-3)/(L_booksim+total_model_L*pow(10,9)))
+    result_list.append((total_router_power+total_tsv_channel_power)*fclk_noc*pow(10,-3))
+    if area_2_5d!=0:
+        result_list.append(total_2_5d_channel_power*pow(10,-3))
+    else:
+        result_list.append(0)
+    result_list.append(Total_area_routers+Total_channel_area)
+    
     return chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list

@@ -1,4 +1,5 @@
 import math 
+
 class imc_analy():
     def __init__(self, xbar_size, volt, freq, freq_adc, compute_ref, quant_bits):
         super(imc_analy, self).__init__()

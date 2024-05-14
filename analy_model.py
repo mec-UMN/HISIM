@@ -57,13 +57,10 @@ import scipy.sparse.linalg as sparse_algebra
 import torch
 import collections
 from Module_Compute.functions import imc_analy
-#from Module_Thermal.util import *
-#from Module_Thermal.H2_5D_thermal import *
 from Module_Thermal.thermal_model import thermal_model
 from Module_Network.network_model import network_model
 from Module_Compute.compute_IMC_model import compute_IMC_model
-#from Module_Network.orion_power_area import power_summary_router
-from Module_AI_Map.util_chip.util_mapping import model_mapping, smallest_square_greater_than, load_ai_network
+from Module_AI_Map.util_chip.util_mapping import model_mapping, load_ai_network,smallest_square_greater_than
 from Module_Network.aib_2_5d import  aib
 from itertools import chain
 if not os.path.exists('./Debug/to_interconnect_analy'):
@@ -183,7 +180,7 @@ result_list.append(N_tier_real)
 #     Computing: generate PPA for IMC/GPU/CPU/ASIC computing units    #
 #                                                                     #
 #---------------------------------------------------------------------#
-N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,freq_computing,quant_act,N_crossbar,N_pe,placement_method,N_tier,tiles_each_tier,N_tile,total_tiles_real,result_list)
+N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,quant_weight,N_crossbar,N_pe,N_tier_real,N_tile,result_list)
 end_computing = time.time()
 print("The computing unit sim time is:", (end_computing - start))
 print("----------------------------------------------------")
