@@ -92,6 +92,7 @@ parser.add_argument('--no_compute_validate', action='store_false',help='mode to 
 parser.add_argument('--W2d', type=int, default=32,help='Number of links of 2D NoC')
 parser.add_argument('--router_times_scale', type=int, default=1,help='Scaling factor for time components of router: trc, tva, tsa, tst,tl, tenq')
 parser.add_argument('--ai_model', type=str, default="vit",help='AI models:vit, gcn, resnet50, resnet110, vgg16, densenet121, test, roofline')
+parser.add_argument('--thermal', type=bool, default=True,help='Run thermal simulation or not')
 
 
 #Take all below parameters as argument
@@ -118,7 +119,7 @@ if chip_architect=="H2_5D":
 percent_router=args.percent_router
 relu=True
 sigmoid=False
-temp=0 #Temperature to be evaluated
+thermal=args.thermal
 freq_computing=args.freq_computing #GHz
 fclk_noc=args.fclk_noc
 W2d=args.W2d
