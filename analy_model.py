@@ -57,12 +57,12 @@ import scipy.sparse.linalg as sparse_algebra
 import torch
 import collections
 from Module_Compute.functions import imc_analy
-from Module_Thermal.util import *
+#from Module_Thermal.util import *
 #from Module_Thermal.H2_5D_thermal import *
 from Module_Thermal.thermal_model import *
 from Module_Network.network_model import *
 from Module_Compute.compute_IMC_model import *
-from Module_Network.orion_power_area import power_summary_router
+#from Module_Network.orion_power_area import power_summary_router
 from Module_AI_Map.util_chip.util_mapping import model_mapping, smallest_square_greater_than, load_ai_network
 from Module_Network.aib_2_5d import  aib
 from itertools import chain

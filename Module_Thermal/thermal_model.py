@@ -1,7 +1,7 @@
 import torch
 import math
 import collections
-from util import *
+from Module_Thermal.util import *
 from Module_Thermal.H2_5D_thermal import *
 
 
