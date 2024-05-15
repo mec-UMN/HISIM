@@ -80,7 +80,10 @@ parser = argparse.ArgumentParser(description='Design Space Search',
 parser.add_argument('--chip_architect', type=str, default="M3D",help='hardware architecture:M3D,M2D,H2_5D,H2_5D_3D')
 parser.add_argument('--xbar_size', type=int, default=512,help='crossbar size')
 parser.add_argument('--N_tile', type=int, default=324,help='how many tiles in tier')
+parser.add_argument('--N_crossbar', type=int, default=1,help='how many crossbar in one PE')
 parser.add_argument('--N_pe', type=int, default=16,help='how many PEs in tile')
+parser.add_argument('--quant_weight', type=int, default=8,help='Precision of quantized weight of AI model')
+parser.add_argument('--quant_act', type=int, default=8,help='Precision of quantized activation of AI model')
 parser.add_argument('--freq_computing', type=float, default=1,help='Computing unit operation frequency')
 parser.add_argument('--fclk_noc', type=float, default=1,help='network data communication operation frequency')
 parser.add_argument('--tsvPitch', type=float, default=10,help='TSV pitch um')
@@ -102,7 +105,7 @@ xbar_size = args.xbar_size # 64,128,256,512,1024
 N_tile=args.N_tile # 4,9,16,25,36,49 # how many tile in tier (chiplet)
 N_tier=args.N_tier # 2,3,4,5,6,7,8,9,10 
 N_pe=args.N_pe # 4,9,16,25 # how many PE in tile
-N_crossbar=1 # 4, 9, 16 # how many crossbar in PE
+N_crossbar=args.N_crossbar # 4, 9, 16 # how many crossbar in PE
 quant_weight=8 # weight quantization bi
 quant_act=8 # activation quantization bit
 bus_width=64 # in PE and in tile bus width
@@ -126,7 +129,6 @@ if args.thermal:
     thermal=args.thermal
 else:
     thermal = False
-#import pdb;pdb.set_trace()
 
 freq_computing=args.freq_computing #GHz
 fclk_noc=args.fclk_noc
