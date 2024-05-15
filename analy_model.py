@@ -87,6 +87,7 @@ parser.add_argument('--quant_act', type=int, default=8,help='Precision of quanti
 parser.add_argument('--freq_computing', type=float, default=1,help='Computing unit operation frequency')
 parser.add_argument('--fclk_noc', type=float, default=1,help='network data communication operation frequency')
 parser.add_argument('--tsvPitch', type=float, default=10,help='TSV pitch um')
+parser.add_argument('--bus_width', type=int, default=64,help='Inside PE or Tile, the number of links of the bus width')
 parser.add_argument('--N_tier', type=int, default=4,help='how many tiers')
 parser.add_argument('--volt', type=int, default=0.5,help='Operating Voltage in volt')
 parser.add_argument('--placement_method', type=int, default=5,help='computing tile placement method')
@@ -106,11 +107,15 @@ N_tile=args.N_tile # 4,9,16,25,36,49 # how many tile in tier (chiplet)
 N_tier=args.N_tier # 2,3,4,5,6,7,8,9,10 
 N_pe=args.N_pe # 4,9,16,25 # how many PE in tile
 N_crossbar=args.N_crossbar # 4, 9, 16 # how many crossbar in PE
-quant_weight=8 # weight quantization bi
-quant_act=8 # activation quantization bit
-bus_width=64 # in PE and in tile bus width
+quant_weight=args.quant_weight # weight quantization bi
+quant_act=args.quant_act # activation quantization bit
+bus_width=args.bus_width # in PE and in tile bus width
 tsvPitch = args.tsvPitch
 chip_architect=args.chip_architect 
+if args.thermal:
+    thermal=args.thermal
+else:
+    thermal = False
 if args.compute_validate:
     COMPUTE_VALIDATE = True
 else:
@@ -125,11 +130,6 @@ if chip_architect=="H2_5D":
 percent_router=args.percent_router
 relu=True
 sigmoid=False
-if args.thermal:
-    thermal=args.thermal
-else:
-    thermal = False
-
 freq_computing=args.freq_computing #GHz
 fclk_noc=args.fclk_noc
 W2d=args.W2d
@@ -139,7 +139,6 @@ aimodel=args.ai_model
 result_list.append(freq_computing)
 result_list.append(fclk_noc)
 result_list.append(xbar_size)
-
 result_list.append(N_tile)
 result_list.append(N_pe)
 
@@ -155,14 +154,13 @@ filename_results = "./Results/PPA.csv"                  #Location to store PPA r
 
 
 #---------------------------------------------------------------------#
-
-#         configuration of the AI models mapped to architecture
-
+#                                                                     #
+#         configuration of the AI models mapped to architecture       #
+#                                                                     #
 #---------------------------------------------------------------------#
 filename = "./Debug/to_interconnect_analy/layer_inform.csv"
 tiles_each_tier = [0]*N_tier
 total_tiles_real=model_mapping(filename,placement_method,network_params,quant_act,xbar_size,N_crossbar,N_pe,quant_weight,N_tile,N_tier,tiles_each_tier)
-#import pdb;pdb.set_trace()
 
 #Placement Method 1: Number of tiers are determined based on the mapping and user defined number of tiles per tier
 #Placement Method 5: Number of tiles per tier are determined based on the mapping and user defined number of tiers
