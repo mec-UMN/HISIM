@@ -529,7 +529,7 @@ def load_power(case_,dict_z, devicemap, cube_n_dict, power_tsv, power_router, nu
             every_tier_real_tiles.append(sum)
 
         for tier_n in range(chiplet_num):
-            print(tier_n)
+            #print(tier_n)
             sum=0
             for i in range(len(computing_data)):
                 if computing_data[i][9]==tier_n: 
