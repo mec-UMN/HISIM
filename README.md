@@ -20,9 +20,7 @@ Main directory structure of the repository is below
 ├── run.py                  --Run file to execute multiple runs of analy_model.py with different configurations
 ```
 
-## CSV Files
-
-### Network File
+## Network File
 The structure of network.csv file is as follows:
 IFM_size_x, IFM_size_y, N_IFM, Kx, Ky, NOFM, pool, layer-wise sparsity.
 ```
@@ -36,29 +34,75 @@ pool:                  Parameter indicating if the layer is followed by pooling 
 layer-wise sparsity:   Total Sparsity of the layer
 ```
 
-### PPA File
+## Installation and Usage
+
+### Dependencies
+* Python
+* pandas
+* numpy
+* torch
+* matplotlib
+* scipy
+* csv
+* collections
+* json
+
+### Running analy_model.py file
+Usage to run the python file analy_model.py
+```
+--chip_architect        Chip Archiecture: 2D chip (M2D), 3D chip(M3D), 2.5D chip (H2_5D)
+--xbar_size             RRAM crossbar size 
+--N_tile                Number of tiles in a tier
+--N_pe                  Number of PE in a tier
+--freq_computing        Clock frequency of compute core in GHz
+--fclk_noc              Clock frequency of network communication unit in GHz
+--tsvPitch              TSV pitch um
+--N_tier                Number of tiers in the chip for 3D archiecture or Number of chiplets for 2D archiecture 
+--volt                  Operating Voltage in volt
+--placement_method      1: Tier/Chiplet Edge to Tier/Chiplet Edge connection
+                        5: tile-to-tile 3D connection
+--percent_router        The percentage of routers to be used for 3D communication when data is routed from one tier to the next 
+--W2d                   2D NoC Bandwidth
+--router_times_scale    Scaling factor for time components of router: trc, tva, tsa, tst,tl, tenq
+--ai_model              AI models:vit, gcn, resnet50, resnet110, vgg16, densenet121
+--thermal               Run thermal simulation
+         
+```
+#### 2D Simulation
+Apply following settings to run 2D simulation
+```
+python analy_model.py --chip_architect M2D --N_tile  <Input the total number of tiles required> --ai_model <Input ai model> --thermal
+```
+
+#### 2.5d Simulation
+Apply following settings to run 2.5D simulation
+```
+python analy_model.py --chip_architect H2_5D --placement_method 1 --N_tile <Input the number of tiles per chiplet> --ai_model <Input ai model> --thermal
+```
+
+#### 3d simulation
+Apply following settings to run 3D simulation in placement method 1
+```
+python analy_model.py --chip_architect M3D --placement_method 1 --N_tile <Input the number of tiles per tier> --ai_model <Input ai model> --thermal
+```
+
+Apply following settings to run 3D simulation in placement method 5
+```
+python analy_model.py --chip_architect M3D --placement_method 5 --N_tier <Input the number of tiers to be tested for> --ai_model <Input ai model> --thermal
+```
+
+### Running run.py file
+
+## PPA File
 The structure of PPA.csv file is as follows: 
 ```
 freq_core,freq_noc,Xbar_size,N_tile,N_pe,N_tile(real),N_tier(chiplet),W2d,W3d,Computing_latency, Computing_energy,compute_area,chip_area,chip_Architecture,2d NoC latency,3d NoC latency,2.5d NoC latency, network_latency,2d NoC energy,3d NoC energy,2.5d NoC energy,network_energy,rcc,TFLOPS,compute_power, 2D_3D_NoC_power,2_5D_power,2d_3d_router_area,peak_temperature,placement_method,percent_router
 ```
+The parameters freq_core,freq_noc,Xbar_size,N_tile,N_pe,N_tile(real),N_tier(chiplet),W2d,placement_method,percent_router are input parameters of the simulation performed
 
-Input Parameters of the Simulation performed
-```
-freq_core:             clock frequency of compute core in GHz
-freq_noc:              clock frequency of network communication unit in GHz
-Xbar_size:             RRAM crossbar size 
-N_tile:                Number of tiles in a tier
-N_pe:                  Number of PE in a tier
-N_tier(chiplet):       Number of tiers in the chip for 3D archiecture or Number of chiplets for 2D archiecture 
-W2d:                   2D NoC Bandwidth
-W3d:                   3D TSV Bandwidth
-chip_Architecture:     2D chip (M2D), 3D chip(M3D), 2.5D chip (H2_5D)
-placement_method:      1: Tier/Chiplet Edge to Tier/Chiplet Edge connection
-                       5: tile-to-tile 3D connection
-percent_router:        When data is routed from one tier to next tier, the system will choose percent routers for 3D communication
-```
 Outputs from the simulation:
 ```
+W3d:                   3D TSV Bandwidth                     
 N_tile(real):          Number of real tiles mapped in a tier
 Computing_latency:     Total Latency of the computing core
 Computing_energy:      Total Energy of the computing core
@@ -79,35 +123,6 @@ TFLOPS:                Total number of FLOPS divided by latency in TFLOPS/s
 2d_3d_router_area:     Total area of the 2D and 3D router   
 peak_temperature:      Peak temperature of the chip
 ```
-
-## Installation and Usage
-
-### Dependencies
-* Python
-* pandas
-* numpy
-* torch
-* matplotlib
-* scipy
-* csv
-* collections
-* json
-
-### Running analy_model.py file
-
-#### 2D Simulation
-
-
-#### 2.5d Simulation
-
-
-#### 3d simulation
-Placement mode 1:
-
-Placement mode 5:
-
-### Running run.py file
-
 ## Examples
 
 ### Configuration
