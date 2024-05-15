@@ -88,11 +88,11 @@ parser.add_argument('--N_tier', type=int, default=4,help='how many tiers')
 parser.add_argument('--volt', type=int, default=0.5,help='Operating Voltage in volt')
 parser.add_argument('--placement_method', type=int, default=5,help='computing tile placement method')
 parser.add_argument('--percent_router', type=float, default=0.5,help='when data route from one tier to next tier, the system will choose how much percent routers for 3D communication')
-parser.add_argument('--no_compute_validate', action='store_false',help='mode to valiate the compute model with neurosim')
+parser.add_argument('--compute_validate', action='store_true',help='mode to validate the compute model with neurosim')
 parser.add_argument('--W2d', type=int, default=32,help='Number of links of 2D NoC')
 parser.add_argument('--router_times_scale', type=int, default=1,help='Scaling factor for time components of router: trc, tva, tsa, tst,tl, tenq')
 parser.add_argument('--ai_model', type=str, default="vit",help='AI models:vit, gcn, resnet50, resnet110, vgg16, densenet121, test, roofline')
-parser.add_argument('--thermal', type=bool, default=True,help='Run thermal simulation or not')
+parser.add_argument('--thermal', action='store_true', help='Run thermal simulation or not')
 
 
 #Take all below parameters as argument
@@ -108,7 +108,10 @@ quant_act=8 # activation quantization bit
 bus_width=64 # in PE and in tile bus width
 tsvPitch = args.tsvPitch
 chip_architect=args.chip_architect 
-COMPUTE_VALIDATE=args.no_compute_validate
+if args.compute_validate:
+    COMPUTE_VALIDATE = True
+else:
+    COMPUTE_VALIDATE = False
 placement_method=args.placement_method  # 1: Tier/Chiplet Edge to Tier/Chiplet Edge connection 
                                         # 2: from the bottom to top tier1
                                         # 3: the hotspot far from each other
@@ -119,7 +122,12 @@ if chip_architect=="H2_5D":
 percent_router=args.percent_router
 relu=True
 sigmoid=False
-thermal=args.thermal
+if args.thermal:
+    thermal=args.thermal
+else:
+    thermal = False
+#import pdb;pdb.set_trace()
+
 freq_computing=args.freq_computing #GHz
 fclk_noc=args.fclk_noc
 W2d=args.W2d
