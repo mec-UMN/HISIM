@@ -11,8 +11,6 @@ with open(filename_results, 'a', newline='') as csvfile:
     else:
         writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tile(real)","N_tier(chiplet)","W2d","W3d","Computing_latency", "Computing_energy","compute_area","chip_area","chip_Architecture","2d NoC latency","3d NoC latency","2.5d NoC latency", "network_latency","2d NoC energy","3d NoC energy","2.5d NoC energy","network_energy","rcc","TFLOPS", "2D_3D_NoC_power","2_5D_power","2d_3d_router_area","peak_temperature","placement_method","percent_router"])
 
-    #writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tier(chiplet)","W2d","W3d","Computing_latency", "Computing_energy","compute_area","chip_area","2d NoC latency","3d NoC latency", "network_latency","network_energy","peak_temperature"])
-
 mode=0 #crossbar
 #mode=1#DESIGN SPACE
 #mode=2#2dn3dlatency
