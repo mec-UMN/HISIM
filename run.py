@@ -1,3 +1,44 @@
+# -*- coding: utf-8 -*-
+# *******************************************************************************
+# Copyright (c)
+# School of Electrical, Computer and Energy Engineering, Arizona State University
+# Department of Electrical and Computer Engineering, University of Minnesota
+
+# PI: Prof.Yu(Kevin) Cao
+# All rights reserved.
+
+# This source code is for HISIM: Analytical Performance Modeling and Design Exploration 
+# of 2.5D/3D Heterogeneous Integration for AI Computing
+
+# Copyright of the model is maintained by the developers, and the model is distributed under 
+# the terms of the Creative Commons Attribution-NonCommercial 4.0 International Public License 
+# http://creativecommons.org/licenses/by-nc/4.0/legalcode.
+# The source code is free and you can redistribute and/or modify it
+# by providing that the following conditions are met:
+# 
+#  1) Redistributions of source code must retain the above copyright notice,
+#     this list of conditions and the following disclaimer.
+# 
+#  2) Redistributions in binary form must reproduce the above copyright notice,
+#     this list of conditions and the following disclaimer in the documentation
+#     and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# Developer list: 
+#   Zhenyu Wang	    Email: zwang586@asu.edu                
+#   Pragnya Nalla   Email: nalla052@umn.edu
+#   Jingbo Sun      Email: jsun127@asu.edu
+# *******************************************************************************/
 import os
 import csv
 filename_results = "./Results/PPA.csv"
@@ -71,7 +112,8 @@ elif mode==4:
     f_noc=[0.75]
     tsv_pitch=[5] # um
 
-
+# For design space search
+# HISIM will generate all results for different configurations
 for i in crossbar_size:
     for i_tile in N_tile:
         for i_tier in N_tier:
