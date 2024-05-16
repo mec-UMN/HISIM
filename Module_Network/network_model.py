@@ -137,9 +137,10 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
         if tile_total[i][0][2]!=tile_total[i+1][0][2]:
             Q_2_5d+=(tile_total[i][-1][2])*(len(tile_total[i+1])-1)
             layer_Q_2_5d.append((tile_total[i][-1][2])*(len(tile_total[i+1])-1))
-    print("----------computing performance done--------------------")
+    
     print("\n")
-    print("----------network model--------------------")
+    print("----------network performance results--------------------")
+    print("----------network data information-----------------------")
     print("Total Q bits for 2d communication:", Q_2d)
     print("Total HOP for 2d communication:", hop2d)
     if chip_architect=="M3D":
@@ -147,8 +148,6 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
         print("Total HOP for 3d communication:", hop3d)
     elif chip_architect=='H2_5D':
         print("Total Q bits for 2.5d communication:", Q_2_5d)
-    print("\n")
-    #import pdb;pdb.set_trace()
 
     #------------bandwidth-------------------#
     # 2D noc
@@ -196,14 +195,14 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
         area_2_5d=0
     #import pdb;pdb.set_trace()
 
-    print("--------------network area report---------------")
-    print("single tile area",area_single_tile,"mm2")
-    print("single router area",single_router_area,"mm2")
-    print("edge_single_router",edge_single_router) #mm
-    print("edge_single_tile",edge_single_tile) #mm
-    print("total 3d stack area",(edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile)
-    print("2.5d area", area_2_5d)
-    print("----------------------------------------")
+    print("--------------network area report------------------------")
+    print("single tile area",round(area_single_tile,5),"mm2")
+    print("single router area",round(single_router_area,5),"mm2")
+    print("edge length single router",round(edge_single_router,5),"mm") #mm
+    print("edge length single tile",round(edge_single_tile,5),"mm") #mm
+    print("total 3d stack area",round((edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile,5),"mm2")
+    print("2.5d area", round(area_2_5d,5))
+    print("---------------------------------------------------------")
     result_list.append((edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile+area_2_5d)
     result_list.insert(7,W2d)
     result_list.insert(8,W3d)
@@ -263,7 +262,6 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     elif chip_architect=="M2D" or chip_architect=="H2_5D" or N_tier_real==1:
         _,total_tsv_channel_power,total_3d_router_power=0,0,0
         _,total_2d_channel_power,total_2d_router_power=power_summary_router(W2d,5,5,hop2d,trc,tva,tsa,tst,tl,tenq,Q_2d,int(chiplet_num),int(mesh_edge))
-    #import pdb;pdb.set_trace()
 
     if chip_architect=="H2_5D" and N_tier_real!=1:
         total_2_5d_channel_power=aib_out[1]/aib_out[2]
@@ -271,11 +269,10 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
         total_2_5d_channel_power=0
     # total area of router channel= single_channel_area*(channel number*2+2*number_router)
     # total switch+input+output=(switch+input+output)*number_router
-    #import pdb;pdb.set_trace()
     total_router_power=total_3d_router_power+total_2d_router_power+total_2d_channel_power
 
-    print("2d",total_router_power)
-    print("tsv",total_tsv_channel_power)
+    #print("2d",total_router_power)
+    #print("tsv",total_tsv_channel_power)
     energy_2d=(total_2d_channel_power+total_2d_router_power)*L_booksim_2d*fclk_noc
 
     energy_3d=(total_tsv_channel_power+total_3d_router_power)*L_booksim_3d*fclk_noc
@@ -295,13 +292,13 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     elif chip_architect=="M2D" or chip_architect=="H2_5D" or N_tier_real==1:
         tier_3d_hop_list_power=[i * 0 for i in tier_3d_hop_list]
 
-    print(tier_2d_hop_list_power)
-    print(tier_3d_hop_list_power)
+    #print("each tier average 2d NoC router power",tier_2d_hop_list_power,"mW")
+    #print("each tier average 3D NoC router power",tier_3d_hop_list_power,"mW")
     print("2D NoC W2d",W2d)
     print("3D TSV W3d",W3d)
-    print("network total energy",total_energy,"pJ")
-    print("network power",(total_router_power+total_tsv_channel_power)*fclk_noc,"mW")
-    print("NoC latency", L_booksim,"ns")
+    print("network total energy",round(total_energy,5),"pJ")
+    print("network power",round((total_router_power+total_tsv_channel_power)*fclk_noc,5),"mW")
+    print("total NoC latency", round(L_booksim,5),"ns")
 
     result_list.append(L_booksim)
     result_list.append(energy_2d)
@@ -317,8 +314,9 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     Total_area_routers=(single_router_area)*Num_routers
     Total_channel_area=wire_length_2d*wire_pitch_2d*W2d
     #single_TSV_area=math.sqrt(area_single_tile)*math.sqrt((1e-6*(4/5*W2d+1/5*W3d)*(4/5*W2d+1/5*W3d)+5e-5*(4/5*W2d+1/5*W3d)+0.0005))
-    print("computing latency",total_model_L*pow(10,9),"ns")
-    print("total system latency", L_booksim+total_model_L*pow(10,9))
+    print("computing latency",round(total_model_L*pow(10,9),5),"ns")
+    print("total system latency", round(L_booksim+total_model_L*pow(10,9),5),"ns")
+    print("----------network performance done--------------------")
     result_list.append(total_model_L*pow(10,9)/L_booksim)
 
     flops=0

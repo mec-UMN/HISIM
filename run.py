@@ -119,7 +119,7 @@ for i in crossbar_size:
                                         for p_router in percent_router:
                                             for i_arch in chip_arch:
                                                 for i_model in ai_model:
-                                                    os.system('python analy_model.py --xbar_size %d \
+                                                    os.system('python analy_model.py --thermal --xbar_size %d \
                                                         --N_tile %d \
                                                         --N_tier %d \
                                                         --N_pe %d \

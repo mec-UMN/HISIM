@@ -51,7 +51,8 @@ def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,
                         out_peripherial[i]+=peripherials[i]
 
 
-    print("----------computing performance results---------------------","\n")
+    print("----------computing performance results-----------------")
+    print("--------------------------------------------------------")
     print("Total compute latency",round(total_model_L*pow(10,9),5),"ns")
     print("Total dynamic energy",round(total_model_E_dynamic*pow(10,12),5),"pJ")
     print("Overall compute Power",round(total_model_E_dynamic/(total_model_L),5),"W")

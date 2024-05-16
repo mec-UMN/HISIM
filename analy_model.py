@@ -190,8 +190,8 @@ result_list.append(N_tier_real)
 N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,quant_weight,N_crossbar,N_pe,N_tier_real,N_tile,result_list)
 end_computing = time.time()
 print("Computing model sim time is:", (end_computing - start),"s")
-print("----------------------------------------------------")
-print('\n')
+print("--------------------------------------------------------")
+print("----------computing performance done--------------------")
 
 #---------------------------------------------------------------------#
 #                                                                     #
@@ -205,9 +205,10 @@ chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mes
 
 end_noc = time.time()
 print("\n")
-print("-------------------time report--------------------")
-print("The noc sim time is:", (end_noc - end_computing))
-print("The total sim time is:", (end_noc - start))
+print("-------------------network time report--------------------")
+#print("Computing model sim time is:", (end_computing - start),"s")
+print("The noc sim time is:", (end_noc - end_computing),"s")
+print("The total computing+network sim time is:", (end_noc - start),"s","\n")
 
 
 
@@ -218,7 +219,7 @@ print("The total sim time is:", (end_noc - start))
 #---------------------------------------------------------------------------------#
 
 # thermal_model function will start the simulation for generating the temperature results based on the power and area of the different blocks of the chip
-
+print("----------thermal analysis start--------------------")
 peak_temp=thermal_model(thermal,chip_architect,chiplet_num,N_tile,placement_method,tier_2d_hop_list_power,tier_3d_hop_list_power,area_single_tile,single_router_area
                   ,mesh_edge,sim_name,layer_aib_list)
 
@@ -252,8 +253,9 @@ with open(filename_results, 'a', newline='') as csvfile:
     # Write each row of data from the list
     writer.writerow(result_list)
 if thermal:
-
-    print("The noc sim time is:", (end_thermal - end_noc))
-    print("whole sim time",(end_thermal-start))
+    print("\n")
+    #print("The noc sim time is:", (end_thermal - end_noc))
+    print("whole sim time",(end_thermal-start),"s")
+    print("\n")
 
 
