@@ -77,7 +77,6 @@ parser.add_argument('--quant_act', type=int, default=8,help='Precision of quanti
 parser.add_argument('--freq_computing', type=float, default=1,help='Computing unit operation frequency')
 parser.add_argument('--fclk_noc', type=float, default=1,help='network data communication operation frequency')
 parser.add_argument('--tsvPitch', type=float, default=10,help='TSV pitch um')
-parser.add_argument('--bus_width', type=int, default=64,help='Inside PE or Tile, the number of links of the bus width')
 parser.add_argument('--N_tier', type=int, default=4,help='how many tiers')
 parser.add_argument('--volt', type=int, default=0.5,help='Operating Voltage in volt')
 parser.add_argument('--placement_method', type=int, default=5,help='computing tile placement method')
@@ -99,7 +98,6 @@ N_pe=args.N_pe # 4,9,16,25 # how many PE in tile
 N_crossbar=args.N_crossbar # 4, 9, 16 # how many crossbar in PE
 quant_weight=args.quant_weight # weight quantization bi
 quant_act=args.quant_act # activation quantization bit
-bus_width=args.bus_width # in PE and in tile bus width
 tsvPitch = args.tsvPitch
 chip_architect=args.chip_architect 
 if args.thermal:
