@@ -4,7 +4,7 @@ from Module_Network.orion_power_area import power_summary_router
 from Module_Network.aib_2_5d import aib
 
 def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,percent_router,chip_architect,tsvPitch,
-                  area_single_tile,result_list,volt,fclk_noc,total_model_L, scale_factor):
+                  area_single_tile,result_list,volt,fclk_noc,total_model_L):
     # Network,3D NoC
     # area,latency,power
 
@@ -156,12 +156,12 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     W2d=32 # this is the bandwidth of 2d
     W3d_assume=32
     
-    trc=1*scale_factor
-    tva=1*scale_factor
-    tsa=1*scale_factor
-    tst=1*scale_factor
-    tl=1*scale_factor
-    tenq=2*scale_factor
+    trc=1
+    tva=1
+    tsa=1
+    tst=1
+    tl=1
+    tenq=2
 
     if chip_architect=="M3D" and N_tier_real!=1:
         channel_width=4/5*W2d+1/5*W3d_assume # mix 2d and 3d
