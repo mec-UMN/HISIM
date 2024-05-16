@@ -172,7 +172,6 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     single_router_area=total_router_area/(mesh_edge*mesh_edge*chiplet_num)
     edge_single_router=math.sqrt(single_router_area)
     edge_single_tile=math.sqrt(area_single_tile)
-    #import pdb;pdb.set_trace()
 
     num_tsv_io=int(edge_single_router/tsvPitch*1000)*int(edge_single_router/tsvPitch*1000)*2
     W3d=num_tsv_io
@@ -193,7 +192,6 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
         area_2_5d=aib_out[0]
     else:
         area_2_5d=0
-    #import pdb;pdb.set_trace()
 
     print("--------------network area report------------------------")
     print("single tile area",round(area_single_tile,5),"mm2")
@@ -229,7 +227,6 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     result_list.append(L_booksim_2d)
     result_list.append(L_booksim_3d)
     result_list.append(L_2_5d)
-    #import pdb;pdb.set_trace()
     # 2.2 power of booksim
 
 
@@ -285,7 +282,6 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
         tier_3d_hop_list[-1]=tier_3d_hop_list[-2]
     else:
         tier_3d_hop_list[-1]=total_router_power/chiplet_num
-    #import pdb;pdb.set_trace()
     tier_2d_hop_list_power=[i * total_router_power/chiplet_num/i*fclk_noc for i in tier_2d_hop_list]
     if chip_architect=="M3D" and N_tier_real!=1:
         tier_3d_hop_list_power=[i * total_tsv_channel_power/(chiplet_num-1)/i*fclk_noc for i in tier_3d_hop_list]

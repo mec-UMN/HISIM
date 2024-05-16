@@ -314,29 +314,7 @@ def power_summary_router(channel_width,input_switch,output_switch,hop,trc,tva,ts
     inputArea=inputArea*mesh_edge*mesh_edge*(N_chiplet)
     outputArea=outputArea*mesh_edge*mesh_edge*(N_chiplet)
     total_area_router=channelArea+switchArea+inputArea+outputArea
-    """
-    print( "- Channel Wire Power:      ",channel_wire_power ) # tl+tl2/total 
-    print( "- Channel Clock Power:     ",channel_clk_power ) # single 
-    print( "- Channel Retiming Power:  ",channel_DFFPower ) 
-    print( "- Channel Leakage Power:   ",channelLeakPower ) 
-    
-    print( "- Input Read Power:        ",inputReadPower ) 
-    print( "- Input Write Power:       ",inputWritePower ) 
-    print( "- Input Leakage Power:     ",Pleak ) 
 
-    print( "- Switch Power:            ",switchPower ) 
-    print( "- Switch Control Power:    ",switchPowerCtrl) 
-    print( "- Switch Leakage Power:    ",switchPowerLeak ) # single router leakage
-    
-    print( "- Output DFF Power:        ",outputPower ) 
-    print( "- Output Clk Power:        ",outputPowerClk ) 
-    print( "- Output Control Power:    ",outputCtrlPower ) 
-    #print("total power:    ",total_power)
 
-    print( "- Channel Area:  ",channelArea) #single router
-    print( "- single Switch  Area:  ",switchArea)  #single router 
-    print( "- Input  Area:   ",inputArea) #single router
-    print( "- Output  Area:  ",outputArea) #single router
-    """
     return total_area_router, channel_wire_power+channel_clk_power+channel_DFFPower,inputReadPower+inputWritePower+switchPower+switchPowerCtrl+outputPower+outputPowerClk+outputCtrlPower
 
