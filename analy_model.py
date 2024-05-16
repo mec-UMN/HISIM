@@ -145,7 +145,7 @@ print("start HISIM simulation ","\n")
 #---------------------------------------------------------------------#
 start = time.time()
 network_params=load_ai_network(aimodel)                 #Load AI network parameters from the network csv file
-sim_name="VIT_placement_1"
+sim_name="Densenet_placement_1"
 filename_results = "./Results/PPA.csv"                  #Location to store PPA results
 print("----------------------------------------------------","\n")
 print("start mapping ",args.ai_model,"\n")
@@ -219,7 +219,8 @@ print("The total computing+network sim time is:", (end_noc - start),"s","\n")
 #---------------------------------------------------------------------------------#
 
 # thermal_model function will start the simulation for generating the temperature results based on the power and area of the different blocks of the chip
-print("----------thermal analysis start--------------------")
+if args.thermal:
+    print("----------thermal analysis start--------------------")
 peak_temp=thermal_model(thermal,chip_architect,chiplet_num,N_tile,placement_method,tier_2d_hop_list_power,tier_3d_hop_list_power,area_single_tile,single_router_area
                   ,mesh_edge,sim_name,layer_aib_list)
 
