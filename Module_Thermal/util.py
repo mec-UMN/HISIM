@@ -1093,7 +1093,7 @@ def solver(cube_G_dict, cube_n_dict,cube_power_dict,cube_layertype_dict,xdim,sim
         print(design,'    Min t: ', round(vmin, 2),  '\t\tPeak t:', round(vmax,2),'\t\tAverage t:', round(t.mean(),2 ))
         for i in range(len(t)):
             # layername = layertype_l[i]+' '+str(i)
-            plot_im(plot_data=realratiot[i,:,:], title='device {}'.format(i), save_name='./Results/result_thermal/{}/power_map{}.png'.format(design, i), vmin=vmin, vmax=vmax)
+            plot_im(plot_data=realratiot[i,:,:], title='device {}'.format(i), save_name='./Results/result_thermal/{}/thermal_map{}.png'.format(design, i), vmin=vmin, vmax=vmax)
         
     return round(vmax,2)
 

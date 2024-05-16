@@ -1068,7 +1068,7 @@ class H2_5D(object):
         print('    Min t: ', round(vmin, 2),  '\t\tPeak t:', round(vmax,2),'\t\tAverage t:', round(t.mean(),2 ))
         for i in range(len(t)):
             # layername = layertype_l[i]+' '+str(i)
-            self.plot_im(plot_data=realratiot[i,:,:], title='device {}'.format(i), save_name='./Results/result_thermal/power_map{}.png'.format( i), vmin=vmin, vmax=vmax)
+            self.plot_im(plot_data=realratiot[i,:,:], title='device {}'.format(i), save_name='./Results/result_thermal/thermal_map{}.png'.format( i), vmin=vmin, vmax=vmax)
         return vmax
 
 

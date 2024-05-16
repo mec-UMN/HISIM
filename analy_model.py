@@ -40,17 +40,12 @@
 #   Jingbo Sun      Email: jsun127@asu.edu
 # *******************************************************************************/
 
-import pandas as pd
-import numpy as np
 import os
 import shutil
 import csv
 import time
 import argparse
-import matplotlib.pyplot as plt
 import sys
-import scipy.sparse as sparse_mat
-import scipy.sparse.linalg as sparse_algebra
 from Module_Compute.functions import imc_analy
 from Module_Thermal.thermal_model import thermal_model
 from Module_Network.network_model import network_model
@@ -153,7 +148,7 @@ print("start mapping ",args.ai_model,"\n")
 
 #---------------------------------------------------------------------#
 #                                                                     #
-#         configuration of the AI models mapped to architecture       #
+#     Configuration of the AI models mapped to architecture           # 
 #                                                                     #
 #---------------------------------------------------------------------#
 filename = "./Debug/to_interconnect_analy/layer_inform.csv"
@@ -221,6 +216,7 @@ print("The total computing+network sim time is:", (end_noc - start),"s","\n")
 # thermal_model function will start the simulation for generating the temperature results based on the power and area of the different blocks of the chip
 if args.thermal:
     print("----------thermal analysis start--------------------")
+
 peak_temp=thermal_model(thermal,chip_architect,chiplet_num,N_tile,placement_method,tier_2d_hop_list_power,tier_3d_hop_list_power,area_single_tile,single_router_area
                   ,mesh_edge,sim_name,layer_aib_list)
 
@@ -228,7 +224,6 @@ end_thermal = time.time()
 result_list.append(peak_temp)
 result_list.append(placement_method)
 result_list.append(percent_router)
-
 
 
 if COMPUTE_VALIDATE:
@@ -245,12 +240,11 @@ if COMPUTE_VALIDATE:
     for i in range(len(out_peripherial)-2,len(out_peripherial)):
         result_list.append(out_peripherial[i])
 
-
 with open(filename_results, 'a', newline='') as csvfile:
     # Create a csv writer object
     writer = csv.writer(csvfile)
     # Write the header row (optional)
-    #writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tier(chiplet)","W2d","W3d","Computing_latency", "Computing_energy","chip_area","network_latency","network_energy","peak_temperature"])
+    # writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tier(chiplet)","W2d","W3d","Computing_latency", "Computing_energy","chip_area","network_latency","network_energy","peak_temperature"])
     # Write each row of data from the list
     writer.writerow(result_list)
 if thermal:
