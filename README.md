@@ -16,7 +16,6 @@ Main directory structure of the repository is below
     ├── result_thermal      --Folder containing device thermal maps obtained from the simulations
     ├── PPA.csv             --CSV file containing PPA and thermal values obtained from the simulation 
 ├── analy_model.py          --main file
-├── analy_model_thermal.py
 ├── run.py                  --Run file to execute multiple runs of analy_model.py with different configurations
 ```
 
@@ -53,7 +52,10 @@ Usage to run the python file analy_model.py
 --chip_architect        Chip Archiecture: 2D chip (M2D), 3D chip(M3D), 2.5D chip (H2_5D)
 --xbar_size             RRAM crossbar size 
 --N_tile                Number of tiles in a tier
---N_pe                  Number of PE in a tier
+--N_pe                  Number of PE in a tile
+--N_crossbar            Number of crossbars in a PE
+--quant_weight          Precision of quantized weight of AI model
+--quant_act             Precision of quantized activation of AI model
 --freq_computing        Clock frequency of compute core in GHz
 --fclk_noc              Clock frequency of network communication unit in GHz
 --tsvPitch              TSV pitch um
@@ -106,7 +108,7 @@ layer index, number of tiles required for this layer, latency of the layer, Ener
 The performance of the network and interconnect is then estimated based on the number of tiles, placement method, and the percentage of routers. The thermal simulation is performed using power and area maps. It outputs the peak temperature, average temperature, and thermal maps. Lastly, All the results are stored in the output file PPA.csv.
 
 ## PPA File
-The structure of PPA.csv file is as follows: 
+The structure of output PPA.csv file is as follows: 
 ```
 freq_core,freq_noc,Xbar_size,N_tile,N_pe,N_tile(real),N_tier(chiplet),W2d,W3d,Computing_latency, Computing_energy,compute_area,chip_area,chip_Architecture,2d NoC latency,3d NoC latency,2.5d NoC latency, network_latency,2d NoC energy,3d NoC energy,2.5d NoC energy,network_energy,rcc,TFLOPS,compute_power, 2D_3D_NoC_power,2_5D_power,2d_3d_router_area,peak_temperature,placement_method,percent_router
 ```
