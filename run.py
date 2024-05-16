@@ -52,44 +52,36 @@ with open(filename_results, 'a', newline='') as csvfile:
     else:
         writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tile(real)","N_tier(chiplet)","W2d","W3d","Computing_latency", "Computing_energy","compute_area","chip_area","chip_Architecture","2d NoC latency","3d NoC latency","2.5d NoC latency", "network_latency","2d NoC energy","3d NoC energy","2.5d NoC energy","network_energy","rcc","TFLOPS", "2D_3D_NoC_power","2_5D_power","2d_3d_router_area","peak_temperature","placement_method","percent_router"])
 
-mode=0 #crossbar
+mode=0 #single corner case
 #mode=1#DESIGN SPACE
-#mode=2#2dn3dlatency
+#mode=2#customize 
 #mode=3#l/tsv
 #mode=4#t/l
 if mode==0:
     crossbar_size=[1024] 
-    #N_tile=[16,25,36,49,64,81,100,121,144]
     N_tile=[100]
     N_pe=[9]
-    N_tier=[3]    ##f_core=[0.75,1] # Ghz
-    #f_noc=[0.75,1] # Ghz
+    N_tier=[3]   
     f_core=[1]
     f_noc=[1]
     method=[5]
     router_times_scale=[1]
     percent_router=[1]
     tsv_pitch=[5]
-    #tsv_pitch=[2,3,4,5,10,20] # um
-    #W2d=[i for i in range(1,50,5)]
     W2d=[32]
     chip_arch=["M3D"]
     ai_model=['vit']
 elif mode==1:
     crossbar_size=[1024] 
-    #N_tile=[16,25,36,49,64,81,100,121,144]
-    N_tile=[100]
+    N_tile=[16,25,36,49,64,81,100,121,144]
     N_pe=[36]
-    N_tier=[2]    ##f_core=[0.75,1] # Ghz
-    #f_noc=[0.75,1] # Ghz
+    N_tier=[2]   
     f_core=[1]
     f_noc=[1]
     method=[1]
     router_times_scale=[1]
     percent_router=[1]
-    tsv_pitch=[5]
-    #tsv_pitch=[2,3,4,5,10,20] # um
-    #W2d=[i for i in range(1,50,5)]
+    tsv_pitch=[2,3,4,5,10,20] # um
     W2d=[32]
     chip_arch=["H2_5D"]
 elif mode==2:
@@ -127,7 +119,7 @@ for i in crossbar_size:
                                         for p_router in percent_router:
                                             for i_arch in chip_arch:
                                                 for i_model in ai_model:
-                                                    os.system('python analy_model.py --thermal --xbar_size %d \
+                                                    os.system('python analy_model.py --xbar_size %d \
                                                         --N_tile %d \
                                                         --N_tier %d \
                                                         --N_pe %d \
