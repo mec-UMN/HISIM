@@ -51,11 +51,11 @@ def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,
                         out_peripherial[i]+=peripherials[i]
 
 
-    print("----------computing performance---------------------")
-    print("latency",total_model_L*pow(10,9),"ns")
-    print("dynamic energy",total_model_E_dynamic*pow(10,12),"pJ")
-    print("Overall Compute Power",total_model_E_dynamic/(total_model_L),"W")
-    print("leakage energy",total_leakage*pow(10,12),"pJ")
+    print("----------computing performance results---------------------","\n")
+    print("Total compute latency",round(total_model_L*pow(10,9),5),"ns")
+    print("Total dynamic energy",round(total_model_E_dynamic*pow(10,12),5),"pJ")
+    print("Overall compute Power",round(total_model_E_dynamic/(total_model_L),5),"W")
+    print("Total Leakage energy",round(total_leakage*pow(10,12),5),"pJ")
     result_list.append(total_model_L*pow(10,9))
     result_list.append(total_model_E_dynamic*pow(10,12))
     
@@ -64,7 +64,7 @@ def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,
             #-----------------------------------#
     area_single_tile=A_pe*N_pe*N_crossbar
     total_tiles_area=N_tier_real*N_tile*area_single_tile
-    print("total_tiles_area",total_tiles_area,"mm2")
-    print("every tier tiles total area,",total_tiles_area/N_tier_real,"mm2")
+    print("Total tiles area",round(total_tiles_area,5),"mm2")
+    print("Total tiles area each tier,",round(total_tiles_area/N_tier_real,5),"mm2")
     result_list.append(total_tiles_area*pow(10,6))
     return N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri

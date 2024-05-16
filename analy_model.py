@@ -42,20 +42,15 @@
 
 import pandas as pd
 import numpy as np
-import math
 import os
 import shutil
 import csv
 import time
 import argparse
-import re
 import matplotlib.pyplot as plt
-import pickle
 import sys
 import scipy.sparse as sparse_mat
 import scipy.sparse.linalg as sparse_algebra
-import torch
-import collections
 from Module_Compute.functions import imc_analy
 from Module_Thermal.thermal_model import thermal_model
 from Module_Network.network_model import network_model
@@ -142,6 +137,7 @@ result_list.append(xbar_size)
 result_list.append(N_tile)
 result_list.append(N_pe)
 
+print("start HISIM simulation ","\n")
 #---------------------------------------------------------------------#
 #                                                                     #
 #     Mapping: from AI model -> hardware mapping                      #
@@ -149,8 +145,10 @@ result_list.append(N_pe)
 #---------------------------------------------------------------------#
 start = time.time()
 network_params=load_ai_network(aimodel)                 #Load AI network parameters from the network csv file
-sim_name="GCN_1stack_placement_1"
+sim_name="VIT_placement_1"
 filename_results = "./Results/PPA.csv"                  #Location to store PPA results
+print("----------------------------------------------------","\n")
+print("start mapping ",args.ai_model,"\n")
 
 
 #---------------------------------------------------------------------#
@@ -191,7 +189,7 @@ result_list.append(N_tier_real)
 #---------------------------------------------------------------------#
 N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,quant_weight,N_crossbar,N_pe,N_tier_real,N_tile,result_list)
 end_computing = time.time()
-print("The computing unit sim time is:", (end_computing - start))
+print("Computing model sim time is:", (end_computing - start),"s")
 print("----------------------------------------------------")
 print('\n')
 
