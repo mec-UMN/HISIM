@@ -194,7 +194,7 @@ print("----------computing performance done--------------------")
 
 chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list=network_model(N_tier_real,
                                                                                                                     N_tile,N_tier,computing_data,placement_method,percent_router,chip_architect,tsvPitch,
-                  area_single_tile,result_list,volt,fclk_noc,total_model_L)
+                  area_single_tile,result_list,volt,fclk_noc,total_model_L,scale_factor)
 
 end_noc = time.time()
 print("\n")
