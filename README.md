@@ -69,29 +69,41 @@ Usage to run the python file analy_model.py
          
 ```
 #### 2D Simulation
-Apply following settings to run 2D simulation
+To run a 2D simulation, apply the following settings:
 ```
 python analy_model.py --chip_architect M2D --N_tile  <Input the total number of tiles required> --ai_model <Input ai model> --thermal
 ```
 
 #### 2.5d Simulation
-Apply following settings to run 2.5D simulation
+To run a 2.5D simulation, apply the following settings:
 ```
 python analy_model.py --chip_architect H2_5D --placement_method 1 --N_tile <Input the number of tiles per chiplet> --ai_model <Input ai model> --thermal
 ```
 
 #### 3d simulation
-Apply following settings to run 3D simulation in placement method 1
+To run a 3D simulation with placement method 1 (Tier/Chiplet Edge to Tier/Chiplet Edge connection), apply the following settings:
 ```
 python analy_model.py --chip_architect M3D --placement_method 1 --N_tile <Input the number of tiles per tier> --ai_model <Input ai model> --thermal
 ```
 
-Apply following settings to run 3D simulation in placement method 5
+To run a 3D simulation with placement method 5 (tile-to-tile 3D connection), apply the following settings:
 ```
 python analy_model.py --chip_architect M3D --placement_method 5 --N_tier <Input the number of tiers to be tested for> --ai_model <Input ai model> --thermal
 ```
 
 ### Running run.py file
+Additionally, to run design space exploration, the run.py script is provided. Each of the required parameters for the design space can be configured as an array.To include thermal simulations in the design space exploration, add the --thermal flag to the python command for the run.py file.
+
+## Workflow
+The workflow of the codes is as follows: The AI model is first mapped onto the architecture using the default mapping in util_mapping.py located in the Module_AI_Map folder. This process outputs layer_information.csv in the following format:
+```
+layer index, Number of tiles required for the layer, Number of PEs required for the layer, Number of rows of PEs for the layer, Number of columns of PEs for the layer, Number of input cycles for the layer, pooling, Number of tiles mapped until this layer, Total number of input activations for the layer, Tier/chiplet index that the layer is mapped to for this layer, Cell Bit Utilization for the layer, Average Utilization of a row for the layer, Total number of weight bits for the layer, Average Utilization of a column for the layer, Number of FLOPS of the layer.
+```
+The performance of each layer is estimated based on the layer mapping, assuming an Analog IMC PE. The layer performance is output in the following format:
+```
+layer index, number of tiles required for this layer, latency of the layer, Energy of the layer, leakage energy of the layer, average power consumption of each tile for the layer
+```
+The performance of the network and interconnect is then estimated based on the number of tiles, placement method, and the percentage of routers. The thermal simulation is performed using power and area maps. It outputs the peak temperature, average temperature, and thermal maps. Lastly, All the results are stored in the output file PPA.csv.
 
 ## PPA File
 The structure of PPA.csv file is as follows: 
@@ -124,16 +136,7 @@ TFLOPS:                Total number of FLOPS divided by latency in TFLOPS/s
 peak_temperature:      Peak temperature of the chip
 ```
 ## Examples
-
-### Configuration
-
-### Commands
-
-### Outputs
-
-#### PPA
-
-#### Terminal
+A demo video has been added to the repository to help users get started, demonstrating a few examples.
 
 #### Thermal Maps
 ## Citing this work
