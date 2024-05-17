@@ -25,7 +25,7 @@ class imc_analy():
             self.N_adc = self.xbar_y/self.ADC_factor        #Number of ADCs inside a PE
             self.scaling_factor_1=496.58/120.53             #PPA is scaled to 28nm tech node as reference data - obtained from https://ieeexplore.ieee.org/document/9484090
             self.scaling_factor_2=3.85/1.14                 #PPA is scaled to 28nm tech node as reference data - obtained from https://ieeexplore.ieee.org/document/9484090
-
+            self.relu=True
         #To set the array parameters similar to the reference data - https://ieeexplore.ieee.org/document/8993641/
         self.A_cell = 0.167*1e-7/self.scaling_factor_1      #Area of a RRAM cell in mm^2 scaled to 28nm
         self.Lmax= 0.24*1e-9                                #Latency of RRAM crossbar configured as per reference data in seconds
@@ -70,7 +70,7 @@ class imc_analy():
         self.Qaccum=self.Qadd+math.ceil(math.log2(self.Qw))       #Bitwidth at the output of accumulation module 1
        
 
-    def forward(self, data, layer_idx):
+    def forward(self, data, layer_idx, network_params):
         self.st = 1                                         #stride of the layer 
         self.C_i=1                                          #Number of Parallel IFM computes for the layer
         self.C_w=1                                          #Weight duplication factor within a crossbar for the layer #
@@ -155,9 +155,19 @@ class imc_analy():
         L_bus_t=self.L_bus*bus_len*(util_col/self.xbar_y+self.Qaccum/self.Qact*util_row/self.xbar_x)*input_cycle/(self.C_i*self.C_w*self.st**2)*10 #Latency of the bus for the layer 
         E_bus_t=self.E_bus*bus_len*(n_c_x+n_c_y*self.Qaccum/self.Qact)*input_cycle/(self.C_i*self.C_w*self.st**2)/self.xbar_x                      #Energy of the bus for the layer 
         #import pdb;pdb.set_trace()
+        if self.relu==True:
+            L_activation=4e-9
+        else:
+            L_activation=1.64e-8
+
+        if network_params[layer_idx][6]:
+            #import pdb;pdb.set_trace()
+            L_maxpool=5.812E-09*network_params[layer_idx][0]*network_params[layer_idx][1]/49
+        else:
+            L_maxpool=0
         
         A+=A_bus_t                                          
-        L=L_arr+L_adc_t+L_accum_t+L_con_t+L_shadd_t+L_buffer_t+L_bus_t
+        L=L_arr+L_adc_t+L_accum_t+L_con_t+L_shadd_t+L_buffer_t+L_bus_t+L_maxpool+L_activation
         E=E_arr+E_adc_t+E_accum_t+E_con_t+E_shadd_t+E_buffer_t+E_bus_t
         #import pdb;pdb.set_trace()
 

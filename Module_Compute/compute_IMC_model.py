@@ -6,7 +6,7 @@ import math
 import sys
 
 
-def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act, quant_weight, N_crossbar,N_pe,N_tier_real,N_tile,result_list):
+def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act, quant_weight, N_crossbar,N_pe,N_tier_real,N_tile,result_list, network_params):
     #Initialize variables
     total_model_L=0
     total_model_E_dynamic=0
@@ -30,7 +30,7 @@ def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,
     with open(filename, 'w') as csvfile1: 
         writer_performance = csv.writer(csvfile1) 
         for layer_idx in range(len(computing_data)):
-            A_pe, L_layer, E_layer, peripherials, A_peri = imc_analy_fn.forward(computing_data, layer_idx)          
+            A_pe, L_layer, E_layer, peripherials, A_peri = imc_analy_fn.forward(computing_data, layer_idx, network_params)          
             total_model_L+=L_layer
             total_model_E_dynamic+=E_layer
             leak_tile=imc_analy_fn.leakage(N_crossbar,N_pe)
