@@ -75,6 +75,7 @@ To run a 2D simulation, apply the following settings:
 ```
 python analy_model.py --chip_architect M2D --N_tile  <Input the total number of tiles required> --ai_model <Input ai model> --thermal
 ```
+AI models can be input as one of the following:vit, gcn, resnet50, resnet110, vgg16, densenet121
 
 #### 2.5d Simulation
 To run a 2.5D simulation, apply the following settings:
