@@ -156,9 +156,10 @@ class util_map():
                     self.total_tiles_real=self.total_tiles_required   
                 else:
                     #if the  number of tiles of the layer cannot fit on the remaining tiles on the current tier/chiplet
-                    self.tier_index+=1                                 #Map the complete layer on next tier/chiplet
+                    
                     self.total_tiles_real=self.N_tile*(self.tier_index+1)+layer_num_tile    #Count the total number of tiles required uptil this layer
                     self.total_tiles_required=self.total_tiles_real    
+                    self.tier_index+=1                                 #Map the complete layer on next tier/chiplet
             else:
                 #if the number of tiles of the layer is less than the remaining tiles on the current tier/chiplet
                 self.total_tiles_real=self.total_tiles_required
