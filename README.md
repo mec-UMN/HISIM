@@ -2,6 +2,7 @@
 HISIM introduces a suite of analytical models at the system level to speed up performance prediction for AI models, covering logic-on-logic architectures across 2D, 2.5D and 3D integration.
 
 ![HISIM Overview](https://github.com/pragnyan948/HISIM/blob/main/HISIM_Overview.png "HISIM Overview")
+
 ## File Lists
 Main directory structure of the repository is below
 ```
