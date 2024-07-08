@@ -38,6 +38,13 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
             y_idx= int((layer_tile_number)%(mesh_edge))
             #print("y_idx",y_idx)
 
+            if x_idx%2 == 1:
+                y_idx = mesh_edge - y_idx - 1
+
+            if placement_method != 5 and computing_data[layer_index][9]%2 == 1:
+                x_idx = mesh_edge - x_idx - 1
+                y_idx = mesh_edge - y_idx - 1
+
             tile_index = np.append(tile_index, [[x_idx, y_idx, computing_data[layer_index][9]]],axis=0)
         
         tile_index=tile_index[1:]
