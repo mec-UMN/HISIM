@@ -23,7 +23,7 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
                 layer_start_tile_tier[int(computing_data[layer_index][9])]=0
             layer_start_tile=layer_start_tile_tier[int(computing_data[layer_index][9])]
         else:
-            if computing_data[layer_index][9]>1 and computing_data[layer_index-1][9]!=computing_data[layer_index][9]:
+            if computing_data[layer_index][9]>=1 and computing_data[layer_index-1][9]!=computing_data[layer_index][9]:
                 layer_start_tile=0
         # get this layer information 
 

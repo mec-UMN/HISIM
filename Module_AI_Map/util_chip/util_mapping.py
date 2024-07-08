@@ -136,7 +136,7 @@ class util_map():
             self.total_tiles_required+=layer_num_tile                   #Count the total number of tiles required uptil this layer
             #Check if the total required number of tiles are greater than the user-defined total number of tiles or
             #or, Check if the number of tiles of a layer cannot fit on the remaining tiles on the corresponding tier/chiplet
-            if self.total_tiles_required>self.N_tile*self.N_tier or layer_num_tile>self.N_tile-self.tiles_each_tier[self.tier_index]:
+            if self.total_tiles_required>self.N_tile*self.N_tier or layer_num_tile>self.N_tile:
                 #import pdb;pdb.set_trace()
                 print("Alert!!!","No available tile/tiers")
                 print("please increase Tiers/tile number")
