@@ -295,20 +295,23 @@ class HiSimModel:
         #     Computing: generate PPA for IMC/GPU/CPU/ASIC computing units    #
         #                                                                     #
         #---------------------------------------------------------------------#
-        N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri = compute_IMC_model(
-                                                                                                                self.compute_validate,
-                                                                                                                self.xbar_size,
-                                                                                                                self.volt, 
-                                                                                                                self.freq_computing,
-                                                                                                                self.quant_act,
-                                                                                                                self.quant_weight,
-                                                                                                                self.N_crossbar,
-                                                                                                                self.N_pe,
-                                                                                                                N_tier_real,
-                                                                                                                self.N_tile,
-                                                                                                                result_list, 
-                                                                                                                result_dictionary,
-                                                                                                                network_params)
+        compute_results = compute_IMC_model(
+                                            self.compute_validate,
+                                            self.xbar_size,
+                                            self.volt, 
+                                            self.freq_computing,
+                                            self.quant_act,
+                                            self.quant_weight,
+                                            self.N_crossbar,
+                                            self.N_pe,
+                                            N_tier_real,
+                                            self.N_tile,
+                                            result_list, 
+                                            result_dictionary,
+                                            network_params
+                                        )
+
+        N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri = compute_results
         end_computing = time.time()
         print("--------------------------------------------------------")
         print("----------computing performance done--------------------")
@@ -320,22 +323,25 @@ class HiSimModel:
         #                                                                     #
         #---------------------------------------------------------------------#
 
-        chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list = network_model(
-                                                                                                                                N_tier_real,
-                                                                                                                                self.N_tile,
-                                                                                                                                self.N_tier,
-                                                                                                                                computing_data,
-                                                                                                                                self.placement_method,
-                                                                                                                                self.percent_router,
-                                                                                                                                self.chip_architect,
-                                                                                                                                self.tsv_pitch,
-                                                                                                                                area_single_tile,
-                                                                                                                                result_list,
-                                                                                                                                result_dictionary,
-                                                                                                                                self.volt,
-                                                                                                                                self.fclk_noc,
-                                                                                                                                total_model_L,
-                                                                                                                                self.router_times_scale)
+        network_results = network_model(
+                                        N_tier_real,
+                                        self.N_tile,
+                                        self.N_tier,
+                                        computing_data,
+                                        self.placement_method,
+                                        self.percent_router,
+                                        self.chip_architect,
+                                        self.tsv_pitch,
+                                        area_single_tile,
+                                        result_list,
+                                        result_dictionary,
+                                        self.volt,
+                                        self.fclk_noc,
+                                        total_model_L,
+                                        self.router_times_scale
+                                    )
+        chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list = network_results
+
         end_noc = time.time()
         print("\n")
         result_list.append(self.placement_method)
