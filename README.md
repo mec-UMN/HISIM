@@ -1,4 +1,7 @@
-# Changelog
+# Changelog (top is latest)
+
+### add setter function (e785927):
+ - add setter functions
 
 ### wrapper, relative pahts, system exts, ppa as dictionary (5a7a96e) : 
  - Wraps and re-factors the `analy_model.py` file (`hisim_model.py`)
