@@ -36,7 +36,7 @@ class HiSimModel:
         quant_act = 8,          # int    | precision fo quantized activation of AI model
         freq_computing = 1,     # float  | computing unit operation frequency
         fclk_noc = 1,           # float  | network data communication operation frequency
-        tsv_pitch = 10,          # float  | TSV pitch (um)
+        tsv_pitch = 10,         # float  | TSV pitch (um)
         N_tier = 4,             # int    | number of tiers                              - 2,3,4,5,6,7,8,9,10 
         volt = 0.5,             # float  | operating voltage
         placement_method = 5,   # int    | computing tile placement
@@ -76,10 +76,7 @@ class HiSimModel:
         self.router_times_scale = router_times_scale
         self.ai_model = ai_model
         self.thermal = thermal
-
         self.filename_results = ppa_filepath
-
-
         
         self.csv_header = [
                                 'freq_core (GHz)',
@@ -122,18 +119,14 @@ class HiSimModel:
                                 'computing simulation time (s)',
                                 'total simulation time (s)'
                             ]
-        self.result_dictionary = {}
-        for label in self.csv_header:
-            self.result_dictionary[label] = 'NaN'
 
         with open(self.filename_results, 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(self.csv_header)
 
         with open("./Results/PPA_new.csv", 'w', newline='') as csvfile:
-            header = list(self.result_dictionary.keys())
             writer = csv.writer(csvfile)
-            writer.writerow(header)
+            writer.writerow(self.csv_header)
     
     ################################
     ############ Inputs ############
@@ -201,6 +194,9 @@ class HiSimModel:
     def set_thermal(self, thermal):
         self.thermal = thermal
 
+    def set_ppa_filepath(self, ppa_filepath):
+        self.filename_results = ppa_filepath
+
     def run_model(self):
 
         result_list=[]
@@ -211,15 +207,19 @@ class HiSimModel:
         result_list.append(self.N_tile)
         result_list.append(self.N_pe)
 
-        # these are all the inputs to be printed in PPA
-        self.result_dictionary['freq_core (GHz)'] = self.freq_computing
-        self.result_dictionary['freq_noc (GHz)'] = self.fclk_noc
-        self.result_dictionary['Xbar_size'] = self.xbar_size
-        self.result_dictionary['N_tile'] = self.N_tile
-        self.result_dictionary['N_pe'] = self.N_pe
+        result_dictionary = {}
+        for label in self.csv_header:
+            result_dictionary[label] = 'NaN'
 
-        self.result_dictionary['placement_method'] = self.placement_method
-        self.result_dictionary['percent_router'] = self.percent_router
+        # these are all the inputs to be printed in PPA
+        result_dictionary['freq_core (GHz)'] = self.freq_computing
+        result_dictionary['freq_noc (GHz)'] = self.fclk_noc
+        result_dictionary['Xbar_size'] = self.xbar_size
+        result_dictionary['N_tile'] = self.N_tile
+        result_dictionary['N_pe'] = self.N_pe
+
+        result_dictionary['placement_method'] = self.placement_method
+        result_dictionary['percent_router'] = self.percent_router
 
         print("=========================================start HISIM simulation ========================================= ","\n")
         start = time.time()       
@@ -257,7 +257,7 @@ class HiSimModel:
         if isinstance(total_tiles_real, list):
             # error!!
             with open("./Results/PPA_new.csv", 'a', newline='') as csvfile:
-                values = list(self.result_dictionary.values())
+                values = list(result_dictionary.values())
                 writer = csv.writer(csvfile)
                 writer.writerow(values)
             return total_tiles_real
@@ -276,19 +276,19 @@ class HiSimModel:
             else:
                 N_tier_real=int(total_tiles_real//self.N_tile)+1     
         result_list.append(N_tile_real)          
-        self.result_dictionary['N_tile(real)'] = N_tile_real               
+        result_dictionary['N_tile(real)'] = N_tile_real               
 
         if N_tier_real>4:
             print("Alert!!! too many number of tiers")
             # sys.exit()
             with open("./Results/PPA_new.csv", 'a', newline='') as csvfile:
-                values = list(self.result_dictionary.values())
+                values = list(result_dictionary.values())
                 writer = csv.writer(csvfile)
                 writer.writerow(values)
             return ["Alert!!! too many number of tiers"]
 
         result_list.append(N_tier_real)
-        self.result_dictionary['N_tier(real)'] = N_tier_real
+        result_dictionary['N_tier(real)'] = N_tier_real
 
         #---------------------------------------------------------------------#
         #                                                                     #
@@ -307,7 +307,7 @@ class HiSimModel:
                                                                                                                 N_tier_real,
                                                                                                                 self.N_tile,
                                                                                                                 result_list, 
-                                                                                                                self.result_dictionary,
+                                                                                                                result_dictionary,
                                                                                                                 network_params)
         end_computing = time.time()
         print("--------------------------------------------------------")
@@ -331,7 +331,7 @@ class HiSimModel:
                                                                                                                                 self.tsv_pitch,
                                                                                                                                 area_single_tile,
                                                                                                                                 result_list,
-                                                                                                                                self.result_dictionary,
+                                                                                                                                result_dictionary,
                                                                                                                                 self.volt,
                                                                                                                                 self.fclk_noc,
                                                                                                                                 total_model_L,
@@ -376,11 +376,11 @@ class HiSimModel:
         result_list.append(end_computing - start) # computing time
         result_list.append(end_thermal - start) # whole sim
 
-        self.result_dictionary['peak_temperature (C)'] = peak_temp
-        self.result_dictionary['thermal simulation time (s)'] = end_thermal - end_noc
-        self.result_dictionary['networking simulation time (s)'] = end_noc - end_computing
-        self.result_dictionary['computing simulation time (s)'] = end_computing - start
-        self.result_dictionary['total simulation time (s)'] = end_thermal - start
+        result_dictionary['peak_temperature (C)'] = peak_temp
+        result_dictionary['thermal simulation time (s)'] = end_thermal - end_noc
+        result_dictionary['networking simulation time (s)'] = end_noc - end_computing
+        result_dictionary['computing simulation time (s)'] = end_computing - start
+        result_dictionary['total simulation time (s)'] = end_thermal - start
 
         with open(self.filename_results, 'a', newline='') as csvfile:
             # Create a csv writer object
@@ -388,7 +388,7 @@ class HiSimModel:
             writer.writerow(result_list)
 
         with open("./Results/PPA_new.csv", 'a', newline='') as csvfile:
-            values = list(self.result_dictionary.values())
+            values = list(result_dictionary.values())
             writer = csv.writer(csvfile)
             writer.writerow(values)
 
@@ -421,7 +421,7 @@ num_pe = df['N_pe']
 chip_architect = df['chip_Architecture']
 
 # for i in range(len(df)):
-for i in range(1, 50):
+for i in range(50, 100):
 
     # hisim.set_num_pe(num_pe[i])
     hisim.set_num_pe(i)
