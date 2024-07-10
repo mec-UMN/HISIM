@@ -135,11 +135,71 @@ class HiSimModel:
             writer = csv.writer(csvfile)
             writer.writerow(header)
     
+    ################################
+    ############ Inputs ############
+    ################################
+
     def set_num_pe(self, N_pe):
         self.N_pe = N_pe
     
     def set_chip_architecture(self, chip_architect):
         self.chip_architect = chip_architect
+
+    def set_xbar_size(self, xbar_size):
+        self.xbar_size = xbar_size
+
+    def set_N_tile(self, N_tile):
+        self.N_tile = N_tile
+    
+    def set_N_crossbar(self, N_crossbar):
+        self.N_crossbar = N_crossbar
+
+    def set_quant_weight(self, quant_weight):
+        self.quant_weight = quant_weight
+
+    def set_quant_act(self, quant_act):
+        self.quant_act = quant_act
+
+    def set_freq_computing(self, freq_computing):
+        self.freq_computing = freq_computing
+
+    def set_fclk_noc(self, fclk_noc):
+        self.fclk_noc = fclk_noc
+
+    def set_tsv_pitch(self, tsv_pitch):
+        self.tsv_pitch = tsv_pitch
+
+    def set_N_tier(self, N_tier):
+        self.N_tier = N_tier
+
+    def set_volt(self, volt):
+        self.volt = volt
+    
+    def set_placement(self, placement_method): 
+        self.placement_method = placement_method
+
+    def set_percent_router(self, percent_router):
+        self.percent_router = percent_router
+
+    def set_W2d(self, W2d):
+        self.W2d = W2d
+    
+    
+    ################################
+    ######### Meta-Inputs ##########
+    ################################
+
+    def set_compute_validate(self, compute_validate):
+        self.compute_validate = compute_validate
+
+    def set_router_times_scale(self, router_times_scale):
+        self.router_times_scale = router_times_scale
+
+    def set_ai_model(self, ai_model):
+        self.ai_model = ai_model
+
+    def set_thermal(self, thermal):
+        self.thermal = thermal
 
     def run_model(self):
 
@@ -331,7 +391,6 @@ class HiSimModel:
             values = list(self.result_dictionary.values())
             writer = csv.writer(csvfile)
             writer.writerow(values)
-
 
         return result_list
 
