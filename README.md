@@ -1,4 +1,13 @@
-# Test Test
+# Changelog
+
+### wrapper, relative pahts, system exts, ppa as dictionary (5a7a96e) : 
+ - Wraps and re-factors the `analy_model.py` file (`hisim_model.py`)
+ - Generate `PPA_new` which uses a dictionary instead of a list (easier to track entries and is better able to log bad configurations) (`hisim_model.py`)
+ - Label `PPA.csv` with units (`hisim_model.py`)
+ - Change relative to absolute paths (`aib_2_5d.py`, `util_mapping.py`)
+ - Change system exits to just return (`hisim_model.py`, `util_mapping.py`, `analy_model.py`)
+ - More details in https://github.com/mec-UMN/HISIM/issues/3#issue-2398492680
+
 
 # HISIM_V1.0
 HISIM introduces a suite of analytical models at the system level to speed up performance prediction for AI models, covering logic-on-logic architectures across 2D, 2.5D and 3D integration.
