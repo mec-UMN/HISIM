@@ -1,8 +1,12 @@
 import csv,math,sys
 import json 
+import os
 
 # Load parameters from JSON file
-with open('./Module_Network/params.json') as f:
+current_dir = os.path.dirname(__file__)
+relative_path = os.path.join(current_dir, 'params.json')
+
+with open(relative_path) as f:
     params = json.load(f)
 
 #Clocks on the chip - device side

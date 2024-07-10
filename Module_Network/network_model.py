@@ -4,7 +4,7 @@ from Module_Network.orion_power_area import power_summary_router
 from Module_Network.aib_2_5d import aib
 
 def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,percent_router,chip_architect,tsvPitch,
-                  area_single_tile,result_list,volt,fclk_noc,total_model_L,scale_factor):
+                  area_single_tile,result_list, result_dictionary, volt,fclk_noc,total_model_L,scale_factor):
     # Network,3D NoC
     # area,latency,power
 
@@ -201,9 +201,15 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     print("total 3d stack area",round((edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile,5),"mm2")
     print("2.5d area", round(area_2_5d,5))
     print("---------------------------------------------------------")
+
     result_list.append((edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile+area_2_5d)
+    result_dictionary['compute_area per tier (mm2)'] = (edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile+area_2_5d
+
     result_list.insert(7,W2d)
     result_list.insert(8,W3d)
+
+    result_dictionary['W2d'] = W2d
+    result_dictionary['W3d'] = W3d
     # Router technology delay 
 
     working_channel=2 # last layer source to dst paths
@@ -227,6 +233,12 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     result_list.append(L_booksim_2d)
     result_list.append(L_booksim_3d)
     result_list.append(L_2_5d)
+
+    result_dictionary['chip_Architecture'] = chip_architect
+    result_dictionary['2d NoC latency (ns)'] = L_booksim_2d
+    result_dictionary['3d NoC latency (ns)'] = L_booksim_3d
+    result_dictionary['2.5d NoC latency (ns)'] = L_2_5d
+
     # 2.2 power of booksim
 
 
@@ -302,6 +314,12 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     result_list.append(energy_2_5d) # Pj
     result_list.append(total_energy)
 
+    result_dictionary['network_latency (ns)'] = L_booksim
+    result_dictionary['2d NoC energy (pJ)'] = energy_2d
+    result_dictionary['3d NoC energy (pJ)'] = energy_3d
+    result_dictionary['2.5d NoC energy (pJ)'] = energy_2_5d
+    result_dictionary['network_energy (pJ)'] = total_energy
+
     # 2.3 area of booksim
     wire_length_2d=2 #unit=mm\
     wire_pitch_2d=0.0045 #unit=mm
@@ -313,17 +331,27 @@ def network_model(N_tier_real,N_tile,N_tier,computing_data,placement_method,perc
     print("computing latency",round(total_model_L*pow(10,9),5),"ns")
     print("total system latency", round(L_booksim+total_model_L*pow(10,9),5),"ns")
     print("----------network performance done--------------------")
+
     result_list.append(total_model_L*pow(10,9)/L_booksim)
+    result_dictionary['rcc (??)'] = total_model_L*pow(10,9)/L_booksim
 
     flops=0
     for j in range(len(computing_data)):
         flops+=computing_data[j][14]
     result_list.append(flops*pow(10,-3)/(L_booksim+total_model_L*pow(10,9)))
     result_list.append((total_router_power+total_tsv_channel_power)*fclk_noc*pow(10,-3))
+
+    result_dictionary['compute_power (W)'] = flops*pow(10,-3)/(L_booksim+total_model_L*pow(10,9))
+    result_dictionary['2D_3D_NoC_power (W)'] = (total_router_power+total_tsv_channel_power)*fclk_noc*pow(10,-3)
+
     if area_2_5d!=0:
         result_list.append(total_2_5d_channel_power*pow(10,-3))
+        result_dictionary['2_5D_power (W)'] = total_2_5d_channel_power*pow(10,-3)
     else:
         result_list.append(0)
+        result_dictionary['2_5D_power (W)'] = 0
+
     result_list.append(Total_area_routers+Total_channel_area)
+    result_dictionary['2d_3d_router_area (mm2)'] = Total_area_routers+Total_channel_area
     
     return chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list
