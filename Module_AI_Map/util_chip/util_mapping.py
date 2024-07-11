@@ -143,6 +143,7 @@ class util_map():
             else:
                 #Bottom to top tier mapping
                 self.tier_index=tier_index_fac
+<<<<<<< HEAD
 
             while True:
                 if self.tier_index==0:
@@ -172,6 +173,20 @@ class util_map():
             self.total_tiles_real=self.total_tiles_required                 
             #print("layer_idx", layer_idx, "layer_num_tile", layer_num_tile, "stack_index", self.stack_index, "tier_index", self.tier_index, "tiles_each_tier", self.tiles_each_tier)
                           
+=======
+            
+            self.tiles_each_tier[self.tier_index]+=layer_num_tile       #Assign the tiles of the layer to the corresponding tier/chiplet
+            self.total_tiles_required+=layer_num_tile                   #Count the total number of tiles required uptil this layer
+            #Check if the total required number of tiles are greater than the user-defined total number of tiles or
+            #or, Check if the number of tiles of a layer cannot fit on the remaining tiles on the corresponding tier/chiplet
+            if self.total_tiles_required>self.N_tile*self.N_tier or layer_num_tile>self.N_tile:
+                #import pdb;pdb.set_trace()
+                print("Alert!!!","No available tile/tiers")
+                print("please increase Tiers/tile number")
+                sys.exit()
+            self.total_tiles_real=self.total_tiles_required
+            
+>>>>>>> d133f4f022a4bfcce326d82b76f1f77e8139ebc8
         else:
             #Placement method 1: Tier/Chiplet Edge to Tier/Chiplet Edge connection
             total_tiles_required_layer=layer_num_tile

@@ -29,7 +29,7 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
                 count_tier+=1
             layer_start_tile=layer_start_tile_tier[int(computing_data[layer_index][15])][int(computing_data[layer_index][9])]
         else:
-            if computing_data[layer_index][9]>1 and computing_data[layer_index-1][9]!=computing_data[layer_index][9]:
+            if computing_data[layer_index][9]>=1 and computing_data[layer_index-1][9]!=computing_data[layer_index][9]:
                 layer_start_tile=0
         # get this layer information 
 
@@ -44,7 +44,18 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
             y_idx= int((layer_tile_number)%(mesh_edge))
             #print("y_idx",y_idx)
 
+<<<<<<< HEAD
             tile_index = np.append(tile_index, [[x_idx, y_idx, int(computing_data[layer_index][9]),int(computing_data[layer_index][15])]],axis=0)
+=======
+            if x_idx%2 == 1:
+                y_idx = mesh_edge - y_idx - 1
+
+            if placement_method != 5 and computing_data[layer_index][9]%2 == 1:
+                x_idx = mesh_edge - x_idx - 1
+                y_idx = mesh_edge - y_idx - 1
+
+            tile_index = np.append(tile_index, [[x_idx, y_idx, computing_data[layer_index][9]]],axis=0)
+>>>>>>> d133f4f022a4bfcce326d82b76f1f77e8139ebc8
         
         tile_index=tile_index[1:]
 
