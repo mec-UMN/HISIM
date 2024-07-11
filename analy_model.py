@@ -67,7 +67,7 @@ os.makedirs('.//Results/result_thermal/1stacks')
 result_list=[]
 parser = argparse.ArgumentParser(description='Design Space Search',
 								 formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument('--chip_architect', type=str, default="M3D",help='hardware architecture:M3D,M2D,H2_5D,H2_5D_3D')
+parser.add_argument('--chip_architect', type=str, default="M3D",help='hardware architecture:M3D,M2D,H2_5D,M3_5D')
 parser.add_argument('--xbar_size', type=int, default=512,help='crossbar size')
 parser.add_argument('--N_tile', type=int, default=324,help='how many tiles in tier')
 parser.add_argument('--N_crossbar', type=int, default=1,help='how many crossbar in one PE')
@@ -80,12 +80,14 @@ parser.add_argument('--tsvPitch', type=float, default=10,help='TSV pitch um')
 parser.add_argument('--N_tier', type=int, default=4,help='how many tiers')
 parser.add_argument('--volt', type=int, default=0.5,help='Operating Voltage in volt')
 parser.add_argument('--placement_method', type=int, default=5,help='computing tile placement method')
+parser.add_argument('--routing_method', type=int, default=2,help='3D routing method')
 parser.add_argument('--percent_router', type=float, default=0.5,help='when data route from one tier to next tier, the system will choose how much percent routers for 3D communication')
 parser.add_argument('--compute_validate', action='store_true',help='mode to validate the compute model with neurosim')
 parser.add_argument('--W2d', type=int, default=32,help='Number of links of 2D NoC')
 parser.add_argument('--router_times_scale', type=int, default=1,help='Scaling factor for time components of router: trc, tva, tsa, tst,tl, tenq')
 parser.add_argument('--ai_model', type=str, default="vit",help='AI models:vit, gcn, resnet50, resnet110, vgg16, densenet121, test, roofline')
 parser.add_argument('--thermal', action='store_true', help='Run thermal simulation or not')
+parser.add_argument('--N_stack', type=int, default=1,help='Number of 3D stacks in 3.5D design')
 
 
 #Take all below parameters as argument
@@ -94,6 +96,7 @@ args = parser.parse_args()
 xbar_size = args.xbar_size # 64,128,256,512,1024
 N_tile=args.N_tile # 4,9,16,25,36,49 # how many tile in tier (chiplet)
 N_tier=args.N_tier # 2,3,4,5,6,7,8,9,10 
+N_stack=args.N_stack #1, 2,3,4,5,6,7,8,9,10 
 N_pe=args.N_pe # 4,9,16,25 # how many PE in tile
 N_crossbar=args.N_crossbar # 4, 9, 16 # how many crossbar in PE
 quant_weight=args.quant_weight # weight quantization bi
@@ -113,8 +116,18 @@ placement_method=args.placement_method  # 1: Tier/Chiplet Edge to Tier/Chiplet E
                                         # 3: the hotspot far from each other
                                         # 4: worse case:put all hotspot in the same place
                                         # 5: tile-to-tile 3D connection
+routing_method=args.routing_method #local routing-> only uses nearby routers and tsvs 
+                                #global routing-> data will try to use all the routers to transport to next tier
+#import pdb;pdb.set_trace()
 if chip_architect=="H2_5D":
     placement_method=1
+    N_tier=1
+elif chip_architect=="M3D":
+    N_stack=1
+elif chip_architect=="M2D":
+    N_stack=1
+    N_tier=1
+
 percent_router=args.percent_router
 relu=True
 sigmoid=False
@@ -150,23 +163,27 @@ print("start mapping ",args.ai_model,"\n")
 #                                                                     #
 #---------------------------------------------------------------------#
 filename = "./Debug/to_interconnect_analy/layer_inform.csv"
-tiles_each_tier = [0]*N_tier
-total_tiles_real=model_mapping(filename,placement_method,network_params,quant_act,xbar_size,N_crossbar,N_pe,quant_weight,N_tile,N_tier,tiles_each_tier)
+total_tiles_real, tiles_each_tier, tiles_each_stack=model_mapping(filename,placement_method,network_params,quant_act,xbar_size,N_crossbar,N_pe,quant_weight,N_tile,N_tier, N_stack)
 
 #Placement Method 1: Number of tiers are determined based on the mapping and user defined number of tiles per tier
 #Placement Method 5: Number of tiles per tier are determined based on the mapping and user defined number of tiers
+N_stack_real=len(tiles_each_stack) 
 if placement_method==5:
    N_tier_real=N_tier
-   #Average of tiles mapped per tier                    
-   N_tile_real=smallest_square_greater_than(max(tiles_each_tier))
+   #Max of tiles mapped per tier                    
+   N_tile_real=smallest_square_greater_than(max(max(tiles_each_tier)))
 else:
     N_tile_real=N_tile 
-    #Total number of tiers or chiplets                          
-    if total_tiles_real%N_tile==0:
-        N_tier_real=int(total_tiles_real//N_tile)       
+    if N_stack_real>1:
+        N_tier_real=N_tier
     else:
-        N_tier_real=int(total_tiles_real//N_tile)+1     
-result_list.append(N_tile_real)                         
+        #Total number of tiers or chiplets                          
+        if total_tiles_real%N_tile==0:
+            N_tier_real=int(total_tiles_real//N_tile)       
+        else:
+            N_tier_real=int(total_tiles_real//N_tile)+1
+result_list.append(N_tile_real)
+                         
 
 if N_tier_real>4:
     print("Alert!!! too many number of tiers")
@@ -174,13 +191,20 @@ if N_tier_real>4:
 
 result_list.append(N_tier_real)
 
+if N_stack_real==1:
+    chip_architect = "M3D" if N_tier_real>1 else "M2D"
+elif N_tier_real==1:
+    chip_architect = "H2_5D"
+result_list.append(N_stack_real)
+
+#import pdb;pdb.set_trace()
 
 #---------------------------------------------------------------------#
 #                                                                     #
 #     Computing: generate PPA for IMC/GPU/CPU/ASIC computing units    #
 #                                                                     #
 #---------------------------------------------------------------------#
-N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,quant_weight,N_crossbar,N_pe,N_tier_real,N_tile,result_list, network_params)
+computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,quant_weight,N_crossbar,N_pe,N_tier_real,N_stack_real, N_tile,result_list, network_params)
 end_computing = time.time()
 print("Computing model sim time is:", (end_computing - start),"s")
 print("--------------------------------------------------------")
@@ -192,9 +216,9 @@ print("----------computing performance done--------------------")
 #                                                                     #
 #---------------------------------------------------------------------#
 
-chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list=network_model(N_tier_real,
+chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list=network_model(N_tier_real,N_stack_real,
                                                                                                                     N_tile,N_tier,computing_data,placement_method,percent_router,chip_architect,tsvPitch,
-                  area_single_tile,result_list,volt,fclk_noc,total_model_L,scale_factor)
+                  area_single_tile,result_list,volt,fclk_noc,total_model_L,scale_factor, tiles_each_tier, routing_method, W2d)
 
 end_noc = time.time()
 print("\n")
@@ -203,7 +227,7 @@ print("-------------------network time report--------------------")
 print("The noc sim time is:", (end_noc - end_computing),"s")
 print("The total computing+network sim time is:", (end_noc - start),"s","\n")
 
-
+#import pdb;pdb.set_trace()
 
 #---------------------------------------------------------------------------------#
 #                                                                                 #
@@ -216,7 +240,7 @@ if args.thermal:
     print("----------thermal analysis start--------------------")
 
 peak_temp=thermal_model(thermal,chip_architect,chiplet_num,N_tile,placement_method,tier_2d_hop_list_power,tier_3d_hop_list_power,area_single_tile,single_router_area
-                  ,mesh_edge,sim_name,layer_aib_list)
+                    ,mesh_edge,sim_name,layer_aib_list)
 
 end_thermal = time.time()
 result_list.append(peak_temp)

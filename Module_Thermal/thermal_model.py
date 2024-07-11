@@ -5,7 +5,7 @@ from Module_Thermal.util import *
 from Module_Thermal.H2_5D_thermal import *
 
 
-def thermal_model(thermal,chip_architect,chiplet_num,N_tile,placement_method,tier_2d_hop_list_power,tier_3d_hop_list_power,area_single_tile,single_router_area
+def thermal_model(thermal,chip_architect,chiplet_num_list,N_tile,placement_method,tier_2d_hop_list_power_1,tier_3d_hop_list_power_1,area_single_tile,single_router_area
                   ,mesh_edge,sim_name,layer_aib_list):
     #---------------------------------------------------------------------#
 
@@ -13,8 +13,10 @@ def thermal_model(thermal,chip_architect,chiplet_num,N_tile,placement_method,tie
 
     #---------------------------------------------------------------------#
 
-    if thermal and chip_architect!="H2_5D":
-
+    if thermal and (chip_architect=="M3D" or chip_architect=="M2D"):
+        chiplet_num=chiplet_num_list[0]
+        tier_2d_hop_list_power=tier_2d_hop_list_power_1[0]
+        tier_3d_hop_list_power=tier_3d_hop_list_power_1[0]
         # np.set_printoptions(threshold=sys.maxsize)
         torch.set_printoptions(threshold=50_000)
         # cu =   398 w/mk
@@ -169,7 +171,9 @@ def thermal_model(thermal,chip_architect,chiplet_num,N_tile,placement_method,tie
         #end_thermal = time.time()
 
     elif thermal and chip_architect=="H2_5D":
-
+        chiplet_num=sum(chiplet_num_list)
+        tier_2d_hop_list_power=sum(tier_2d_hop_list_power_1,[])
+        tier_3d_hop_list_power=sum(tier_3d_hop_list_power_1,[])
         power_aib_l=[]
         power_emib_l=[]
         area_aib_l=[]

@@ -1,5 +1,8 @@
 import csv,math,sys
 import numpy as np
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+import matplotlib.pyplot as plt
+
 
 def smallest_square_greater_than(n):
     square_root = math.ceil(math.sqrt(n))
@@ -26,7 +29,7 @@ def load_ai_network(aimodel):
     
     return network_params
 
-def model_mapping(filename,placement_method,network_params,quant_act,xbar_size,N_crossbar,N_pe,quant_weight,N_tile,N_tier,tiles_each_tier):
+def model_mapping(filename,placement_method,network_params,quant_act,xbar_size,N_crossbar,N_pe,quant_weight,N_tile,N_tier,N_stack):
     #---------------------------------------------------------------------#
 
     #         configuration of the AI models mapped to architecture
@@ -38,7 +41,7 @@ def model_mapping(filename,placement_method,network_params,quant_act,xbar_size,N
     total_number_layers=network_params.shape[0]
     tile_x_bit=xbar_size*math.sqrt(N_crossbar)*math.sqrt(N_pe)   #Total number of bits in a tile in x-dimension
     tile_y_bit=xbar_size*math.sqrt(N_crossbar)*math.sqrt(N_pe)   #Total number of bits in a tile in y-dimension
-    util_map_fn=util_map(N_tile=N_tile, placement_method=placement_method, N_tier=N_tier, tiles_each_tier=tiles_each_tier)
+    util_map_fn=util_map(N_tile=N_tile, placement_method=placement_method, N_tier=N_tier, N_stack=N_stack)
 
     # write the layer information data to csv file-HISIM Default Mapping
     with open(filename, 'w') as csvfile: 
@@ -94,23 +97,30 @@ def model_mapping(filename,placement_method,network_params,quant_act,xbar_size,N
             #12-Total number of weight bits for the layer,
             #13-Average Utilization of a column for the layer,
             #14-Number of FLOPS of the layer 
-            csvfile.write(str(layer_idx)+","+str(layer_num_tile)+","+str(layer_num_crossbar)+","+str(n_c_x)+","+str(n_c_y)+","+str(input_cycle)+","+str(enable_pooling)+","+str(util_map_fn.total_tiles_real)+","+str(ip_activation)+","+str(util_map_fn.tier_index)+","+str(utilization)+","+str(util_row)+","+str(total_bit_real)+","+str(util_col)+","+str(numComputation_layer))
+            csvfile.write(str(layer_idx)+","+str(layer_num_tile)+","+str(layer_num_crossbar)+","+str(n_c_x)+","+str(n_c_y)+","+str(input_cycle)+","+str(enable_pooling)+","+str(util_map_fn.total_tiles_real)+","+str(ip_activation)+","+str(util_map_fn.tier_index)+","+str(utilization)+","+str(util_row)+","+str(total_bit_real)+","+str(util_col)+","+str(numComputation_layer)+","+str(util_map_fn.stack_index))
             csvfile.write('\n')
-    return util_map_fn.total_tiles_real
+    #import pdb;pdb.set_trace()
+
+    return util_map_fn.total_tiles_real, util_map_fn.tiles_each_tier, util_map_fn.tiles_each_stack
 
 class util_map():
-    def __init__(self, N_tile,placement_method, N_tier,tiles_each_tier):
+    def __init__(self, N_tile,placement_method, N_tier, N_stack):
         super(util_map, self).__init__()
         self.N_tile = N_tile                                            
         self.placement_method=placement_method                          
-        self.N_tier=N_tier                                              
-        self.tiles_each_tier=tiles_each_tier                            
+        self.N_tier=N_tier     
+        self.N_stack=N_stack                                              
+        self.tiles_each_tier=[[0]*N_tier]  
+        self.tiles_each_stack=[0]                            
 
         #Initialize variables
         self.total_tiles_required=0
         self.total_tiles_real=0                                              
         self.tier_index=0
-    
+        self.tier_index=0
+        self.stack_index=0
+        self.tiles_cumm_stack=0
+        self.cumm_layer_stack=0
     
     def forward(self, layer_num_tile, layer_idx):
 
@@ -120,47 +130,76 @@ class util_map():
             print("please increase crossbar size, PE number, or tile number")
             sys.exit()
         
+
+        self.total_tiles_required+=layer_num_tile
         if self.placement_method==5:
             #Placement method 5: tile-to-tile 3D connection. 
             #Example mapping for 2 tier architecture
             #layer 0 in tier 0 -> layer 1 in tier 1 -> layer 2 in tier 1 -> layer 3 in tier 0 -> layer 4 in tier 0 -> layer 5 in tier 1 
-            tier_index_fac=layer_idx%(2*self.N_tier)
+            tier_index_fac=(layer_idx-self.cumm_layer_stack)%(2*self.N_tier)
             if tier_index_fac > self.N_tier-1:
                 #Top tier to bottom tier mapping
                 self.tier_index=2*self.N_tier-1-tier_index_fac
             else:
                 #Bottom to top tier mapping
                 self.tier_index=tier_index_fac
-            
-            self.tiles_each_tier[self.tier_index]+=layer_num_tile       #Assign the tiles of the layer to the corresponding tier/chiplet
-            self.total_tiles_required+=layer_num_tile                   #Count the total number of tiles required uptil this layer
-            #Check if the total required number of tiles are greater than the user-defined total number of tiles or
-            #or, Check if the number of tiles of a layer cannot fit on the remaining tiles on the corresponding tier/chiplet
-            if self.total_tiles_required>self.N_tile*self.N_tier or layer_num_tile>self.N_tile-self.tiles_each_tier[self.tier_index]:
-                #import pdb;pdb.set_trace()
-                print("Alert!!!","No available tile/tiers")
-                print("please increase Tiers/tile number")
-                sys.exit()
-            self.total_tiles_real=self.total_tiles_required
-            
+
+            while True:
+                if self.tier_index==0:
+                    break
+                elif self.tiles_each_tier[self.stack_index][self.tier_index]+layer_num_tile>self.N_tile:
+                #print(self.tier_index)
+                    self.tier_index-=1
+                else:
+                    break
+            #print(self.tiles_each_tier[self.stack_index][self.tier_index]+layer_num_tile>self.N_tile, self.tiles_each_tier, self.N_tile, layer_num_tile)
+            #Check if the number of tiles of a layer cannot fit on the remaining tiles on the corresponding tier/chiplet
+            if self.tiles_each_tier[self.stack_index][self.tier_index]+layer_num_tile>self.N_tile:
+                self.tiles_cumm_stack+=self.tiles_each_stack[self.stack_index]
+                self.cumm_layer_stack=layer_idx
+                if self.stack_index<self.N_stack-1:
+                    self.stack_index+=1
+                    self.tiles_each_stack.append(0)
+                    self.tiles_each_tier.append([0]*self.N_tier)
+                    self.tier_index=0
+                else:
+                    print("Alert!!!","No available stacks/tile/tiers")
+                    print("please increase number of stacks, tier or tiles")
+                    #import pdb;pdb.set_trace()
+                    sys.exit()
+            self.tiles_each_tier[self.stack_index][self.tier_index]+=layer_num_tile           #Assign the tiles of the layer to the corresponding tier/chiplet
+            self.tiles_each_stack[self.stack_index]+=layer_num_tile
+            self.total_tiles_real=self.total_tiles_required                 
+            #print("layer_idx", layer_idx, "layer_num_tile", layer_num_tile, "stack_index", self.stack_index, "tier_index", self.tier_index, "tiles_each_tier", self.tiles_each_tier)
+                          
         else:
             #Placement method 1: Tier/Chiplet Edge to Tier/Chiplet Edge connection
+            total_tiles_required_layer=layer_num_tile
             #Map top tier/chiplet completely before proceeding to next tier/chiplet 
-            if self.total_tiles_required%self.N_tile==0 and self.total_tiles_required//self.N_tile!=0:
-                self.tier_index+=1                                     #Increment tier/chiplet index
-            self.total_tiles_required+=layer_num_tile                  #Count the total number of tiles required uptil this layer
-            
-            if self.total_tiles_required%(self.N_tile*(self.tier_index+1))<layer_num_tile :
-                if self.total_tiles_required%(self.N_tile*(self.tier_index+1))==0:
-                    #if the number of tiles of the layer is equal to the remaining tiles on the current tier/chiplet
-                    self.total_tiles_real=self.total_tiles_required   
+            if self.tiles_each_tier[self.stack_index][self.tier_index]+layer_num_tile>self.N_tile:
+                total_tiles_required_layer=self.N_tile-self.tiles_each_tier[self.stack_index][self.tier_index]+layer_num_tile              #Count the total number of tiles required uptil this layer
+                if self.tier_index==self.N_tier-1:
+                    self.stack_index+=1
+                    self.tiles_each_stack.append(0)
+                    self.tiles_each_tier.append([0]*self.N_tier)
+                    self.tier_index=0
                 else:
-                    #if the  number of tiles of the layer cannot fit on the remaining tiles on the current tier/chiplet
-                    
-                    self.total_tiles_real=self.N_tile*(self.tier_index+1)+layer_num_tile    #Count the total number of tiles required uptil this layer
-                    self.total_tiles_required=self.total_tiles_real    
-                    self.tier_index+=1                                 #Map the complete layer on next tier/chiplet
-            else:
-                #if the number of tiles of the layer is less than the remaining tiles on the current tier/chiplet
-                self.total_tiles_real=self.total_tiles_required
-        
+                    self.tier_index+=1                                    #Increment tier/chiplet index
+            self.tiles_each_tier[self.stack_index][self.tier_index]+=layer_num_tile     #Assign the tiles of the layer to the corresponding tier/chiplet
+            self.tiles_each_stack[self.stack_index]+= total_tiles_required_layer
+            self.total_tiles_real+=total_tiles_required_layer         
+            #print("layer_idx", layer_idx, "layer_num_tile", layer_num_tile, "stack_index", self.stack_index, "tier_index", self.tier_index, "tiles_each_tier", self.tiles_each_tier)
+
+def create_tile(ax, x, y, z, dx, dy, dz, color, label):
+    xx = [x, x, x+dx, x+dx, x]
+    yy = [y, y+dy, y+dy, y, y]
+    kwargs = {'alpha': 0.6, 'color': color}
+    ax.plot3D(xx, yy, [z]*5, **kwargs)
+    ax.plot3D(xx, yy, [z+dz]*5, **kwargs)
+    ax.plot3D([x, x], [y, y], [z, z+dz], **kwargs)
+    ax.plot3D([x, x], [y+dy, y+dy], [z, z+dz], **kwargs)
+    ax.plot3D([x+dx, x+dx], [y, y], [z, z+dz], **kwargs)
+    ax.plot3D([x+dx, x+dx], [y+dy, y+dy], [z, z+dz], **kwargs)
+    ax.text(x + dx/2, y + dy/2, z + dz/2, label, color='black', ha='center', va='center', fontsize=7)
+
+    

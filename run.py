@@ -51,9 +51,9 @@ with open(filename_results, 'a', newline='') as csvfile:
     writer = csv.writer(csvfile)
     # Write the header row (optional)
     if COMPUTE_VALIDATE:
-        writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tile(real)","N_tier(chiplet)","W2d","W3d","Computing_latency", "Computing_energy","compute_area","chip_area", "chip_Architecture","2d NoC latency","3d NoC latency","2.5d NoC latency", "network_latency","2d NoC energy","3d NoC energy","2.5d NoC energy","network_energy","rcc","TFLOPS","compute_power", "2D_3D_NoC_power","2_5D_power","2d_3d_router_area", "peak_temperature", "placement_method","percent_router", "array latency", "adc latency",  "array energy","adc energy", "shiftadd latency", "accum latency", "shiftadd energy","accum energy", "control latency","control energy","array area","adc area", "shiftadd area","accum area", "control area" , "routing area", "routing latency","routing energy","buffer area", "buffer latency","buffer energy"])
+        writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tile(real)","N_tier","N_Stack", "W2d","W3d","Computing_latency", "Computing_energy","compute_area","chip_area", "chip_Architecture","2d NoC latency","3d NoC latency","2.5d NoC latency", "network_latency","2d NoC energy","3d NoC energy","2.5d NoC energy","network_energy","rcc","TFLOPS","compute_power", "2D_3D_NoC_power","2_5D_power","2d_3d_router_area", "peak_temperature", "placement_method","percent_router", "array latency", "adc latency",  "array energy","adc energy", "shiftadd latency", "accum latency", "shiftadd energy","accum energy", "control latency","control energy","array area","adc area", "shiftadd area","accum area", "control area" , "routing area", "routing latency","routing energy","buffer area", "buffer latency","buffer energy"])
     else:
-        writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tile(real)","N_tier(chiplet)","W2d","W3d","Computing_latency", "Computing_energy","compute_area","chip_area","chip_Architecture","2d NoC latency","3d NoC latency","2.5d NoC latency", "network_latency","2d NoC energy","3d NoC energy","2.5d NoC energy","network_energy","rcc","TFLOPS", "2D_3D_NoC_power","2_5D_power","2d_3d_router_area","peak_temperature","placement_method","percent_router"])
+        writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tile(real)","N_tier", "N_Stack","W2d","W3d","Computing_latency", "Computing_energy","compute_area","chip_area","chip_Architecture","2d NoC latency","3d NoC latency","2.5d NoC latency", "network_latency","2d NoC energy","3d NoC energy","2.5d NoC energy","network_energy","rcc","TFLOPS", "2D_3D_NoC_power","2_5D_power","2d_3d_router_area","peak_temperature","placement_method","percent_router"])
 
 mode=1  #single corner case
 #mode=0 #single corner case
@@ -65,16 +65,18 @@ if mode==0:
     crossbar_size=[1024] 
     N_tile=[100]
     N_pe=[9]
-    N_tier=[3]   
+    N_tier=[2]   
     f_core=[1]
     f_noc=[1]
-    method=[5]
+    place_method=[5]
+    route_method=[2]
     router_times_scale=[1]
     percent_router=[1]
     tsv_pitch=[5]
     W2d=[32]
-    chip_arch=["M3D"]
+    chip_arch=["M3_5D"]
     ai_model=['vit']
+    N_stack=[2]
 elif mode==1:
     crossbar_size=[1024] 
     N_tile=[64,81,100]
@@ -82,13 +84,15 @@ elif mode==1:
     N_tier=[2]   
     f_core=[1]
     f_noc=[1]
-    method=[1]
+    place_method=[5]
+    route_method=[2]
     router_times_scale=[1]
     percent_router=[1]
     tsv_pitch=[2,3,4,5,10,20] # um
     W2d=[32]
     ai_model=['densenet121']
-    chip_arch=["H2_5D"]
+    chip_arch=["M3_5D"]
+    N_stack=[2]
 elif mode==2:
     crossbar_size=[] 
     N_tile=[16,25,36,49,64,81,100,121,144]
@@ -112,30 +116,34 @@ elif mode==4:
 # For design space search
 # HISIM will generate all results for different configurations
 for i in crossbar_size:
-    for i_tile in N_tile:
-        for i_tier in N_tier:
-            for pe in N_pe:
-                for fcore in f_core:    
-                    for fnoc in f_noc:
-                        for i_scale in router_times_scale:
-                            for i_w2d in W2d:
-                                for tsvpitch in tsv_pitch:
-                                    for placement in method:
-                                        for p_router in percent_router:
-                                            for i_arch in chip_arch:
-                                                for i_model in ai_model:
-                                                    os.system('python analy_model.py --xbar_size %d \
-                                                        --N_tile %d \
-                                                        --N_tier %d \
-                                                        --N_pe %d \
-                                                        --freq_computing %f \
-                                                        --fclk_noc %f \
-                                                        --placement_method %d \
-                                                        --percent_router %f\
-                                                        --tsvPitch %f \
-                                                        --chip_architect %s\
-                                                        --W2d %d\
-                                                        --router_times_scale %d\
-                                                        --ai_model %s ' %(int(i),int(i_tile),int(i_tier),int(pe),float(fcore),float(fnoc),float(placement),float(p_router),float(tsvpitch), str(i_arch), int(i_w2d),int(i_scale), str(i_model)))
-                                        
+    for i_stack in N_stack:
+        for i_tile in N_tile:
+            for i_tier in N_tier:
+                for pe in N_pe:
+                    for fcore in f_core:    
+                        for fnoc in f_noc:
+                            for i_scale in router_times_scale:
+                                for i_w2d in W2d:
+                                    for tsvpitch in tsv_pitch:
+                                        for placement in place_method:
+                                            for route in route_method:
+                                                for p_router in percent_router:
+                                                    for i_arch in chip_arch:
+                                                        for i_model in ai_model:
+                                                            os.system('python analy_model.py --xbar_size %d \
+                                                                --N_stack %d\
+                                                                --N_tile %d \
+                                                                --N_tier %d \
+                                                                --N_pe %d \
+                                                                --freq_computing %f \
+                                                                --fclk_noc %f \
+                                                                --placement_method %d \
+                                                                --routing_method %d\
+                                                                --percent_router %f\
+                                                                --tsvPitch %f \
+                                                                --chip_architect %s\
+                                                                --W2d %d\
+                                                                --router_times_scale %d\
+                                                                --ai_model %s ' %(int(i), int(i_stack), int(i_tile),int(i_tier),int(pe),float(fcore),float(fnoc),float(placement),float(route),float(p_router),float(tsvpitch), str(i_arch), int(i_w2d),int(i_scale), str(i_model)))
+                                                
 
