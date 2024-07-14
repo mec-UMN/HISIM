@@ -1,7 +1,7 @@
 import math 
 
 class imc_analy():
-    def __init__(self, xbar_size, volt, freq, freq_adc, compute_ref, quant_bits):
+    def __init__(self, xbar_size, volt, freq, freq_adc, compute_ref, quant_bits, RELU):
         super(imc_analy, self).__init__()
         self.Qact=quant_bits[1]                             #Bitwidth of activations
         self.Qw=quant_bits[0]                               #Bitwidth of weights
@@ -25,7 +25,7 @@ class imc_analy():
             self.N_adc = self.xbar_y/self.ADC_factor        #Number of ADCs inside a PE
             self.scaling_factor_1=496.58/120.53             #PPA is scaled to 28nm tech node as reference data - obtained from https://ieeexplore.ieee.org/document/9484090
             self.scaling_factor_2=3.85/1.14                 #PPA is scaled to 28nm tech node as reference data - obtained from https://ieeexplore.ieee.org/document/9484090
-            self.relu=True
+            self.relu=RELU
         #To set the array parameters similar to the reference data - https://ieeexplore.ieee.org/document/8993641/
         self.A_cell = 0.167*1e-7/self.scaling_factor_1      #Area of a RRAM cell in mm^2 scaled to 28nm
         self.Lmax= 0.24*1e-9                                #Latency of RRAM crossbar configured as per reference data in seconds

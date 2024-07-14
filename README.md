@@ -1,15 +1,12 @@
 # Changelog (top is latest)
-
-### add setter function (e785927):
- - add setter functions
-
-### wrapper, relative pahts, system exts, ppa as dictionary (5a7a96e) : 
+ - Implemented 3.5D architectures and fixed minor bugs
+ - Added visualization to illustrate mapping (`tile.map.png`) 
+ - Added setter functions
  - Wraps and re-factors the `analy_model.py` file (`hisim_model.py`)
  - Generate `PPA_new` which uses a dictionary instead of a list (easier to track entries and is better able to log bad configurations) (`hisim_model.py`)
  - Label `PPA.csv` with units (`hisim_model.py`)
  - Change relative to absolute paths (`aib_2_5d.py`, `util_mapping.py`)
  - Change system exits to just return (`hisim_model.py`, `util_mapping.py`, `analy_model.py`)
- - More details in https://github.com/mec-UMN/HISIM/issues/3#issue-2398492680
 
 
 # HISIM_V1.0

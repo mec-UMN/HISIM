@@ -127,6 +127,7 @@ elif chip_architect=="M3D":
 elif chip_architect=="M2D":
     N_stack=1
     N_tier=1
+result_dictionary = {}
 
 percent_router=args.percent_router
 relu=True
@@ -204,7 +205,7 @@ result_list.append(N_stack_real)
 #     Computing: generate PPA for IMC/GPU/CPU/ASIC computing units    #
 #                                                                     #
 #---------------------------------------------------------------------#
-computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,quant_weight,N_crossbar,N_pe,N_tier_real,N_stack_real, N_tile,result_list, network_params)
+N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,quant_weight,N_crossbar,N_pe,N_tier_real,N_stack_real, N_tile,result_list,result_dictionary, network_params)
 end_computing = time.time()
 print("Computing model sim time is:", (end_computing - start),"s")
 print("--------------------------------------------------------")
@@ -218,7 +219,7 @@ print("----------computing performance done--------------------")
 
 chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list=network_model(N_tier_real,N_stack_real,
                                                                                                                     N_tile,N_tier,computing_data,placement_method,percent_router,chip_architect,tsvPitch,
-                  area_single_tile,result_list,volt,fclk_noc,total_model_L,scale_factor, tiles_each_tier, routing_method, W2d)
+                  area_single_tile,result_list,result_dictionary, volt,fclk_noc,total_model_L,scale_factor, tiles_each_tier, routing_method, W2d)
 
 end_noc = time.time()
 print("\n")

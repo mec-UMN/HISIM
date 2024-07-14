@@ -221,7 +221,7 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
     print("---------------------------------------------------------")
 
     result_list.append((edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile*N_stack_real+area_2_5d)
-    result_dictionary['compute_area per tier (mm2)'] = (edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile*N_stack_real+area_2_5d
+    result_dictionary['chip area (mm2)'] = (edge_single_router+edge_single_tile)*(edge_single_router+edge_single_tile)*N_tile*N_stack_real+area_2_5d
 
     result_list.insert(8,W2d)
     result_list.insert(9,W3d)
@@ -367,7 +367,7 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
     print("----------network performance done--------------------")
 
     result_list.append(total_model_L*pow(10,9)/L_booksim)
-    result_dictionary['rcc (ratio of computation and communication latencies for roofline model)'] = total_model_L*pow(10,9)/L_booksim
+    result_dictionary['rcc (compute latency/communciation latency)'] = total_model_L*pow(10,9)/L_booksim
 
     flops=0
     for j in range(len(computing_data)):
@@ -420,6 +420,7 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
         ax.set_axis_off()
     plt.savefig('./Results/tile_map.png')
     plt.show()
+    plt.clf()
 
     
     return chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list

@@ -185,7 +185,7 @@ class util_map():
                     print("please increase number of stacks, tier or tiles")
                     #import pdb;pdb.set_trace()
                     #sys.exit()
-                    return["Alert!!! No available tile/tiers: please increase Tiers/tile number"]
+                    return ["Alert!!! No available stacks/tile/tiers: please increase stacks/Tiers/tile number"]
             self.tiles_each_tier[self.stack_index][self.tier_index]+=layer_num_tile           #Assign the tiles of the layer to the corresponding tier/chiplet
             self.tiles_each_stack[self.stack_index]+=layer_num_tile
             self.total_tiles_real=self.total_tiles_required                 

@@ -1,3 +1,46 @@
+# -*- coding: utf-8 -*-
+# *******************************************************************************
+# Copyright (c)
+# School of Electrical, Computer and Energy Engineering, Arizona State University
+# Department of Electrical and Computer Engineering, University of Minnesota
+
+# PI: Prof.Yu(Kevin) Cao
+# All rights reserved.
+
+# This source code is for HISIM: Analytical Performance Modeling and Design Exploration 
+# of 2.5D/3D Heterogeneous Integration for AI Computing
+
+# Copyright of the model is maintained by the developers, and the model is distributed under 
+# the terms of the Creative Commons Attribution-NonCommercial 4.0 International Public License 
+# http://creativecommons.org/licenses/by-nc/4.0/legalcode.
+# The source code is free and you can redistribute and/or modify it
+# by providing that the following conditions are met:
+# 
+#  1) Redistributions of source code must retain the above copyright notice,
+#     this list of conditions and the following disclaimer.
+# 
+#  2) Redistributions in binary form must reproduce the above copyright notice,
+#     this list of conditions and the following disclaimer in the documentation
+#     and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+# Developer list: 
+#   Zhenyu Wang	    Email: zwang586@asu.edu                
+#   Pragnya Nalla   Email: nalla052@umn.edu
+#   Jingbo Sun      Email: jsun127@asu.edu
+#   Jennifer Zhou   Email: 
+# *******************************************************************************/
+
 import os
 import shutil
 import csv
@@ -27,39 +70,49 @@ class HiSimModel:
 
     def __init__(
         self,
-        chip_architect = "M3D", # string | hardware architecture                        - M3D,M2D,H2_5D,H2_5D_3D
+        chip_architect = "M3D", # string | hardware architecture                        - M3D,M2D,H2_5D,M3_5D,H2_5D_3D
         xbar_size = 512,        # int    | crossbar size                                - 64,128,256,512,1024
         N_tile = 324,           # int    | number of tiles in tier                      - 4,9,16,25,36,49                     
         N_crossbar = 1,         # int    | number of crossbars in one PE                - 4, 9, 16
-        N_pe = 16,              # int    | number of PEs in one tile - 4,9,16,25,36
+        N_pe = 16,              # int    | number of PEs in one tile                    - 4,9,16,25,36
         quant_weight = 8,       # int    | precision of quantized weight of AI model
-        quant_act = 8,          # int    | precision fo quantized activation of AI model
+        quant_act = 8,          # int    | precision of quantized activation of AI model
         freq_computing = 1,     # float  | computing unit operation frequency
         fclk_noc = 1,           # float  | network data communication operation frequency
         tsv_pitch = 10,         # float  | TSV pitch (um)
         N_tier = 4,             # int    | number of tiers                              - 2,3,4,5,6,7,8,9,10 
         volt = 0.5,             # float  | operating voltage
-        placement_method = 5,   # int    | computing tile placement
-        percent_router = 0.5,   # float  | percentage of router dedicated to 3D comm LOOK INTO THIS WHAT
+        placement_method = 5,   # int    | computing tile placement method                 1: Tier/Chiplet Edge to Tier/Chiplet Edge connection
+                                #                                                          5: tile-to-tile 3D connection
+        percent_router = 0.5,   # float  | percentage of router dedicated to 3D commmunication in routing method 2
+        routing_method = 2,      #int     | 3D routing method                        1- local routing-only uses nearby routers and tsvs 
+                                #        |                                           2-global routing-data will try to use all the routers to transport to next tier
         compute_validate = False,       # | validate compute model with neurosim 
-        W2d = 32,               # int    | number of links of 2D NoC
+        W2d = 32,               # int    | number of links of 2D NoC                    -vit, gcn, resnet50, resnet110, vgg16, densenet121, test, roofline
         router_times_scale = 1, # int    | scaling factor for time of: trc, tva, tsa, tst, tl, tenq
         ai_model = "vit",       # string | AI model
         thermal = True,                 # | run thermal simulation
+        N_stack=1,               #int      |Number of 3D stacks in 3.5D design           -1, 2,3,4,5,6,7,8,9,10 
         ppa_filepath = "./Results/PPA.csv"  
     ):
         if chip_architect == "H2_5D":
             self.placement_method = 1
+            N_tier=1
+        elif chip_architect=="M3D":
+            N_stack=1
+        elif chip_architect=="M2D":
+            N_stack=1
+            N_tier=1
         else:
             self.placement_method = placement_method
 
-        # never used 
         self.relu=True
         self.sigmoid=False
 
         self.chip_architect = chip_architect
         self.xbar_size = xbar_size
         self.N_tile = N_tile
+        self.N_stack=N_stack
         self.N_crossbar = N_crossbar
         self.N_pe = N_pe
         self.quant_weight = quant_weight
@@ -71,6 +124,7 @@ class HiSimModel:
         self.volt = volt
         self.placement_method = placement_method
         self.percent_router = percent_router
+        self.routing_method=routing_method 
         self.compute_validate = compute_validate
         self.W2d = W2d
         self.router_times_scale = router_times_scale
@@ -86,12 +140,13 @@ class HiSimModel:
                                 'N_pe',
                                 'N_tile(real)',
                                 'N_tier(real)',
+                                "N_stack(real)",
                                 'W2d',
                                 'W3d',
                                 'Computing_latency (ns)',
                                 'Computing_energy (pJ)',
                                 'compute_area (um2)',
-                                'compute_area per tier (mm2)',
+                                'chip area (mm2)',
                                 'chip_Architecture',
     
                                 '2d NoC latency (ns)',
@@ -103,8 +158,8 @@ class HiSimModel:
                                 '2.5d NoC energy (pJ)',
                                 'network_energy (pJ)',
 
-                                'rcc (??)',
-                                'compute_power (W)',
+                                'rcc (compute latency/communciation latency)',
+                                'Throughput(TFLOPS/s)',
                                 '2D_3D_NoC_power (W)',
                                 '2_5D_power (W)',
                                 '2d_3d_router_area (mm2)',
@@ -165,11 +220,17 @@ class HiSimModel:
     def set_N_tier(self, N_tier):
         self.N_tier = N_tier
 
+    def set_N_stack(self, N_stack):
+        self.N_stack = N_stack
+
     def set_volt(self, volt):
         self.volt = volt
     
     def set_placement(self, placement_method): 
         self.placement_method = placement_method
+    
+    def set_router(self, route_method): 
+        self.route_method = route_method
 
     def set_percent_router(self, percent_router):
         self.percent_router = percent_router
@@ -229,6 +290,9 @@ class HiSimModel:
         #                                                                     #
         #---------------------------------------------------------------------#
         network_params = load_ai_network(self.ai_model)                 #Load AI network parameters from the network csv file
+        sim_name="Densenet_placement_1"
+        filename_results = "./Results/PPA.csv"                          #Location to store PPA results
+
         print("----------------------------------------------------","\n")
         print("start mapping ",self.ai_model,"\n")
 
@@ -238,8 +302,7 @@ class HiSimModel:
         #                                                                     #
         #---------------------------------------------------------------------#
         filename = "./Debug/to_interconnect_analy/layer_inform.csv"
-        tiles_each_tier = [0] * self.N_tier
-        total_tiles_real = model_mapping(
+        mapping_results= model_mapping(
             filename,
             self.placement_method,
             network_params,
@@ -250,31 +313,36 @@ class HiSimModel:
             self.quant_weight,
             self.N_tile,
             self.N_tier,
-            tiles_each_tier)
+            self.N_stack)
 
 
-        print("total_tiles_real: ", total_tiles_real)
-        if isinstance(total_tiles_real, list):
+        print("total_tiles_real: ", mapping_results[0])
+        if isinstance(mapping_results, list):
             # error!!
             with open("./Results/PPA_new.csv", 'a', newline='') as csvfile:
                 values = list(result_dictionary.values())
                 writer = csv.writer(csvfile)
                 writer.writerow(values)
-            return total_tiles_real
+            return mapping_results
+        total_tiles_real ,tiles_each_tier, tiles_each_stack=mapping_results
 
         #Placement Method 1: Number of tiers are determined based on the mapping and user defined number of tiles per tier
         #Placement Method 5: Number of tiles per tier are determined based on the mapping and user defined number of tiers
+        N_stack_real=len(tiles_each_stack)
         if self.placement_method == 5:
             N_tier_real = self.N_tier
             #Average of tiles mapped per tier                    
-            N_tile_real=smallest_square_greater_than(max(tiles_each_tier))
+            N_tile_real=smallest_square_greater_than(max(max(tiles_each_tier)))
         else:
             N_tile_real = self.N_tile 
-            #Total number of tiers or chiplets                          
-            if total_tiles_real % self.N_tile==0:
-                N_tier_real=int(total_tiles_real//self.N_tile)       
+            if N_stack_real>1:
+                N_tier_real=N_tier
             else:
-                N_tier_real=int(total_tiles_real//self.N_tile)+1     
+                #Total number of tiers or chiplets                          
+                if total_tiles_real % self.N_tile==0:
+                    N_tier_real=int(total_tiles_real//self.N_tile)       
+                else:
+                    N_tier_real=int(total_tiles_real//self.N_tile)+1     
         result_list.append(N_tile_real)          
         result_dictionary['N_tile(real)'] = N_tile_real               
 
@@ -289,7 +357,13 @@ class HiSimModel:
 
         result_list.append(N_tier_real)
         result_dictionary['N_tier(real)'] = N_tier_real
-
+    
+        if N_stack_real==1:
+            self.chip_architect = "M3D" if N_tier_real>1 else "M2D"
+        elif N_tier_real==1:
+            self.chip_architect = "H2_5D"
+        result_list.append(N_stack_real)
+        result_dictionary['N_stack(real)'] = N_stack_real
         #---------------------------------------------------------------------#
         #                                                                     #
         #     Computing: generate PPA for IMC/GPU/CPU/ASIC computing units    #
@@ -305,10 +379,12 @@ class HiSimModel:
                                             self.N_crossbar,
                                             self.N_pe,
                                             N_tier_real,
+                                            N_stack_real,
                                             self.N_tile,
                                             result_list, 
                                             result_dictionary,
-                                            network_params
+                                            network_params,
+                                            self.relu
                                         )
 
         N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri = compute_results
@@ -325,6 +401,7 @@ class HiSimModel:
 
         network_results = network_model(
                                         N_tier_real,
+                                        N_stack_real,
                                         self.N_tile,
                                         self.N_tier,
                                         computing_data,
@@ -338,7 +415,10 @@ class HiSimModel:
                                         self.volt,
                                         self.fclk_noc,
                                         total_model_L,
-                                        self.router_times_scale
+                                        self.router_times_scale,
+                                        tiles_each_tier, 
+                                        self.routing_method, 
+                                        self.W2d
                                     )
         chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list = network_results
 
@@ -354,7 +434,7 @@ class HiSimModel:
         #---------------------------------------------------------------------------------#
         sim_name="Densenet_placement_1"
         # thermal_model function will start the simulation for generating the temperature results based on the power and area of the different blocks of the chip
-        if self.thermal:
+        if self.thermal and self.chip_architect!="M3_5D":
             print("----------thermal analysis start--------------------")
 
             peak_temp = thermal_model(
@@ -404,11 +484,11 @@ class HiSimModel:
         return dict(zip(self.csv_header, results_list))
 
 hisim = HiSimModel(
-            chip_architect = "M3D",
+            chip_architect = "M3_5D",
             xbar_size = 1024,
             N_tile = 100,
             N_pe = 9,
-            N_tier = 3,
+            N_tier = 2,
             freq_computing = 1,
             fclk_noc = 1,
             placement_method = 5,
@@ -417,9 +497,10 @@ hisim = HiSimModel(
             tsv_pitch = 5,
             W2d = 32,
             ai_model = 'vit',
-            thermal = False
+            thermal = False,
+            N_stack =2,
         )
-
+hisim.run_model()
 
 df = pd.read_csv(f'inputs.csv')
 
@@ -427,7 +508,7 @@ num_pe = df['N_pe']
 chip_architect = df['chip_Architecture']
 
 # for i in range(len(df)):
-for i in range(50, 100):
+for i in range(9, 50):
 
     # hisim.set_num_pe(num_pe[i])
     hisim.set_num_pe(i)

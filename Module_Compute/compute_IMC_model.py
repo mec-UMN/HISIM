@@ -6,7 +6,7 @@ import math
 import sys
 
 
-def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act, quant_weight, N_crossbar,N_pe,N_tier_real,N_stack_real,N_tile,result_list,result_dictionary, network_params):
+def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act, quant_weight, N_crossbar,N_pe,N_tier_real,N_stack_real,N_tile,result_list,result_dictionary, network_params, relu):
     #Initialize variables
     total_model_L=0
     total_model_E_dynamic=0
@@ -24,7 +24,7 @@ def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,
         freq_adc=0.005
     else:
         freq_adc=freq_computing
-    imc_analy_fn=imc_analy(xbar_size=xbar_size, volt=volt, freq=freq_computing, freq_adc=freq_adc, compute_ref=COMPUTE_VALIDATE, quant_bits=[quant_weight,quant_act])
+    imc_analy_fn=imc_analy(xbar_size=xbar_size, volt=volt, freq=freq_computing, freq_adc=freq_adc, compute_ref=COMPUTE_VALIDATE, quant_bits=[quant_weight,quant_act], RELU=relu)
 
     # write the layer performance data to csv file  
     with open(filename, 'w') as csvfile1: 
