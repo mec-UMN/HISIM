@@ -3,6 +3,19 @@ import numpy as np
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 import matplotlib.pyplot as plt
 
+import os
+import sys
+
+# parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../HiSim'))
+# print(parent_dir)
+# p = sys.path.insert(0, parent_dir)
+
+current_dir = os.path.dirname(__file__)
+parent_dir = os.path.dirname(current_dir)
+target_file_path = os.path.join(parent_dir, 'AI_Networks')
+
+print("target: ", target_file_path)
+print("vit: ", f'{target_file_path}/GCN/VIT_base.csv')
 
 def smallest_square_greater_than(n):
     square_root = math.ceil(math.sqrt(n))
@@ -11,21 +24,21 @@ def smallest_square_greater_than(n):
 def load_ai_network(aimodel):
     #Load AI network parameters from the network csv files
     if aimodel =='vit':
-        network_params = np.loadtxt('./Module_AI_Map/AI_Networks/Transformer/VIT_base.csv', dtype=int, delimiter=',')
+        network_params = np.loadtxt(f'{target_file_path}/Transformer/VIT_base.csv', dtype=int, delimiter=',')
     elif aimodel =='gcn':
-        network_params = np.loadtxt('./Module_AI_Map/AI_Networks/GCN/NetWork.csv', dtype=int, delimiter=',')
+        network_params = np.loadtxt(f'{target_file_path}/GCN/NetWork.csv', dtype=int, delimiter=',')
     elif aimodel=='resnet50':
-        network_params = np.loadtxt('./Module_AI_Map/AI_Networks/ResNet/50/NetWork.csv', dtype=int, delimiter=',')
+        network_params = np.loadtxt(f'{target_file_path}/ResNet/50/NetWork.csv', dtype=int, delimiter=',')
     elif aimodel=='resnet110':
-        network_params = np.loadtxt('./Module_AI_Map/AI_Networks/ResNet/110/NetWork.csv', dtype=int, delimiter=',')
+        network_params = np.loadtxt(f'{target_file_path}/ResNet/110/NetWork.csv', dtype=int, delimiter=',')
     elif aimodel=='densenet121':    
-        network_params = np.loadtxt('./Module_AI_Map/AI_Networks/DenseNet_IMG/NetWork_121.csv', dtype=int, delimiter=',')
+        network_params = np.loadtxt(f'{target_file_path}/DenseNet_IMG/NetWork_121.csv', dtype=int, delimiter=',')
     elif aimodel=='vgg16':    
-        network_params = np.loadtxt('./Module_AI_Map/AI_Networks/VGG/VGG16_IMG/NetWork.csv', dtype=int, delimiter=',')
+        network_params = np.loadtxt(f'{target_file_path}/VGG/VGG16_IMG/NetWork.csv', dtype=int, delimiter=',')
     elif aimodel=='test':    
-        network_params = np.loadtxt('./Module_AI_Map/AI_Networks/Testing/NetWork.csv', dtype=int, delimiter=',')
+        network_params = np.loadtxt(f'{target_file_path}/Testing/NetWork.csv', dtype=int, delimiter=',')
     elif aimodel=='roofline':    
-        network_params = np.loadtxt('./Module_AI_Map/AI_Networks/Testing/NetWork_roofline_3.csv', dtype=int, delimiter=',')
+        network_params = np.loadtxt(f'{target_file_path}/Testing/NetWork_roofline_3.csv', dtype=int, delimiter=',')
     
     return network_params
 
@@ -72,7 +85,11 @@ def model_mapping(filename,placement_method,network_params,quant_act,xbar_size,N
             n_c_x=math.ceil(in_channel*k_x*k_y/xbar_size)               #Number of rows of PEs for the layer
             n_c_y=math.ceil(out_channel*quant_weight/xbar_size)         #Number of columns of PEs for the layer
 
-            util_map_fn.forward(layer_num_tile, layer_idx)
+            err_result = util_map_fn.forward(layer_num_tile, layer_idx)
+
+            # None means didn't error out
+            if err_result is not None:
+                return err_result
 
             #Hardware utilization related parameters for the layer
             total_bit=n_c_x*n_c_y*xbar_size*xbar_size                   #Total number of bits in the mapped PEs for the layer
@@ -128,7 +145,8 @@ class util_map():
         if layer_num_tile>self.N_tile:
             print("Alert!!!","layer",layer_idx,"mapped to multiple chiplet/tier")
             print("please increase crossbar size, PE number, or tile number")
-            sys.exit()
+            # sys.exit()
+            return [f"Alert!!! layer {layer_idx} mapped to multiple chiplet/tier: please increase crossbar size, PE number, or tile number"]
         
 
         self.total_tiles_required+=layer_num_tile
@@ -166,7 +184,8 @@ class util_map():
                     print("Alert!!!","No available stacks/tile/tiers")
                     print("please increase number of stacks, tier or tiles")
                     #import pdb;pdb.set_trace()
-                    sys.exit()
+                    #sys.exit()
+                    return["Alert!!! No available tile/tiers: please increase Tiers/tile number"]
             self.tiles_each_tier[self.stack_index][self.tier_index]+=layer_num_tile           #Assign the tiles of the layer to the corresponding tier/chiplet
             self.tiles_each_stack[self.stack_index]+=layer_num_tile
             self.total_tiles_real=self.total_tiles_required                 

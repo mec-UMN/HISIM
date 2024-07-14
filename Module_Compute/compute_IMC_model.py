@@ -6,7 +6,7 @@ import math
 import sys
 
 
-def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act, quant_weight, N_crossbar,N_pe,N_tier_real,N_stack_real,N_tile,result_list, network_params):
+def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act, quant_weight, N_crossbar,N_pe,N_tier_real,N_stack_real,N_tile,result_list,result_dictionary, network_params):
     #Initialize variables
     total_model_L=0
     total_model_E_dynamic=0
@@ -68,4 +68,10 @@ def compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,
     print("Total tiles area",round(total_tiles_area,5),"mm2")
     print("Total tiles area each tier,",round(total_tiles_area/N_stack_real/N_tier_real,5),"mm2")
     result_list.append(total_tiles_area*pow(10,6))
-    return computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri
+
+
+    result_dictionary['Computing_latency (ns)'] = total_model_L*pow(10,9)
+    result_dictionary['Computing_energy (pJ)'] = total_model_E_dynamic*pow(10,12)
+    result_dictionary['compute_area (um2)'] = total_tiles_area*pow(10,6)
+
+    return N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri
