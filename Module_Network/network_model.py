@@ -420,7 +420,8 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
         ax.set_axis_off()
     plt.savefig('./Results/tile_map.png')
     plt.show()
-    plt.clf()
+    plt.close()
+
 
     
     return chiplet_num,tier_2d_hop_list_power,tier_3d_hop_list_power,single_router_area,mesh_edge,layer_aib_list,result_list

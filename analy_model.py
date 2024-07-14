@@ -205,7 +205,7 @@ result_list.append(N_stack_real)
 #     Computing: generate PPA for IMC/GPU/CPU/ASIC computing units    #
 #                                                                     #
 #---------------------------------------------------------------------#
-N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,quant_weight,N_crossbar,N_pe,N_tier_real,N_stack_real, N_tile,result_list,result_dictionary, network_params)
+N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list,out_peripherial,A_peri=compute_IMC_model(COMPUTE_VALIDATE,xbar_size,volt, freq_computing,quant_act,quant_weight,N_crossbar,N_pe,N_tier_real,N_stack_real, N_tile,result_list,result_dictionary, network_params, relu)
 end_computing = time.time()
 print("Computing model sim time is:", (end_computing - start),"s")
 print("--------------------------------------------------------")
