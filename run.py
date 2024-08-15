@@ -55,13 +55,13 @@ with open(filename_results, 'a', newline='') as csvfile:
     else:
         writer.writerow(["freq_core","freq_noc","Xbar_size","N_tile","N_pe","N_tile(real)","N_tier", "N_Stack","W2d","W3d","Computing_latency", "Computing_energy","compute_area","chip_area","chip_Architecture","2d NoC latency","3d NoC latency","2.5d NoC latency", "network_latency","2d NoC energy","3d NoC energy","2.5d NoC energy","network_energy","rcc","TFLOPS", "2D_3D_NoC_power","2_5D_power","2d_3d_router_area","peak_temperature","placement_method","percent_router"])
 
-mode=0  #single corner case
-#mode=1 #design space search
+#mode=0  #single corner case
+mode=1 #design space search
 if mode==0:
     crossbar_size=[1024] 
     N_tile=[100]
     N_pe=[9]
-    N_tier=[2]   
+    N_tier=[3]   
     f_core=[1]
     f_noc=[1]
     place_method=[5]
@@ -70,14 +70,14 @@ if mode==0:
     percent_router=[1]
     tsv_pitch=[5]
     W2d=[32]
-    chip_arch=["M3_5D"]
+    chip_arch=["M3D"]
     ai_model=['vit']
-    N_stack=[2]
+    N_stack=[1]
 elif mode==1:
     crossbar_size=[1024] 
     N_tile=[64,81,100]
     N_pe=[36]
-    N_tier=[2]   
+    N_tier=[3]   
     f_core=[1]
     f_noc=[1]
     place_method=[5]
@@ -87,8 +87,8 @@ elif mode==1:
     tsv_pitch=[2,3,4,5,10,20] # um
     W2d=[32]
     ai_model=['densenet121']
-    chip_arch=["M3_5D"]
-    N_stack=[2]
+    chip_arch=["M3D"]
+    N_stack=[1]
 
 # HISIM will generate all results for different configurations
 for i in crossbar_size:
@@ -106,7 +106,7 @@ for i in crossbar_size:
                                                 for p_router in percent_router:
                                                     for i_arch in chip_arch:
                                                         for i_model in ai_model:
-                                                            os.system('python analy_model.py --xbar_size %d \
+                                                            os.system('python analy_model.py --thermal --xbar_size %d \
                                                                 --N_stack %d\
                                                                 --N_tile %d \
                                                                 --N_tier %d \

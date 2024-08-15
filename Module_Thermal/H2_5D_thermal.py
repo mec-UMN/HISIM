@@ -1218,10 +1218,10 @@ class H2_5D(object):
         for i in range(len(t)):
             # layername = layertype_l[i]+' '+str(i)
             self.plot_im(plot_data=realratiot[i,:,:], title='resolution {}'.format(i), save_name='./Results/result_thermal/thermal_map_res{}_{}.png'.format(self.resolution, i), vmin=vmin, vmax=vmax)
-
-        return realratiot
+        
+        #return max(realratiot)
     
-        # return vmax
+        return vmax
 
 
 def power_tile_reorg(tiles_edges_in_tier):

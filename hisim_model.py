@@ -259,6 +259,10 @@ class HiSimModel:
         self.filename_results = ppa_filepath
 
     def run_model(self):
+        if os.path.exists('./Results/result_thermal/'):
+            shutil.rmtree('./Results/result_thermal/')
+        os.makedirs('./Results/result_thermal/')
+        os.makedirs('./Results/result_thermal/1stacks')
 
         result_list=[]
 
@@ -336,7 +340,7 @@ class HiSimModel:
         else:
             N_tile_real = self.N_tile 
             if N_stack_real>1:
-                N_tier_real=N_tier
+                N_tier_real=self.N_tier
             else:
                 #Total number of tiers or chiplets                          
                 if total_tiles_real % self.N_tile==0:

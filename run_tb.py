@@ -46,7 +46,7 @@ import pandas as pd
 #Test Case 1
 print("Test Case 1: Running HISIM to obtain PPA")
 print("AI Network: ViT")
-print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack):1024-9-100-2-2")
+print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack-chip_arch):1024-9-100-2-2-3.5D")
 hisim = HiSimModel(
             chip_architect = "M3_5D",
             xbar_size = 1024,
@@ -73,7 +73,7 @@ input("Press Enter to execute next test case")
 #Test Case 2
 print("Test Case 2: Running HISIM to obtain PPA")
 print("AI Network: densenet121")
-print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack):1024-36-64-2-2")
+print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack-chip_arch):1024-36-64-2-2")
 hisim.set_N_tile(64)
 hisim.set_num_pe(36)
 hisim.set_ai_model("densenet121")
@@ -81,14 +81,13 @@ hisim.run_model()
 print("Test case 2 done. Please check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information")
 print("")
 input("Press Enter to execute next test case")
-
 #Test Case 3
 print("Test Case 3: Running HISIM to obtain PPA for different TSV pitches")
 print("AI Network: densenet121")
-print("HW configuration ( Xbar-Npe-Ntile-Ntier-Nstack):1024-36-81-2-1")
+print("HW configuration ( Xbar-Npe-Ntile-Ntier-Nstack-chip_arch):1024-36-81-2-1-3D")
 hisim.set_N_tile(81)
 hisim.set_N_stack(1)
-hisim.set_chip_architecture("M3_5D")
+hisim.set_chip_architecture("M3D")
 tsv_pitch=[2,3,4,5,10,20] # um
 for i in range(len(tsv_pitch)):
     print("TSV_pitch:", tsv_pitch[i], "um")
@@ -102,8 +101,8 @@ input("Press Enter to execute next test case")
 #Test Case 4
 print("Test Case 4: Running HISIM to obtain PPA for different NoC bandwidths")
 print("AI Network: densenet121")
-print("HW configuration ( Xbar-Npe-Ntile-Ntier-Nstack):1024-36-81-2-1")
-noc_width=[i for i in range(32)] # um
+print("HW configuration ( Xbar-Npe-Ntile-Ntier-Nstack-chip_arch):1024-36-81-2-1-3D")
+noc_width=[i for i in range(1,32, 5)] # um
 for i in range(1, len(noc_width)):
     print("number of links of 2D NoC:", noc_width[i])
     hisim.set_W2d(noc_width[i])
@@ -117,7 +116,7 @@ input("Press Enter to execute next test case")
 #Test Case 5
 print("Test Case 5: Running HISIM to obtain PPA and thermal for different Ntier")
 print("AI Network: densenet121")
-print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack):1024-36-169-Depends on input config-1")
+print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack-chip_arch):1024-36-169-Depends on input config-1")
 hisim.set_N_tile(169)
 hisim.set_thermal("True")
 N_tier=[i for i in range(4)] # um
@@ -134,7 +133,7 @@ input("Press Enter to execute next test case")
 #Test Case 6
 print("Test Case 6: Running HISIM to obtain PPA and thermal")
 print("AI Network: densenet121")
-print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack):1024-36-81-2-1")
+print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack-chip_arch):1024-36-81-2-1-3D")
 hisim.run_model()
 
 print("Test case 6 done. Please check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information")
@@ -144,15 +143,32 @@ input("Press Enter to execute next test case")
 #Test Case 7
 print("Test Case 7: Running HISIM to obtain PPA and thermal")
 print("AI Network: ViT")
-print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack):1024-9-169-2-1")
-hisim.set_N_stack(1)
+print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack-chip_arch):1024-9-169-2-1-3D")
 hisim.set_N_tile(169)
 hisim.set_num_pe(9)
 hisim.set_ai_model("vit")
 hisim.run_model()
-hisim.set_thermal(False)
 
 print("Test case 7 done. Please check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information")
+print("")
+input("Press Enter to execute next test case")
+
+#Test Case 8
+print("Test Case 8: Running HISIM to obtain PPA and thermal")
+print("AI Network: densenet121")
+print("HW configuration (Xbar-Npe-Ntile-Ntier-Nstack-chip_arch):1024-36-81-1-2-2.5D")
+hisim.set_N_tier(1)
+hisim.set_placement(1)
+hisim.set_N_stack(2)
+hisim.set_num_pe(36)
+hisim.set_N_tile(81)
+hisim.set_ai_model("densenet121")
+#hisim.set_thermal(True)
+hisim.run_model()
+hisim.set_thermal(False)
+hisim.set_placement(5)
+
+print("Test case 8 done. Please check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information")
 print("")
 
 

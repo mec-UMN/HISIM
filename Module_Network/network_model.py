@@ -29,7 +29,9 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
                 count_tier+=1
             layer_start_tile=layer_start_tile_tier[int(computing_data[layer_index][15])][int(computing_data[layer_index][9])]
         else:
-            if computing_data[layer_index][9]>=1 and computing_data[layer_index-1][9]!=computing_data[layer_index][9]:
+            if computing_data[layer_index][15]>=1 and computing_data[layer_index-1][15]!=computing_data[layer_index][15]:
+                layer_start_tile=0
+            elif computing_data[layer_index][9]>=1 and computing_data[layer_index-1][9]!=computing_data[layer_index][9]:
                 layer_start_tile=0
         # get this layer information 
 
@@ -419,6 +421,7 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
         start+=N_tier_real
         ax.set_axis_off()
         ax.set_title(f'3D Stack {i+1}', fontsize=16) 
+        #import pdb;pdb.set_trace()
     plt.savefig('./Results/tile_map.png')
     plt.show()
     plt.close()

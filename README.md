@@ -56,15 +56,17 @@ To run example use-cases, run the following command
 python run_tb.py
 ```
 ### Package Dependencies
+
+run the following command to install dependencies
+``` 
+pip install -r requirements.txt
+```
 * Python 3.8.5
 * pandas 1.1.3
 * numpy  1.19.2
 * torch  2.2.2
 * matplotlib 3.3.2
 * scipy  1.5.2
-* csv    
-* collections
-* json
 
 ### HiSimModel Input Parameters 
 Input parameters of HiSimModel and their corresponding setter functions and options are as follows:
@@ -212,20 +214,21 @@ peak_temperature (K):  Peak temperature of the chip
 The Tile Map is a visual representation of the default mapping implemented in HISIM. It displays the stacks, tiers, and tiles present in the architecture, and it links each tile to the AI layer number to which it is mapped. Note that multiple tiles can be mapped to a single AI layer. This tile map can be found at `Results/tile_map.png`.
 
 #### Thermal Maps
-The Thermal Map is a visual representation of the temperature distribution across the components of each tier. It shows the temperature profile of tiles and routers on each tier, including the 2.5D connections. These temperature maps can be found in the folder `Results/result_thermal/1stacks`.
+The Thermal Map is a visual representation of the temperature distribution across the components of each tier. It shows the temperature profile of tiles and routers on each tier, including the 2.5D connections. These temperature maps can be found in the folder `Results/result_thermal/1stacks` for 3D runs and in folder `Results/result_thermal/` for 2.5 runs.
 
 ## Examples
 A demo video has been added to the repository to help users get started, showcasing a few examples using run_tb.py. The test cases, their respective outputs, AI networks, hardware configuration, and DSE parameters inside run_tb.py are as follows:
 ```
-Test Case      Output        AI Network      HW configuration               DSE parameter
-                                             (Xbar-Npe-Ntile-Ntier-Nstack)   
-Test Case 1    PPA           ViT             1024-9-100-2-2                 NA - Single run
-Test Case 2    PPA           densenet121     1024-36-64-2-2                 NA - Single run
-Test Case 3    PPA           densenet121     1024-36-81-2-1                 tsv_pitch: [2,3,4,5,10,20]
-Test Case 4    PPA           densenet121     1024-36-81-2-1                 noc_width(W2d): [i for i in range(1, 32)]
-Test Case 5    PPA           densenet121     1024-36-169-varies-1           N_tier: [i for i in range(4)]
-Test Case 6    PPA, thermal  densenet121     1024-36-81-2-1                 NA - Single run
-Test Case 7    PPA, thermal  ViT             1024-9-169-2-1                 NA - Single run
+Test Case      Output        AI Network      HW configuration                   DSE parameter
+                                             (Xbar-Npe-Ntile-Ntier-Nstack-arch)   
+Test Case 1    PPA           ViT             1024-9-100-2-2-3.5D                NA - Single run
+Test Case 2    PPA           densenet121     1024-36-64-2-2-3.5D                NA - Single run
+Test Case 3    PPA           densenet121     1024-36-81-2-1-3D                  tsv_pitch: [2,3,4,5,10,20]
+Test Case 4    PPA           densenet121     1024-36-81-2-1-3D                  noc_width(W2d): [i for i in range(1,32, 5)]
+Test Case 5    PPA, thermal  densenet121     1024-36-169-varies-1-3D            N_tier: [i for i in range(4)]
+Test Case 6    PPA, thermal  densenet121     1024-36-81-2-1-3D                  NA - Single run
+Test Case 7    PPA, thermal  ViT             1024-9-169-2-1-3D                  NA - Single run
+Test Case 8    PPA, thermal  densenet121     1024-36-81-1-2-2.5D                NA - Single run
 ```
 Alternatively, the demo video located at Demos/demo-05172024.mp4 demonstrates examples using run.py. Each of the required parameters for the design space can be configured as an array. To include thermal simulations in the design space exploration, add the --thermal flag to the Python command for the run.py file.
 
