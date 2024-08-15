@@ -88,9 +88,9 @@ class HiSimModel:
         routing_method = 2,      #int     | 3D routing method                        1- local routing-only uses nearby routers and tsvs 
                                 #        |                                           2-global routing-data will try to use all the routers to transport to next tier
         compute_validate = False,       # | validate compute model with neurosim 
-        W2d = 32,               # int    | number of links of 2D NoC                    -vit, gcn, resnet50, resnet110, vgg16, densenet121, test, roofline
+        W2d = 32,               # int    | number of links of 2D NoC                    
         router_times_scale = 1, # int    | scaling factor for time of: trc, tva, tsa, tst, tl, tenq
-        ai_model = "vit",       # string | AI model
+        ai_model = "vit",       # string | AI model                                     -vit, gcn, resnet50, resnet110, vgg16, densenet121, test, roofline
         thermal = True,                 # | run thermal simulation
         N_stack=1,               #int      |Number of 3D stacks in 3.5D design           -1, 2,3,4,5,6,7,8,9,10 
         ppa_filepath = "./Results/PPA.csv"  
@@ -316,7 +316,7 @@ class HiSimModel:
             self.N_stack)
 
 
-        print("total_tiles_real: ", mapping_results[0])
+        #print("total_tiles_real: ", mapping_results[0])
         if isinstance(mapping_results, list):
             # error!!
             with open("./Results/PPA_new.csv", 'a', newline='') as csvfile:
@@ -482,7 +482,7 @@ class HiSimModel:
 
     def results_dict(self, results_list):
         return dict(zip(self.csv_header, results_list))
-
+"""
 hisim = HiSimModel(
             chip_architect = "M3_5D",
             xbar_size = 1024,
@@ -517,3 +517,4 @@ for i in range(9, 50):
 # print("results: ")
 # for each in results:
 #     print(each)
+"""

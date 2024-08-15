@@ -399,7 +399,7 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
             axes.append(ax)
     result_dictionary['2d_3d_router_area (mm2)'] = Total_area_routers+Total_channel_area
     
-    for ax in axes:
+    for i, ax in enumerate(axes):
         for item in empty_tile_total[start:start+N_tier_real]:
             for tile in item:
                 count=False
@@ -411,13 +411,14 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
                             count=True
                             break
                     x+=1
-                if x<len(tile_total)-1:
+                if x<=len(tile_total)-1:
                     #print(x-1, tile)
                     #import pdb;pdb.set_trace()
                     idx=x
                 create_tile(ax, *tile[:3], 0.5, 0.5, 0, 'blue',idx)
         start+=N_tier_real
         ax.set_axis_off()
+        ax.set_title(f'3D Stack {i+1}', fontsize=16) 
     plt.savefig('./Results/tile_map.png')
     plt.show()
     plt.close()

@@ -221,6 +221,10 @@ def thermal_model(thermal,chip_architect,chiplet_num_list,N_tile,placement_metho
         #result_list.append(peak_temp)
         #end_thermal = time.time()
 
+    elif thermal and chip_architect =="M3_5D":
+        print("Thermal model yet to be implemented for 3.5D architecture")
+        peak_temp='NA'
+
     else:
         peak_temp='NA'
 
