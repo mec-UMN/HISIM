@@ -1,42 +1,45 @@
-# Changelog (top is latest)
- - Implemented 3.5D architectures and fixed minor bugs
- - Added visualization to illustrate mapping (`tile.map.png`) 
- - Added setter functions
- - Wraps and re-factors the `analy_model.py` file (`hisim_model.py`)
- - Generate `PPA_new` which uses a dictionary instead of a list (easier to track entries and is better able to log bad configurations) (`hisim_model.py`)
- - Label `PPA.csv` with units (`hisim_model.py`)
- - Change relative to absolute paths (`aib_2_5d.py`, `util_mapping.py`)
- - Change system exits to just return (`hisim_model.py`, `util_mapping.py`, `analy_model.py`)
+# Changelog for V1.1 (latest updates at the top)
+
+- Implemented 3.5D architectures and fixed minor bugs.
+- Added visualization to illustrate mapping using `tile.map.png`.
+- Added setter functions and the code (`hisim_model.py`) now wraps and refactors the `analy_model.py` file.
+- Generated `PPA_new`, which uses a dictionary instead of a list (making it easier to track entries and better able to log bad configurations).
+- Labeled headers of `PPA.csv` with units.
+- Changed relative paths to absolute paths and modified system exits to return instead.
 
 
-# HISIM_V1.0
-HISIM introduces a suite of analytical models at the system level to speed up performance prediction for AI models, covering logic-on-logic architectures across 2D, 2.5D and 3D integration.
+# HISIM_V1.1
+HISIM introduces a suite of analytical models at the system level to speed up performance prediction for AI models, covering logic-on-logic architectures across 2D, 2.5D, 3D and 3.5D integration.
 
 ![HISIM Overview](https://github.com/pragnyan948/HISIM/blob/main/HISIM_Overview.png "HISIM Overview")
 
 ## File Lists
-Main directory structure of the repository is below
+The main directory structure of the repository is shown below. The file `run_tb.py` contains example use cases for running the tool.
 ```
-├── Debug                   --Folder containing layer mapping and layer performance information obtained from simulation
+├── Debug                   -- Folder containing layer mapping and performance information obtained from simulations
+├── Demos                   -- Folder containing demo videos of the tools
 ├── Module_AI_Map
-    ├── AI_Networks         --Folder containing network configuration files of AI models
-    ├── util_chip           --Folder containing codes to map the AI model onto the device as per HISIM default mapping
-├── Module_Compute          --Folder containing codes for PPA evaluation of IMC compute core
-├── Module_Network          --Folder containing codes for PPA evaluation of routers and AIB interface
-├── Module_Thermal          --Folder containing thermal codes for simulations of 2D, 2.5D, 3D architectures
+    ├── AI_Networks         -- Folder containing configuration files for AI network models
+    ├── util_chip           -- Folder containing code to map the AI model onto the device using HISIM's default mapping
+├── Module_Compute          -- Folder containing code for PPA evaluation of the IMC compute core
+├── Module_Network          -- Folder containing code for PPA evaluation of routers and the AIB interface
+├── Module_Thermal          -- Folder containing thermal simulation code for 2D, 2.5D, and 3D architectures
 ├── Results
-    ├── result_thermal      --Folder containing device thermal maps obtained from the simulations
-    ├── PPA.csv             --CSV file containing PPA and thermal values obtained from the simulation 
-├── analy_model.py          --main file
-├── run.py                  --Run file to execute multiple runs of analy_model.py with different configurations
+    ├── result_thermal      -- Folder containing thermal maps of the device obtained from simulations
+    ├── PPA.csv             -- CSV file containing PPA and thermal values in list format
+    ├── PPA_new.csv         -- CSV file containing PPA and thermal values in dictionary format
+├── hisim_model.py          -- Main file used by run_tb.py; implements setter functions
+├── run_tb.py               -- Run file to execute example runs using the HiSimModel defined in hisim_model.py
+├── analy_model.py          -- Main file used by run.py
+├── run.py                  -- Run file to execute multiple runs of analy_model.py with different configurations
+
 ```
 
 ## Network File
-The structure of network.csv file is as follows:
-IFM_size_x, IFM_size_y, N_IFM, Kx, Ky, NOFM, pool, layer-wise sparsity.
+To facilitate extensibility in evaluating the performance of various AI algorithms, AI network files for different DNNs, GNNs, and transformers are provided at [this link](https://github.com/mec-UMN/HISIM/tree/main/Module_AI_Map/AI_Networks). The structure of the `network.csv` file is as follows: IFM_size_x, IFM_size_y, N_IFM, Kx, Ky, NOFM, pool, layer-wise sparsity.
 ```
-IFM_Size_x:            Size of the input of the Layer in x-dimension
-IFM_Size_y:            Size of the input of the Layer in y-dimension
+IFM_Size_x:            Size of the input of the Layer in the x-dimension
+IFM_Size_y:            Size of the input of the Layer in the y-dimension
 N_IFM:                 Number of input channels of the layer   
 Kx:                    Kernel size in x-dimension of the layer
 Ky:                    Kernel size in y-dimension of the layer
@@ -44,10 +47,15 @@ NOFM:                  Number of output channels of the layer
 pool:                  Parameter indicating if the layer is followed by pooling or not: 0 if not followed by pooling and 1 if followed by pooling
 layer-wise sparsity:   Total Sparsity of the layer
 ```
+For a fully connected (FC) or linear layer, `Kx` and `Ky` are both set to 1. For an example, refer to the ViT network [here](https://github.com/pragnyan948/HISIM/blob/main/Module_AI_Map/AI_Networks/Transformer/VIT_base.csv).
 
 ## Installation and Usage
 
-### Dependencies
+To run example use-cases, run the following command
+```
+python run_tb.py
+```
+### Package Dependencies
 * Python 3.8.5
 * pandas 1.1.3
 * numpy  1.19.2
@@ -58,58 +66,107 @@ layer-wise sparsity:   Total Sparsity of the layer
 * collections
 * json
 
-### Running analy_model.py file
-Usage to run the python file analy_model.py
+### HiSimModel Input Parameters 
+Input parameters of HiSimModel and their corresponding setter functions and options are as follows:
 ```
---chip_architect        Chip Archiecture: 2D chip (M2D), 3D chip(M3D), 2.5D chip (H2_5D)
---xbar_size             RRAM crossbar size 
---N_tile                Number of tiles in a tier
---N_pe                  Number of PE in a tile
---N_crossbar            Number of crossbars in a PE
---quant_weight          Precision of quantized weight of AI model
---quant_act             Precision of quantized activation of AI model
---freq_computing        Clock frequency of compute core in GHz
---fclk_noc              Clock frequency of network communication unit in GHz
---tsvPitch              TSV pitch um
---N_tier                Number of tiers in the chip for 3D archiecture or Number of chiplets for 2D archiecture 
---volt                  Operating Voltage in volt
---placement_method      1: Tier/Chiplet Edge to Tier/Chiplet Edge connection
-                        5: tile-to-tile 3D connection
---percent_router        The percentage of routers to be used for 3D communication when data is routed from one tier to the next 
---W2d                   2D NoC Bandwidth
---router_times_scale    Scaling factor for time components of router: trc, tva, tsa, tst,tl, tenq
---ai_model              AI models:vit, gcn, resnet50, resnet110, vgg16, densenet121
---thermal               Run thermal simulation
-         
+Parameter           Setter Function           Parameter Options
+--chip_architect    set_chip_architecture     Chip Architecture options are 2D chip (M2D), 3D chip (M3D), 2.5D chip (H2_5D), and 3.5D (M3_5D).
+--xbar_size         set_xbar_size             RRAM crossbar sizes are 64, 128, 256, 512, and 1024
+--N_tile            set_N_tile                Number of tiles per tier, with options 4, 9, 16, 25, 36, and 49.
+--N_pe              set_num_pe                Number of processing elements (PEs) per tile, with options 4, 9, 16, 25, and 36.
+--N_crossbar        set_N_crossbar            Number of crossbars per PE, with options 4, 9, and 16.
+--quant_weight      set_quant_weight          Precision of quantized weights of the AI model.
+--quant_act         set_quant_act             Precision of quantized activations of the AI model.
+--freq_computing    set_freq_computing        Clock frequency of the compute core in GHz.
+--fclk_noc          set_fclk_noc              Clock frequency of the network communication unit in GHz.
+--tsvPitch          set_tsv_pitch             3D TSV (Through-Silicon Via) pitch in micrometers (µm).
+--N_tier            set_N_tier                Number of tiers in the chip for 3D architecture.
+--volt              set_volt                  Operating voltage in volts
+--placement_method  set_placement             Placement method options:
+                                              1: Tier/Chiplet Edge to Tier/Chiplet Edge connection
+                                              5: Tile-to-Tile 3D connection
+--routing_method    set_router                Routing method options:
+                                              1: Local routing—uses only nearby routers and TSVs.
+                                              2: Global routing—data will attempt to use all available routers to reach the next tier.
+--percent_router    set_percent_router        Percentage of routers used for 3D communication when data is routed from one tier to the next.
+--W2d               set_W2d                   2D NoC (Network on Chip) bandwidth.
+--router_times_scale  set_router_times_scale  Scaling factor for time components of the router: trc, tva, tsa, tst, tl, tenq.
+--ai_model          set_ai_model              AI models, including vit, gcn, resnet50, resnet110, vgg16, and densenet121.
+--thermal           set_thermal               Set to True to run a thermal simulation; set to False otherwise.
+--N_stack,          set_N_stack               Number of 3D stacks in a 3.5D design or number of chiplets in a 2.5D design.
 ```
+
+### Running the 2D/2.5D/3D/3.5D simulations
 #### 2D Simulation
-To run a 2D simulation, apply the following settings:
+PPA of a 2D architecture can be estimated using analy_model.py with the following command:
 ```
-python analy_model.py --chip_architect M2D --N_tile  <Input the total number of tiles required> --ai_model <Input ai model> --thermal
+python analy_model.py --chip_architect M2D --N_stack 1 --N_tier 1 --N_tile <Input the total number of tiles required> --ai_model <Input AI model>
 ```
-AI models can be input as one of the following:vit, gcn, resnet50, resnet110, vgg16, densenet121
+Example command: `python analy_model.py --chip_architect M2D --N_stack 1 --N_tier 1 --N_tile 169 --N_pe 36 --xbar_size 1024 --ai_model vit`
+Include the --thermal flag in the command to run a thermal simulation. The time required to execute a thermal simulation can vary from approximately 3 to 20 minutes.
 
-#### 2.5d Simulation
-To run a 2.5D simulation, apply the following settings:
+Alternatively, To run a 2D simulation, apply the following settings:
 ```
-python analy_model.py --chip_architect H2_5D --placement_method 1 --N_tile <Input the number of tiles per chiplet> --ai_model <Input ai model> --thermal
-```
-
-#### 3d simulation
-To run a 3D simulation with placement method 1 (Tier/Chiplet Edge to Tier/Chiplet Edge connection), apply the following settings:
-```
-python analy_model.py --chip_architect M3D --placement_method 1 --N_tile <Input the number of tiles per tier> --ai_model <Input ai model> --thermal
-```
-
-To run a 3D simulation with placement method 5 (tile-to-tile 3D connection), apply the following settings:
-```
-python analy_model.py --chip_architect M3D --placement_method 5 --N_tier <Input the number of tiers to be tested for> --ai_model <Input ai model> --thermal
+-- Use HiSimModel.set_chip_architecture("M2D") to set the chip architecture to 2D
+-- Use HiSimModel.set_N_tier(1) and HiSimModel.set_N_stack(1) to set the number of tiers and stacks to 1
+-- Set the remaining input parameters based on the required hardware configuration
+-- AI models can be specified as one of the following: vit, gcn, resnet50, resnet110, vgg16, densenet121
+-- Use HiSimModel.run_model() to evaluate performance
+-- Check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information
 ```
 
-### Running run.py file
-Additionally, to run design space exploration, the run.py script is provided. Each of the required parameters for the design space can be configured as an array.To include thermal simulations in the design space exploration, add the --thermal flag to the python command for the run.py file.
+#### 2.5D Simulation
+PPA of a 2.5D architecture can be estimated using analy_model.py with the following command:
+```
+python analy_model.py --chip_architect H2_5D --placement_method 1 --N_tile <Input the number of tiles per chiplet> --N_stack <Input the number of chiplets> --ai_model <Input ai model> 
+```
+Example command: `python analy_model.py --chip_architect H2_5D --placement_method 1 --N_stack 3 --N_tier 1 --N_tile 64 --N_pe 36 --xbar_size 1024 --ai_model vit`. Include the --thermal flag in the command to run a thermal simulation. The time required to execute a thermal simulation can vary from approximately 3 to 20 minutes.
 
-## Workflow
+Alternatively, To run a 2.5D simulation, apply the following settings:
+```
+-- Use HiSimModel.set_chip_architecture("H2_5D") to set the chip architecture to H2_5D
+-- Use HiSimModel.set_N_tier(1) and HiSimModel.set_placement(1) to set the number of tiers and placement_method to 1 
+-- Set the remaining input parameters based on the required hardware configuration
+-- AI models can be specified as one of the following: vit, gcn, resnet50, resnet110, vgg16, densenet121
+-- Use HiSimModel.run_model() to evaluate performance
+-- Check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information
+```
+
+#### 3D simulation
+PPA of a 3D architecture can be estimated using analy_model.py with the following command:
+```
+python analy_model.py --chip_architect M3D --placement_method 5 --N_tier <Input the number of tiers to be tested for> --ai_model <Input ai model>
+```
+Example command: `python analy_model.py --chip_architect M3D --placement_method 5 --N_stack 1 --N_tier 3 --N_tile 64 --N_pe 36 --xbar_size 1024 --ai_model vit`. Include the --thermal flag in the command to run a thermal simulation. The time required to execute a thermal simulation can vary from approximately 3 to 20 minutes.
+
+Alternatively, To run a 3D simulation, apply the following settings:
+```
+-- Use HiSimModel.set_chip_architecture("M3D") to set the chip architecture to M3D
+-- Use HiSimModel.set_N_stack(1) and HiSimModel.set_placement(5) to set the number of stacks to 1 and placement_method to 5
+-- Set the remaining input parameters based on the required hardware configuration
+-- AI models can be specified as one of the following: vit, gcn, resnet50, resnet110, vgg16, densenet121
+-- Use HiSimModel.run_model() to evaluate performance
+-- Check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information
+```
+
+#### 3.5D simulation
+PPA of a 3.5D architecture can be estimated using analy_model.py with the following command:
+```
+python analy_model.py --chip_architect M3_5D --placement_method 5 --N_tier <Input the number of tiers to be tested for> --N_stack <Input the number of 3D Stacks> --ai_model <Input ai model>
+```
+Example command: `python analy_model.py --chip_architect M3_5D --placement_method 5 --N_stack 2 --N_tier 2 --N_tile 64 --N_pe 36 --xbar_size 1024 --ai_model vit`. Thermal simulation for 3.5D is yet to be integrated into the codes.
+
+Alternatively, To run a 3_5D simulation, apply the following settings:
+```
+-- Use HiSimModel.set_chip_architecture("M3_5D") to set the chip architecture to M3_5D
+-- Use HiSimModel.set_placement(5) to set the placement_method to 5
+-- Set the remaining input parameters based on the required hardware configuration
+-- AI models can be specified as one of the following: vit, gcn, resnet50, resnet110, vgg16, densenet121
+-- Use HiSimModel.run_model() to evaluate performance
+-- Check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information
+```
+
+### Workflow
 The workflow of the codes is as follows: The AI model is first mapped onto the architecture using the default mapping in util_mapping.py located in the Module_AI_Map folder. This process outputs layer_information.csv in the following format:
 ```
 layer index, Number of tiles required for the layer, Number of PEs required for the layer, Number of rows of PEs for the layer, Number of columns of PEs for the layer, Number of input cycles for the layer, pooling, Number of tiles mapped until this layer, Total number of input activations for the layer, Tier/chiplet index that the layer is mapped to for this layer, Cell Bit Utilization for the layer, Average Utilization of a row for the layer, Total number of weight bits for the layer, Average Utilization of a column for the layer, Number of FLOPS of the layer.
@@ -120,40 +177,58 @@ layer index, number of tiles required for this layer, latency of the layer, Ener
 ```
 The performance of the network and interconnect is then estimated based on the number of tiles, placement method, and the percentage of routers. The thermal simulation is performed using power and area maps. It outputs the peak temperature, average temperature, and thermal maps. Lastly, All the results are stored in the output file PPA.csv.
 
-## PPA File
+### Outputs
+#### PPA File
 The structure of output PPA.csv file is as follows: 
 ```
-freq_core,freq_noc,Xbar_size,N_tile,N_pe,N_tile(real),N_tier(chiplet),W2d,W3d,Computing_latency, Computing_energy,compute_area,chip_area,chip_Architecture,2d NoC latency,3d NoC latency,2.5d NoC latency, network_latency,2d NoC energy,3d NoC energy,2.5d NoC energy,network_energy,rcc,TFLOPS,compute_power, 2D_3D_NoC_power,2_5D_power,2d_3d_router_area,peak_temperature,placement_method,percent_router
+freq_core (GHz),freq_noc (GHz),Xbar_size,N_tile,N_pe,N_tile(real),N_tier(real),N_stack(real),W2d,W3d,Computing_latency (ns),Computing_energy (pJ),compute_area (um2),chip area (mm2),chip_Architecture,2d NoC latency (ns),3d NoC latency (ns),2.5d NoC latency (ns),network_latency (ns),2d NoC energy (pJ),3d NoC energy (pJ),2.5d NoC energy (pJ),network_energy (pJ),rcc (compute latency/communciation latency),Throughput(TFLOPS/s),2D_3D_NoC_power (W),2_5D_power (W),2d_3d_router_area (mm2),placement_method,percent_router,peak_temperature (C),thermal simulation time (s),networking simulation time (s),computing simulation time (s),total simulation time (s)
 ```
-The parameters freq_core,freq_noc,Xbar_size,N_tile,N_pe,N_tile(real),N_tier(chiplet),W2d,placement_method,percent_router are input parameters of the simulation performed
+The parameters freq_core (GHz),freq_noc (GHz),Xbar_size,N_tile,N_pe,N_tile(real),N_tier(real),N_stack(real),W2d,placement_method,percent_router are input parameters of the simulation performed
 
 Outputs from the simulation:
 ```
 W3d:                   3D TSV Bandwidth                     
 N_tile(real):          Number of real tiles mapped in a tier
-Computing_latency:     Total Latency of the computing core
-Computing_energy:      Total Energy of the computing core
-compute_area:          Total Area of the computing core
-chip_area:             Total Chip Area
-2d NoC latency:        Total Latency of the 2D NoC
-3d NoC latency:        Total Latency of the 3D TSV
-2.5d NoC latency:      Total Latency of the 2.5D AIB interface
-network_latency:       Total Network Latency consisting of 2D NoC, 3D TSV, 2.5D AIB interface latencies
-2d NoC energy:         Total Energy of the 2D NoC
-3d NoC energy:         Total Energy of the 3D TSV
-2.5d NoC energy:       Total Energy of the 2.5D AIB interface
-network_energy:        Total Network Energy consisting of 2D NoC, 3D TSV, 2.5D AIB interface energies
+Computing_latency(ns): Total Latency of the computing core
+Computing_energy(pJ):  Total Energy of the computing core
+compute_area(um2):     Total Area of the computing core
+chip_area(mm2):        Total Chip Area
+2d NoC latency(ns):    Total Latency of the 2D NoC
+3d NoC latency(ns):    Total Latency of the 3D TSV
+2.5d NoC latency(ns):  Total Latency of the 2.5D AIB interface
+network_latency(ns):   Total Network Latency consisting of 2D NoC, 3D TSV, 2.5D AIB interface latencies
+2d NoC energy(pJ):     Total Energy of the 2D NoC
+3d NoC energy(pJ):     Total Energy of the 3D TSV
+2.5d NoC energy(pJ):   Total Energy of the 2.5D AIB interface
+network_energy(pJ):    Total Network Energy consisting of 2D NoC, 3D TSV, 2.5D AIB interface energies
 rcc:                   Ratio between computation and communication latencies
-TFLOPS:                Total number of FLOPS divided by latency in TFLOPS/s
-2D_3D_NoC_power:       Total power of the 2D NoC and 3D TSV        
-2_5D_power:            Total power of the 2.5D AIB interface   
-2d_3d_router_area:     Total area of the 2D and 3D router   
-peak_temperature:      Peak temperature of the chip
+hroughput(TFLOPS/s)    Total number of FLOPS divided by latency in TFLOPS/s
+2D_3D_NoC_power(W):    Total power of the 2D NoC and 3D TSV        
+2_5D_power(W):         Total power of the 2.5D AIB interface   
+2d_3d_router_area(mm2):Total area of the 2D and 3D router   
+peak_temperature (K):  Peak temperature of the chip
 ```
-## Examples
-A demo video has been added to the repository to help users get started, demonstrating a few examples.
+#### Tile Maps
+The Tile Map is a visual representation of the default mapping implemented in HISIM. It displays the stacks, tiers, and tiles present in the architecture, and it links each tile to the AI layer number to which it is mapped. Note that multiple tiles can be mapped to a single AI layer. This tile map can be found at `Results/tile_map.png`.
 
 #### Thermal Maps
+The Thermal Map is a visual representation of the temperature distribution across the components of each tier. It shows the temperature profile of tiles and routers on each tier, including the 2.5D connections. These temperature maps can be found in the folder `Results/result_thermal/1stacks`.
+
+## Examples
+A demo video has been added to the repository to help users get started, showcasing a few examples using run_tb.py. The test cases, their respective outputs, AI networks, hardware configuration, and DSE parameters inside run_tb.py are as follows:
+```
+Test Case      Output        AI Network      HW configuration               DSE parameter
+                                             (Xbar-Npe-Ntile-Ntier-Nstack)   
+Test Case 1    PPA           ViT             1024-9-100-2-2                 NA - Single run
+Test Case 2    PPA           densenet121     1024-36-64-2-2                 NA - Single run
+Test Case 3    PPA           densenet121     1024-36-81-2-1                 tsv_pitch: [2,3,4,5,10,20]
+Test Case 4    PPA           densenet121     1024-36-81-2-1                 noc_width(W2d): [i for i in range(1, 32)]
+Test Case 5    PPA           densenet121     1024-36-169-varies-1           N_tier: [i for i in range(4)]
+Test Case 6    PPA, thermal  densenet121     1024-36-81-2-1                 NA - Single run
+Test Case 7    PPA, thermal  ViT             1024-9-169-2-1                 NA - Single run
+```
+Alternatively, the demo video located at Demos/demo-05172024.mp4 demonstrates examples using run.py. Each of the required parameters for the design space can be configured as an array. To include thermal simulations in the design space exploration, add the --thermal flag to the Python command for the run.py file.
+
 ## Citing this work
 If you found this tool useful, please use the following bibtex to cite us
 ```
