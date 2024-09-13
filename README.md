@@ -263,6 +263,7 @@ Main devs:
 * Zhenyu Wang 
 * Pragnya Sudershan Nalla
 * Jingbo Sun
+* Emad Haque
 
 Contributers:
 * A. Alper Goksoy
