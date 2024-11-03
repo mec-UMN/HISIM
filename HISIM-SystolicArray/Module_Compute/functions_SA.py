@@ -160,6 +160,6 @@ class SA_calc():
     # Output buffer size required to store all activations from this layer for a single image
     def get_outbuff_size(self, inp_cycles, out_channel):
 
-        buff_size = inp_cycles * out_channel * self.bit_width / 1024
+        buff_size = inp_cycles * out_channel * self.bit_width / (1024 * 8)
 
         return buff_size
