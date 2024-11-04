@@ -54,8 +54,8 @@ def model_mapping(filename,placement_method,network_params,SA_size,N_arr,N_pe,N_
     numComputation=0
 
     total_number_layers=network_params.shape[0]
-    tile_x_PE=SA_size*math.sqrt(N_arr)*math.sqrt(N_pe)   #Total number of PEs in a tile in x-dimension
-    tile_y_PE=SA_size*math.sqrt(N_arr)*math.sqrt(N_pe)   #Total number of PEs in a tile in y-dimension
+    tile_x_mac=SA_size*math.sqrt(N_arr)*math.sqrt(N_pe)   #Total number of MAC units in a tile in x-dimension
+    tile_y_mac=SA_size*math.sqrt(N_arr)*math.sqrt(N_pe)   #Total number of MAC units in a tile in y-dimension
     util_map_fn=util_map(N_tile=N_tile, placement_method=placement_method, N_tier=N_tier, N_stack=N_stack)
 
     # write the layer information data to csv file-HISIM Default Mapping
@@ -101,7 +101,7 @@ def model_mapping(filename,placement_method,network_params,SA_size,N_arr,N_pe,N_
             n_pe_y = math.ceil(n_c_y/math.sqrt(N_arr))              # Number of PEs in y direction
             layer_num_PE = n_pe_x*n_pe_y                            # Total number of PEs needed for the ayer
 
-            layer_num_tile = math.ceil(n_pe_x/tile_x_PE)*math.ceil(n_pe_y/tile_y_PE) # Number of tiles required for this layer
+            layer_num_tile = math.ceil(layer_num_PE/N_pe)           # Number of tiles required for this layer
 
             err_result = util_map_fn.forward(layer_num_tile, layer_idx)
 
