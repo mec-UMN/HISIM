@@ -73,11 +73,11 @@ def model_mapping(filename,placement_method,network_params,SA_size,N_arr,N_pe,N_
             enable_pooling=network_params[layer_idx][6]                 #Parameter indicating if the layer is followed by pooling or not
             sparsity=1-network_params[layer_idx][7]                     #Total Sparsity of the layer
             
-            if len(network_params[layer_idx]) >= 8:
+            if len(network_params[layer_idx]) >= 9:
                 stride=network_params[layer_idx][8]                     #Stride of the layer
             else: stride=1  
 
-            if len(network_params[layer_idx]) >= 9:                      
+            if len(network_params[layer_idx]) >= 10:                      
                 padding=network_params[layer_idx][9]                    #Padding for the layer
             else: padding=0
 
