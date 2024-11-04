@@ -18,8 +18,6 @@ class SA_calc():
         # Model Parameters
         self.C_i = 1                                            # TODO: Number of parallel IFM computes
         self.C_w = 1                                            # TODO: Weight Duplication Factor
-        self.st = 1                                             # TODO: include stride of the layer
-        self.padding = 0                                        # TODO: include padding in network file
 
         # Processing Element == MAC unit (From synthesis data)
         self.L_pe = 1.0                                         # Latency of single MAC unit in clock cycles
@@ -58,7 +56,7 @@ class SA_calc():
         self.P_buff = 0.0014                                    # Approx. power in mW for 1 kB of memory, calibrated from synthesis values
         self.P_buff_cal = 0.18403                               # Approx. power calibration value for memory in mW, from synthesis report
 
-    def forward(self, layer_idx, network_params):
+    def forward(self, layer_idx, network_params, computing_data):
 
         # Input Feature Mask Dimensions
         in_x = network_params[layer_idx][0]
@@ -75,25 +73,20 @@ class SA_calc():
         sparsity = 1 - network_params[layer_idx][7]             # Total Sparsity of the layer
 
         ### Calculations
-        inp_cycles = ((in_x - k_x + self.padding)/self.st + 1)  \
-            *((in_y - k_y + self.padding)/self.st + 1)/(self.C_i*self.C_w)   # Number of Input Cycles for the layer (Unrolled Conv. Windows)
+        inp_cycles = computing_data[layer_idx][5]/(self.C_i*self.C_w)   # Number of Input Cycles for the layer (Unrolled Conv. Windows)
 
         total_compute_cycles = inp_cycles + 2*self.SA_size - 1  # Total compute cycles needed by SA to generate all outputs
 
+        n_c_x = computing_data[layer_idx][3]                    # Number of SAs in x direction for the layer
+        n_c_y = computing_data[layer_idx][4]                    # Number of SAs in y direction for the layer
 
-        num_rows = in_channel*k_x*k_y                           # Number of rows of MAC units needed within SA
-        num_cols = out_channel                                  # Number of cols of MAC units needed within SA
+        tile_cols = math.sqrt(self.N_pe)*math.sqrt(self.N_arr)*self.SA_size  # Maximum MAC unit columns in a tile
+        num_cols = out_channel                                  # Total columns of MAC units needed in this layer for weight stationary mapping
 
-        n_c_x = math.ceil(num_rows/self.SA_size)                # Number of SAs in x direction for the layer
-        n_c_y = math.ceil(num_cols/self.SA_size)                # Number of SAs in y direction for the layer
+        tiles_needed = computing_data[layer_idx][1]             # Number of tiles required for this layer
 
-        n_pe_x = math.ceil(n_c_x/math.sqrt(self.N_arr))         # Number of PEs in x direction
-        n_pe_y = math.ceil(n_c_y/math.sqrt(self.N_arr))         # Number of PEs in y direction
-        
-        tiles_needed = math.ceil(n_pe_x*n_pe_y/self.N_pe)       # Number of tiles required for this layer
-
-        util_row = out_channel/(n_c_x*self.SA_size)             # Average Utilization of a row for the layer
-        util_col = in_channel*k_x*k_y/(n_c_y*self.SA_size)      # Average Utilization of a column for the layer
+        util_row = computing_data[layer_idx][11]                # Average Utilization of a row for the layer
+        util_col = computing_data[layer_idx][13]                # Average Utilization of a column for the layer
         
 
         # Systolic Array MAC unit calculations
@@ -127,18 +120,21 @@ class SA_calc():
             num_adders = 0
             num_adders_tile = 0
         else:
-            tile_y_macs = math.sqrt(self.N_pe)*math.sqrt(self.N_arr)*self.SA_size   # Maximum MAC unit columns in a tile
-            num_adders = (n_c_x - 1) * self.SA_size * n_c_y                         # Total number of adders for this layer
-            num_adders_tile = (n_c_x - 1) * self.SA_size * min(n_c_y, tile_y_macs)  # Total number of adders within one tile for this layer
+            num_adders = (n_c_x - 1) * num_cols                         # Total number of adders needed for this layer (out_channel = total num_cols of MAC units)
+            num_adders_tile = (n_c_x - 1) * min(num_cols, tile_cols)    # Total number of adders within one tile for this layer
 
         L_accum_t = self.L_accum * num_stages_accum * self.clk_period       # Latency of Accumulation Module (additional cycles = length of critical path of tree)
         A_accum_t = self.A_accum * num_adders_tile                          # Area of accumulation module in um^2 for one tile
         E_accum_t = self.E_accum*self.bit_width*num_adders*inp_cycles*self.clk_period/1e9   # Energy in J of Accumulation module
 
         # Output Buffer
-        buff_size = self.get_outbuff_size(inp_cycles, out_channel)          # Output buffer size in kb
-        L_buff = self.L_buff
-        A_buff_t = self.A_buff*buff_size/tiles_needed                       # Buffer is split across all tiles for the layer
+        buff_size = self.get_outbuff_size(inp_cycles, out_channel)      # Output buffer size in kB
+        buff_size_per_col = buff_size/num_cols                          # Buffer size needed per column of MAC units
+        buff_size_tile = buff_size_per_col * min(num_cols, tile_cols)   # Largest buffer size for a tile in this layer (Buffer is split across tiles for the layer)
+        
+        # Buffer takes one additional clock cycle to write outputs, ret of the latency is masked by latency of the array
+        L_buff = self.L_buff*self.clk_period                            # Buffer latency in ns
+        A_buff_t = self.A_buff*buff_size_tile                           # Area of the buffer for this tile in um^2
         E_buff_t = (self.P_buff*buff_size+self.P_buff_cal)/1e3*inp_cycles*self.clk_period/1e9 # Buffer Power in J
 
         # Data Bus Calculations (N rows of MAC units share one data bus line, where N = bus_share)
@@ -153,13 +149,12 @@ class SA_calc():
         A = (curr_area + A_bus_t)*1e-6                                          # Total Tile Area in mm^2
         E = E_arr_t + E_bias_t + E_cont_t + E_accum_t + E_bus_t + E_buff_t # Total Layer Energy in J
 
-        print(layer_idx, E_arr_t, E_bias_t, E_cont_t, E_accum_t, E_bus_t, E_buff_t)
         return A, L*1e-9, E
 
 
     # Output buffer size required to store all activations from this layer for a single image
     def get_outbuff_size(self, inp_cycles, out_channel):
 
-        buff_size = inp_cycles * out_channel * self.bit_width / (1024 * 8)
+        buff_size = inp_cycles * out_channel * self.bit_width / (1024 * 8)  # Output Buffer size in kB
 
         return buff_size

@@ -72,20 +72,36 @@ def model_mapping(filename,placement_method,network_params,SA_size,N_arr,N_pe,N_
             out_channel=network_params[layer_idx][5]                    #Number of output channels of the layer 
             enable_pooling=network_params[layer_idx][6]                 #Parameter indicating if the layer is followed by pooling or not
             sparsity=1-network_params[layer_idx][7]                     #Total Sparsity of the layer
+            
+            if len(network_params[layer_idx]) >= 8:
+                stride=network_params[layer_idx][8]                     #Stride of the layer
+            else: stride=1  
+
+            if len(network_params[layer_idx]) >= 9:                      
+                padding=network_params[layer_idx][9]                    #Padding for the layer
+            else: padding=0
 
             #Calculate parameters of the layer
-            ip_activation=in_x*in_y*in_channel*bit_width                #Total number of input activations for the layer  
-            input_cycle=(in_x-k_x+1)*(in_y-k_y+1)                       #Number of input cycles for the layer
+            ip_activation=in_x*in_y*in_channel*bit_width                #Total number of input activations for the layer
+
+            inp_cycles=((in_x-k_x+padding)/stride+1)*((in_y-k_y+padding)/stride+1)   # Number of Input Cycles for the layer (Unrolled Conv. Windows)
 
             #Number of FLOPS of the layer
             numComputation_layer=2*(in_x*in_y*in_channel*k_x*k_y*out_channel)
             numComputation+=numComputation_layer
             
             # Mapping according to HISIM Default Mapping
-            layer_num_tile=math.ceil(in_channel*k_x*k_y/tile_x_mac)*math.ceil(out_channel/tile_y_mac)   #Number of tiles required for the layer
-            layer_num_crossbar=math.ceil(in_channel*k_x*k_y/SA_size)*math.ceil(out_channel/SA_size)     #Number of PEs required for the layer
-            n_c_x=math.ceil(in_channel*k_x*k_y/SA_size)               #Number of rows of PEs for the layer
-            n_c_y=math.ceil(out_channel/SA_size)         #Number of columns of PEs for the layer
+            num_rows = in_channel*k_x*k_y                           # Number of rows of MAC units needed within SA
+            num_cols = out_channel                                  # Number of cols of MAC units needed within SA
+
+            n_c_x = math.ceil(num_rows/SA_size)                     # Number of SAs in x direction for the layer
+            n_c_y = math.ceil(num_cols/SA_size)                     # Number of SAs in y direction for the layer
+
+            n_pe_x = math.ceil(n_c_x/math.sqrt(N_arr))              # Number of PEs in x direction
+            n_pe_y = math.ceil(n_c_y/math.sqrt(N_arr))              # Number of PEs in y direction
+            layer_num_PE = n_pe_x*n_pe_y                            # Total number of PEs needed for the ayer
+
+            layer_num_tile = math.ceil(layer_num_PE/N_pe)           # Number of tiles required for this layer
 
             err_result = util_map_fn.forward(layer_num_tile, layer_idx)
 
@@ -117,7 +133,7 @@ def model_mapping(filename,placement_method,network_params,SA_size,N_arr,N_pe,N_
             #13-Average Utilization of a column for the layer,
             #14-Number of FLOPS of the layer 
             #15 Stack index that the layer is mapped to for this layer,
-            csvfile.write(str(layer_idx)+","+str(layer_num_tile)+","+str(layer_num_crossbar)+","+str(n_c_x)+","+str(n_c_y)+","+str(input_cycle)+","+str(enable_pooling)+","+str(util_map_fn.total_tiles_real)+","+str(ip_activation)+","+str(util_map_fn.tier_index)+","+str(utilization)+","+str(util_row)+","+str(total_weights)+","+str(util_col)+","+str(numComputation_layer)+","+str(util_map_fn.stack_index))
+            csvfile.write(str(layer_idx)+","+str(layer_num_tile)+","+str(layer_num_PE)+","+str(n_c_x)+","+str(n_c_y)+","+str(inp_cycles)+","+str(enable_pooling)+","+str(util_map_fn.total_tiles_real)+","+str(ip_activation)+","+str(util_map_fn.tier_index)+","+str(utilization)+","+str(util_row)+","+str(total_weights)+","+str(util_col)+","+str(numComputation_layer)+","+str(util_map_fn.stack_index))
             csvfile.write('\n')
     #import pdb;pdb.set_trace()
 

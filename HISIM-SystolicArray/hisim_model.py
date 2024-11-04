@@ -382,6 +382,7 @@ class HiSimModel:
 
         N_tier_real,computing_data,area_single_tile,volt,total_model_L,result_list = compute_results
         end_computing = time.time()
+        print("Computing model sim time is:", (end_computing - start),"s")
         print("--------------------------------------------------------")
         print("----------computing performance done--------------------")
 
@@ -417,6 +418,9 @@ class HiSimModel:
 
         end_noc = time.time()
         print("\n")
+        print("-------------------network time report--------------------")
+        print("The noc sim time is:", (end_noc - end_computing),"s")
+        print("The total computing+network sim time is:", (end_noc - start),"s","\n")
         result_list.append(self.placement_method)
         result_list.append(self.percent_router)
 
@@ -428,21 +432,25 @@ class HiSimModel:
         sim_name=run_name
         # thermal_model function will start the simulation for generating the temperature results based on the power and area of the different blocks of the chip
         if self.thermal and self.chip_architect!="M3_5D":
-            print("----------thermal analysis start--------------------")
+        #     print("----------thermal analysis start--------------------")
 
-            peak_temp = thermal_model(
-                            self.thermal,
-                            self.chip_architect,
-                            chiplet_num,
-                            self.N_tile,
-                            self.placement_method,
-                            tier_2d_hop_list_power,
-                            tier_3d_hop_list_power,
-                            area_single_tile,
-                            single_router_area,
-                            mesh_edge,
-                            sim_name,
-                            layer_aib_list)
+        #     peak_temp = thermal_model(
+        #                     self.thermal,
+        #                     self.chip_architect,
+        #                     chiplet_num,
+        #                     self.N_tile,
+        #                     self.placement_method,
+        #                     tier_2d_hop_list_power,
+        #                     tier_3d_hop_list_power,
+        #                     area_single_tile,
+        #                     single_router_area,
+        #                     mesh_edge,
+        #                     sim_name,
+        #                     layer_aib_list)
+
+            print("Thermal model yet to be implemented for Systolic Array architecture")
+            peak_temp = 'NaN'
+
         else:
             peak_temp = 'NaN'
 
@@ -460,6 +468,12 @@ class HiSimModel:
         result_dictionary['networking simulation time (s)'] = end_noc - end_computing
         result_dictionary['computing simulation time (s)'] = end_computing - start
         result_dictionary['total simulation time (s)'] = end_thermal - start
+
+        print("\n")
+        if self.thermal:
+            print(" Thermal sim time is:",(end_thermal-end_noc),"s")
+            print("\n")
+        print("Total sim time is:",(end_thermal-start),"s")
 
         with open(self.filename_results, 'a', newline='') as csvfile:
             # Create a csv writer object

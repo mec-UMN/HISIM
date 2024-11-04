@@ -28,7 +28,7 @@ def compute_SA_model(SA_size, freq_computing, N_arr, N_pe, N_tier_real, N_stack_
     with open(filename, 'w') as csvfile1: 
         
         for layer_idx in range(len(computing_data)):
-            A_curr_tile, L_layer, E_layer = SA_function.forward(layer_idx, network_params)          
+            A_curr_tile, L_layer, E_layer = SA_function.forward(layer_idx, network_params, computing_data)          
             total_model_L += L_layer
             total_model_E_dynamic += E_layer
 
