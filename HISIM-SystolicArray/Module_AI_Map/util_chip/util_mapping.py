@@ -101,7 +101,7 @@ def model_mapping(filename,placement_method,network_params,SA_size,N_arr,N_pe,N_
             n_pe_y = math.ceil(n_c_y/math.sqrt(N_arr))              # Number of PEs in y direction
             layer_num_PE = n_pe_x*n_pe_y                            # Total number of PEs needed for the ayer
 
-            layer_num_tile = math.ceil(layer_num_PE/N_pe)           # Number of tiles required for this layer
+            layer_num_tile = math.ceil(n_pe_x/math.sqrt(N_pe))*math.ceil(n_pe_y/math.sqrt(N_pe))      # Number of tiles required for this layer
 
             err_result = util_map_fn.forward(layer_num_tile, layer_idx)
 
