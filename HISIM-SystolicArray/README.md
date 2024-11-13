@@ -181,7 +181,7 @@ The Thermal Map is a visual representation of the temperature distribution acros
 A demo video has been added to the repository to help users get started, showcasing a few examples using SA_run_tb.py. The test cases, their respective outputs, AI networks, hardware configuration, and DSE parameters inside SA_run_tb.py are as follows:
 ```
 Test Case      Output        AI Network      HW configuration                   DSE parameter
-                                             (Xbar-Npe-Ntile-Ntier-Nstack-arch)   
+                                             (Narr-Npe-Ntile-Ntier-Nstack-arch)   
 Test Case 1    PPA           ViT             128-36-64-2-2-3.5D                 NA - Single run
 Test Case 2    PPA           densenet121     128-36-144-2-2-3.5D                NA - Single run
 Test Case 3    PPA           densenet121     128-36-256-2-1-3D                  tsv_pitch: [2,3,4,5,10,20]
