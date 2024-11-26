@@ -3,10 +3,8 @@ import numpy as np
 import scipy.sparse as sparse_mat
 import scipy.sparse.linalg as sparse_algebra
 import matplotlib.pyplot as plt
-import math
+
 import pandas as pd
-import collections
-import time
 #====================================================================================================
 def plot_im(plot_data, title, save_name, vmin, vmax):
 
@@ -86,7 +84,6 @@ def basicblock(dict_size, dict_k,xdim,tiles_edges_in_tier):
 
     tallair  = dict_size["imc"][0]
     shortair = dict_size["r"][0]
-    dict_k['cu'] = 15
     #====================================================================================================
     # size  
     #====================================================================================================
@@ -257,7 +254,7 @@ def findparttype(xpos, layer,tiles_edges_in_tier):
 
 
 
-def create_cube(dict_size,dict_z, dict_k ,xdim , devicemap,   heatsinkair_resoluation, tiles_edges_in_tier ):
+def create_cube(dict_size,dict_z, dict_k ,xdim , devicemap,   heatsinkair_resoluation,tiles_edges_in_tier ):
 
 
     onebasiccol, onedevicecol0, onedevicecol1,dict_colk, dict_coln = basicblock(dict_size, dict_k, xdim,tiles_edges_in_tier)
@@ -274,10 +271,11 @@ def create_cube(dict_size,dict_z, dict_k ,xdim , devicemap,   heatsinkair_resolu
         layer_n_l = []
         layer_type_l = []
 
-        
+        devicelayer     = layerlist[2]
         heatsinklayer   = layerlist[0]
         heatspreadlayer = layerlist[1]
-        devicelayer     = layerlist[2]
+
+
 
         totalx = heatsinklayer[0][1]
 
@@ -295,10 +293,11 @@ def create_cube(dict_size,dict_z, dict_k ,xdim , devicemap,   heatsinkair_resolu
 
             #====================================================================================================
             if layertype=='device':
-                numofsublayer= 3
+                numofsublayer=3
             else :
-                numofsublayer = 5 # (int)(dict_z[layertype]//heatsinkair_resoluation)
+                numofsublayer = (int)(dict_z[layertype]//heatsinkair_resoluation)
             #====================================================================================================
+
 
             for idx1 in range(numofsublayer):
                 layer_type_l.append(layertype)
@@ -307,8 +306,7 @@ def create_cube(dict_size,dict_z, dict_k ,xdim , devicemap,   heatsinkair_resolu
                     layer_z_l.append(heatsinkair_resoluation/1000)
                 else:
                     layer_z_l.append(dict_z[layertype][idx1]/1000)
-                    
-                # ==============================================
+                #====================================================================================================
 
                 xpos = 0
                 devicetrigger = False
@@ -378,7 +376,7 @@ def create_cube(dict_size,dict_z, dict_k ,xdim , devicemap,   heatsinkair_resolu
         cube_z_dict[designname]   = layer_z_l
         cube_n_dict[designname]   = layer_n
         cube_layertype_dict[designname]   = layer_type_l
-        
+
 
     return cube_geo_dict, cube_k_dict, cube_z_dict,cube_n_dict, cube_layertype_dict
 
@@ -493,94 +491,42 @@ def snakewalk(numofnodex, numofnodey, start_pos, direction0, direction1):
 
 
 
-def load_power(case_,dict_z, devicemap, cube_n_dict, power_tsv, power_router, numofdevicelayer_dict,cube_layertype_dict,tiles_edges_in_tier,chiplet_num,placement_method,chip_architect):
+def load_power(case_,dict_z, devicemap, cube_n_dict, power_tsv, power_router, numofdevicelayer_dict,cube_layertype_dict,tiles_edges_in_tier,chiplet_num,placement_method):
 
-    power_inform = "./Debug/to_interconnect_analy/layer_performance.csv"
+    power_inform = "./Debug/to_interconnect_analy_v1/layer_performance.csv"
     power_inform = pd.read_csv(power_inform, header=None)
     power_inform = power_inform.to_numpy()
 
-    computing_inform = "./Debug/to_interconnect_analy/layer_inform.csv"
+    computing_inform = "./Debug/to_interconnect_analy_v1/layer_inform.csv"
     computing_data = pd.read_csv(computing_inform, header=None)
     computing_data = computing_data.to_numpy()
     power_l=[]
-
-    if placement_method!=5:
-        for i in range(len(computing_data)-1):
-
-            for y in range(int(computing_data[i][1])):
-                power_l.append(float(power_inform[i][5]))
-            if (computing_data[i][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[i][7]!=0 and (computing_data[i][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[i][7]<computing_data[i+1][1]:
-                for c in range(int((computing_data[i][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[i][7])):
-                    power_l.append(0)
-        for i in range(int(computing_data[-1][1])):
-            power_l.append(float(power_inform[-1][5]))
-        if (computing_data[-1][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[-1][7]!=0:
-            for c in range (int(((computing_data[-1][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[-1][7]))):
+    for i in range(len(computing_data)-1):
+        for y in range(computing_data[i][1]):
+            power_l.append(float(power_inform[i][5]))
+        if (computing_data[i][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[i][7]!=0 and (computing_data[i][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[i][7]<computing_data[i+1][1]:
+            for c in range((computing_data[i][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[i][7]):
                 power_l.append(0)
+    for i in range(computing_data[-1][1]):
+        power_l.append(float(power_inform[-1][5]))
+    if (computing_data[-1][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[-1][7]!=0:
+        for c in range((computing_data[-1][9]+1)*(tiles_edges_in_tier)*(tiles_edges_in_tier)-computing_data[-1][7]):
+            power_l.append(0)
     
-    every_tier_real_tiles=[]
-
-
-    if placement_method==5:
-        for tier_n in range(chiplet_num):
-            sum=0
-            for i in range(len(computing_data)):
-                if computing_data[i][9]==tier_n: 
-                    sum+=int(computing_data[i][1])
-            every_tier_real_tiles.append(sum)
-
-        for tier_n in range(chiplet_num):
-            #print(tier_n)
-            sum=0
-            for i in range(len(computing_data)):
-                if computing_data[i][9]==tier_n: 
-                    for y in range(int(computing_data[i][1])):
-                        power_l.append(float(power_inform[i][5]))
-                        sum+=1
-            if every_tier_real_tiles[tier_n]==sum:
-
-                for _ in range((tiles_edges_in_tier)*(tiles_edges_in_tier)-sum):
-                    
-                    power_l.append(0)
-                    
-
-
-
     new_power_list=[]
-
     if placement_method==1:
         power_l=power_l
     elif placement_method==2:
         for i in range(len(power_l)):
             new_power_list.append(power_l[len(power_l)-i-1])
         power_l=new_power_list
-    elif placement_method==3:
-        power_l_1=power_l
-        power_l.sort(reverse=True)
-        a=[None]*int(len(power_l)/2)
-        b=[None]*int(len(power_l)/2)
-        for i in range(int(len(power_l)/2)):
-                a[i]=power_l[2*i]
-
-                b[i]=power_l[2*i+1]
-        b.sort()
-        c=a+b
-        power_l=c
-    elif placement_method==4:
-        power_l_1=power_l
-        power_l.sort(reverse=True)
-        a=[None]*int(len(power_l)/2)
-        b=[None]*int(len(power_l)/2)
-        for i in range(int(len(power_l)/2)):
-                a[i]=power_l[2*i]
-
-                b[i]=power_l[2*i+1]
-        c=a+b
-        power_l=c
-
-    # in placement_method 5 tiles of layers of AI model will be placed in different tier first
-
-
+    
+    for i in range(len(power_l)):
+        if i ==int(len(power_l)/4) or i==int(len(power_l)*3/4):
+            power_l[i]=1000/25
+        else:
+            power_l[i]=1000/25
+    print(power_l)
     #====================================================================================================
     """
     if case_==1:
@@ -616,7 +562,7 @@ def load_power(case_,dict_z, devicemap, cube_n_dict, power_tsv, power_router, nu
     """
     #====================================================================================================
     power_l = np.array(power_l)
-
+   
     assert len(power_l)==chiplet_num*tiles_edges_in_tier*tiles_edges_in_tier
     #====================================================================================================
 
@@ -690,7 +636,6 @@ def load_power(case_,dict_z, devicemap, cube_n_dict, power_tsv, power_router, nu
 
 
                         tilepower_next = 0
-                      
                         if tiletype_next=='tsv' :
                             tilepower_next = power_tsv[tsv_idx]
                         elif tiletype_next=='imc0':
@@ -886,11 +831,7 @@ def get_conductance_G_new(cube_geo_dict, cube_k_dict, cube_z_dict):
                         neighbour_id_downbelow = id_(x_idx, y_idx, z_idx+1, numofnodex, numofnodey,numoflayer )
                         G_sparse[centernodeid, neighbour_id_downbelow ]=1
                         G_sparse[neighbour_id_downbelow, centernodeid ]=1
-                    #if y_idx==0 or numofnodey-1:
-                    #    neighbour_id_downbelow = id_(x_idx, y_idx, z_idx+1, numofnodex, numofnodey,numoflayer )
-                    #    G_sparse[centernodeid, neighbour_id_downbelow ]=1
-                    #    G_sparse[neighbour_id_downbelow, centernodeid ]=1
-                        
+
                     if z_idx== 1:
                         neighbour_id_downbelow = id_(x_idx, y_idx, z_idx-1, numofnodex, numofnodey,numoflayer )
                         G_sparse[centernodeid, neighbour_id_downbelow ]=1
@@ -1058,13 +999,8 @@ def solver(cube_G_dict, cube_n_dict,cube_power_dict,cube_layertype_dict,xdim,sim
         p = sparse_mat.csc_matrix(p)
         # I = sparse_mat.identity(G_sparse.shape[0]) * 1e-2
         # G_sparse = G_sparse + I
-        print('Starting solving...')
-        start_time = time.time()
-        
         t = sparse_algebra.spsolve(G_sparse,p,permc_spec=None,use_umfpack=True)
-        
-        print("Running time --- %s seconds ---" % (time.time() - start_time))
-        
+
         #====================================================================================================
         # t = t.reshape(numoflayer+1,numofnodex,numofnodey)
         # t = t[:numoflayer, :,:]
@@ -1092,7 +1028,7 @@ def solver(cube_G_dict, cube_n_dict,cube_power_dict,cube_layertype_dict,xdim,sim
         realratiot = convert2realratio(t, namemap,xdim)
 
 
-        
+
         vmin  = t.min()
         vmax  = t.max()
 
@@ -1100,125 +1036,11 @@ def solver(cube_G_dict, cube_n_dict,cube_power_dict,cube_layertype_dict,xdim,sim
         for i in range(len(t)):
             # layername = layertype_l[i]+' '+str(i)
             plot_im(plot_data=realratiot[i,:,:], title='device {}'.format(i), save_name='./Results/result_thermal/{}/thermal_map{}.png'.format(design, i), vmin=vmin, vmax=vmax)
-        
-    return round(vmax,2)
 
 
-def thermal_chip_architect(chip_architect,alpha,area_single_tile,single_router_area,chiplet_num):
-        #====================================================================================================
-    # w/mk
-    #====================================================================================================
-    if chip_architect=="M3D":
-        dict_k = dict()
-        dict_k['k_imc_0']  = 110/alpha
-        dict_k['k_imc_1']= 142.8/alpha
-        dict_k['k_imc_2']    = 4/alpha
-        dict_k['k_r_0']    = 110/alpha
-        dict_k['k_r_1']  = 142.8/alpha
-        dict_k['k_r_2']      = 4/alpha
-        dict_k['k_tsv_0']= 142.8/alpha
-        dict_k['k_tsv_1']  = 200/alpha
-        dict_k['k_tsv_2']  = 7.9/alpha
-        dict_k['cu']       = 398/alpha
-        dict_k['air']   = 0.0243/alpha
-        dict_k['subs']   = 142.8/alpha
-    elif chip_architect=="M2D":
-        dict_k = dict()
-        dict_k['k_imc_0']  = 110/alpha
-        dict_k['k_imc_1']= 142.8/alpha
-        dict_k['k_imc_2']    = 4/alpha
-        dict_k['k_r_0']    = 110/alpha
-        dict_k['k_r_1']  = 142.8/alpha
-        dict_k['k_r_2']      = 4/alpha
-        dict_k['k_tsv_0']= 110/alpha
-        dict_k['k_tsv_1']  = 142.8/alpha
-        dict_k['k_tsv_2']  = 4/alpha
-        dict_k['cu']       = 398/alpha
-        dict_k['air']   = 0.0243/alpha
-        dict_k['subs']   = 142.8/alpha
-
-    #====================================================================================================
-    # m
-    #====================================================================================================
-    imc_size = math.sqrt(area_single_tile)/1000
-    r_size   = math.sqrt(single_router_area)/1000*2
 
 
-    #====================================================================================================
-    # imc_size = 0.00085
-    # r_size = 0.00085
-    #====================================================================================================
-    #====================================================================================================
 
-    tsv0_length = r_size
-    tsv0_width  = imc_size
-    tsv1_length = imc_size
-    tsv1_width  = r_size
-
-
-    dict_z=dict()
-    #====================================================================================================
-    # set to mm
-    #====================================================================================================
-    # it will be later converted to m
-    #====================================================================================================
-    dict_z['heatsink']=40
-    dict_z['heatspread']=20
-    dict_z['device']=(0.002, 0.1, 0.02)
-    # die thickness (0.1-0.5)
-    # tim thickness (0.01-0.05)
-    dict_z['subs']=1
-    dict_z['air']=50
-    heatsinkair_resoluation=0.5
-    #====================================================================================================
-    dict_size = dict()
-    dict_size["imc"]  = (imc_size,imc_size)
-    dict_size["r"]    = (r_size,r_size)
-    dict_size["tsv0"] = (tsv0_length,tsv0_width)
-    dict_size["tsv1"] = (tsv1_length,tsv1_width)
-
-    #====================================================================================================
-    devicemap = collections.defaultdict(list)
-
-    #====================================================================================================
-
-    #====================================================================================================
-    #devicemap['3stacks'].append([(0, 5, 'heatsink')])
-    #devicemap['3stacks'].append([(0, 5, 'heatspread')])
-    #devicemap['3stacks'].append([(0, 1,'device'), (1,2,'air'), (2, 3, 'device' ),(3,4,'air'), (4, 5, 'device' )])
-    ###devicemap['3stacks'].append([(0, 1,'device'), (1,2,'air'), (2, 3, 'device' ),(3,4,'air'), (4, 5, 'device' )])
-    #devicemap['3stacks'].append([(0, 5, 'subs')])
-    #devicemap['3stacks'].append([(0, 5, 'air')])
-    #====================================================================================================
-    #devicemap['2stacks'].append([(0, 3, 'heatsink')])
-    #devicemap['2stacks'].append([(0, 3, 'heatspread')])
-    #devicemap['2stacks'].append([(0, 1,'device'), (1,2,'air'), (2, 3, 'device' )])
-    #devicemap['2stacks'].append([(0, 1,'device'), (1,2,'air'), (2, 3, 'device' )])
-    ##devicemap['2stacks'].append([(0, 1,'device'), (1,2,'air'), (2, 3, 'device' )])
-    ##devicemap['2stacks'].append([(0, 3, 'subs')])
-    #devicemap['2stacks'].append([(0, 3, 'air')])
-    ###====================================================================================================
-    devicemap['1stacks'].append([(0, 1, 'heatsink')])
-    devicemap['1stacks'].append([(0, 1, 'heatspread')])
-    for i in range(chiplet_num):
-        devicemap['1stacks'].append([(0, 1,'device')])
-    devicemap['1stacks'].append([(0, 1, 'subs')])
-    devicemap['1stacks'].append([(0, 1, 'air')])
-    ###====================================================================================================
-    #devicemap['0stacks'].append([(0, 6, 'heatsink')])
-    #devicemap['0stacks'].append([(0, 6, 'heatspread' )])
-    #devicemap['0stacks'].append([(0, 1, 'device' ),(1, 2, 'device' ),(2, 3, 'device' ),(3, 4, 'device' ),(4, 5, 'device' ),(5, 6, 'device' ),  ])
-    #devicemap['0stacks'].append([(0, 6, 'subs' )])
-    #devicemap['0stacks'].append([(0, 6, 'air' )])
-    #====================================================================================================
-    numofdevicelayer = dict()
-    #numofdevicelayer['0stacks']= 1
-    numofdevicelayer['1stacks']= chiplet_num
-    #numofdevicelayer['2stacks']= 3
-    ##numofdevicelayer['3stacks']= 2
-    #====================================================================================================
-
-    return dict_k
 
 
 

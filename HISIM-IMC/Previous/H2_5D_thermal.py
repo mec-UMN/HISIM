@@ -105,7 +105,7 @@ class H2_5D(object):
         self.dict_k['k_r_0']    = 110/self.alpha
         self.dict_k['k_r_1']  = 142.8/self.alpha
         # self.dict_k['k_r_2']      = 4/self.alpha
-        self.dict_k['cu']       = 20
+        self.dict_k['cu']       = 398/self.alpha
         self.dict_k['air']   = 0.0243/self.alpha
         self.dict_k['subs']   = 142.8/self.alpha
         self.dict_k['pcb']   = 0.6/self.alpha  #todo
@@ -692,6 +692,8 @@ class H2_5D(object):
         all_z_name_l = ['tier']*len(z_height_aib_l)+['emib']*len(z_height_emib_l)
 
 
+
+
         pcb_n_tier = np.array(['pcb___']*self.N*self.N*2*2*self.emib_sublayer).reshape(self.emib_sublayer,self.N*2,self.N*2)
         emib_n_aib = np.array(['emib__']*self.N*2*self.aib_width_n*self.emib_sublayer).reshape(self.emib_sublayer,self.N*2,self.aib_width_n)
         air_n_emib = np.array(['air___']*self.N*2*self.emib_width_n*self.tier_sublayer).reshape(self.tier_sublayer,self.N*2,self.emib_width_n)
@@ -821,13 +823,13 @@ class H2_5D(object):
         all_height_l = z_height_aib_l+z_height_emib_l
         all_z_name_l = ['tier']*len(z_height_aib_l)+['emib']*len(z_height_emib_l)
 
-        heat_height_l = [self.heatsinkair_resoluation] * 5 # int((self.dict_z['heatsink']+self.dict_z['heatspread'])//self.heatsinkair_resoluation)
+        heat_height_l = [self.heatsinkair_resoluation]*int((self.dict_z['heatsink']+self.dict_z['heatspread'])//self.heatsinkair_resoluation)
         pcb_height_l  = [self.heatsinkair_resoluation]*int((self.dict_z['pcb']))
-        air_height_l  = [self.heatsinkair_resoluation] * 5 # int((self.dict_z['air'])//self.heatsinkair_resoluation)
+        air_height_l  = [self.heatsinkair_resoluation]*int((self.dict_z['air'])//self.heatsinkair_resoluation)
 
-        heat_name_l = ['heatsink'] * 5 # int((self.dict_z['heatsink']+self.dict_z['heatspread'])//self.heatsinkair_resoluation)
+        heat_name_l = ['heatsink']*int((self.dict_z['heatsink']+self.dict_z['heatspread'])//self.heatsinkair_resoluation)
         pcb_name_l  = ['pcb']*int((self.dict_z['pcb']))
-        air_name_l  = ['air'] * 5 # int((self.dict_z['air'])//self.heatsinkair_resoluation)
+        air_name_l  = ['air']*int((self.dict_z['air'])//self.heatsinkair_resoluation)
 
         all_height_l = heat_height_l+all_height_l+pcb_height_l+air_height_l
         all_z_name_l = heat_name_l+all_z_name_l+pcb_name_l+air_name_l
@@ -848,12 +850,6 @@ class H2_5D(object):
         assert full_k.shape[0]==len(all_height_l)
         assert full_p.shape[0]==len(all_height_l)
         #====================================================================================================
-        
-        
-#        print("structure", all_height_l, all_z_name_l, all_z_count_l)
-#        print(heatspread_k.shape, full_k.shape, full_k.shape, pcb_k.shape, air_k.shape)
-        
-        
         return full_k, full_p, grid_size, all_height_l, all_z_count_l
 
 
