@@ -13,9 +13,13 @@ import sys
 current_dir = os.path.dirname(__file__)
 parent_dir = os.path.dirname(current_dir)
 target_file_path = os.path.join(parent_dir, 'AI_Networks')
+onnx_file_path = os.path.join(parent_dir, 'Onnx_codes/Onnx_network')
+
 
 print("target: ", target_file_path)
 print("vit: ", f'{target_file_path}/GCN/VIT_base.csv')
+print("onnx: ", onnx_file_path)
+
 
 def smallest_square_greater_than(n):
     square_root = math.ceil(math.sqrt(n))
@@ -43,6 +47,27 @@ def load_ai_network(aimodel):
         network_params = np.loadtxt(f'{target_file_path}/Testing/NetWork_roofline_3.csv', dtype=int, delimiter=',')
     
     return network_params
+
+def load_ai_network_onnx(aimodel):
+    file_found = False
+    for file_name in os.listdir(onnx_file_path):
+        if file_name.endswith(".csv") and aimodel in file_name:
+            file_found = True
+            file_path = os.path.join(onnx_file_path, file_name)
+            print(f"Loading file: {file_path}")
+
+            try:
+                network_params = np.loadtxt(file_path, dtype=int, delimiter=",")
+                print(f"Data loaded successfully from {file_name}")
+            except Exception as e:
+                print(f"Error loading file {file_name}: {e}")
+            break
+
+    if not file_found:
+        print(f"No CSV file containing '{aimodel}' was found in the folder: {onnx_file_path}")
+    
+    return network_params
+
 
 def model_mapping(filename,placement_method,network_params,SA_size,N_arr,N_pe,N_tile,N_tier,N_stack,bit_width):
     #---------------------------------------------------------------------#

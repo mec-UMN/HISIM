@@ -7,19 +7,12 @@ import sys
 import scipy.sparse as sparse_mat
 import scipy.sparse.linalg as sparse_algebra
 from scipy.sparse.linalg import inv
-import torch
 import collections
 import pandas as pd
 # from util import *
 import time
 #import cupy as cp
 #from cupyx.scipy.sparse import csr_matrix as csr_gpu
-
-
-
-# np.set_printoptions(threshold=sys.maxsize)
-torch.set_printoptions(threshold=50_000)
-
 
 
 class H2_5D(object):

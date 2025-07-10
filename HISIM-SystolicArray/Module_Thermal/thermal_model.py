@@ -1,4 +1,3 @@
-import torch
 import math
 import collections
 from Module_Thermal.util import *

@@ -52,7 +52,7 @@ from Module_Compute.functions_SA import SA_calc
 from Module_Thermal.thermal_model import thermal_model
 from Module_Network.network_model import network_model
 from Module_Compute.compute_SA_model import compute_SA_model
-from Module_AI_Map.util_chip.util_mapping import model_mapping, load_ai_network, smallest_square_greater_than
+from Module_AI_Map.util_chip.util_mapping import model_mapping, load_ai_network, load_ai_network_onnx,  smallest_square_greater_than
 from Module_Network.aib_2_5d import  aib
 from itertools import chain
 import pandas as pd
@@ -286,7 +286,8 @@ class HiSimModel:
         #     Mapping: from AI model -> hardware mapping                      #
         #                                                                     #
         #---------------------------------------------------------------------#
-        network_params = load_ai_network(self.ai_model)                 #Load AI network parameters from the network csv file
+        #network_params = load_ai_network(self.ai_model)                    #Load AI network parameters from the network csv file
+        network_params = load_ai_network_onnx(self.ai_model)                 #Load AI network parameters from the onnx generated network csv file
         sim_name=run_name
         filename_results = "./Results/PPA.csv"                          #Location to store PPA results
 

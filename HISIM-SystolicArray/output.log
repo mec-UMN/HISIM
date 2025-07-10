@@ -1,0 +1,750 @@
+target:  /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/AI_Networks
+vit:  /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/AI_Networks/GCN/VIT_base.csv
+onnx:  /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network
+Test Case 1: Running HISIM to obtain PPA
+AI Network: ViT
+HW configuration (SAsize-Npe-Ntile-Ntier-Nstack-chip_arch):128-36-64-2-2-3.5D
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_vit.csv
+Data loaded successfully from Network_vit.csv
+---------------------------------------------------- 
+
+start mapping  vit 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 123558.0 ns
+Total dynamic energy 43.75618 mJ
+Overall compute Power 354.1347 W
+Total tiles area 105102.97602 mm2
+Total tiles area each tier, 26275.744 mm2
+Computing model sim time is: 0.01869821548461914 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 123596102
+Total HOP for 2d communication: 67984
+Total Q bits for 3d communication: 1968398
+Total HOP for 3d communication: 11136
+Total Q bits for 2.5d communication: 5529600
+--------------network area report------------------------
+single tile area 410.5585 mm2
+single router area 0.00997 mm2
+edge length single router 0.09987 mm
+edge length single tile 20.26224 mm
+total 3d stack area 53070.80129 mm2
+2.5d area 76.7086
+---------------------------------------------------------
+2D NoC W2d 32
+3D TSV W3d 242
+network total energy 375550928.81308 pJ
+network power 66.36943 mW
+total NoC latency 8164001.51879 ns
+computing latency 123558.0 ns
+total system latency 8287559.51879 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 1.3061261177062988 s
+The total computing+network sim time is: 1.324824333190918 s 
+
+
+
+Total sim time is: 1.3248412609100342 s
+Test case 1 done. Please check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information
+
+Press Enter to execute next test caseTest Case 2: Running HISIM to obtain PPA
+AI Network: densenet121
+HW configuration (SAsize-Npe-Ntile-Ntier-Nstack-chip_arch):128-36-144-2-2-3.5D
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 118060.78842 mm2
+Total tiles area each tier, 59030.39421 mm2
+Computing model sim time is: 0.026967287063598633 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54264668
+Total HOP for 2d communication: 245059
+Total Q bits for 3d communication: 487728
+Total HOP for 3d communication: 22176
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.00999 mm2
+edge length single router 0.09993 mm
+edge length single tile 20.24681 mm
+total 3d stack area 59614.53239 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 32
+3D TSV W3d 242
+network total energy 229685966.13389 pJ
+network power 68.9008 mW
+total NoC latency 4731747.55992 ns
+computing latency 158646.0 ns
+total system latency 4890393.55992 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 1.4537057876586914 s
+The total computing+network sim time is: 1.48067307472229 s 
+
+
+
+Total sim time is: 1.480689287185669 s
+Test case 2 done. Please check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information
+
+Press Enter to execute next test caseTest Case 3: Running HISIM to obtain PPA for different TSV pitches
+AI Network: densenet121
+HW configuration ( SAsize-Npe-Ntile-Ntier-Nstack-chip_arch):128-36-256-2-1-3D
+TSV_pitch: 2 um
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.01904773712158203 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.11393 mm2
+edge length single router 0.33753 mm
+edge length single tile 20.24681 mm
+total 3d stack area 108471.03783 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 32
+3D TSV W3d 1458
+network total energy 652790441.33584 pJ
+network power 815.11039 mW
+total NoC latency 6562380.85665 ns
+computing latency 158646.0 ns
+total system latency 6721026.85665 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3868799209594727 s
+The total computing+network sim time is: 2.4059276580810547 s 
+
+
+
+Total sim time is: 2.4059360027313232 s
+TSV_pitch: 3 um
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.018360614776611328 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.03257 mm2
+edge length single router 0.18047 mm
+edge length single tile 20.24681 mm
+total 3d stack area 106822.11154 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 32
+3D TSV W3d 648
+network total energy 540943801.54665 pJ
+network power 248.38613 mW
+total NoC latency 6562851.30247 ns
+computing latency 158646.0 ns
+total system latency 6721497.30247 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3830506801605225 s
+The total computing+network sim time is: 2.401411294937134 s 
+
+
+
+Total sim time is: 2.401420831680298 s
+TSV_pitch: 4 um
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.018213748931884766 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.01423 mm2
+edge length single router 0.11931 mm
+edge length single tile 20.24681 mm
+total 3d stack area 106183.32881 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 32
+3D TSV W3d 338
+network total energy 518827637.65916 pJ
+network power 136.44715 mW
+total NoC latency 6563627.95562 ns
+computing latency 158646.0 ns
+total system latency 6722273.95562 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3860650062561035 s
+The total computing+network sim time is: 2.4042787551879883 s 
+
+
+
+Total sim time is: 2.404287815093994 s
+TSV_pitch: 5 um
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.02080225944519043 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.00999 mm2
+edge length single router 0.09996 mm
+edge length single tile 20.24681 mm
+total 3d stack area 105981.70603 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 32
+3D TSV W3d 242
+network total energy 514301042.57705 pJ
+network power 113.56149 mW
+total NoC latency 6564271.97107 ns
+computing latency 158646.0 ns
+total system latency 6722917.97107 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3715908527374268 s
+The total computing+network sim time is: 2.392393112182617 s 
+
+
+
+Total sim time is: 2.3924076557159424 s
+TSV_pitch: 10 um
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.01985764503479004 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.00355 mm2
+edge length single router 0.05956 mm
+edge length single tile 20.24681 mm
+total 3d stack area 105561.22869 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 32
+3D TSV W3d 50
+network total energy 508537653.0835 pJ
+network power 84.45047 mW
+total NoC latency 6572979.06 ns
+computing latency 158646.0 ns
+total system latency 6731625.06 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.381298065185547 s
+The total computing+network sim time is: 2.401155710220337 s 
+
+
+
+Total sim time is: 2.401170253753662 s
+TSV_pitch: 20 um
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.018433570861816406 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.0025 mm2
+edge length single router 0.05 mm
+edge length single tile 20.24681 mm
+total 3d stack area 105461.83951 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 32
+3D TSV W3d 8
+network total energy 507838302.74438 pJ
+network power 80.79782 mW
+total NoC latency 6630595.5 ns
+computing latency 158646.0 ns
+total system latency 6789241.5 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3811278343200684 s
+The total computing+network sim time is: 2.3995614051818848 s 
+
+
+
+Total sim time is: 2.399576187133789 s
+Test case 3 done. Please check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information
+
+Press Enter to execute next test caseTest Case 4: Running HISIM to obtain PPA for different NoC bandwidths
+AI Network: densenet121
+HW configuration ( SAsize-Npe-Ntile-Ntier-Nstack-chip_arch):128-36-256-2-1-3D
+number of links of 2D NoC: 6
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.017825841903686523 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.00119 mm2
+edge length single router 0.03451 mm
+edge length single tile 20.24681 mm
+total 3d stack area 105300.97166 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 6
+3D TSV W3d 50
+network total energy 367180117.57496 pJ
+network power 22.13587 mW
+total NoC latency 21219210.22667 ns
+computing latency 158646.0 ns
+total system latency 21377856.22667 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.389049530029297 s
+The total computing+network sim time is: 2.4068753719329834 s 
+
+
+
+Total sim time is: 2.406895160675049 s
+number of links of 2D NoC: 11
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.019873857498168945 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.00264 mm2
+edge length single router 0.05139 mm
+edge length single tile 20.24681 mm
+total 3d stack area 105476.36204 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 11
+3D TSV W3d 98
+network total energy 395272886.98184 pJ
+network power 40.6003 mW
+total NoC latency 13020139.1744 ns
+computing latency 158646.0 ns
+total system latency 13178785.1744 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3897833824157715 s
+The total computing+network sim time is: 2.4096572399139404 s 
+
+
+
+Total sim time is: 2.409667730331421 s
+number of links of 2D NoC: 16
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.018465518951416016 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.00393 mm2
+edge length single router 0.06265 mm
+edge length single tile 20.24681 mm
+total 3d stack area 105593.39584 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 16
+3D TSV W3d 128
+network total energy 422997488.393 pJ
+network power 56.98935 mW
+total NoC latency 9946190.9375 ns
+computing latency 158646.0 ns
+total system latency 10104836.9375 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3683526515960693 s
+The total computing+network sim time is: 2.3868181705474854 s 
+
+
+
+Total sim time is: 2.3868277072906494 s
+number of links of 2D NoC: 21
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.018186569213867188 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.00552 mm2
+edge length single router 0.07429 mm
+edge length single tile 20.24681 mm
+total 3d stack area 105714.44389 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 21
+3D TSV W3d 162
+network total energy 451028507.21054 pJ
+network power 73.97098 mW
+total NoC latency 8335815.2575 ns
+computing latency 158646.0 ns
+total system latency 8494461.2575 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3727307319641113 s
+The total computing+network sim time is: 2.3909173011779785 s 
+
+
+
+Total sim time is: 2.390932321548462 s
+number of links of 2D NoC: 26
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.01755666732788086 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.00616 mm2
+edge length single router 0.07851 mm
+edge length single tile 20.24681 mm
+total 3d stack area 105758.35481 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 26
+3D TSV W3d 162
+network total energy 478258425.62045 pJ
+network power 85.4026 mW
+total NoC latency 7345368.51757 ns
+computing latency 158646.0 ns
+total system latency 7504014.51757 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3711953163146973 s
+The total computing+network sim time is: 2.388751983642578 s 
+
+
+
+Total sim time is: 2.3887672424316406 s
+number of links of 2D NoC: 31
+=========================================start HISIM simulation =========================================  
+
+Loading file: /ece/home/nalla052/HISIM-develop/HISIM-SystolicArray/Module_AI_Map/Onnx_codes/Onnx_network/Network_densenet121.csv
+Data loaded successfully from Network_densenet121.csv
+---------------------------------------------------- 
+
+start mapping  densenet121 
+
+----------computing performance results-----------------
+--------------------------------------------------------
+Total compute latency 158646.0 ns
+Total dynamic energy 7.91772 mJ
+Overall compute Power 49.90811 W
+Total tiles area 209885.84607 mm2
+Total tiles area each tier, 104942.92304 mm2
+Computing model sim time is: 0.01882195472717285 s
+--------------------------------------------------------
+----------computing performance done--------------------
+
+
+----------network performance results--------------------
+----------network data information-----------------------
+Total Q bits for 2d communication: 54078392
+Total HOP for 2d communication: 596997
+Total Q bits for 3d communication: 274364
+Total HOP for 3d communication: 39424
+--------------network area report------------------------
+single tile area 409.93329 mm2
+single router area 0.0082 mm2
+edge length single router 0.09056 mm
+edge length single tile 20.24681 mm
+total 3d stack area 105883.75866 mm2
+2.5d area 0
+---------------------------------------------------------
+2D NoC W2d 31
+3D TSV W3d 200
+network total energy 507109135.31805 pJ
+network power 103.09828 mW
+total NoC latency 6673777.15613 ns
+computing latency 158646.0 ns
+total system latency 6832423.15613 ns
+----------network performance done--------------------
+
+
+-------------------network time report--------------------
+The noc sim time is: 2.3752949237823486 s
+The total computing+network sim time is: 2.3941168785095215 s 
+
+
+
+Total sim time is: 2.394132137298584 s
+Test case 4 done. Please check Results/PPA.csv for PPA information and Results/tile_map.png for tile mapping information
+
