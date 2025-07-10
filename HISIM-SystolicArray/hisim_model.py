@@ -286,8 +286,8 @@ class HiSimModel:
         #     Mapping: from AI model -> hardware mapping                      #
         #                                                                     #
         #---------------------------------------------------------------------#
-        #network_params = load_ai_network(self.ai_model)                    #Load AI network parameters from the network csv file
-        network_params = load_ai_network_onnx(self.ai_model)                 #Load AI network parameters from the onnx generated network csv file
+        network_params = load_ai_network(self.ai_model)                    #Load AI network parameters from the network csv file
+        #network_params = load_ai_network_onnx(self.ai_model)                 #Load AI network parameters from the onnx generated network csv file
         sim_name=run_name
         filename_results = "./Results/PPA.csv"                          #Location to store PPA results
 
