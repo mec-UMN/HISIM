@@ -11,7 +11,7 @@
 # HISIM_V1.1
 HISIM introduces a suite of analytical models at the system level to speed up performance prediction for AI models, covering logic-on-logic architectures across 2D, 2.5D, 3D and 3.5D integration.
 
-![HISIM Overview](https://github.com/pragnyan948/HISIM/blob/main/HISIM_Overview.png "HISIM Overview")
+![HISIM Overview](https://github.com/pragnyan948/HISIM/blob/main/HISIM-IMC/HISIM_Overview.png "HISIM Overview")
 
 ## File Lists
 The main directory structure of the repository is shown below. The file `run_tb.py` contains example use cases for running the tool.
@@ -235,6 +235,17 @@ Alternatively, the demo video located at Demos/demo-05172024.mp4 demonstrates ex
 ## Citing this work
 If you found this tool useful, please use the following bibtex to cite us
 ```
+@ARTICLE{10844846,
+  author={Wang, Zhenyu and Nalla, Pragnya Sudershan and Sun, Jingbo and Goksoy, A. Alper and Mandal, Sumit K. and Seo, Jae-sun and Chhabria, Vidya A. and Zhang, Jeff and Chakrabarti, Chaitali and Ogras, Umit Y. and Cao, Yu},
+  journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems}, 
+  title={HISIM: Analytical Performance Modeling and Design Space Exploration of 2.5D/3D Integration for AI Computing}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Artificial intelligence;Integrated circuit modeling;Three-dimensional displays;Chiplets;Computer architecture;Computational modeling;Benchmark testing;Integrated circuit interconnections;Analytical models;Data models;heterogeneous integration;2.5D/3D;chiplet;in-memory computing;network-on-package;thermal simulation},
+  doi={10.1109/TCAD.2025.3531348}}
+
 @INPROCEEDINGS{10396377,
   author={Wang, Zhenyu and Sun, Jingbo and Goksoy, Alper and Mandal, Sumit K. and Seo, Jae-Sun and Chakrabarti, Chaitali and Ogras, Umit Y. and Chhabria, Vidya and Cao, Yu},
   booktitle={2023 IEEE 15th International Conference on ASIC (ASICON)}, 

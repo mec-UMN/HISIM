@@ -23,7 +23,7 @@ class SA_calc():
         self.L_pe = 1.0                                         # Latency of single MAC unit in clock cycles
         self.A_pe = 674.73                                      # Area of MAC unit in um^2
         self.A_pe_toprow = 419.20                               # Area of first (top) row MAC unit in um^2
-        self.P_pe = 0.929                                       # Power of MAC unit in mW
+        self.P_pe = 0.0929                                       # Power of MAC unit in mW
         self.P_pe_toprow = 0.0551                               # Power of first (top) row MAC unit in mW
         self.P_pe_cal = 0.0326                                  # Power calibration value in mW
         self.Leak_pe = 0.000060438                              # Leakage Power in mW

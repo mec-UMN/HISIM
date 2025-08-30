@@ -1,7 +1,7 @@
 # HISIM_V1.0_Systolic Array
 HISIM introduces a suite of analytical models at the system level to speed up performance prediction for AI models, covering logic-on-logic architectures across 2D, 2.5D, 3D and 3.5D integration.
 
-![HISIM Overview](https://github.com/pragnyan948/HISIM/blob/main/HISIM_Overview.png "HISIM Overview")
+![HISIM Overview](https://github.com/pragnyan948/HISIM/blob/main/HISIM-SystolicArray/HISIM_Overview.png "HISIM Overview")
 
 ## File Lists
 The main directory structure of the repository is shown below. The file `SA_run_tb.py` contains example use cases for running the tool.
@@ -181,7 +181,7 @@ The Thermal Map is a visual representation of the temperature distribution acros
 A demo video has been added to the repository to help users get started, showcasing a few examples using SA_run_tb.py. The test cases, their respective outputs, AI networks, hardware configuration, and DSE parameters inside SA_run_tb.py are as follows:
 ```
 Test Case      Output        AI Network      HW configuration                   DSE parameter
-                                             (Xbar-Npe-Ntile-Ntier-Nstack-arch)   
+                                             (Narr-Npe-Ntile-Ntier-Nstack-arch)   
 Test Case 1    PPA           ViT             128-36-64-2-2-3.5D                 NA - Single run
 Test Case 2    PPA           densenet121     128-36-144-2-2-3.5D                NA - Single run
 Test Case 3    PPA           densenet121     128-36-256-2-1-3D                  tsv_pitch: [2,3,4,5,10,20]
@@ -191,6 +191,17 @@ Test Case 4    PPA           densenet121     128-36-256-2-1-3D                  
 ## Citing this work
 If you found this tool useful, please use the following bibtex to cite us
 ```
+@ARTICLE{10844846,
+  author={Wang, Zhenyu and Nalla, Pragnya Sudershan and Sun, Jingbo and Goksoy, A. Alper and Mandal, Sumit K. and Seo, Jae-sun and Chhabria, Vidya A. and Zhang, Jeff and Chakrabarti, Chaitali and Ogras, Umit Y. and Cao, Yu},
+  journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems}, 
+  title={HISIM: Analytical Performance Modeling and Design Space Exploration of 2.5D/3D Integration for AI Computing}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Artificial intelligence;Integrated circuit modeling;Three-dimensional displays;Chiplets;Computer architecture;Computational modeling;Benchmark testing;Integrated circuit interconnections;Analytical models;Data models;heterogeneous integration;2.5D/3D;chiplet;in-memory computing;network-on-package;thermal simulation},
+  doi={10.1109/TCAD.2025.3531348}}
+
 @INPROCEEDINGS{10396377,
   author={Wang, Zhenyu and Sun, Jingbo and Goksoy, Alper and Mandal, Sumit K. and Seo, Jae-Sun and Chakrabarti, Chaitali and Ogras, Umit Y. and Chhabria, Vidya and Cao, Yu},
   booktitle={2023 IEEE 15th International Conference on ASIC (ASICON)}, 
