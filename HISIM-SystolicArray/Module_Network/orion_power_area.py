@@ -273,8 +273,8 @@ def Power_Module_powerOutputCtrl(width,Cw):
     Cenable = (1 + 5.0/16.0)*(1.0+Co/Ci)*(Woutmod* Cw + width* Cen) 
 
     return Cenable * (Vdd*Vdd) * fCLK 
-        
-def power_summary_router(channel_width,input_switch,output_switch,hop,trc,tva,tsa,tst,tl,tenq,Q,N_chiplet,mesh_edge):
+
+def power_summary_router(channel_width,input_switch,output_switch,latency_breakdown):
     if input_switch==6:
         type="TSV"
     else:
@@ -282,7 +282,7 @@ def power_summary_router(channel_width,input_switch,output_switch,hop,trc,tva,ts
 
     K,M,N,wire_length,Cw=interconnect_type(type)
     channel_wire_power,channel_clk_power,channel_DFFPower,channelLeakPower,channelArea=Power_Module_calcChannel(channel_width,wire_length,K,M,N,Cw)
-    inputReadPower,inputWritePower,Pleak,inputArea=Power_Module_calcBuffer(channel_width=channel_width,input_switch=input_switch,Cw=Cw)
+    f,inputWritePower,Pleak,inputArea=Power_Module_calcBuffer(channel_width=channel_width,input_switch=input_switch,Cw=Cw)
     switchPower,switchPowerCtrl,switchPowerLeak,switchArea,outputPower,outputPowerClk,outputCtrlPower,outputArea=Power_Module_calcSwitch(channel_width=channel_width,Cw=Cw)
     #total_power=channel_wire_power+channel_clk_power+channel_DFFPower+channelLeakPower+inputReadPower+inputWritePower+Pleak+switchPower+switchPowerCtrl+outputPower+outputPowerClk+outputCtrlPower
     
@@ -318,3 +318,32 @@ def power_summary_router(channel_width,input_switch,output_switch,hop,trc,tva,ts
 
     return total_area_router, channel_wire_power+channel_clk_power+channel_DFFPower,inputReadPower+inputWritePower+switchPower+switchPowerCtrl+outputPower+outputPowerClk+outputCtrlPower
 
+def area_router_single(channel_width, type):
+    K,M,N,wire_length,Cw=interconnect_type(type)
+    _,_,_,_,channelArea=Power_Module_calcChannel(channel_width,wire_length,K,M,N,Cw)
+    _,_,_,inputArea=Power_Module_calcBuffer(channel_width=channel_width,input_switch=input_switch,Cw=Cw)
+    _,_,_,switchArea,_,_,_,outputArea=Power_Module_calcSwitch(channel_width=channel_width,Cw=Cw)
+
+    total_area_router_single=channelArea+switchArea+inputArea+outputArea
+    return total_area_router_single
+
+def power_router_single(channel_width,type,latency_breakdown):
+   
+    K,M,N,wire_length,Cw=interconnect_type(type)
+    channel_wire_power,channel_clk_power,channel_DFFPower,channelLeakPower,_=Power_Module_calcChannel(channel_width,wire_length,K,M,N,Cw)
+    inputReadPower,inputWritePower,Pleak,_=Power_Module_calcBuffer(channel_width=channel_width,input_switch=input_switch,Cw=Cw)
+    switchPower,switchPowerCtrl,switchPowerLeak,_,outputPower,outputPowerClk,outputCtrlPower,_=Power_Module_calcSwitch(channel_width=channel_width,Cw=Cw)
+    #total_power=channel_wire_power+channel_clk_power+channel_DFFPower+channelLeakPower+inputReadPower+inputWritePower+Pleak+switchPower+switchPowerCtrl+outputPower+outputPowerClk+outputCtrlPower
+    
+    channel_wire_power=channel_wire_power*latency_breakdown["act_fac_channel"]
+    channel_DFFPower=channel_DFFPower*latency_breakdown["act_fac_channel"]
+    inputReadPower=inputReadPower*latency_breakdown["act_fac_inputbuffer"]
+    inputWritePower=inputWritePower*latency_breakdown["act_fac_inputbuffer"]
+    switchPower=switchPower*latency_breakdown["act_fac_switch"]
+    switchPowerCtrl=switchPowerCtrl*latency_breakdown["act_fac_switchctrl"]
+    outputPower=outputPower*latency_breakdown["act_fac_output"]
+    outputCtrlPower=outputCtrlPower*latency_breakdown["act_fac_output"]
+    outputPowerClk=outputPowerClk*latency_breakdown["act_fac_outputclk"]
+
+
+    return _, channel_wire_power+channel_clk_power+channel_DFFPower,inputReadPower+inputWritePower+switchPower+switchPowerCtrl+outputPower+outputPowerClk+outputCtrlPower

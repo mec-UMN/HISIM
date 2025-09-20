@@ -56,6 +56,7 @@
     "tx_2x_fifo": 7.375,
     "tx_2x_io": 1.5,
     "tx_4x_fifo": 3.6875,
-    "tx_4x_io": 1.5
+    "tx_4x_io": 1.5,
 
+    "aib_BW_Gbps_mm":1024 
 }

@@ -4,7 +4,7 @@ import os
 
 # Load parameters from JSON file
 current_dir = os.path.dirname(__file__)
-relative_path = os.path.join(current_dir, 'params.json')
+relative_path = os.path.join(current_dir, 'aib_params.json')
 
 with open(relative_path) as f:
     params = json.load(f)
@@ -97,19 +97,19 @@ tx_4x_fifo= params["tx_4x_fifo"]
 tx_4x_io= params["tx_4x_io"]
 
 
-def aib(Q, Len_chip, mode, volt):
+def aib(Q, Len_chip, mode, volt, n_ch=n_ch):
     #Q: data volume is in MegaBytes
 
     #AIB Tx area, energy and latency (40Tx, 0Rx)
-    area_Tx, BW =area_aib(Len_chip, mode, n_Tx_config*2, 0)        
-    latency_Tx, energy_Tx,energy_eff_Tx =performance_aib(volt,n_Tx_config*2, 0)
+    area_Tx, BW =area_aib(Len_chip, mode, n_Tx_config*2, 0, n_ch)        
+    latency_Tx, energy_Tx,energy_eff_Tx =performance_aib(volt,n_Tx_config*2, 0, n_ch)
     
     #area, energy, power and latency of wire interface connecting AIB modules of two chiplets
     A_wire, L_wire,E_wire, P_wire = area_performance_wire(n_Tx_config*2, 0)
 
     #AIB Rx area, energy and latency(0Tx, 40Rx)
-    area_Rx, BW =area_aib(Len_chip, mode, 0, n_Rx_config*2)
-    latency_Rx, energy_Rx,energy_eff_Rx =performance_aib(volt,0, n_Rx_config*2)
+    area_Rx, BW =area_aib(Len_chip, mode, 0, n_Rx_config*2, n_ch)
+    latency_Rx, energy_Rx,energy_eff_Rx =performance_aib(volt,0, n_Rx_config*2, n_ch)
 
     #Number of AIB transmissions required to send the total data volume Q
     N_tr=math.ceil(Q*1e+6*8/(max(n_Tx_config*2, n_Rx_config*2)*8*n_ch))
@@ -123,14 +123,14 @@ def aib(Q, Len_chip, mode, volt):
 
     if validate:
         #To validate PPA compared to the AIB tapeout (40Tx, 40 Rx) - https://ieeexplore.ieee.org/document/10374406
-        area_Tx, BW =area_aib(Len_chip, mode, n_Tx_config, n_Rx_config)
-        latency_Tx, energy_Tx,energy_eff_Tx =performance_aib(volt,n_Tx_config, n_Rx_config)
+        area_Tx, BW =area_aib(Len_chip, mode, n_Tx_config, n_Rx_config, n_ch)
+        latency_Tx, energy_Tx,energy_eff_Tx =performance_aib(volt,n_Tx_config, n_Rx_config, n_ch)
 
     #print("AIB:",round(area_Tx,2), "mm2 ",round(latency_Tx,2), "ns ", round(energy_Tx,2), "pJ ", round(energy_eff_Tx,2), "pJ/bit",round(BW,2), "Tbps" , round(energy_Tx/latency_Tx/area_Tx,2), "mW/mm2" )
     #print("EMIB:", round(A_wire,2), "mm2 ",round(L_wire,2), "ns ", round(E_wire,2), "pJ ")
-    return [area, energy, latency, area_Tx, area_Rx, A_wire, energy_Tx, energy_Rx, P_wire, latency_Tx, latency_Rx]
+    return [area, energy, latency, area_Tx, area_Rx, A_wire, energy_Tx, energy_Rx, P_wire, latency_Tx, latency_Rx, L_wire, E_wire, N_tr]
 
-def area_aib(Len, mode, n_Tx, n_Rx):
+def area_aib(Len, mode, n_Tx, n_Rx, n_ch=n_ch):
     #IO Area
     if mode ==0:
         #assuming equal length and width dimensions for a IO cell 
@@ -153,7 +153,7 @@ def area_aib(Len, mode, n_Tx, n_Rx):
 
     return area, BW
 
-def performance_aib(volt, n_Tx, n_Rx):
+def performance_aib(volt, n_Tx, n_Rx, n_ch=n_ch):
     #Latency
     if (fifo_mode==1):
         #FIFO 1x mode

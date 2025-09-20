@@ -1,0 +1,7 @@
+Layer ID,Type,Function,indim1,indim2,indim3,indim4,wdim1,wdim2,wdim3,wdim4,Parallel,A,B,C
+L1,Matmul,AxB mul BxC,Temporal,A,B,NA,B,C,NA,NA,NA,SA_size_y,n_SA*SA_size_x,Auto
+L2,Matmul,AxB mul BxC,Temporal,A,B,NA,B,C,NA,NA,NA,n_SA*SA_size_y,SA_size_x,Auto
+L3,Matmul,AxB mul BxC,Temporal,A,B,NA,B,C,NA,NA,NA,SA_size_y,n_SA*SA_size_x,Auto
+L9,Matmul,AxB mul BxC,Temporal,Parallel,A,B,Temporal,Parallel,B,C,n_SA,SA_size_y,SA_size_x,Auto
+L11,Matmul,AxB mul BxC,Temporal,Parallel,A,B,Temporal,Parallel,B,C,n_SA,SA_size_y,SA_size_x,Auto
+L12,Matmul,AxB mul BxC,Temporal,A,B,NA,B,C,NA,NA,NA,SA_size_y,n_SA*SA_size_x,Auto

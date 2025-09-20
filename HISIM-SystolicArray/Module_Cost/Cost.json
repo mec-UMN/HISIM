@@ -1,0 +1,61 @@
+{
+    "k_silicon": ,
+    "k_exposures": ,
+    "A_reticle": ,
+    "D0_chip": ,
+    "alpha_chip":,
+
+    "P_unit_sub": ,
+    "Demand_sub": ,
+    "D0_sub": ,
+    "A_sub": ,
+    "alpha_sub": ,
+
+    "k_place": ,
+    "T_place": ,
+    "k_bond": ,
+    "T_bond": ,
+    "Y_alignment": ,
+    "Y_bond": ,
+    "Y_TSV": ,
+    "A_bond": ,
+    "D0_HB": ,
+
+    "C_wafer": ,
+    "r_wafer": ,
+    "D0_interposer_silicon": ,
+    "alpha_interposer_silicon": ,
+
+    "C_panel": ,
+    "A_panel": ,
+    "D0_interposer_organic": ,
+    "alpha_interposer_organic": ,
+
+    "C_ate_ws": ,
+    "C_probe_ws": ,
+    "C_site_ws": ,
+    "cover_die_ws": ,
+    "T_per_insert_list_ws": ,
+    "T_reattempt_list_ws": ,
+
+
+    "C_ate_ftl": ,
+    "C_probe_ftl": ,
+    "C_site_ftl": ,
+    "cover_die_ftl": ,
+    "T_per_insert_list_ftl": ,
+    "T_reattempt_list_ftl": ,
+
+    "C_ate_stl": ,
+    "C_probe_stl": ,
+    "C_site_stl": ,
+    "cover_die_stl": ,
+    "T_per_insert_list_stl": ,
+
+    "C_pkg_nre_fixed": ,
+    "C_chip_nre_fixed": ,
+    "C_D2D_nre": ,
+    "k_pkg_nre": ,
+    "k_chip_nre": ,
+    "k_mod_nre": ,
+}
