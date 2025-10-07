@@ -1,31 +1,31 @@
 Chiplet ID,Tile ID,HW Type,NoC Position,AI Layer,Comment
 C1,T1,Mem Tile,"0,0",DDR,DDR
-C2,T1,Mem Tile,"0,0",L1,Input
-C3,T1,Mem Tile,"0,0",L1,Weight
-C4,T1,SA,"0,0",L1,Matmul
-C5,T1,Mem Tile,"0,0",L1,Output
-C6,T1,Mem Tile,"0,0",L2,Weight
-C7,T1,SA,"0,0",L2,Matmul
-C8,T1,Mem Tile,"0,0",L2,Output
-C9,T1,Mem Tile,"0,0",L3,Weight
-C10,T1,SA,"0,0",L3,Matmul
-C11,T1,Mem Tile,"0,0",L3,Output
-C12,T1,CPU,"0,0",L4,Add
-C13,T1,Mem Tile,"0,0",L4,Output
-C14,T1,CPU,"0,0",L5,Add
-C15,T1,Mem Tile,"0,0",L5,Output
-C16,T1,CPU,"0,0",L6,Add
-C17,T1,Mem Tile,"0,0",L6,Output
-C18,T1,CPU,"0,0",L7,ScalarMul
-C19,T1,Mem Tile,"0,0",L7,Output
-C20,T1,CPU,"0,0",L8,ScalarMul
-C21,T1,Mem Tile,"0,0",L8,Output
-C22,T1,SA,"0,0",L9,Matmul
-C23,T1,Mem Tile,"0,0",L9,Output
-C24,T1,CPU,"0,0",L10,Softmax
-C25,T1,Mem Tile,"0,0",L10,Output
-C26,T1,SA,"0,0",L11,Matmul
-C27,T1,Mem Tile,"0,0",L11,Output
-C28,T1,Mem Tile,"0,0",L12,Weight
-C29,T1,SA,"0,0",L12,Matmul
-C30,T1,Mem Tile,"0,0",L12,Output
+C1,T2,Mem Tile,"1,0",L1,Input
+C1,T3,Mem Tile,"2,0",L1,Weight
+C1,T4,SA,"3,0",L1,Matmul
+C1,T5,Mem Tile,"4,0",L1,Output
+C1,T6,Mem Tile,"5,0",L2,Weight
+C1,T7,SA,"5,1",L2,Matmul
+C1,T8,Mem Tile,"4,1",L2,Output
+C1,T9,Mem Tile,"3,1",L3,Weight
+C1,T10,SA,"2,1",L3,Matmul
+C1,T11,Mem Tile,"1,1",L3,Output
+C1,T12,CPU,"0,1",L4,Add
+C1,T13,Mem Tile,"0,2",L4,Output
+C1,T14,CPU,"1,2",L5,Add
+C1,T15,Mem Tile,"2,2",L5,Output
+C1,T16,CPU,"3,2",L6,Add
+C1,T17,Mem Tile,"4,2",L6,Output
+C1,T18,CPU,"5,2",L7,ScalarMul
+C1,T19,Mem Tile,"5,3",L7,Output
+C1,T20,CPU,"4,3",L8,ScalarMul
+C1,T21,Mem Tile,"3,3",L8,Output
+C1,T22,SA,"2,3",L9,Matmul
+C1,T23,Mem Tile,"1,3",L9,Output
+C1,T24,CPU,"0,3",L10,Softmax
+C1,T25,Mem Tile,"0,4",L10,Output
+C1,T26,SA,"1,4",L11,Matmul
+C1,T27,Mem Tile,"2,4",L11,Output
+C1,T28,Mem Tile,"3,4",L12,Weight
+C1,T29,SA,"4,4",L12,Matmul
+C1,T30,Mem Tile,"5,4",L12,Output
