@@ -1,0 +1,64 @@
+{
+    "k_silicon": 0.041,
+    "A_reticle_unit": 800,
+    "D0_chip": 0.0007,
+    "alpha_chip":10,
+    "litho_percent":0.15,
+
+    "C_ate_ws": 150,
+    "C_probe_ws": 50,
+    "C_site_ws": 4,
+    "cover_die_ws": 0.75,
+    "T_per_insert_list_ws": [12],
+    "T_reattempt_list_ws": [12],    
+
+    "k_substrate": 0.005,
+    "D0_sub": 1e-6,
+    "alpha_sub": 10,
+
+    "k_place": 1.8e5,
+    "T_place": 10,
+    "T_place_lifetime": 5,
+    "k_place_technician": 1e5,
+    "T_place_uptime": 0.9,
+    "k_bond": 1.8e5,
+    "T_bond": 20,
+    "T_bond_lifetime": 5,
+    "k_bond_technician": 1e5,
+    "T_bond_uptime": 0.9,
+    "Y_alignment": 0.999,
+    "Y_bond": 0.999999,
+    "Y_TSV": 0.999999,
+    "D0_HB": 0,
+
+    "C_ate_ftl": 170,
+    "C_probe_ftl": 80,
+    "C_site_ftl": 4,
+    "cover_die_ftl": 0.9,
+    "T_per_insert_list_ftl": [25],
+    "T_reattempt_list_ftl": [25],
+    "C_test_nre_ftl": 1e4,
+
+    "C_ate_stl": 40,
+    "C_probe_stl": 40,
+    "C_site_stl": 4,
+    "T_per_insert_list_stl": [120],
+    "C_test_nre_stl": 2e4,
+    
+    "C_wafer":1937,
+    "r_wafer": 150,
+    "D0_interposer_silicon":0.00001,
+    "alpha_interposer_silicon": 6,
+
+    "si_scaling_factor": 1.1,
+    "sub_scaling_factor": 4,
+    
+
+    "C_pkg_nre_fixed": 3e5,
+    "C_chip_nre_fixed": 3.4e4,
+    "C_D2D_nre": 5.1e4,
+    "k_pkg_nre": 3e3,
+    "k_chip_nre": 8.5e4,
+    "k_mod_nre": 5.1e4,
+    "k_si_nre": 5.6e4
+}

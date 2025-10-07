@@ -1,7 +1,0 @@
-Chiplet ID,Tile ID,HW Type,SA_size_x,SA_size_y,n_SA,prec,Clock Frequency (Hz)
-C1,T3,SA,16,32,2,8, 1e9
-C1,T6,SA,32,16,2,8, 1e9
-C1,T9,SA,32,16,2,8, 1e9
-C1,T11,SA,16,16,2,8, 1e9
-C1,T13,SA,16,16,2,8, 1e9
-C1,T16,SA,16,16,2,8, 1e9
