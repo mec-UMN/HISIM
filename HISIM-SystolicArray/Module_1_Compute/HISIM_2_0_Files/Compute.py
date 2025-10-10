@@ -293,7 +293,7 @@ def plot_component(areas, latencies, energies, noc_positions, filename, title, s
     ax.set_aspect('equal', adjustable='box')
     ax.set_title(f"{title} Map")
     
-    
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
     fig.savefig(filename, dpi=300, bbox_inches="tight")
 
 def compute_main_fn(G_ai_model, G_chip, tile_ids):
