@@ -1,9 +1,12 @@
 {
+
     "k_silicon": 9.64,
     "A_reticle_unit": 800,
     "D0_chip": 0.0007,
     "alpha_chip":10,
     "litho_percent":0.15,
+    "Y_perstitch":0.5,
+    "Y_wafer_process":1,
 
     "C_ate_ws": 150,
     "C_probe_ws": 50,

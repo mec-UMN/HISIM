@@ -14,8 +14,8 @@ def negative_binomial(D0, A, alpha):
     yield_nb = (1+D0*A/alpha)**(-alpha)
     return yield_nb
 
-def cost_die(k_silicon, A_chip, A_reticle_unit, D0_chip, alpha_chip,litho_percent, manuf_vol):
-    Y_die =negative_binomial(D0_chip, A_chip, alpha_chip)
+def cost_die(k_silicon, A_chip, A_reticle_unit, D0_chip, alpha_chip,litho_percent, Y_perstitch, Y_wafer_process, manuf_vol):
+    Y_die =negative_binomial(D0_chip, A_chip, alpha_chip)*Y_wafer_process
     k_die = k_silicon * A_chip 
     A_reticle = A_reticle_unit
     # If the chip area is larger than the reticle area, this requires stitching.
@@ -29,6 +29,14 @@ def cost_die(k_silicon, A_chip, A_reticle_unit, D0_chip, alpha_chip,litho_percen
     unutilized_reticle = (A_reticle) - number_chips_in_reticle*A_chip
     reticle_utilization = (A_reticle - unutilized_reticle)/(A_reticle)
     k_die= k_die*(1-litho_percent)+ (k_die*litho_percent)/reticle_utilization
+    
+    if A_chip > A_reticle_unit:
+        N_ret = math.ceil(A_chip / A_reticle_unit)
+        N_lsq = math.floor(math.sqrt(N_ret))
+        k_stitch  = 2*(N_lsq**2)*(N_lsq**2-1)+2*(N_ret-N_lsq)-math.ceil((N_ret-N_lsq**2)/N_lsq)
+        Y_stitching = Y_perstitch**(k_stitch)
+        Y_die*= Y_stitching
+        
     C_die = k_die/Y_die
     #cost for 1 million units 
     C_die*=manuf_vol

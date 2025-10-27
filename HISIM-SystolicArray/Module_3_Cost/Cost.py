@@ -24,7 +24,7 @@ def cost_main_fn(G_chip, G_sys, nw_df, stack_area, stack_ids, mesh_size, ip_list
     for chip_idx in G_sys.nodes():
         if G_sys.nodes[chip_idx]["Chiplet ID"]!="Empty":
             A_chip = G_sys.nodes[chip_idx]["Chiplet Actual Area"]
-            cost_breakdown["die"][chip_idx] , yield_breakdown["die"][chip_idx] = cost_die(cost_params["k_silicon"], A_chip, cost_params["A_reticle_unit"], cost_params["D0_chip"], cost_params["alpha_chip"], cost_params["litho_percent"], manuf_vol)
+            cost_breakdown["die"][chip_idx] , yield_breakdown["die"][chip_idx] = cost_die(cost_params["k_silicon"], A_chip, cost_params["A_reticle_unit"], cost_params["D0_chip"], cost_params["alpha_chip"], cost_params["litho_percent"], cost_params["Y_perstitch"], cost_params["Y_wafer_process"], manuf_vol)
             cost_breakdown["test"]["wafer_probe"][chip_idx] = cost_wafer_probe(cost_params["C_ate_ws"], cost_params["C_probe_ws"], cost_params["C_site_ws"], yield_breakdown["die"][chip_idx], cost_params["cover_die_ws"], cost_params["T_per_insert_list_ws"], cost_params["T_reattempt_list_ws"], manuf_vol)
             ip_set_chip = set([ip for ip in ip_list if any(chip_tile_idx.split('_')[0]==chip_idx for chip_tile_idx in ip_list[ip])])
             A_ip = sum([G_chip.nodes[ip_list[ip][0]]["Tile_Area"]  for ip in ip_set_chip])

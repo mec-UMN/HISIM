@@ -82,6 +82,7 @@ def latency_mem_tile(mem_df, compute_json_data, tile_latency,tile_latency_breakd
         if row["HW Type"]!="DDR":
             chip_tile_idx=row["Chiplet ID"]+"_"+row["Tile ID"]
             #print(NW, NB, Nbank, CM)
+            #import pdb; pdb.set_trace()
             SRAM_read_latency=latency_buf(compute_json_data,  row["Accesses_r"])/row["Clock Frequency (Hz)"]
             SRAM_write_latency=latency_buf(compute_json_data,  row["Accesses_w"])/row["Clock Frequency (Hz)"]
             tile_latency_breakdown[chip_tile_idx]={"SRAM_read_latency": SRAM_read_latency, 
