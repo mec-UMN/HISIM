@@ -10,12 +10,12 @@
 import math
 
 # Interposer Cost models from Ref [1]
-def negative_binomial(D0, A, alpha):
-    yield_nb = (1+D0*A/alpha)**(-alpha)
+def negative_binomial(D0, A, alpha, critical_area_ratio):
+    yield_nb = (1+D0*A*critical_area_ratio/alpha)**(-alpha)
     return yield_nb
 
-def cost_die(k_silicon, A_chip, A_reticle_unit, D0_chip, alpha_chip,litho_percent, Y_perstitch, Y_wafer_process, manuf_vol):
-    Y_die =negative_binomial(D0_chip, A_chip, alpha_chip)*Y_wafer_process
+def cost_die(k_silicon, A_chip, critical_area_ratio, A_reticle_unit, D0_chip, alpha_chip,litho_percent, Y_perstitch, Y_wafer_process, manuf_vol):
+    Y_die =negative_binomial(D0_chip, A_chip, alpha_chip, critical_area_ratio)*Y_wafer_process
     k_die = k_silicon * A_chip 
     A_reticle = A_reticle_unit
     # If the chip area is larger than the reticle area, this requires stitching.
@@ -42,9 +42,9 @@ def cost_die(k_silicon, A_chip, A_reticle_unit, D0_chip, alpha_chip,litho_percen
     C_die*=manuf_vol
     return C_die, Y_die
 
-def cost_substrate(k_sub, Demand_sub, D0_sub, A_sub, alpha_sub, manuf_vol):
+def cost_substrate(k_sub, Demand_sub, D0_sub, A_sub, critical_area_ratio_sub, alpha_sub, Y_wafer_sub, manuf_vol):
     P_unit_sub = k_sub * A_sub
-    Y_sub = negative_binomial(D0_sub, A_sub, alpha_sub)
+    Y_sub = negative_binomial(D0_sub, A_sub, alpha_sub, critical_area_ratio_sub)*Y_wafer_sub
     C_sub = P_unit_sub*Demand_sub/Y_sub
     #cost for 1 million units
     C_sub*=manuf_vol
@@ -56,11 +56,11 @@ def compute_machine_cost_per_second(k_machine, T_machine_lifetime, k_machine_tec
     k_machine_sec = k_machine_year/(365*24*60*60)*T_machine_uptime
     return k_machine_sec
 
-def cost_assembly(k_place, T_place, k_bond, T_bond, 
+def cost_assembly(k_place, T_place, G_place, k_bond, T_bond, G_bond,
                     T_place_lifetime, k_place_technician, T_place_uptime, T_bond_lifetime, k_bond_technician, T_bond_uptime, 
                     Y_alignment, Y_bond, Y_TSV, N_die, N_bonds, N_TSV, A_bond, D0_HB, manuf_vol):
-    T_place_total = N_die*T_place
-    T_bond_total = N_die*T_bond
+    T_place_total = math.ceil(N_die/G_place)*T_place
+    T_bond_total = math.ceil(N_die/G_bond)*T_bond
     k_place_sec = compute_machine_cost_per_second(k_place, T_place_lifetime, k_place_technician, T_place_uptime)
     k_bond_sec = compute_machine_cost_per_second(k_bond, T_bond_lifetime, k_bond_technician, T_bond_uptime)
     k_assembly = k_place_sec*T_place_total+k_bond_sec*T_bond_total
@@ -72,37 +72,45 @@ def cost_assembly(k_place, T_place, k_bond, T_bond,
     return C_assembly, Y_assembly
 
 # Interposer Cost models from Ref [3]
-def cost_interposer_silicon(C_wafer, A_interposer, N_interposers, r_wafer, D0_interposer,   alpha_interposer, manuf_vol):
+def cost_interposer_silicon(C_wafer, A_interposer, critical_area_ratio_interposer, N_interposers, r_wafer, D0_interposer,   alpha_interposer, Y_wafer_silicon, A_reticle_unit_interposer, Y_perstitch_interposer, manuf_vol):
     N_interposer_wafer = math.ceil(math.pi*r_wafer**2/A_interposer-math.pi*r_wafer/math.sqrt(2*A_interposer))
-    Y_interposer = negative_binomial(D0_interposer, A_interposer, alpha_interposer)
+    Y_interposer = negative_binomial(D0_interposer, A_interposer, alpha_interposer, critical_area_ratio_interposer)*Y_wafer_silicon
+
+    if A_interposer > A_reticle_unit_interposer:
+        N_ret = math.ceil(A_interposer / A_reticle_unit_interposer)
+        N_lsq = math.floor(math.sqrt(N_ret))
+        k_stitch  = 2*(N_lsq**2)*(N_lsq**2-1)+2*(N_ret-N_lsq)-math.ceil((N_ret-N_lsq**2)/N_lsq)
+        Y_stitching = Y_perstitch_interposer**(k_stitch)
+        Y_interposer*= Y_stitching
+    
     C_interposer = C_wafer*N_interposers/(N_interposer_wafer*Y_interposer)
     #cost for 1 million units
     C_interposer*=manuf_vol
     #import pdb; pdb.set_trace()
     return C_interposer, Y_interposer
 
-def cost_interposer_organic(C_panel, A_interposer, A_panel, D0_interposer, alpha_interposer, manuf_vol):
-    Y_interposer = negative_binomial(D0_interposer, A_interposer, alpha_interposer)
+def cost_interposer_organic(C_panel, A_interposer, A_panel, D0_interposer, alpha_interposer, Y_panel_organic, manuf_vol):
+    Y_interposer = negative_binomial(D0_interposer, A_interposer, alpha_interposer, 1)*Y_panel_organic
     C_interposer = C_panel*A_interposer/A_panel/Y_interposer
     #cost for 1 million units
     C_interposer*=manuf_vol
     return C_interposer, Y_interposer
 
 #Test Cost models from Ref [2] and params from OCP-ODSA open source model - https://drive.google.com/drive/folders/1kphneR4UElaZTmnOYgh2za3fXg4v66_b
-def cost_wafer_probe(C_ate_ws, C_probe_ws, C_site_ws, Y_die, cover_die_ws, T_per_insert_list_ws, T_reattempt_list_ws, manuf_vol):
-    C_test_probe = (C_ate_ws + C_probe_ws)/3600/C_site_ws*(sum(T_per_insert_list_ws)+((1-Y_die)*cover_die_ws)*sum(T_reattempt_list_ws))
+def cost_wafer_probe(C_ate_ws, C_probe_ws, C_site_ws, Y_die, escaperate_die_ws, T_per_insert_list_ws, T_reattempt_list_ws, manuf_vol):
+    C_test_probe = (C_ate_ws + C_probe_ws)/3600/C_site_ws*(sum(T_per_insert_list_ws)+((1-Y_die)*escaperate_die_ws)*sum(T_reattempt_list_ws))
     #cost for 1 million units
     C_test_probe*=manuf_vol
     return C_test_probe
 
-def cost_ftl(C_ate_ftl, C_probe_ftl, C_site_ftl, Y_die, cover_die_ftl, cover_die_ws, T_per_insert_list_ftl, T_reattempt_list_ftl, manuf_vol):
-    C_test_ftl = (C_ate_ftl + C_probe_ftl)/3600/C_site_ftl*(sum(T_per_insert_list_ftl)+((1-Y_die)*(cover_die_ws-cover_die_ftl))*sum(T_reattempt_list_ftl))
+def cost_ftl(C_ate_ftl, C_probe_ftl, C_site_ftl, Y_die, escaperate_die_ftl, escaperate_die_ws, T_per_insert_list_ftl, T_reattempt_list_ftl, manuf_vol):
+    C_test_ftl = (C_ate_ftl + C_probe_ftl)/3600/C_site_ftl*(sum(T_per_insert_list_ftl)+((1-Y_die)*(escaperate_die_ws-escaperate_die_ftl))*sum(T_reattempt_list_ftl))
     #cost for 1 million units
     C_test_ftl*=manuf_vol
     return C_test_ftl
 
-def cost_wafer_stl(C_ate_stl, C_probe_stl, C_site_stl, Y_die, cover_die_ftl, T_per_insert_list_stl, manuf_vol):
-    C_test_stl = (C_ate_stl + C_probe_stl)/3600/C_site_stl*(sum(T_per_insert_list_stl)*(Y_die+(1-Y_die)*(1-cover_die_ftl)))
+def cost_wafer_stl(C_ate_stl, C_probe_stl, C_site_stl, Y_die, escaperate_die_ftl, T_per_insert_list_stl, manuf_vol):
+    C_test_stl = (C_ate_stl + C_probe_stl)/3600/C_site_stl*(sum(T_per_insert_list_stl)*(Y_die+(1-Y_die)*(1-escaperate_die_ftl)))
     #cost for 1 million units
     C_test_stl*=manuf_vol
     return C_test_stl
