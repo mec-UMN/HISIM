@@ -1,0 +1,42 @@
+module attributes {llvm.data_layout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128", llvm.target_triple = "x86_64-unknown-linux-gnu", "onnx-mlir.symbol-postfix" = "model"} {
+  func.func @main_graph(%arg0: tensor<1x3x224x224xf32> {onnx.name = "x"}) -> (tensor<1x1000xf32> {onnx.name = "36"}) {
+    %0 = onnx.Constant dense_resource<__elided__> : tensor<64x3x11x11xf32>
+    %1 = onnx.Constant dense<[-0.970545947, -2.80695844, -0.0370622166, -0.079548411, -0.115923479, 0.0252082348, -0.0751811713, -1.41813278, 1.64537787, -0.0989710614, -0.0160603113, -0.128217444, -0.0658386722, -0.0345342606, -0.0743228793, -1.2976892, -0.0505270809, 0.0120959515, -0.101334535, -1.18868506, -0.137957871, -0.0491933562, -0.0789226964, -0.0405152887, -0.0958038866, -0.0705354288, -1.93739593, -0.0850156173, -0.138779134, -0.196789473, -0.127928078, -2.00948906, -0.0475783534, -0.0604351386, -0.035067182, -0.384301454, -2.78228235, 0.660491228, -0.165450916, -2.1293416, 0.054274153, -0.0274431668, -0.170296848, -0.0592807718, -0.421486348, -1.93935204, -1.20940065, 0.0153377131, -0.108104363, -0.0248227026, -0.150281116, -1.85158205, -0.0928383321, -0.0176999178, -0.0699773654, -0.0581861772, -0.0630390123, -0.0721457452, -1.26778018, -0.117562249, -0.0440766551, -0.325856715, 0.0506588593, -0.0146174366]> : tensor<64xf32>
+    %2 = onnx.Constant dense_resource<__elided__> : tensor<192x64x5x5xf32>
+    %3 = onnx.Constant dense_resource<__elided__> : tensor<192xf32>
+    %4 = onnx.Constant dense_resource<__elided__> : tensor<384x192x3x3xf32>
+    %5 = onnx.Constant dense_resource<__elided__> : tensor<384xf32>
+    %6 = onnx.Constant dense_resource<__elided__> : tensor<256x384x3x3xf32>
+    %7 = onnx.Constant dense_resource<__elided__> : tensor<256xf32>
+    %8 = onnx.Constant dense_resource<__elided__> : tensor<256x256x3x3xf32>
+    %9 = onnx.Constant dense_resource<__elided__> : tensor<256xf32>
+    %10 = onnx.Constant dense_resource<__elided__> : tensor<4096x9216xf32>
+    %11 = onnx.Constant dense_resource<__elided__> : tensor<4096xf32>
+    %12 = onnx.Constant dense_resource<__elided__> : tensor<4096x4096xf32>
+    %13 = onnx.Constant dense_resource<__elided__> : tensor<4096xf32>
+    %14 = onnx.Constant dense_resource<__elided__> : tensor<1000x4096xf32>
+    %15 = onnx.Constant dense_resource<__elided__> : tensor<1000xf32>
+    %16 = "onnx.Conv"(%arg0, %0, %1) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [11, 11], onnx_node_name = "/features/features.0/Conv", pads = [2, 2, 2, 2], strides = [4, 4]} : (tensor<1x3x224x224xf32>, tensor<64x3x11x11xf32>, tensor<64xf32>) -> tensor<1x64x55x55xf32>
+    %17 = "onnx.Relu"(%16) {onnx_node_name = "/features/features.1/Relu"} : (tensor<1x64x55x55xf32>) -> tensor<1x64x55x55xf32>
+    %18 = "onnx.MaxPoolSingleOut"(%17) {auto_pad = "NOTSET", ceil_mode = 0 : si64, kernel_shape = [3, 3], onnx_node_name = "/features/features.2/MaxPool", pads = [0, 0, 0, 0], storage_order = 0 : si64, strides = [2, 2]} : (tensor<1x64x55x55xf32>) -> tensor<1x64x27x27xf32>
+    %19 = "onnx.Conv"(%18, %2, %3) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [5, 5], onnx_node_name = "/features/features.3/Conv", pads = [2, 2, 2, 2], strides = [1, 1]} : (tensor<1x64x27x27xf32>, tensor<192x64x5x5xf32>, tensor<192xf32>) -> tensor<1x192x27x27xf32>
+    %20 = "onnx.Relu"(%19) {onnx_node_name = "/features/features.4/Relu"} : (tensor<1x192x27x27xf32>) -> tensor<1x192x27x27xf32>
+    %21 = "onnx.MaxPoolSingleOut"(%20) {auto_pad = "NOTSET", ceil_mode = 0 : si64, kernel_shape = [3, 3], onnx_node_name = "/features/features.5/MaxPool", pads = [0, 0, 0, 0], storage_order = 0 : si64, strides = [2, 2]} : (tensor<1x192x27x27xf32>) -> tensor<1x192x13x13xf32>
+    %22 = "onnx.Conv"(%21, %4, %5) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/features/features.6/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x192x13x13xf32>, tensor<384x192x3x3xf32>, tensor<384xf32>) -> tensor<1x384x13x13xf32>
+    %23 = "onnx.Relu"(%22) {onnx_node_name = "/features/features.7/Relu"} : (tensor<1x384x13x13xf32>) -> tensor<1x384x13x13xf32>
+    %24 = "onnx.Conv"(%23, %6, %7) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/features/features.8/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x384x13x13xf32>, tensor<256x384x3x3xf32>, tensor<256xf32>) -> tensor<1x256x13x13xf32>
+    %25 = "onnx.Relu"(%24) {onnx_node_name = "/features/features.9/Relu"} : (tensor<1x256x13x13xf32>) -> tensor<1x256x13x13xf32>
+    %26 = "onnx.Conv"(%25, %8, %9) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/features/features.10/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x256x13x13xf32>, tensor<256x256x3x3xf32>, tensor<256xf32>) -> tensor<1x256x13x13xf32>
+    %27 = "onnx.Relu"(%26) {onnx_node_name = "/features/features.11/Relu"} : (tensor<1x256x13x13xf32>) -> tensor<1x256x13x13xf32>
+    %28 = "onnx.MaxPoolSingleOut"(%27) {auto_pad = "NOTSET", ceil_mode = 0 : si64, kernel_shape = [3, 3], onnx_node_name = "/features/features.12/MaxPool", pads = [0, 0, 0, 0], storage_order = 0 : si64, strides = [2, 2]} : (tensor<1x256x13x13xf32>) -> tensor<1x256x6x6xf32>
+    %29 = "onnx.AveragePool"(%28) {auto_pad = "NOTSET", ceil_mode = 0 : si64, count_include_pad = 0 : si64, kernel_shape = [1, 1], onnx_node_name = "/avgpool/AveragePool", strides = [1, 1]} : (tensor<1x256x6x6xf32>) -> tensor<1x256x6x6xf32>
+    %30 = "onnx.Flatten"(%29) {axis = 1 : si64, onnx_node_name = "/Flatten"} : (tensor<1x256x6x6xf32>) -> tensor<1x9216xf32>
+    %31 = "onnx.Gemm"(%30, %10, %11) {alpha = 1.000000e+00 : f32, beta = 1.000000e+00 : f32, onnx_node_name = "/classifier/classifier.1/Gemm", transA = 0 : si64, transB = 1 : si64} : (tensor<1x9216xf32>, tensor<4096x9216xf32>, tensor<4096xf32>) -> tensor<1x4096xf32>
+    %32 = "onnx.Relu"(%31) {onnx_node_name = "/classifier/classifier.2/Relu"} : (tensor<1x4096xf32>) -> tensor<1x4096xf32>
+    %33 = "onnx.Gemm"(%32, %12, %13) {alpha = 1.000000e+00 : f32, beta = 1.000000e+00 : f32, onnx_node_name = "/classifier/classifier.4/Gemm", transA = 0 : si64, transB = 1 : si64} : (tensor<1x4096xf32>, tensor<4096x4096xf32>, tensor<4096xf32>) -> tensor<1x4096xf32>
+    %34 = "onnx.Relu"(%33) {onnx_node_name = "/classifier/classifier.5/Relu"} : (tensor<1x4096xf32>) -> tensor<1x4096xf32>
+    %35 = "onnx.Gemm"(%34, %14, %15) {alpha = 1.000000e+00 : f32, beta = 1.000000e+00 : f32, onnx_node_name = "/classifier/classifier.6/Gemm", transA = 0 : si64, transB = 1 : si64} : (tensor<1x4096xf32>, tensor<1000x4096xf32>, tensor<1000xf32>) -> tensor<1x1000xf32>
+    return %35 : tensor<1x1000xf32>
+  }
+  "onnx.EntryPoint"() {func = @main_graph} : () -> ()
+}
