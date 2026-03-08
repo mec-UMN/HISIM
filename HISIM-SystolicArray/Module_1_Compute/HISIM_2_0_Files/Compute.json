@@ -7,7 +7,10 @@
     "Average_CPI_ScalarMul": 3.2,
     "Average_CPI_Batchnorm":3.4211,
     "Average_CPI_Softmax": 3.9794,
-
+    "Average_CPI_LayerNormalization":3.4211,
+    "Average_CPI_Gelu":3.9,
+    "Average_CPI_Clip":3.12,
+    "Average_CPI_Sigmoid":3.7,
 
     "W_other":22.54e-3,
     "W_cell":0.53e-3,

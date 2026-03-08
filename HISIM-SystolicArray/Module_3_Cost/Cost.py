@@ -78,7 +78,7 @@ def cost_main_fn(G_chip, G_sys, nw_df, stack_area, stack_ids, mesh_size, ip_list
     print("----------Cost Summary---------------")
     print("Total Recurring Cost for ", manuf_vol, " units ($): ", sum(cost_breakdown["die"].values()) + sum(cost_breakdown["assembly"].values()) + sum(cost_breakdown["interposer"].values()) + sum(cost_breakdown["substrate"].values()) + sum(cost_breakdown["test"]["wafer_probe"].values()) + sum(cost_breakdown["test"]["final_package"].values()) + sum(cost_breakdown["test"]["system_level"].values()))
     print("Total NRE Cost ($): ", sum(cost_breakdown["nre"].values()))
-    print("Total Cost per Die ($): ", total_cost/manuf_vol)
+    print("Total Cost per Part ($): ", total_cost/manuf_vol)
     print("----------------------------------------")
     if DEBUG:
         # plot bar chart of cost breakdown
@@ -93,14 +93,15 @@ def cost_main_fn(G_chip, G_sys, nw_df, stack_area, stack_ids, mesh_size, ip_list
         costs = [die_cost, assembly_cost, interposer_cost, substrate_cost, test_cost, nre_cost]
         plt.bar(labels, costs)
         plt.ylabel('Cost ($)')
-        plt.title('Cost Breakdown')
+        plt.title('Cost Breakdown - Manufacturing Volume: '+f"{manuf_vol:,.0f}"+' units')
         plt.yscale('log')
         #plt.ylim(0, 3E6)
         for i, v in enumerate(costs):
             plt.text(i, v , f"${v:,.0f}", ha='center', va='bottom')
         os.makedirs(os.path.join(main_dir, "Results"), exist_ok=True)
         plt.savefig(os.path.join(main_dir, "Results", f"Cost_Breakdown_{aimodel}.png"))
-
+        #plt.show()
+        plt.close()
         #plot bar chart of yield breakdown
         plt.figure(figsize=(10, 6))
         labels = list(yield_breakdown.keys())
@@ -118,6 +119,6 @@ def cost_main_fn(G_chip, G_sys, nw_df, stack_area, stack_ids, mesh_size, ip_list
         os.makedirs(os.path.join(main_dir, "Results"), exist_ok=True)
         plt.savefig(os.path.join(main_dir, "Results", f"Yield_Breakdown_{aimodel}.png"))
         #plt.show()
-        
+        plt.close() 
     #import pdb; pdb.set_trace()
-    return total_cost, cost_breakdown
+    return total_cost, cost_breakdown,  total_cost/manuf_vol

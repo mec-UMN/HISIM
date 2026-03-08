@@ -21,7 +21,7 @@ with open('G_chip_G_stack'+'.pkl', 'rb') as file:
     #to read graphs
     #[G_chip.nodes[node] for node in G_chip]
     #[[node, G_stack.nodes[node]] for node in G_stack]
-
+import pdb; pdb.set_trace()
 #For HW type: take the last word from G_chip node attribute 'HW Type' - e.g., 'C1 Out Mem' -> 'Mem'
 #Area units=mm2 - take sqrt for length/width
 #Power units=W

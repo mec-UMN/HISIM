@@ -1,13 +1,13 @@
-Layer ID,Type,indim1,indim2,indim3,indim4,outdim1,outdim2,outdim3,outdim4,wdim1,wdim2,wdim3,wdim4,prec, comment
-L1,Matmul,1,197,768,NA,1,197,768,NA,768,768,NA,NA,8, /vit/encoder/layer.0/attention/attention/query/MatMul
-L2,Matmul,1,197,768,NA,1,197,768,NA,768,768,NA,NA,8, /vit/encoder/layer.0/attention/attention/key/MatMul
-L3,Matmul,1,197,768,NA,1,197,768,NA,768,768,NA,NA, 8, /vit/encoder/layer.0/attention/attention/value/MatMul
+Layer_ID,Type,in1_dim1,in1_dim2,in1_dim3,in1_dim4,out1_dim1,out1_dim2,out1_dim3,out1_dim4,in2_dim1,in2_dim2,in2_dim3,in2_dim4,prec, NodeName
+L1,MatMul,1,197,768,NA,1,197,768,NA,768,768,NA,NA,8, /vit/encoder/layer.0/attention/attention/query/MatMul
+L2,MatMul,1,197,768,NA,1,197,768,NA,768,768,NA,NA,8, /vit/encoder/layer.0/attention/attention/key/MatMul
+L3,MatMul,1,197,768,NA,1,197,768,NA,768,768,NA,NA, 8, /vit/encoder/layer.0/attention/attention/value/MatMul
 L4,Add,1,197,768,NA,1,197,768,NA,NA,NA,NA,NA,8, /vit/encoder/layer.0/attention/attention/query/Add_46
 L5,Add,1,197,768,NA,1,197,768,NA,NA,NA,NA,NA,8, /vit/encoder/layer.0/attention/attention/key/Add_58
 L6,Add,1,197,768,NA,1,197,768,NA,NA,NA,NA,NA,8, /vit/encoder/layer.0/attention/attention/value/Add_3
 L7,ScalarMul,1,197,12,64,1,197,12,64,NA,NA,NA,NA,8, /vit/encoder/layer.0/attention/attention/Mul
 L8,ScalarMul,1,12,197,64,1,12,197,64,NA,NA,NA,NA,8, /vit/encoder/layer.0/attention/attention/Mul_1
-L9,Matmul,1,12,197,64,1,12,197,197,1,12,64,197,8, /vit/encoder/layer.0/attention/attention/MatMul
+L9,MatMul,1,12,197,64,1,12,197,197,1,12,64,197,8, /vit/encoder/layer.0/attention/attention/MatMul
 L10,Softmax,1,12,197,197,1,12,197,197,NA,NA,NA,NA,8, /vit/encoder/layer.0/attention/attention/Softmax
-L11,Matmul,1,12,197,197,1,12,197,64,1,12,197,64,8, /vit/encoder/layer.0/attention/attention/MatMul_1
-L12,Matmul,1,197,768,NA,1,197,768,NA,768,768,NA,NA,8, /vit/encoder/layer.0/attention/output/dense/MatMul
+L11,MatMul,1,12,197,197,1,12,197,64,1,12,197,64,8, /vit/encoder/layer.0/attention/attention/MatMul_1
+L12,MatMul,1,197,768,NA,1,197,768,NA,768,768,NA,NA,8, /vit/encoder/layer.0/attention/output/dense/MatMul

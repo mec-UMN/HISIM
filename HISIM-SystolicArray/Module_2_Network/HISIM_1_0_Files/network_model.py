@@ -425,7 +425,7 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
     os.makedirs('./Results', exist_ok=True)
     plt.savefig('./Results/tile_map.png')
     #plt.show()
-    #plt.close()
+    plt.close()
 
 
     

@@ -4,6 +4,7 @@ import pandas as pd
 import sys
 import math
 import json
+import ast
 import networkx as nx
 from matplotlib.patches import Rectangle
 from prettytable import PrettyTable
@@ -17,6 +18,7 @@ import itertools
 from functools import reduce
 import operator
 import config
+from collections import defaultdict
 
 aimodel=config.aimodel
 main_dir = config.main_dir
@@ -42,7 +44,7 @@ def determine_reuse_mul(G_ai_model, layer_idx, mem_place):
     reuse_mul = 1
     if mem_place == "W":
         for i in range(4, 0, -1):
-            dim = node.get(f"wdim{i}", 1)
+            dim = node.get(f"in2_dim{i}", 1)
             #print("checking:", dim, "at i=", i)
 
             # Skip if it's NA or NaN
@@ -62,54 +64,76 @@ def mem_requirement(mem_df, G_ai_model, G_chip,tile_map, ip_list):
     mem_req={}
     for layer_idx in G_ai_model.nodes():
         if layer_idx !="In":
-            values = [G_ai_model.nodes[layer_idx].get(f"indim{i}", 1) for i in range(1, 5)]
+            values = [G_ai_model.nodes[layer_idx].get(f"in1_dim{i}", 1) for i in range(1, 5)]
             mem_req[layer_idx + "_I"] = math.prod([int(v) if not math.isnan(v) else 1 for v in values])*G_ai_model.nodes[layer_idx].get("prec", 1)
-            if G_ai_model.nodes[layer_idx]["Type"]== "Matmul":
-                values = [G_ai_model.nodes[layer_idx].get(f"wdim{i}", 1) for i in range(1, 5)]
+            if G_ai_model.nodes[layer_idx]["Type"].startswith("MatMul") or G_ai_model.nodes[layer_idx]["Type"]== "Gemm" or G_ai_model.nodes[layer_idx]["Type"]== "Conv" or G_ai_model.nodes[layer_idx]["Type"].endswith("Attention"):
+                values = [G_ai_model.nodes[layer_idx].get(f"in2_dim{i}", 1) for i in range(1, 5)]
+                #import pdb; pdb.set_trace()
                 mem_req[layer_idx + "_W"] = math.prod([int(v) if not math.isnan(v) else 1 for v in values])*G_ai_model.nodes[layer_idx].get("prec", 1)
-            values = [G_ai_model.nodes[layer_idx].get(f"outdim{i}", 1) for i in range(1, 5)]
+            values = [G_ai_model.nodes[layer_idx].get(f"out1_dim{i}", 1) for i in range(1, 5)]
             mem_req[layer_idx + "_O"] = math.prod([int(v) if not math.isnan(v) else 1 for v in values])*G_ai_model.nodes[layer_idx].get("prec", 1)
         
     mem_size={}
     for idx, row in mem_df.iterrows():
         chip_tile_idx=row["Chiplet ID"]+"_"+row["Tile ID"]
-        layer_idx=G_chip.nodes[chip_tile_idx]["AI Layer"]
-        #print(layer_idx, chip_tile_idx)
-        layer_type=G_ai_model.nodes[layer_idx]["Type"] if layer_idx!="DDR" else "DDR"
-        mem_place=G_chip.nodes[chip_tile_idx]["Comment"]
-        mem_df.loc[idx, "Next Layer Type"] = layer_type
-        mem_df.loc[idx, "mem_place"] = mem_place[0] if layer_idx!="DDR" else "Mem"
-        for i in range(1, 5):
-            if mem_place[0] == "I":
-                mem_df.loc[idx, f"dim{i}"] = G_ai_model.nodes[layer_idx].get(f"indim{i}", 1) 
-            elif mem_place[0] == "W":
-                mem_df.loc[idx, f"dim{i}"] = G_ai_model.nodes[layer_idx].get(f"wdim{i}", 1) 
-            elif mem_place[0] == "O":
-                mem_df.loc[idx, f"dim{i}"] = G_ai_model.nodes[layer_idx].get(f"outdim{i}", 1)
-        #print(row)
-        mem_name = layer_idx+"_"+mem_place[0] if layer_idx!="DDR" else "DDR_Mem"
-        mem_size[mem_name]=row["NB"]*row["NW"]*row["Nbank"]*row["prec"]
-        mem_df.loc[idx, "Accesses_r"]=math.ceil(mem_req.get(mem_name,0)/row["NB"]) if layer_idx!="DDR" else 0
-        mem_df.loc[idx, "Accesses_w"]=math.ceil(mem_req.get(mem_name,0)/row["NB"]) if layer_idx!="DDR" else 0
-        mem_df.loc[idx, "DDR_access"]=mem_size[mem_name]<mem_req.get(mem_name,0) if layer_idx!="DDR" else True
-        #DDR always needs to access/store the input and output layers of the algortihm and also weights of the algortihm
-        if len(list(G_ai_model.in_edges(layer_idx))) == 0 or layer_idx+"_"+mem_place[0] == "L1_I":
-            mem_df.loc[idx, "DDR_access"]=True
-        #if mem_place[0] == "W":
-            #mem_df.loc[idx, "DDR_access"]=True
-        if len(list(G_ai_model.out_edges(layer_idx)))== 0 and mem_place[0] == "O":
-            mem_df.loc[idx, "DDR_access"]=True
-                
+        layer_idxes=ast.literal_eval(G_chip.nodes[chip_tile_idx]["AI Layer"])
+        mem_req_tn=0
+        ddr_access_bn=False
+        for k in ["Next Layer Type", "mem_place",  "Accesses_r", "Accesses_w",  "ddr_reuse_mul_r", "dim1", "dim2", "dim3", "dim4", "mem_req_layer", "DDR_access_layer"]:
+            if k not in mem_df.columns:
+                mem_df[k] = [{} for _ in range(len(mem_df))]
+        for layer_index in layer_idxes:
+            dict_mem={k:0 for k in ["Next Layer Type", "mem_place",  "Accesses_r", "Accesses_w",  "ddr_reuse_mul_r", "dim1", "dim2", "dim3", "dim4", "mem_req_layer", "DDR_access_layer"]}
+            ddr_access=False
+            layer_type=G_ai_model.nodes[layer_index]["Type"] if layer_index!="DDR" else "DDR"
+            mem_place=ast.literal_eval(G_chip.nodes[chip_tile_idx]["NodeName"])[0]
+            dict_mem["Next Layer Type"] = layer_type
+            dict_mem["mem_place"] = mem_place[0] if layer_index!="DDR" else "Mem"
+            for i in range(1, 5):
+                if mem_place[0] == "I":
+                    dict_mem[f"dim{i}"] = G_ai_model.nodes[layer_index].get(f"in1_dim{i}", 1) 
+                elif mem_place[0] == "W":
+                    dict_mem[f"dim{i}"] = G_ai_model.nodes[layer_index].get(f"in2_dim{i}", 1) 
+                elif mem_place[0] == "O":
+                    dict_mem[f"dim{i}"] = G_ai_model.nodes[layer_index].get(f"out1_dim{i}", 1)
+            #print(row)
+            mem_name = layer_index+"_"+mem_place[0] if layer_index!="DDR" else "DDR_Mem"
+            mem_size[mem_name]=row["NB"]*row["NW"]*row["Nbank"]
+            dict_mem["Accesses_r"]=math.ceil(mem_req.get(mem_name,0)/row["NB"]) if layer_index!="DDR" else 0
+            dict_mem["Accesses_w"]=math.ceil(mem_req.get(mem_name,0)/row["NB"]) if layer_index!="DDR" else 0
+            #DDR always needs to access/store the input and output layers of the algortihm
+            if len(list(G_ai_model.in_edges(layer_index))) == 0 and mem_place[0] == "I":
+               ddr_access=True
+            
+            if layer_index+"_"+mem_place[0] == "L1_I":
+                ddr_access=True
+            if len(list(G_ai_model.out_edges(layer_index)))== 0 and mem_place[0] == "O":
+                ddr_access=True
+            #import pdb; pdb.set_trace()
 
-        if mem_df.loc[idx, "DDR_access"] and layer_idx!="DDR":
-            mem_df.loc[idx, f"ddr_reuse_mul_r"] = 1 if mem_place[0] == "O" else determine_reuse_mul(G_ai_model, layer_idx, mem_place[0])
-        else:
-            mem_df.loc[idx, f"ddr_reuse_mul_r"] = 1
+            if ddr_access and layer_index!="DDR":
+                dict_mem[f"ddr_reuse_mul_r"] = 1 if mem_place[0] == "O" else determine_reuse_mul(G_ai_model, layer_index, mem_place[0])
+            else:
+                dict_mem[f"ddr_reuse_mul_r"] = 1
+            dict_mem["mem_req_layer"]=mem_req.get(mem_name,0)
+            ddr_access |= mem_size[mem_name]<mem_req.get(mem_name,0) if layer_index!="DDR" else True 
+            mem_req_tn+=mem_req.get(mem_name,0)
+            tile_map[mem_name]=chip_tile_idx
+            dict_mem["DDR_access_layer"]=ddr_access
+            ddr_access_bn |=ddr_access 
+            #create a copy of dict_mem
+            for k,v in dict_mem.items():
+                #print(f"Updating mem_df at idx {idx} for key {k} with value {v}")
+                #print(mem_df.loc[idx,k] if k in mem_df.columns else "Key not in mem_df columns")
+                mem_df.loc[idx, k][layer_index]=(v)
+                #print(mem_df.loc[idx, k])
+            #print(f"After updating mem_df at idx {idx}, row is: {mem_df.loc[idx]}")
         mem_df.loc[idx, f"ddr_reuse_mul_w"] = 1
         mem_df.loc[idx,"F_non_zeros_r"]=0.5
         mem_df.loc[idx,"F_non_zeros_w"]=0.5
-        mem_df.loc[idx, "mem_req"]=mem_req.get(mem_name,0)
-        tile_map[mem_name]=chip_tile_idx
+        mem_df.loc[idx, "mem_req_tn"]=mem_req_tn
+        mem_df.loc[idx, "DDR_access_tn"]=ddr_access_bn
+
         if "Mem_"+str(row["NB"])+"bits x"+str(row["NW"])+"words x"+str(row["Nbank"])+"banks" not in ip_list:
             ip_list["Mem_"+str(row["NB"])+"bits x"+str(row["NW"])+"words x"+str(row["Nbank"])+"banks"] = [chip_tile_idx]
         else:
@@ -123,9 +147,9 @@ def mem_requirement(mem_df, G_ai_model, G_chip,tile_map, ip_list):
     #import pdb; pdb.set_trace()
 
     DDR_access_table = PrettyTable(["AI Layer", "Mem Stores I/O/W", "Chiplet ID", "Tile ID", "Memory Size (MB)", "Memory required by AI Layer (MB)", "DDR access required"])
-    [DDR_access_table.add_row([k.split('_')[0], k.split('_')[1], tile_map.get(k,0).split('_')[0], tile_map.get(k,0).split('_')[1], v*1E-6/8, mem_req.get(k,0)*1E-6/8, mem_df[(mem_df["Chiplet ID"] == tile_map.get(k,0).split('_')[0]) & (mem_df["Tile ID"] == tile_map.get(k,0).split('_')[1])]["DDR_access"].values[0]]) 
+    [DDR_access_table.add_row([k.split('_')[0], k.split('_')[1], tile_map.get(k,0).split('_')[0], tile_map.get(k,0).split('_')[1], v*1E-6/8, mem_req.get(k,0)*1E-6/8, mem_df[(mem_df["Chiplet ID"] == tile_map.get(k,0).split('_')[0]) & (mem_df["Tile ID"] == tile_map.get(k,0).split('_')[1])]["DDR_access_layer"].values[0]]) 
     for k,v in mem_size.items() if k!="DDR_Mem"]
-    #print(DDR_access_table)
+
     #import pdb; pdb.set_trace()
     return DDR_access_table, tile_map, mem_req, ip_list, mem_df, mem_size
 
@@ -142,21 +166,33 @@ def load_compute_tiles(G_ai_model, G_chip):
     all_cols = base_cols + layer_cols
 
     for chip_tile_idx in G_chip.nodes():
-        layer_idx = G_chip.nodes[chip_tile_idx].get("AI Layer", 1)
+        #import pdb; pdb.set_trace()
+        #print(G_chip.nodes[chip_tile_idx].get("AI Layer", 1))
+        layer_idxes = ast.literal_eval(G_chip.nodes[chip_tile_idx].get("AI Layer", 1))
         hw_type = G_chip.nodes[chip_tile_idx].get("HW Type", 1)
         chip_id=G_chip.nodes[chip_tile_idx].get("Chiplet ID", 1)
         tile_id=G_chip.nodes[chip_tile_idx].get("Tile ID", 1)
 
         if hw_type == "CPU":
+            attr_lists = defaultdict(list)
+
+            for layer_index in layer_idxes:
+                for k, v in G_ai_model.nodes[layer_index].items():
+                    attr_lists[k].append(v)
+            attr_lists = dict(attr_lists)
+
             row_dict = {
                 "Chiplet ID": chip_id,
                 "Tile ID": tile_id,
                 "HW Type": hw_type,
                 "Clock Frequency (Hz)": 1e9,
-                **dict(G_ai_model.nodes[layer_idx]),            
+                **attr_lists
+                #**{k: v for layer_index in layer_idxes for k, v in G_ai_model.nodes[layer_index].items()}
             }
             rows.append(row_dict)
-            tile_map[f"{layer_idx}_C"] = chip_tile_idx
+            #import pdb; pdb.set_trace()
+            for layer_index in layer_idxes:
+                tile_map[f"{layer_index}_C"] = chip_tile_idx
             if "CPU" not in ip_list:
                 ip_list["CPU"] =  [chip_tile_idx]
             else:
@@ -164,78 +200,117 @@ def load_compute_tiles(G_ai_model, G_chip):
 
         elif hw_type == "SA":
             row_sa = sa_df[(sa_df["Chiplet ID"] == chip_id) & (sa_df["Tile ID"] == tile_id)].index[0]
-            mapping_row = mapping_df[mapping_df["Layer ID"] == layer_idx]
             n_SA=sa_df.loc[row_sa, "n_SA"]
             SA_size_y=sa_df.loc[row_sa, "SA_size_y"]
             SA_size_x=sa_df.loc[row_sa, "SA_size_x"]
-           
-            #Obtain mapping with respect to matrix dimensions
-            map_dim = {}
-            map_sa_loc ={}
-            # Columns to check
-            indim_cols = [f"indim{i}" for i in range(1,5)]
-            wdim_cols  = [f"wdim{i}"  for i in range(1,5)]
-            #import pdb; pdb.set_trace()
+            #dict_wrap_total={"wrap_"+loc: 0 for loc in ["Auto","n_SA", "SA_size_y", "SA_size_x", "Temporal"]}
+            #total_layer_macs=0
+            for k in ["Auto","n_SA", "SA_size_y", "SA_size_x", "Temporal"]:
+                str_k = "wrap_"+k
+                if str_k not in sa_df.columns:
+                    sa_df[str_k] = [{} for _ in range(len(sa_df))]
+            if "layer_macs" not in sa_df.columns:
+                sa_df["layer_macs"] = [{} for _ in range(len(sa_df))]
+            for layer_index in layer_idxes:
+                dict_wrap={"wrap_"+loc: [] for loc in ["Auto","n_SA", "SA_size_y", "SA_size_x", "Temporal"]}
+                layer_macs = 1
 
-            layer_macs = 1
+                mapping_row = mapping_df[mapping_df["Layer ID"] == layer_index]
 
-            for dim in ["Parallel","A","B","C"]:
-                map_sa_loc[dim]=mapping_row[dim].values[0] 
-                map_sa_loc_list = map_sa_loc[dim].split('*') if pd.notna(map_sa_loc[dim]) else []
+                #Obtain mapping with respect to matrix dimensions
+                map_dim = {}
+                map_sa_loc ={}
+                # Columns to check
+                in1_dim_cols = [f"in1_dim{i}" for i in range(1,5)]
+                in2_dim_cols  = [f"in2_dim{i}"  for i in range(1,5)]
+                #import pdb; pdb.set_trace()
 
-                # check indim first
-                val_list = [col for col in indim_cols if mapping_row[col].values[0]==dim]
-                # if nothing in indim, check wdim
-                if not val_list:
-                    val_list = [col for col in wdim_cols if mapping_row[col].values[0]==dim]
 
-                if len(val_list)>1:
-                    print("Error: Multiple mapping found for dimension {dim}")
-                if val_list:  # store the mapped dimension name/value
-                    map_dim[dim] = G_ai_model.nodes[layer_idx][val_list[0]]
-                    layer_macs *= map_dim[dim]
-                    op_split_dim=math.ceil((map_dim[dim])**(1/len(map_sa_loc_list)))
-                #print(map_sa_loc)
-                count=0
-                
-                for idx, loc in enumerate(map_sa_loc_list):
-                    if idx == len(map_sa_loc_list)-1:
-                        # assign the remaining dimension to the last location
-                        sa_df.loc[row_sa, "wrap_"+loc]=map_dim[dim]//count if count>0 else map_dim[dim]
-                    else:
-                        if loc =="n_SA":
-                            sa_df.loc[row_sa, "wrap_"+loc]=n_SA 
-                            count+=sa_df.loc[row_sa, "wrap_"+loc]
+                for dim in ["Parallel","A","B","C"]:
+                    #import pdb; pdb.set_trace()
+                    map_sa_loc[dim]=mapping_row[dim].values[0] 
+                    map_sa_loc_list = map_sa_loc[dim].split('*') if pd.notna(map_sa_loc[dim]) else []
+                    # check in1_dim first.
+                    val_list = [col for col in in1_dim_cols if mapping_row[col].values[0]==dim]
+                    # if nothing in in1_dim, check in2_dim
+                    if not val_list:
+                        val_list = [col for col in in2_dim_cols if mapping_row[col].values[0]==dim]
+                    
+                    #print("mapping for dim:", dim, "is", val_list, "at layer:", layer_index)
+                    if not val_list and map_sa_loc_list: # no mapping found for this dimension, then check for dim+"1", dim+"2" in both in1_dim_cols and in2_dim_cols
+                        val_list_in1 = [col for col in in1_dim_cols if mapping_row[col].values[0][:len(dim)]==dim]
+                        val_list_in2 = [col for col in in2_dim_cols if mapping_row[col].values[0][:len(dim)]==dim]
+                        #assign the list longer in length to val_list
+                        val_list = val_list_in1 if len(val_list_in1)>=len(val_list_in2) else val_list_in2
+                        #get dimension assigned for val_list in mapping_row
+                        dim_val_list = [mapping_row[col].values[0] for col in val_list]
+                        #if dim_val_list has "unroll" string, then assign dim in val_list as outdim - to capture convolution unrolling
+                        if any("Unroll" in seg_s for s in dim_val_list for seg_s in s.split("-")):
+                            val_list = [s.split("-")[-1] for s in dim_val_list]
+                    
+                    map_dim[dim] = 1
+                    if val_list:
+                        for val in val_list:
+                            map_dim[dim]*= G_ai_model.nodes[layer_index][val]
+                        layer_macs *= map_dim[dim]
+                        op_split_dim=math.ceil((map_dim[dim])**(1/len(map_sa_loc_list)))
+                    #print(map_sa_loc)
+                    count=0
+                    
+                    for idx, loc in enumerate(map_sa_loc_list):
+                        if idx == len(map_sa_loc_list)-1:
+                            # assign the remaining dimension to the last location
+                            dict_wrap["wrap_"+loc]=map_dim[dim]//count if count>0 else map_dim[dim]
                         else:
-                            sa_df.loc[row_sa, "wrap_"+loc]=op_split_dim if op_split_dim>sa_df.loc[row_sa, loc] else sa_df.loc[row_sa, loc]
-                            count+=sa_df.loc[row_sa, "wrap_"+loc]    
-                        #import pdb; pdb.set_trace()
+                            if loc =="n_SA":
+                                dict_wrap["wrap_"+loc]=n_SA if n_SA<=map_dim[dim] else map_dim[dim]
+                                count+=dict_wrap["wrap_"+loc]
+                            else:
+                                dict_wrap["wrap_"+loc]=op_split_dim if op_split_dim>sa_df.loc[row_sa, loc] else sa_df.loc[row_sa, loc]
+                                count+=dict_wrap["wrap_"+loc]    
+                            #import pdb; pdb.set_trace()
+                    #import pdb; pdb.set_trace()
+                    
 
-            sa_df.loc[row_sa, "layer_macs"] = layer_macs
-            if n_SA == 1:
-                num_adders_tile = SA_size_y*SA_size_x
-                num_adder_stages=1
-            else:
-                num_adders_tile = (n_SA-1)*SA_size_y*SA_size_x  # Total number of adders within one tile
-                num_adder_stages=math.ceil(math.log2(n_SA)) if map_dim.get("Parallel", 1)!="n_SA" else 1 
-            sa_df.loc[row_sa, "num_adders_tile"] = num_adders_tile
-            sa_df.loc[row_sa, "num_adder_stages"] = num_adder_stages
+                #total_layer_macs += layer_macs
+                if n_SA == 1:
+                    num_adders_tile = SA_size_y*SA_size_x
+                    num_adder_stages=1
+                else:
+                    num_adders_tile = (n_SA-1)*SA_size_y*SA_size_x  # Total number of adders within one tile
+                    num_adder_stages=math.ceil(math.log2(n_SA)) if map_dim.get("Parallel", 1)!="n_SA" else 1 
+                sa_df.loc[row_sa, "num_adders_tile"] = num_adders_tile
+                sa_df.loc[row_sa, "num_adder_stages"] = num_adder_stages
 
-            # Temporal: multiply all temporal and parallelism entries
-            temporal_vals = [col for col in indim_cols if mapping_row[col].values[0]=="Temporal"]
-            map_dim["Temporal"] = prod([G_ai_model.nodes[layer_idx][val] for val in temporal_vals])
-            sa_df.loc[row_sa, "wrap_Temporal"] = map_dim["Temporal"]
-            tile_map[f"{layer_idx}_C"] = chip_tile_idx
+                # Temporal: multiply all temporal and parallelism entries
+                temporal_vals = [col for col in in1_dim_cols if mapping_row[col].values[0]=="Temporal"]
+                map_dim["Temporal"] = prod([G_ai_model.nodes[layer_index][val] for val in temporal_vals])
+                dict_wrap["wrap_Temporal"] = map_dim["Temporal"]
+                tile_map[f"{layer_index}_C"] = chip_tile_idx
+                #print(f"Layer {layer_index} mapped to SA tile {chip_tile_idx} with MACs: {layer_macs} and wrap factors: {dict_wrap}")
+                for loc in ["Auto","n_SA", "SA_size_y", "SA_size_x", "Temporal"]:
+                    sa_df.loc[row_sa, "wrap_" +loc][layer_index] = dict_wrap["wrap_"+loc]
+                sa_df.loc[row_sa, "layer_macs"][layer_index] = layer_macs
+                #import pdb; pdb.set_trace()
+            #sa_df.loc[row_sa, "layer_macs"] = total_layer_macs
+            #for loc in ["Auto","n_SA", "SA_size_y", "SA_size_x", "Temporal"]:
+                #sa_df.loc[row_sa, "wrap_" +loc].append(dict_wrap_total["wrap_"+loc])
+
+            #import pdb; pdb.set_trace()
             if f"SA_{n_SA}_{SA_size_y}x{SA_size_x}" not in ip_list:
                 ip_list[f"SA_{n_SA}_{SA_size_y}x{SA_size_x}"] = [chip_tile_idx]
             else:
                 ip_list[f"SA_{n_SA}_{SA_size_y}x{SA_size_x}"].append(chip_tile_idx)
 
     cpu_df = pd.DataFrame(rows, columns=all_cols)
+    
+    #import pdb; pdb.set_trace()
 
     return cpu_df, tile_map, mem_df, sa_df, mapping_df, lut_df, ip_list
 
-
+def util_fn(a, b):
+    utilization = 0.0 if b == 0 else (1.0 if a > b else a / b)
+    return utilization
 def plot_component(areas, latencies, energies, noc_positions, filename, title, scale_factor, labels=None, colors=None, spacing=0.5, annotate=True):
     if colors is None:
         colors ={k: "skyblue" for k in areas.keys()}
@@ -294,7 +369,7 @@ def plot_component(areas, latencies, energies, noc_positions, filename, title, s
     ax.set_title(f"{title} Map")
     
     os.makedirs(os.path.dirname(filename), exist_ok=True)
-    fig.savefig(filename, dpi=300, bbox_inches="tight")
+    fig.savefig(filename, dpi=100, bbox_inches="tight")
 
 def compute_main_fn(G_ai_model, G_chip, tile_ids):
     file_path = current_dir+'/Compute.json'
@@ -309,6 +384,7 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
     tile_area=area_mem_tile(mem_df, compute_json_data, tile_area, lut_df)
     tile_latency = {}
     tile_latency_breakdown = {}
+    #import pdb; pdb.set_trace()
     tile_latency, tile_latency_breakdown, compute_latency = latency_sa_tile(sa_df, compute_json_data, tile_latency, tile_latency_breakdown)
     tile_latency, tile_latency_breakdown, compute_latency = latency_cpu_tile(cpu_df, compute_json_data, tile_latency, tile_latency_breakdown, compute_latency)
     tile_latency, tile_latency_breakdown, mem_latency, ddr_latency = latency_mem_tile(mem_df, compute_json_data, tile_latency, tile_latency_breakdown)
@@ -334,6 +410,7 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
             name)
     compute_area={k: v for k, v in tile_area.items() if G_chip.nodes[k]["HW Type"].endswith("SA") or G_chip.nodes[k]["HW Type"].endswith("CPU")}
     mem_area={k: v for k, v in tile_area.items() if G_chip.nodes[k]["HW Type"].startswith("Mem")}
+    #print(tile_latency_breakdown)
     #import pdb; pdb.set_trace()
     print("----------Compute and Memory Summary---------------")
     print("Compute Area of the Chip is:", sum(compute_area.values()), "mm2")
@@ -349,7 +426,10 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
         with open(f"{target_file_path}/ddr_table.txt", "w") as f:
             f.write(str(DDR_access_table))
 
-        df = pd.DataFrame(DDR_access_table._rows, columns=DDR_access_table.field_names)
+        #get number of layers from user input by stopping and waiting for user input
+        num_layers_from_input = int(input(f"Input for files in {target_file_path},\n Enter the number of layers to plot: "))
+
+        df = pd.DataFrame(DDR_access_table._rows[:num_layers_from_input], columns=DDR_access_table.field_names)
         df = df[df["AI Layer"] != "DDR"]
         df["Chiplet_Tile"] = df["Chiplet ID"] + "_" + df["Tile ID"].astype(str)
         ax = df.plot(
@@ -368,11 +448,11 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
         y_min, y_max = ax.get_ylim()
         ax.set_ylim(y_min, y_max * 1.5)
         os.makedirs(f"{target_file_path}", exist_ok=True)
-        plt.savefig(f"{target_file_path}/ddr_bar_graph.png", dpi=300, bbox_inches="tight")
-
+        plt.savefig(f"{target_file_path}/ddr_bar_graph.png", dpi=100, bbox_inches="tight")
+        plt.close()
         # Extract keys and values
-        labels = list(tile_area.keys())
-        values = list(tile_area.values())
+        labels = list(tile_area.keys())[:num_layers_from_input]
+        values = list(tile_area.values())[:num_layers_from_input]
 
         plt.figure(figsize=(12, 6))
         plt.bar(labels, values)
@@ -383,11 +463,11 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
 
         plt.tight_layout()
         os.makedirs(f"{target_file_path}", exist_ok=True)
-        plt.savefig(f"{target_file_path}/area_bar_graph.png", dpi=300, bbox_inches="tight")
-
+        plt.savefig(f"{target_file_path}/area_bar_graph.png", dpi=100, bbox_inches="tight")
+        plt.close()
         # Extract keys and values
-        labels = list(tile_latency.keys())
-        values = [tile_latency[k] + ddr_latency.get(k, 0) for k in tile_latency]
+        labels = list(tile_latency.keys())[:num_layers_from_input]
+        values = [tile_latency[k] + ddr_latency.get(k, 0) for k in tile_latency][:num_layers_from_input]
         #import pdb; pdb.set_trace()
         plt.figure(figsize=(12, 6))
         plt.bar(labels, values)
@@ -399,11 +479,11 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
         plt.text(0, max(values)*1.1, "Note: Y-axis is in log scale", fontsize=10, color="red")
         plt.tight_layout()
         os.makedirs(f"{target_file_path}", exist_ok=True)
-        plt.savefig(f"{target_file_path}/latency_bar_graph.png", dpi=300, bbox_inches="tight")
-
+        plt.savefig(f"{target_file_path}/latency_bar_graph.png", dpi=100, bbox_inches="tight")
+        plt.close()
         # Extract keys and values
-        labels = list(tile_energy.keys())
-        values = [tile_energy[k] + ddr_energy.get(k, 0) for k in tile_energy]
+        labels = list(tile_energy.keys())[:num_layers_from_input]
+        values = [tile_energy[k] + ddr_energy.get(k, 0) for k in tile_energy][:num_layers_from_input]
 
         plt.figure(figsize=(12, 6))
         plt.bar(labels, values)
@@ -415,8 +495,10 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
         plt.text(0, max(values)*1.1, "Note: Y-axis is in log scale", fontsize=10, color="red")
         plt.tight_layout()
         os.makedirs(f"{target_file_path}", exist_ok=True)
-        plt.savefig(f"{target_file_path}/energy_bar_graph.png", dpi=300, bbox_inches="tight")
+        plt.savefig(f"{target_file_path}/energy_bar_graph.png", dpi=100, bbox_inches="tight")
+        plt.close()
 
+         # Plot chip-wise maps
         for chip_idx, tile_idx_dict in tile_ids.items():
             #print(chip_idx, tile_idx_dict)
             chip_tile_idx_list=[chip_idx+"_T"+str(tile_idx) for tile_idx in tile_idx_dict]
@@ -430,7 +512,12 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
             sides = {k: math.sqrt(a) for k, a in chip_tile_area.items()}
             scale_factor=math.ceil(max(sides.values()))
             plot_component(chip_tile_area, chip_tile_latency, chip_tile_energy, chip_noc_positions , filename, title=f"Chip {chip_idx}", scale_factor=scale_factor, labels= {k : G_chip.nodes[k].get("HW Type", "") for k in chip_tile_area})
-        #plt.show()
+        
+        #print sa_df for debugging
+        sa_df.to_csv(f"{target_file_path}/sa_df_debug.csv", index=False)
+        
+        #print mem_df for debugging
+        mem_df.to_csv(f"{target_file_path}/mem_df_debug.csv", index=False)
     #import pdb; pdb.set_trace()
     #print(tile_area)
     return G_chip, tile_map, mem_req, ip_list

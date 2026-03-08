@@ -46,6 +46,9 @@ def calc_edge_charc(source_tile_idx, dest_tile_idx,G_sys, G_chip, G_stack, nw_df
         hops2d= abs(y_noc_d-y_noc_s)+abs(x_noc_d-x_noc_s)
         hops3d= abs(z_nop_d-z_nop_s)
         bus_width=nw_df.loc[nw_df["Stack ID"] == G_sys.nodes[source_chip_idx]["Stack ID"], "N_2D_Links_per_tile"].iloc[0] if hops2d!=0 else nw_df.loc[nw_df["Stack ID"] == G_sys.nodes[source_chip_idx]["Stack ID"], "N_3D_Links_per_tile"].iloc[0]
+        #print warning if bus_width for 3D has been limited by 2D links
+        if connection_type=="3d" and bus_width<nw_df.loc[nw_df["Stack ID"] == G_sys.nodes[source_chip_idx]["Stack ID"], "N_3D_Links_per_tile"].iloc[0]:
+            print(f"Warning: Bandwidth for 3D limited by 2D links due to 2D hops required while transmitting data from tile {source_tile_idx} at noc_position {x_noc_s},{y_noc_s},{z_nop_s} to tile {dest_tile_idx} at noc_position {x_noc_d},{y_noc_d},{z_nop_d}. Please increase number of 2D links or decrease number of 3D links to avoid this limitation.")
         hops2_5d=0
         no_2_5d_channels_active=0
         router_list_2_5d={}
@@ -85,6 +88,9 @@ def calc_edge_charc(source_tile_idx, dest_tile_idx,G_sys, G_chip, G_stack, nw_df
         no_2_5d_channels=min(nw_df.loc[nw_df["Stack ID"] == G_sys.nodes[source_chip_idx]["Stack ID"], "N_2.5D_channels_per_chiplet_edge"].iloc[0], nw_df.loc[nw_df["Stack ID"] == G_sys.nodes[dest_chip_idx]["Stack ID"], "N_2.5D_channels_per_chiplet_edge"].iloc[0])
         w_2_5d=no_2_5d_channels*(nop_json_data["n_Tx_config"]+nop_json_data["n_Rx_config"])
         bus_width=min(bus_width, w_2_5d)
+        #print the warning only once that bus_width for 2.5D has been limited by 2D links
+        if bus_width<w_2_5d:
+            print(f"Warning: Bandwidth for 2.5D connection from {G_sys.nodes[source_chip_idx]['Stack ID']} to {G_sys.nodes[dest_chip_idx]['Stack ID']} has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels")
         no_2_5d_channels_active=math.ceil(bus_width/(nop_json_data["n_Tx_config"]+nop_json_data["n_Rx_config"]))
 
     return hops2d,hops2_5d, hops3d, connection_type, bus_width, no_2_5d_channels_active, nop_location_s, nop_location_d, router_list_2d, router_list_3d, router_list_2_5d
@@ -101,7 +107,7 @@ def network_map(G_chip, G_sys, G_ai_model, G_stack, noc_tile_dict, nop_chip_dict
         if source_layer_idx!="In":
             source_tile_idx, Q=tile_map[source_layer_idx+"_O"], mem_req[source_layer_idx+"_O"]
             #nodes=[(source_tile_idx,{"HW Type": source_layer_idx+" Out Mem"}), (dest_tile_idx,{"HW Type":dest_layer_idx+" "+G_chip.nodes[dest_tile_idx]["HW Type"]})]
-            values = [G_ai_model.nodes[source_layer_idx].get(f"outdim{i}", 1) for i in range(1, 5)]
+            values = [G_ai_model.nodes[source_layer_idx].get(f"out1_dim{i}", 1) for i in range(1, 5)]
             G_chip.nodes[source_tile_idx]["HW Type"]=source_layer_idx+" Out Mem"
             if dest_layer_idx not in  G_chip.nodes[dest_tile_idx]["HW Type"]:
                 G_chip.nodes[dest_tile_idx]["HW Type"]=dest_layer_idx+" "+G_chip.nodes[dest_tile_idx]["HW Type"]
@@ -112,13 +118,15 @@ def network_map(G_chip, G_sys, G_ai_model, G_stack, noc_tile_dict, nop_chip_dict
             #G_network.add_nodes_from(nodes)
         hops2d,hops2_5d, hops3d, connection_type, bus_width, no_2_5d_channels_active, nop_location_s, nop_location_d, router_list_2d, router_list_3d, router_list_2_5d=calc_edge_charc(source_tile_idx, dest_tile_idx,G_sys, G_chip, G_stack, nw_df,nop_json_data)
         G_chip.add_edge(source_tile_idx, dest_tile_idx, connection_type=connection_type, bus_width=bus_width, Q=Q, hops2d=hops2d,hops2_5d=hops2_5d, hops3d=hops3d, nop_location_s=nop_location_s, nop_location_d=nop_location_d, router_list_2d=router_list_2d, router_list_3d=router_list_3d, nop_router_list=router_list_2_5d)
-        if G_chip.nodes[dest_tile_idx].get(f"Comment", 1)=="Matmul" and dest_layer_idx+"_W" in tile_map:
-            source_tile_idx, Q=tile_map[dest_layer_idx+"_W"], mem_req[dest_layer_idx+"_W"]
-            hops2d, hops2_5d, hops3d, connection_type, bus_width, no_2_5d_channels_active, nop_location_s, nop_location_d, router_list_2d, router_list_3d, router_list_2_5d=calc_edge_charc(source_tile_idx, dest_tile_idx,G_sys, G_chip, G_stack, nw_df,nop_json_data)
-            #nodes=[(source_tile_idx,{"HW Type": dest_layer_idx+" Wg Mem"})]
-            #G_network.add_nodes_from(nodes)
-            G_chip.nodes[source_tile_idx]["HW Type"]=dest_layer_idx+" Wg Mem"
-            G_chip.add_edge(source_tile_idx, dest_tile_idx, connection_type=connection_type, bus_width=bus_width, Q=Q, hops2d=hops2d, hops2_5d=hops2_5d, hops3d=hops3d, nop_location_s=nop_location_s, nop_location_d=nop_location_d, router_list_2d=router_list_2d, router_list_3d=router_list_3d, nop_router_list=router_list_2_5d)
+        #if G_chip.nodes[dest_tile_idx].get(f"NodeName", 1).startswith("MatMul") or G_chip.nodes[dest_tile_idx].get(f"NodeName", 1)=="Gemm" or G_chip.nodes[dest_tile_idx].get(f"NodeName", 1)=="Conv" or G_chip.nodes[dest_tile_idx].get(f"NodeName", 1).endswith("Attention"):
+        if G_chip.nodes[dest_tile_idx].get("HW Type", 1).endswith("SA"):
+            if  dest_layer_idx+"_W" in tile_map:
+                source_tile_idx, Q=tile_map[dest_layer_idx+"_W"], mem_req[dest_layer_idx+"_W"]
+                hops2d, hops2_5d, hops3d, connection_type, bus_width, no_2_5d_channels_active, nop_location_s, nop_location_d, router_list_2d, router_list_3d, router_list_2_5d=calc_edge_charc(source_tile_idx, dest_tile_idx,G_sys, G_chip, G_stack, nw_df,nop_json_data)
+                #nodes=[(source_tile_idx,{"HW Type": dest_layer_idx+" Wg Mem"})]
+                #G_network.add_nodes_from(nodes)
+                G_chip.nodes[source_tile_idx]["HW Type"]=dest_layer_idx+" Wg Mem"
+                G_chip.add_edge(source_tile_idx, dest_tile_idx, connection_type=connection_type, bus_width=bus_width, Q=Q, hops2d=hops2d, hops2_5d=hops2_5d, hops3d=hops3d, nop_location_s=nop_location_s, nop_location_d=nop_location_d, router_list_2d=router_list_2d, router_list_3d=router_list_3d, nop_router_list=router_list_2_5d)
 
     
     for layer_idx in G_ai_model.nodes():
@@ -142,12 +150,14 @@ def network_map(G_chip, G_sys, G_ai_model, G_stack, noc_tile_dict, nop_chip_dict
             if node_data["DDR_Latency"]!=0:
                 source_tile_idx=ddr_chip_tile_idx
                 dest_tile_idx=chip_tile_idx
+                #import pdb; pdb.set_trace()
                 Q=mem_req[ddr_chip_tile_idx][chip_tile_idx]
                 #nodes=[(source_tile_idx,{"HW Type": "DDR Mem"}), (dest_tile_idx,{"HW Type":G_chip.nodes[dest_tile_idx]["HW Type"]})]
                 #G_network.add_nodes_from(nodes)
                 hops2d,hops2_5d, hops3d, connection_type, bus_width, no_2_5d_channels_active, nop_location_s, nop_location_d, router_list_2d, router_list_3d, router_list_2_5d=calc_edge_charc(source_tile_idx, dest_tile_idx,G_sys, G_chip, G_stack, nw_df,nop_json_data)
                 #add bidirectional edge
                 G_chip.add_edge(source_tile_idx, dest_tile_idx, connection_type=connection_type, bus_width=bus_width, Q=Q, hops2d=hops2d,hops2_5d=hops2_5d, hops3d=hops3d, nop_location_s=nop_location_s, nop_location_d=nop_location_d, router_list_2d=router_list_2d, router_list_3d=router_list_3d, nop_router_list=router_list_2_5d)
+    #import pdb; pdb.set_trace()
     if DEBUG:
         pos = nx.nx_agraph.graphviz_layout(G_chip, prog="dot")  
 
@@ -165,8 +175,8 @@ def network_map(G_chip, G_sys, G_ai_model, G_stack, noc_tile_dict, nop_chip_dict
         nx.draw_networkx_edge_labels(G_chip, pos, edge_labels=edge_labels, font_size=8)
         plt.title(f"{aimodel} Device Connectivity Graph", fontsize=14)
         os.makedirs(f"{main_dir}/Results", exist_ok=True)
-        plt.savefig(f"{main_dir}/Results/network_graph.png", dpi=300, bbox_inches="tight")
-
+        plt.savefig(f"{main_dir}/Results/network_graph.png", dpi=100, bbox_inches="tight")
+        plt.close()
         edge_data = []
         for u, v, attrs in G_chip.edges(data=True):
             row = {"Source": u, "Target": v, **attrs}
@@ -201,7 +211,7 @@ def network_map(G_chip, G_sys, G_ai_model, G_stack, noc_tile_dict, nop_chip_dict
                                         "NoC Position": noc_pos_str,
                                         "Stack ID": stack_id,
                                         "NoP Position": G_sys.nodes[chiplet_idx]["NoP Position"],
-                                        "Comment": "Empty",
+                                        "NodeName": "Empty",
                                         "AI Layer": "Empty",
                                         "Tile_Area": 0,
                                         "Tile_Power": 0,
@@ -610,13 +620,14 @@ def network_main_fn(G_ai_model, G_chip, G_sys, G_stack, noc_tile_dict, nop_chip_
     print("----------------------------------------")
 
     print("----------Combined Summary (Compute+Noc+NoP+Memory)---------------")
+    print("Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking")
     stack_area={G_sys.nodes[chip_idx]["Stack ID"] : G_sys.nodes[chip_idx]["Chiplet Actual Area"] for chip_idx in G_sys.nodes()}
     #import pdb; pdb.set_trace()
     print("Total Chip Area (in mm^2)", sum(stack_area.values())+sum([G_sys.nodes[chiplet_idx]["NoP Router Area"] for chiplet_idx in G_sys.nodes()]))
-    #import pdb; pdb.set_trace()
-    print("Total Chip Latency (in s)", sum([G_chip.nodes[node]["Tile_Latency"] for node in G_chip.nodes()])+sum(noc_latency_2d.values())+sum(nop_latency.values())+ sum(noc_latency_3d.values()))
+    print("Total End-to-End Latency (in s)", sum([G_chip.nodes[node]["Tile_Latency"] for node in G_chip.nodes()])+sum(noc_latency_2d.values())+sum(nop_latency.values())+ sum(noc_latency_3d.values()))
     print("Total Chip Energy (in J)", sum([G_chip.nodes[node]["Tile_Energy"] for node in G_chip.nodes()])+sum(noc_energy_2d.values())+sum(nop_energy.values())+ sum(noc_energy_3d.values()))
     print("----------------------------------------")
+    #import pdb; pdb.set_trace()
     if DEBUG:
         print_summary(G_chip, G_sys, G_stack)
         #plot breakdown of compute, noc and memory area in single pie chart
@@ -725,7 +736,7 @@ def network_main_fn(G_ai_model, G_chip, G_sys, G_stack, noc_tile_dict, nop_chip_
         plt.tight_layout()
         os.makedirs(f"{main_dir}/Results", exist_ok=True)
         plt.savefig(f"{main_dir}/Results/network_breakdown.png", dpi=100, bbox_inches='tight')
-
+        plt.close()
         #import pdb; pdb.set_trace()
 
         totalhops2d=sum([G_chip.edges[edge]["hops2d"] for edge in G_chip.edges])
@@ -812,8 +823,8 @@ def network_main_fn(G_ai_model, G_chip, G_sys, G_stack, noc_tile_dict, nop_chip_
 
         plt.tight_layout()
         os.makedirs(f"{target_file_path}", exist_ok=True)
-        plt.savefig(f"{target_file_path}/noc_router_area_bar_graph.png", dpi=300, bbox_inches="tight")
-
+        plt.savefig(f"{target_file_path}/noc_router_area_bar_graph.png", dpi=100, bbox_inches="tight")
+        plt.close()
         # Extract keys and values
         router_latency = {nodes: G_chip.nodes[nodes]["router Latency"] for nodes in G_chip.nodes() if G_chip.nodes[nodes]["router Latency"]>0}
         #import pdb; pdb.set_trace()
@@ -827,8 +838,8 @@ def network_main_fn(G_ai_model, G_chip, G_sys, G_stack, noc_tile_dict, nop_chip_
         plt.text(0, max(list(router_latency.values()))*1.1, "Note: Y-axis is in log scale", fontsize=10, color="red")
         plt.tight_layout()
         os.makedirs(f"{target_file_path}", exist_ok=True)
-        plt.savefig(f"{target_file_path}/noc_router_latency_bar_graph.png", dpi=300, bbox_inches="tight")
-
+        plt.savefig(f"{target_file_path}/noc_router_latency_bar_graph.png", dpi=100, bbox_inches="tight")
+        plt.close()
         # Extract keys and values
         router_energy = {nodes: G_chip.nodes[nodes]["router Energy"] for nodes in G_chip.nodes() if G_chip.nodes[nodes]["router Energy"]>0}
 
@@ -842,11 +853,12 @@ def network_main_fn(G_ai_model, G_chip, G_sys, G_stack, noc_tile_dict, nop_chip_
         plt.text(0, max(list(router_energy.values()))*1.1, "Note: Y-axis is in log scale", fontsize=10, color="red")
         plt.tight_layout()
         os.makedirs(f"{target_file_path}", exist_ok=True)
-        plt.savefig(f"{target_file_path}/noc_router_energy_bar_graph.png", dpi=300, bbox_inches="tight")
-
+        plt.savefig(f"{target_file_path}/noc_router_energy_bar_graph.png", dpi=100, bbox_inches="tight")
+        plt.close()
         outs=(G_chip, G_sys)
         with open('G_chip_G_stack'+'.pkl', 'wb') as file:
             pickle.dump(outs, file)   
+    
     #import pdb; pdb.set_trace()
 
     return G_chip, G_sys, G_stack, nw_df, stack_area, n_signal_IO

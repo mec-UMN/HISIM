@@ -1,0 +1,153 @@
+Layer_ID,Original_ID,Type,in1_dim1,in1_dim2,in1_dim3,in1_dim4,in2_dim1,in2_dim2,in2_dim3,in2_dim4,in3_dim1,in3_dim2,in3_dim3,in3_dim4,prec,out1_dim1,out1_dim2,out1_dim3,out1_dim4,NodeName,Dilations,Groups,KernelShape,Pads,Strides
+L1,%174,Conv,1,3,224,224,64,3,7,7,64,NA,NA,NA,8,1,64,112,112,/conv1/Conv,"[1, 1]",1 : si64,"[7, 7]","[3, 3, 3, 3]","[2, 2]"
+L2,%175,Relu,1,64,112,112,NA,NA,NA,NA,NA,NA,NA,NA,8,1,64,112,112,/relu/Relu,NA,NA,NA,NA,NA
+L3,%178,MatMul,64,64,NA,NA,1,64,3136,NA,NA,NA,NA,NA,8,1,64,3136,NA,/layer1/layer1.0/conv1/Conv_97,NA,NA,NA,NA,NA
+L4,%179,Add,1,64,3136,NA,1,64,1,NA,NA,NA,NA,NA,8,1,64,3136,NA,/layer1/layer1.0/conv1/Conv_0,NA,NA,NA,NA,NA
+L5,%181,Relu,1,64,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,64,56,56,/layer1/layer1.0/relu/Relu,NA,NA,NA,NA,NA
+L6,%182,Conv,1,64,56,56,64,64,3,3,64,NA,NA,NA,8,1,64,56,56,/layer1/layer1.0/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L7,%183,Relu,1,64,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,64,56,56,/layer1/layer1.0/relu_1/Relu,NA,NA,NA,NA,NA
+L8,%185,MatMul,256,64,NA,NA,1,64,3136,NA,NA,NA,NA,NA,8,1,256,3136,NA,/layer1/layer1.0/conv3/Conv_99,NA,NA,NA,NA,NA
+L9,%186,Add,1,256,3136,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,3136,NA,/layer1/layer1.0/conv3/Conv_36,NA,NA,NA,NA,NA
+L10,%189,MatMul,256,64,NA,NA,1,64,3136,NA,NA,NA,NA,NA,8,1,256,3136,NA,/layer1/layer1.0/downsample/downsample.0/Conv_26,NA,NA,NA,NA,NA
+L11,%190,Add,1,256,3136,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,3136,NA,/layer1/layer1.0/downsample/downsample.0/Conv_49,NA,NA,NA,NA,NA
+L12,%192,Add,1,256,56,56,1,256,56,56,NA,NA,NA,NA,8,1,256,56,56,/layer1/layer1.0/Add,NA,NA,NA,NA,NA
+L13,%193,Relu,1,256,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,56,56,/layer1/layer1.0/relu_2/Relu,NA,NA,NA,NA,NA
+L14,%195,MatMul,64,256,NA,NA,1,256,3136,NA,NA,NA,NA,NA,8,1,64,3136,NA,/layer1/layer1.1/conv1/Conv_41,NA,NA,NA,NA,NA
+L15,%196,Add,1,64,3136,NA,1,64,1,NA,NA,NA,NA,NA,8,1,64,3136,NA,/layer1/layer1.1/conv1/Conv_74,NA,NA,NA,NA,NA
+L16,%198,Relu,1,64,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,64,56,56,/layer1/layer1.1/relu/Relu,NA,NA,NA,NA,NA
+L17,%199,Conv,1,64,56,56,64,64,3,3,64,NA,NA,NA,8,1,64,56,56,/layer1/layer1.1/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L18,%200,Relu,1,64,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,64,56,56,/layer1/layer1.1/relu_1/Relu,NA,NA,NA,NA,NA
+L19,%202,MatMul,256,64,NA,NA,1,64,3136,NA,NA,NA,NA,NA,8,1,256,3136,NA,/layer1/layer1.1/conv3/Conv_116,NA,NA,NA,NA,NA
+L20,%203,Add,1,256,3136,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,3136,NA,/layer1/layer1.1/conv3/Conv_129,NA,NA,NA,NA,NA
+L21,%205,Add,1,256,56,56,1,256,56,56,NA,NA,NA,NA,8,1,256,56,56,/layer1/layer1.1/Add,NA,NA,NA,NA,NA
+L22,%206,Relu,1,256,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,56,56,/layer1/layer1.1/relu_2/Relu,NA,NA,NA,NA,NA
+L23,%208,MatMul,64,256,NA,NA,1,256,3136,NA,NA,NA,NA,NA,8,1,64,3136,NA,/layer1/layer1.2/conv1/Conv_65,NA,NA,NA,NA,NA
+L24,%209,Add,1,64,3136,NA,1,64,1,NA,NA,NA,NA,NA,8,1,64,3136,NA,/layer1/layer1.2/conv1/Conv_68,NA,NA,NA,NA,NA
+L25,%211,Relu,1,64,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,64,56,56,/layer1/layer1.2/relu/Relu,NA,NA,NA,NA,NA
+L26,%212,Conv,1,64,56,56,64,64,3,3,64,NA,NA,NA,8,1,64,56,56,/layer1/layer1.2/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L27,%213,Relu,1,64,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,64,56,56,/layer1/layer1.2/relu_1/Relu,NA,NA,NA,NA,NA
+L28,%215,MatMul,256,64,NA,NA,1,64,3136,NA,NA,NA,NA,NA,8,1,256,3136,NA,/layer1/layer1.2/conv3/Conv_92,NA,NA,NA,NA,NA
+L29,%216,Add,1,256,3136,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,3136,NA,/layer1/layer1.2/conv3/Conv_61,NA,NA,NA,NA,NA
+L30,%218,Add,1,256,56,56,1,256,56,56,NA,NA,NA,NA,8,1,256,56,56,/layer1/layer1.2/Add,NA,NA,NA,NA,NA
+L31,%219,Relu,1,256,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,56,56,/layer1/layer1.2/relu_2/Relu,NA,NA,NA,NA,NA
+L32,%221,MatMul,128,256,NA,NA,1,256,3136,NA,NA,NA,NA,NA,8,1,128,3136,NA,/layer2/layer2.0/conv1/Conv_96,NA,NA,NA,NA,NA
+L33,%222,Add,1,128,3136,NA,1,128,1,NA,NA,NA,NA,NA,8,1,128,3136,NA,/layer2/layer2.0/conv1/Conv_84,NA,NA,NA,NA,NA
+L34,%224,Relu,1,128,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,56,56,/layer2/layer2.0/relu/Relu,NA,NA,NA,NA,NA
+L35,%225,Conv,1,128,56,56,128,128,3,3,128,NA,NA,NA,8,1,128,28,28,/layer2/layer2.0/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[2, 2]"
+L36,%226,Relu,1,128,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,28,28,/layer2/layer2.0/relu_1/Relu,NA,NA,NA,NA,NA
+L37,%228,MatMul,512,128,NA,NA,1,128,784,NA,NA,NA,NA,NA,8,1,512,784,NA,/layer2/layer2.0/conv3/Conv_20,NA,NA,NA,NA,NA
+L38,%229,Add,1,512,784,NA,1,512,1,NA,NA,NA,NA,NA,8,1,512,784,NA,/layer2/layer2.0/conv3/Conv_34,NA,NA,NA,NA,NA
+L39,%231,Conv,1,256,56,56,512,256,1,1,512,NA,NA,NA,8,1,512,28,28,/layer2/layer2.0/downsample/downsample.0/Conv,"[1, 1]",1 : si64,"[1, 1]","[0, 0, 0, 0]","[2, 2]"
+L40,%232,Add,1,512,28,28,1,512,28,28,NA,NA,NA,NA,8,1,512,28,28,/layer2/layer2.0/Add,NA,NA,NA,NA,NA
+L41,%233,Relu,1,512,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,28,28,/layer2/layer2.0/relu_2/Relu,NA,NA,NA,NA,NA
+L42,%235,MatMul,128,512,NA,NA,1,512,784,NA,NA,NA,NA,NA,8,1,128,784,NA,/layer2/layer2.1/conv1/Conv_8,NA,NA,NA,NA,NA
+L43,%236,Add,1,128,784,NA,1,128,1,NA,NA,NA,NA,NA,8,1,128,784,NA,/layer2/layer2.1/conv1/Conv_23,NA,NA,NA,NA,NA
+L44,%238,Relu,1,128,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,28,28,/layer2/layer2.1/relu/Relu,NA,NA,NA,NA,NA
+L45,%239,Conv,1,128,28,28,128,128,3,3,128,NA,NA,NA,8,1,128,28,28,/layer2/layer2.1/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L46,%240,Relu,1,128,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,28,28,/layer2/layer2.1/relu_1/Relu,NA,NA,NA,NA,NA
+L47,%242,MatMul,512,128,NA,NA,1,128,784,NA,NA,NA,NA,NA,8,1,512,784,NA,/layer2/layer2.1/conv3/Conv_111,NA,NA,NA,NA,NA
+L48,%243,Add,1,512,784,NA,1,512,1,NA,NA,NA,NA,NA,8,1,512,784,NA,/layer2/layer2.1/conv3/Conv_15,NA,NA,NA,NA,NA
+L49,%245,Add,1,512,28,28,1,512,28,28,NA,NA,NA,NA,8,1,512,28,28,/layer2/layer2.1/Add,NA,NA,NA,NA,NA
+L50,%246,Relu,1,512,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,28,28,/layer2/layer2.1/relu_2/Relu,NA,NA,NA,NA,NA
+L51,%248,MatMul,128,512,NA,NA,1,512,784,NA,NA,NA,NA,NA,8,1,128,784,NA,/layer2/layer2.2/conv1/Conv_60,NA,NA,NA,NA,NA
+L52,%249,Add,1,128,784,NA,1,128,1,NA,NA,NA,NA,NA,8,1,128,784,NA,/layer2/layer2.2/conv1/Conv_120,NA,NA,NA,NA,NA
+L53,%251,Relu,1,128,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,28,28,/layer2/layer2.2/relu/Relu,NA,NA,NA,NA,NA
+L54,%252,Conv,1,128,28,28,128,128,3,3,128,NA,NA,NA,8,1,128,28,28,/layer2/layer2.2/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L55,%253,Relu,1,128,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,28,28,/layer2/layer2.2/relu_1/Relu,NA,NA,NA,NA,NA
+L56,%255,MatMul,512,128,NA,NA,1,128,784,NA,NA,NA,NA,NA,8,1,512,784,NA,/layer2/layer2.2/conv3/Conv_90,NA,NA,NA,NA,NA
+L57,%256,Add,1,512,784,NA,1,512,1,NA,NA,NA,NA,NA,8,1,512,784,NA,/layer2/layer2.2/conv3/Conv_112,NA,NA,NA,NA,NA
+L58,%258,Add,1,512,28,28,1,512,28,28,NA,NA,NA,NA,8,1,512,28,28,/layer2/layer2.2/Add,NA,NA,NA,NA,NA
+L59,%259,Relu,1,512,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,28,28,/layer2/layer2.2/relu_2/Relu,NA,NA,NA,NA,NA
+L60,%261,MatMul,128,512,NA,NA,1,512,784,NA,NA,NA,NA,NA,8,1,128,784,NA,/layer2/layer2.3/conv1/Conv_123,NA,NA,NA,NA,NA
+L61,%262,Add,1,128,784,NA,1,128,1,NA,NA,NA,NA,NA,8,1,128,784,NA,/layer2/layer2.3/conv1/Conv_115,NA,NA,NA,NA,NA
+L62,%264,Relu,1,128,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,28,28,/layer2/layer2.3/relu/Relu,NA,NA,NA,NA,NA
+L63,%265,Conv,1,128,28,28,128,128,3,3,128,NA,NA,NA,8,1,128,28,28,/layer2/layer2.3/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L64,%266,Relu,1,128,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,28,28,/layer2/layer2.3/relu_1/Relu,NA,NA,NA,NA,NA
+L65,%268,MatMul,512,128,NA,NA,1,128,784,NA,NA,NA,NA,NA,8,1,512,784,NA,/layer2/layer2.3/conv3/Conv_132,NA,NA,NA,NA,NA
+L66,%269,Add,1,512,784,NA,1,512,1,NA,NA,NA,NA,NA,8,1,512,784,NA,/layer2/layer2.3/conv3/Conv_62,NA,NA,NA,NA,NA
+L67,%271,Add,1,512,28,28,1,512,28,28,NA,NA,NA,NA,8,1,512,28,28,/layer2/layer2.3/Add,NA,NA,NA,NA,NA
+L68,%272,Relu,1,512,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,28,28,/layer2/layer2.3/relu_2/Relu,NA,NA,NA,NA,NA
+L69,%274,MatMul,256,512,NA,NA,1,512,784,NA,NA,NA,NA,NA,8,1,256,784,NA,/layer3/layer3.0/conv1/Conv_101,NA,NA,NA,NA,NA
+L70,%275,Add,1,256,784,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,784,NA,/layer3/layer3.0/conv1/Conv_124,NA,NA,NA,NA,NA
+L71,%277,Relu,1,256,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,28,28,/layer3/layer3.0/relu/Relu,NA,NA,NA,NA,NA
+L72,%278,Conv,1,256,28,28,256,256,3,3,256,NA,NA,NA,8,1,256,14,14,/layer3/layer3.0/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[2, 2]"
+L73,%279,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.0/relu_1/Relu,NA,NA,NA,NA,NA
+L74,%281,MatMul,1024,256,NA,NA,1,256,196,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.0/conv3/Conv_119,NA,NA,NA,NA,NA
+L75,%282,Add,1,1024,196,NA,1,1024,1,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.0/conv3/Conv_117,NA,NA,NA,NA,NA
+L76,%284,Conv,1,512,28,28,1024,512,1,1,1024,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.0/downsample/downsample.0/Conv,"[1, 1]",1 : si64,"[1, 1]","[0, 0, 0, 0]","[2, 2]"
+L77,%285,Add,1,1024,14,14,1,1024,14,14,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.0/Add,NA,NA,NA,NA,NA
+L78,%286,Relu,1,1024,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.0/relu_2/Relu,NA,NA,NA,NA,NA
+L79,%288,MatMul,256,1024,NA,NA,1,1024,196,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.1/conv1/Conv_2,NA,NA,NA,NA,NA
+L80,%289,Add,1,256,196,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.1/conv1/Conv_9,NA,NA,NA,NA,NA
+L81,%291,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.1/relu/Relu,NA,NA,NA,NA,NA
+L82,%292,Conv,1,256,14,14,256,256,3,3,256,NA,NA,NA,8,1,256,14,14,/layer3/layer3.1/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L83,%293,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.1/relu_1/Relu,NA,NA,NA,NA,NA
+L84,%295,MatMul,1024,256,NA,NA,1,256,196,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.1/conv3/Conv_121,NA,NA,NA,NA,NA
+L85,%296,Add,1,1024,196,NA,1,1024,1,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.1/conv3/Conv_5,NA,NA,NA,NA,NA
+L86,%298,Add,1,1024,14,14,1,1024,14,14,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.1/Add,NA,NA,NA,NA,NA
+L87,%299,Relu,1,1024,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.1/relu_2/Relu,NA,NA,NA,NA,NA
+L88,%301,MatMul,256,1024,NA,NA,1,1024,196,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.2/conv1/Conv_107,NA,NA,NA,NA,NA
+L89,%302,Add,1,256,196,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.2/conv1/Conv_127,NA,NA,NA,NA,NA
+L90,%304,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.2/relu/Relu,NA,NA,NA,NA,NA
+L91,%305,Conv,1,256,14,14,256,256,3,3,256,NA,NA,NA,8,1,256,14,14,/layer3/layer3.2/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L92,%306,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.2/relu_1/Relu,NA,NA,NA,NA,NA
+L93,%308,MatMul,1024,256,NA,NA,1,256,196,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.2/conv3/Conv_105,NA,NA,NA,NA,NA
+L94,%309,Add,1,1024,196,NA,1,1024,1,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.2/conv3/Conv_108,NA,NA,NA,NA,NA
+L95,%311,Add,1,1024,14,14,1,1024,14,14,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.2/Add,NA,NA,NA,NA,NA
+L96,%312,Relu,1,1024,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.2/relu_2/Relu,NA,NA,NA,NA,NA
+L97,%314,MatMul,256,1024,NA,NA,1,1024,196,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.3/conv1/Conv_38,NA,NA,NA,NA,NA
+L98,%315,Add,1,256,196,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.3/conv1/Conv_93,NA,NA,NA,NA,NA
+L99,%317,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.3/relu/Relu,NA,NA,NA,NA,NA
+L100,%318,Conv,1,256,14,14,256,256,3,3,256,NA,NA,NA,8,1,256,14,14,/layer3/layer3.3/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L101,%319,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.3/relu_1/Relu,NA,NA,NA,NA,NA
+L102,%321,MatMul,1024,256,NA,NA,1,256,196,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.3/conv3/Conv_21,NA,NA,NA,NA,NA
+L103,%322,Add,1,1024,196,NA,1,1024,1,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.3/conv3/Conv_110,NA,NA,NA,NA,NA
+L104,%324,Add,1,1024,14,14,1,1024,14,14,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.3/Add,NA,NA,NA,NA,NA
+L105,%325,Relu,1,1024,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.3/relu_2/Relu,NA,NA,NA,NA,NA
+L106,%327,MatMul,256,1024,NA,NA,1,1024,196,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.4/conv1/Conv_25,NA,NA,NA,NA,NA
+L107,%328,Add,1,256,196,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.4/conv1/Conv_10,NA,NA,NA,NA,NA
+L108,%330,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.4/relu/Relu,NA,NA,NA,NA,NA
+L109,%331,Conv,1,256,14,14,256,256,3,3,256,NA,NA,NA,8,1,256,14,14,/layer3/layer3.4/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L110,%332,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.4/relu_1/Relu,NA,NA,NA,NA,NA
+L111,%334,MatMul,1024,256,NA,NA,1,256,196,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.4/conv3/Conv_28,NA,NA,NA,NA,NA
+L112,%335,Add,1,1024,196,NA,1,1024,1,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.4/conv3/Conv_18,NA,NA,NA,NA,NA
+L113,%337,Add,1,1024,14,14,1,1024,14,14,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.4/Add,NA,NA,NA,NA,NA
+L114,%338,Relu,1,1024,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.4/relu_2/Relu,NA,NA,NA,NA,NA
+L115,%340,MatMul,256,1024,NA,NA,1,1024,196,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.5/conv1/Conv_87,NA,NA,NA,NA,NA
+L116,%341,Add,1,256,196,NA,1,256,1,NA,NA,NA,NA,NA,8,1,256,196,NA,/layer3/layer3.5/conv1/Conv_103,NA,NA,NA,NA,NA
+L117,%343,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.5/relu/Relu,NA,NA,NA,NA,NA
+L118,%344,Conv,1,256,14,14,256,256,3,3,256,NA,NA,NA,8,1,256,14,14,/layer3/layer3.5/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L119,%345,Relu,1,256,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,14,14,/layer3/layer3.5/relu_1/Relu,NA,NA,NA,NA,NA
+L120,%347,MatMul,1024,256,NA,NA,1,256,196,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.5/conv3/Conv_70,NA,NA,NA,NA,NA
+L121,%348,Add,1,1024,196,NA,1,1024,1,NA,NA,NA,NA,NA,8,1,1024,196,NA,/layer3/layer3.5/conv3/Conv_88,NA,NA,NA,NA,NA
+L122,%350,Add,1,1024,14,14,1,1024,14,14,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.5/Add,NA,NA,NA,NA,NA
+L123,%351,Relu,1,1024,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,1024,14,14,/layer3/layer3.5/relu_2/Relu,NA,NA,NA,NA,NA
+L124,%353,MatMul,512,1024,NA,NA,1,1024,196,NA,NA,NA,NA,NA,8,1,512,196,NA,/layer4/layer4.0/conv1/Conv_95,NA,NA,NA,NA,NA
+L125,%354,Add,1,512,196,NA,1,512,1,NA,NA,NA,NA,NA,8,1,512,196,NA,/layer4/layer4.0/conv1/Conv_52,NA,NA,NA,NA,NA
+L126,%356,Relu,1,512,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,14,14,/layer4/layer4.0/relu/Relu,NA,NA,NA,NA,NA
+L127,%357,Conv,1,512,14,14,512,512,3,3,512,NA,NA,NA,8,1,512,7,7,/layer4/layer4.0/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[2, 2]"
+L128,%358,Relu,1,512,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,7,7,/layer4/layer4.0/relu_1/Relu,NA,NA,NA,NA,NA
+L129,%360,MatMul,2048,512,NA,NA,1,512,49,NA,NA,NA,NA,NA,8,1,2048,49,NA,/layer4/layer4.0/conv3/Conv_6,NA,NA,NA,NA,NA
+L130,%361,Add,1,2048,49,NA,1,2048,1,NA,NA,NA,NA,NA,8,1,2048,49,NA,/layer4/layer4.0/conv3/Conv_56,NA,NA,NA,NA,NA
+L131,%363,Conv,1,1024,14,14,2048,1024,1,1,2048,NA,NA,NA,8,1,2048,7,7,/layer4/layer4.0/downsample/downsample.0/Conv,"[1, 1]",1 : si64,"[1, 1]","[0, 0, 0, 0]","[2, 2]"
+L132,%364,Add,1,2048,7,7,1,2048,7,7,NA,NA,NA,NA,8,1,2048,7,7,/layer4/layer4.0/Add,NA,NA,NA,NA,NA
+L133,%365,Relu,1,2048,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,2048,7,7,/layer4/layer4.0/relu_2/Relu,NA,NA,NA,NA,NA
+L134,%367,MatMul,512,2048,NA,NA,1,2048,49,NA,NA,NA,NA,NA,8,1,512,49,NA,/layer4/layer4.1/conv1/Conv_39,NA,NA,NA,NA,NA
+L135,%368,Add,1,512,49,NA,1,512,1,NA,NA,NA,NA,NA,8,1,512,49,NA,/layer4/layer4.1/conv1/Conv_45,NA,NA,NA,NA,NA
+L136,%370,Relu,1,512,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,7,7,/layer4/layer4.1/relu/Relu,NA,NA,NA,NA,NA
+L137,%371,Conv,1,512,7,7,512,512,3,3,512,NA,NA,NA,8,1,512,7,7,/layer4/layer4.1/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L138,%372,Relu,1,512,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,7,7,/layer4/layer4.1/relu_1/Relu,NA,NA,NA,NA,NA
+L139,%374,MatMul,2048,512,NA,NA,1,512,49,NA,NA,NA,NA,NA,8,1,2048,49,NA,/layer4/layer4.1/conv3/Conv_83,NA,NA,NA,NA,NA
+L140,%375,Add,1,2048,49,NA,1,2048,1,NA,NA,NA,NA,NA,8,1,2048,49,NA,/layer4/layer4.1/conv3/Conv_37,NA,NA,NA,NA,NA
+L141,%377,Add,1,2048,7,7,1,2048,7,7,NA,NA,NA,NA,8,1,2048,7,7,/layer4/layer4.1/Add,NA,NA,NA,NA,NA
+L142,%378,Relu,1,2048,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,2048,7,7,/layer4/layer4.1/relu_2/Relu,NA,NA,NA,NA,NA
+L143,%380,MatMul,512,2048,NA,NA,1,2048,49,NA,NA,NA,NA,NA,8,1,512,49,NA,/layer4/layer4.2/conv1/Conv_59,NA,NA,NA,NA,NA
+L144,%381,Add,1,512,49,NA,1,512,1,NA,NA,NA,NA,NA,8,1,512,49,NA,/layer4/layer4.2/conv1/Conv_46,NA,NA,NA,NA,NA
+L145,%383,Relu,1,512,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,7,7,/layer4/layer4.2/relu/Relu,NA,NA,NA,NA,NA
+L146,%384,Conv,1,512,7,7,512,512,3,3,512,NA,NA,NA,8,1,512,7,7,/layer4/layer4.2/conv2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L147,%385,Relu,1,512,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,7,7,/layer4/layer4.2/relu_1/Relu,NA,NA,NA,NA,NA
+L148,%387,MatMul,2048,512,NA,NA,1,512,49,NA,NA,NA,NA,NA,8,1,2048,49,NA,/layer4/layer4.2/conv3/Conv_64,NA,NA,NA,NA,NA
+L149,%388,Add,1,2048,49,NA,1,2048,1,NA,NA,NA,NA,NA,8,1,2048,49,NA,/layer4/layer4.2/conv3/Conv_58,NA,NA,NA,NA,NA
+L150,%390,Add,1,2048,7,7,1,2048,7,7,NA,NA,NA,NA,8,1,2048,7,7,/layer4/layer4.2/Add,NA,NA,NA,NA,NA
+L151,%391,Relu,1,2048,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,2048,7,7,/layer4/layer4.2/relu_2/Relu,NA,NA,NA,NA,NA
+L152,%394,Gemm,1,2048,NA,NA,1000,2048,NA,NA,1000,NA,NA,NA,8,1,1000,NA,NA,/fc/Gemm,NA,NA,NA,NA,NA
