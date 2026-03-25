@@ -84,8 +84,11 @@ def create_mem_tile_spec_initial(chip_idx, tile_idx, layer_idxes, dim_info_list,
     tile_id="T"+str(tile_idx)
     chip_map_idx=[chiplet_id, tile_id, "Mem Tile", "0,0", layer_idxes, mem_type] 
     Nbank=0
-    for idx, dim_info in enumerate(dim_info_list):
-        Nbank+=calculate_required_banks(dim_info, prec[idx], def_NW, def_NB) if SET_SUFF_BANKS else def_Nbank
+    if SET_SUFF_BANKS:
+        for idx, dim_info in enumerate(dim_info_list):
+            Nbank+=calculate_required_banks(dim_info, prec[idx], def_NW, def_NB)
+    else:
+        Nbank=def_Nbank
     mem_spec_idx=[chiplet_id, tile_id, "Mem Tile", Nbank , def_NW, def_NB, def_CM, def_clk_hz]
     key_name=chiplet_id+"_"+tile_id
     return chip_map_idx, mem_spec_idx, key_name

@@ -158,38 +158,39 @@ def network_map(G_chip, G_sys, G_ai_model, G_stack, noc_tile_dict, nop_chip_dict
                 #add bidirectional edge
                 G_chip.add_edge(source_tile_idx, dest_tile_idx, connection_type=connection_type, bus_width=bus_width, Q=Q, hops2d=hops2d,hops2_5d=hops2_5d, hops3d=hops3d, nop_location_s=nop_location_s, nop_location_d=nop_location_d, router_list_2d=router_list_2d, router_list_3d=router_list_3d, nop_router_list=router_list_2_5d)
     #import pdb; pdb.set_trace()
-    if DEBUG:
-        pos = nx.nx_agraph.graphviz_layout(G_chip, prog="dot")  
+    #if DEBUG:
+        #pos = nx.nx_agraph.graphviz_layout(G_chip, prog="dot")  
 
         # Node labels
-        labels = {node: node+'\n'+G_chip.nodes[node]["HW Type"] for node in G_chip.nodes()} 
+        #labels = {node: node+'\n'+G_chip.nodes[node]["HW Type"] for node in G_chip.nodes()} 
 
         # Plot
-        plt.figure(figsize=(0.5*len(labels), 0.5*len(labels)))
-        nx.draw(G_chip, pos, labels=labels,
-                node_size=1500, node_color="lightblue",
-                font_size=10, font_weight="bold",
-                edge_color="gray", arrows=True)
+        #plt.figure(figsize=(0.5*len(labels), 0.5*len(labels)))
+        #nx.draw(G_chip, pos, labels=labels,
+                #node_size=1500, node_color="lightblue",
+                #font_size=10, font_weight="bold",
+                #edge_color="gray", arrows=True)
 
-        edge_labels = nx.get_edge_attributes(G_chip, "connection_type")  # pick which attr to show
-        nx.draw_networkx_edge_labels(G_chip, pos, edge_labels=edge_labels, font_size=8)
-        plt.title(f"{aimodel} Device Connectivity Graph", fontsize=14)
-        os.makedirs(f"{main_dir}/Results", exist_ok=True)
-        plt.savefig(f"{main_dir}/Results/network_graph.png", dpi=100, bbox_inches="tight")
-        plt.close()
-        edge_data = []
-        for u, v, attrs in G_chip.edges(data=True):
-            row = {"Source": u, "Target": v, **attrs}
-            edge_data.append(row)
+        #edge_labels = nx.get_edge_attributes(G_chip, "connection_type")  # pick which attr to show
+        #nx.draw_networkx_edge_labels(G_chip, pos, edge_labels=edge_labels, font_size=8)
+        #plt.title(f"{aimodel} Device Connectivity Graph", fontsize=14)
+        #os.makedirs(f"{main_dir}/Results", exist_ok=True)
+        #plt.savefig(f"{main_dir}/Results/network_graph.png", dpi=100, bbox_inches="tight")
+        #plt.close()
+        #edge_data = []
+        #for u, v, attrs in G_chip.edges(data=True):
+            #row = {"Source": u, "Target": v, **attrs}
+            #edge_data.append(row)
 
         # Convert to DataFrame
-        edge_df = pd.DataFrame(edge_data)
+        #edge_df = pd.DataFrame(edge_data)
 
         # Pretty print
-        table_str = tabulate(edge_df, headers="keys", tablefmt="pretty", showindex=False)
-        with open(f"{target_file_path}/network_table.txt", "w") as f:
-            f.write(table_str)
-
+        #table_str = tabulate(edge_df, headers="keys", tablefmt="pretty", showindex=False)
+        #with open(f"{target_file_path}/network_table.txt", "w") as f:
+            #f.write(table_str)
+    #import pdb; pdb.set_trace()
+    
     #add empty tiles to G_chip
     for chiplet_idx in G_sys.nodes():
         stack_id=G_sys.nodes[chiplet_idx]["Stack ID"]
@@ -648,7 +649,8 @@ def network_main_fn(G_ai_model, G_chip, G_sys, G_stack, noc_tile_dict, nop_chip_
         os.makedirs(f"{main_dir}/Results", exist_ok=True)
         plt.savefig(f"{main_dir}/Results/chip_area_breakdown.png", dpi=100, bbox_inches='tight')
         plt.close()
-       
+        #import pdb; pdb.set_trace()
+
 
         #plot latency and energy breakdown of compute, noc and memory in single pie chart
         labels = ['Compute', 'Memory', 'Network', 'DDR']
@@ -810,12 +812,13 @@ def network_main_fn(G_ai_model, G_chip, G_sys, G_stack, noc_tile_dict, nop_chip_
         colors={k: 'grey' if k.endswith('_router') else 'skyblue' for k in areas.keys()}
         plot_component(areas, {}, {}, coords, f"{main_dir}/Results/Network_Map/Network_Map_System.png", title=f"Network on Package", scale_factor=scale_factor_sys, colors=colors)
 
+        num_layers_from_input = int(input(f"Input for files in {target_file_path},\n Enter the number of tiles to plot: "))
 
         # Extract keys and values
         router_area = {nodes: G_chip.nodes[nodes]["router Area"] for nodes in G_chip.nodes() if G_chip.nodes[nodes]["router Area"]>0}
         
         plt.figure(figsize=(12, 6))
-        plt.bar(list(router_area.keys()), list(router_area.values()))
+        plt.bar(list(router_area.keys())[:num_layers_from_input], list(router_area.values())[:num_layers_from_input])
 
         plt.xticks(rotation=90)  # Rotate labels for readability
         plt.ylabel("Router Area in mm2")
@@ -829,7 +832,7 @@ def network_main_fn(G_ai_model, G_chip, G_sys, G_stack, noc_tile_dict, nop_chip_
         router_latency = {nodes: G_chip.nodes[nodes]["router Latency"] for nodes in G_chip.nodes() if G_chip.nodes[nodes]["router Latency"]>0}
         #import pdb; pdb.set_trace()
         plt.figure(figsize=(12, 6))
-        plt.bar(list(router_latency.keys()), list(router_latency.values()))
+        plt.bar(list(router_latency.keys())[:num_layers_from_input], list(router_latency.values())[:num_layers_from_input])
 
         plt.xticks(rotation=90)  # Rotate labels for readability
         plt.ylabel("Router Latency in seconds")
@@ -844,7 +847,7 @@ def network_main_fn(G_ai_model, G_chip, G_sys, G_stack, noc_tile_dict, nop_chip_
         router_energy = {nodes: G_chip.nodes[nodes]["router Energy"] for nodes in G_chip.nodes() if G_chip.nodes[nodes]["router Energy"]>0}
 
         plt.figure(figsize=(12, 6))
-        plt.bar(list(router_energy.keys()), list(router_energy.values()))
+        plt.bar(list(router_energy.keys())[:num_layers_from_input], list(router_energy.values())[:num_layers_from_input])
 
         plt.xticks(rotation=90)  # Rotate labels for readability
         plt.ylabel("Router Energy in Joules")

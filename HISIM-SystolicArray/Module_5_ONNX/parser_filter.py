@@ -269,7 +269,7 @@ def filter_dataframe(df):
     
     #print operations in the filter_df and their counts
     set_filter_op_types = set(filter_df['Type'].unique())
-    print("Unique operation types in the filtered dataframe:", set_filter_op_types)
+    #print("Unique operation types in the filtered dataframe:", set_filter_op_types)
     #print("Operation type counts in the filtered dataframe:", filter_df['Type'].value_counts())
 
     #print set of operations not in the filter_df but in the original dataframe and their counts
@@ -279,7 +279,7 @@ def filter_dataframe(df):
     #sort it by count in descending order
     #print the sorted dictionary
     sorted_op_count = dict(sorted(op_count.items(), key=lambda item: item[1], reverse=True))
-    print("Operation types in the original dataframe but not in the filtered dataframe sorted by count in descending order:", sorted_op_count) 
+    #print("Operation types in the original dataframe but not in the filtered dataframe sorted by count in descending order:", sorted_op_count) 
     
     #import pdb; pdb.set_trace()
     return filter_df, const_df

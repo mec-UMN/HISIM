@@ -377,11 +377,13 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
         compute_json_data  = json.load(f)
     cpu_df, tile_map, mem_df, sa_df, mapping_df, lut_df, ip_list = load_compute_tiles(G_ai_model, G_chip)
     DDR_access_table, tile_map, mem_req, ip_list, mem_df, mem_size = mem_requirement(mem_df, G_ai_model, G_chip, tile_map, ip_list)
+    
     #import pdb; pdb.set_trace()
     tile_area={}
     tile_area, tile_buf_df=area_sa_tile(sa_df,compute_json_data,tile_area, lut_df)
     tile_area=area_cpu_tile(cpu_df,compute_json_data, tile_area)
     tile_area=area_mem_tile(mem_df, compute_json_data, tile_area, lut_df)
+    
     tile_latency = {}
     tile_latency_breakdown = {}
     #import pdb; pdb.set_trace()
@@ -427,7 +429,7 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
             f.write(str(DDR_access_table))
 
         #get number of layers from user input by stopping and waiting for user input
-        num_layers_from_input = int(input(f"Input for files in {target_file_path},\n Enter the number of layers to plot: "))
+        num_layers_from_input = int(input(f"Input for files in {target_file_path},\n Enter the number of tiles to plot: "))
 
         df = pd.DataFrame(DDR_access_table._rows[:num_layers_from_input], columns=DDR_access_table.field_names)
         df = df[df["AI Layer"] != "DDR"]
@@ -438,9 +440,9 @@ def compute_main_fn(G_ai_model, G_chip, tile_ids):
             kind="bar", 
             figsize=(8, 6)
         )
-        for i, val in enumerate(df["DDR access required"]):
-            ax.text(i, max(df["Memory Size (MB)"].iloc[i], df["Memory required by AI Layer (MB)"].iloc[i]) * 1.02,
-                    f"DDR\n={str(val)[:4]}", ha="center", fontsize=9, color="red")
+        #for i, val in enumerate(df["DDR access required"]):
+            #ax.text(i, max(df["Memory Size (MB)"].iloc[i], df["Memory required by AI Layer (MB)"].iloc[i]) * 1.02,
+                    #f"DDR\n={str(val)[:4]}", ha="center", fontsize=9, color="red")
 
         plt.ylabel("Data Volume in MB")
         plt.title("Memory Usage per Chiplet/Tile")

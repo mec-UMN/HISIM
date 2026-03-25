@@ -106,9 +106,17 @@ for i, model in enumerate(models):
     sub = df[df["Model"] == model].sort_values("Number of Banks")
 
     ax.plot(sub["Number of Banks"], sub["DDR Latency"], marker="o")
-    ax.set_title(str(model))
-    ax.set_xlabel("Number of Banks Per Tile")
-    ax.set_ylabel("DDR Latency")
+    ax.set_title(str(model.capitalize()), fontsize=15, weight='bold')
+    ax.set_xlabel("Number of Banks Per Tile", fontsize=15, weight='bold')
+    ax.set_ylabel("DDR Latency", fontsize=15, weight='bold')
+    #adjust y-axis ticks to font size 15 and bold
+    ax.tick_params(axis='y', labelsize=15)
+    for tick in ax.get_yticklabels():
+        tick.set_fontweight('bold')
+    #x-axis ticks to font size 15 and bold
+    ax.tick_params(axis='x', labelsize=15)
+    for tick in ax.get_xticklabels():
+        tick.set_fontweight('bold')
 
 # Hide any unused axes if models don't fill the grid
 for j in range(i+1, n_rows*n_cols):
@@ -116,7 +124,7 @@ for j in range(i+1, n_rows*n_cols):
     c = j % n_cols
     fig.delaxes(axes[r, c])
 
-fig.suptitle("DDR Latency vs Number of Banks (per model)\n"+ str(len(sub["Number of Banks"]))+" Configurations & "+ str(len(models))+" Models", fontsize=16)
+fig.suptitle("DDR Latency vs Number of Banks (per model)\n"+ str(len(sub["Number of Banks"]))+" Configurations & "+ str(len(models))+" Models", fontsize=16, weight='bold')
 fig.tight_layout()
 
 # show and/or save

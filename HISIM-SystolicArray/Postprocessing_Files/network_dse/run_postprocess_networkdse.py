@@ -91,9 +91,18 @@ for i, model in enumerate(models):
     sub = df[df["Model"] == model].sort_values("Number of 2D Links")
 
     ax.plot(sub["Number of 2D Links"], sub["Network Latency"], marker="o")
-    ax.set_title(str(model))
-    ax.set_xlabel("Number of 2D Links per Tile")
-    ax.set_ylabel("Network Latency")
+    ax.set_title(str(model.capitalize()), fontsize=15, weight='bold')
+    ax.set_xlabel("#2D Links per Tile", fontsize=15, weight='bold')
+    ax.set_ylabel("Network Latency", fontsize=15, weight='bold')
+     #adjust y-axis ticks to font size 15 and bold
+    ax.tick_params(axis='y', labelsize=15)
+    for tick in ax.get_yticklabels():
+        tick.set_fontweight('bold')
+    #x-axis ticks to font size 15 and bold
+    ax.tick_params(axis='x', labelsize=15)
+    for tick in ax.get_xticklabels():
+        tick.set_fontweight('bold')
+
 
 # Hide any unused axes if models don't fill the grid
 for j in range(i+1, n_rows*n_cols):
@@ -101,7 +110,7 @@ for j in range(i+1, n_rows*n_cols):
     c = j % n_cols
     fig.delaxes(axes[r, c])
 
-fig.suptitle("Network Latency vs Number of 2D Links per tile\n"+ str(len(sub["Number of 2D Links"]))+" Configurations & "+ str(len(models))+" Models", fontsize=16)
+fig.suptitle("Network Latency vs Number of 2D Links per tile\n"+ str(len(sub["Number of 2D Links"]))+" Configurations & "+ str(len(models))+" Models", fontsize=16, weight='bold')
 fig.tight_layout()
 
 # show and/or save

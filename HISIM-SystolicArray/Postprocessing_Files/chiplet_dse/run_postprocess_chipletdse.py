@@ -67,14 +67,27 @@ for model in model_list:
         if sim_time!="":
             sim_time = float(sim_time)
         row.append(sim_time)
+    #import pdb; pdb.set_trace()
+    #sort row based on int(type_str.split(" ")[4]) which is the chiplet count
+    row = [x for _, x in sorted(zip(type_list, row), key=lambda pair: int(pair[0].split(" ")[4]))]
+    chiplet_counts_updated = sorted([int(type_str.split(" ")[4]) for type_str in type_list])
     sim_time_matrix.append(row)
 plt.figure(figsize=(10, 8))
 plt.imshow(sim_time_matrix, cmap='viridis', aspect='auto')
-plt.colorbar(label='Total Sim Time (s)')
-plt.xticks(ticks=range(len(type_list)), labels=[type_str.split(" ")[4] for type_str in type_list], rotation=45, ha='right')
-plt.yticks(ticks=range(len(model_list)), labels=model_list)
-plt.xlabel("Chiplet count", fontsize=12)
-plt.title("Simulation Time Heatmap \n"+ str(len(type_list))+" Types & "+ str(len(model_list))+" Models", fontsize=16)
+cbar = plt.colorbar()                 # create colorbar
+cbar.set_label('Total Sim Time (s)',  # label text
+               size=15, weight='bold')               # label font size
+cbar.ax.tick_params(labelsize=15)  # tick font size
+
+for tick in cbar.ax.get_yticklabels():
+    tick.set_fontweight('bold')    # tick font weight
+
+plt.xticks(ticks=range(len(type_list)), labels=chiplet_counts_updated, rotation=45, ha='right', fontsize=15, weight='bold')
+#model_list's first letter in capatilized and rest in small letters
+model_list = [model.capitalize() for model in model_list]
+plt.yticks(ticks=range(len(model_list)), labels=model_list, fontsize=15, weight='bold') 
+plt.xlabel("Chiplet count", fontsize=15, weight='bold')
+plt.title("Simulation Time Heatmap \n"+ str(len(type_list))+" Types & "+ str(len(model_list))+" Models", fontsize=16, weight='bold')
 plt.tight_layout()
 plt.savefig(curr_dir+"/sim_time_heatmap.png", dpi=300, bbox_inches="tight")
 
@@ -87,8 +100,8 @@ with open(curr_dir+'/output_summary_cost.csv', 'w', newline='') as f:
     writer.writerow(["Model"] + type_list)
     for model in model_list:
         row = [model]
-        for type in type_list:
-            row.append(cost_dict.get((model, type), ""))
+        for type_str in type_list:
+            row.append(cost_dict.get((model.lower(), type_str), ""))
         writer.writerow(row)
 
 #plot a line graph with x-axis as number of chiplet count and y-axis as costperpart, spearate sub-figures for each model
@@ -121,11 +134,19 @@ for i, model in enumerate(models):
     ax = axes[row, col]
 
     sub = df[df["Model"] == model].sort_values("Chiplet Count")
-
+    #import pdb; pdb.set_trace()
     ax.plot(sub["Chiplet Count"], sub["Cost per Part"], marker="o")
-    ax.set_title(str(model))
-    ax.set_xlabel("Chiplet count")
-    ax.set_ylabel("Cost per part")
+    ax.set_title(str(model.capitalize()), fontsize=15, weight='bold')
+    ax.set_xlabel("Chiplet count", fontsize=15, weight='bold')
+    ax.set_ylabel("Cost per part", fontsize=15, weight='bold')
+    #adjust y-axis ticks to font size 15 and bold
+    ax.tick_params(axis='y', labelsize=15)
+    for tick in ax.get_yticklabels():
+        tick.set_fontweight('bold')
+    #x-axis ticks to font size 15 and bold
+    ax.tick_params(axis='x', labelsize=15)
+    for tick in ax.get_xticklabels():
+        tick.set_fontweight('bold')
 
 # Hide any unused axes if models don't fill the grid
 for j in range(i+1, n_rows*n_cols):
@@ -133,7 +154,7 @@ for j in range(i+1, n_rows*n_cols):
     c = j % n_cols
     fig.delaxes(axes[r, c])
 
-fig.suptitle("Cost per part vs chiplet count (per model)\n Total sim time: "+str(round(total_sim_time, 3))+" seconds \n"+ str(len(sub["Chiplet Count"]))+" Configurations & "+ str(len(models))+" Models", fontsize=16)
+fig.suptitle("Cost per part vs chiplet count (per model)\n Total sim time: "+str(round(total_sim_time, 3))+" seconds \n"+ str(len(sub["Chiplet Count"]))+" Configurations & "+ str(len(models))+" Models", fontsize=16, weight='bold')
 fig.tight_layout()
 
 # show and/or save
@@ -145,11 +166,13 @@ fig.savefig(curr_dir+"/chiplet_cost_per_part.png", dpi=300, bbox_inches="tight")
 chip_area_dict = {}
 for data in output_data:
     chip_area_dict[(data[0], data[1])] = data[4]
+#import pdb; pdb.set_trace()
 with open(curr_dir+'/output_summary_chip_area.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(["Model"] + type_list)
     for model in model_list:
         row = [model]
-        for type in type_list:
-            row.append(chip_area_dict.get((model, type), ""))
+        for type_str in type_list:
+            row.append(chip_area_dict.get((model.lower(), type_str), ""))
+            #import pdb; pdb.set_trace()
         writer.writerow(row)

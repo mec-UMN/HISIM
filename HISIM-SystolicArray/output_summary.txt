@@ -1,0 +1,1907 @@
+Model, Type of Default Files, Output
+
+
+---------------------Model: mobilenetv2, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 20 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.08034658432006836 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.226543439299999 mm2
+Memory Area of the Chip is: 34.529454003839994 mm2
+Compute Latency of the Chip is: 0.1076142160272 s
+Memory Latency of the Chip is: 0.0010759 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0006113049385191382 J
+Memory Energy of the Chip is: 1.5527668533999998e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.2975740432739258 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 0.6580992
+Total NoP Interface Area (in mm^2) 14.235874669124064
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.005272965799999999
+Total 2D Network NoC energy (in J) 6.296210741814507e-07
+Total 2.5D Network NoP latency (in s) 0.0032858654143642
+Total 2.5D Network NoP energy (in J) 5.611708143339245e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 56.916505896584034
+Total End-to-End Latency (in s) 0.11724894724156418
+Total Chip Energy (in J) 0.0006190990345900589
+----------------------------------------
+Network model sim time is: 0.1521472930908203 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  377857307.68278533
+Total NRE Cost ($):  145602743.54696646
+Total Cost per Part ($):  10.469201024595035
+----------------------------------------
+Cost model sim time is: 0.001505136489868164 s
+Total sim time is: 0.5424618721008301 s
+
+
+---------------------Model: mobilenetv2, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 40 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.09426665306091309 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.226543439299999 mm2
+Memory Area of the Chip is: 34.529454003839994 mm2
+Compute Latency of the Chip is: 0.1076142160272 s
+Memory Latency of the Chip is: 0.0010759 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0006113049385191382 J
+Memory Energy of the Chip is: 1.5527668533999998e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.3065769672393799 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 1.5926783999999896
+Total NoP Interface Area (in mm^2) 14.235874669124064
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.002637050400000002
+Total 2D Network NoC energy (in J) 6.373421911794176e-07
+Total 2.5D Network NoP latency (in s) 0.0027993758143642
+Total 2.5D Network NoP energy (in J) 5.613129213971231e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 57.85108509658405
+Total End-to-End Latency (in s) 0.11412654224156418
+Total Chip Energy (in J) 0.0006191081767776889
+----------------------------------------
+Network model sim time is: 0.1563262939453125 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  382256492.39232194
+Total NRE Cost ($):  145686304.27323848
+Total Cost per Part ($):  10.558855933311209
+----------------------------------------
+Cost model sim time is: 0.0015299320220947266 s
+Total sim time is: 0.5696148872375488 s
+
+
+---------------------Model: mobilenetv2, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 60 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.0651853084564209 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.226543439299999 mm2
+Memory Area of the Chip is: 34.529454003839994 mm2
+Compute Latency of the Chip is: 0.1076142160272 s
+Memory Latency of the Chip is: 0.0010759 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0006113049385191382 J
+Memory Energy of the Chip is: 1.5527668533999998e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.296558141708374 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 2.8037376000000114
+Total NoP Interface Area (in mm^2) 14.235874669124064
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.001758411933333334
+Total 2D Network NoC energy (in J) 6.450728062445584e-07
+Total 2.5D Network NoP latency (in s) 0.002637212614364201
+Total 2.5D Network NoP energy (in J) 5.614551163279033e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 59.06214429658405
+Total End-to-End Latency (in s) 0.11308574057489751
+Total Chip Energy (in J) 0.0006191173293420617
+----------------------------------------
+Network model sim time is: 0.15320825576782227 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  387911729.6530024
+Total NRE Cost ($):  145794585.07631043
+Total Cost per Part ($):  10.674126294586255
+----------------------------------------
+Cost model sim time is: 0.0016336441040039062 s
+Total sim time is: 0.5395073890686035 s
+
+
+---------------------Model: mobilenetv2, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 80 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.0717153549194336 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.226543439299999 mm2
+Memory Area of the Chip is: 34.529454003839994 mm2
+Compute Latency of the Chip is: 0.1076142160272 s
+Memory Latency of the Chip is: 0.0010759 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0006113049385191382 J
+Memory Energy of the Chip is: 1.5527668533999998e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.3112177848815918 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 4.291276800000007
+Total NoP Interface Area (in mm^2) 14.235874669124064
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.0013190927000000005
+Total 2D Network NoC energy (in J) 6.528129193768713e-07
+Total 2.5D Network NoP latency (in s) 0.0025561310143642
+Total 2.5D Network NoP energy (in J) 5.615973991262654e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 60.549683496584045
+Total End-to-End Latency (in s) 0.11256533974156417
+Total Chip Energy (in J) 0.0006191264922831778
+----------------------------------------
+Network model sim time is: 0.15481114387512207 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  394839094.0232795
+Total NRE Cost ($):  145927585.95618245
+Total Cost per Part ($):  10.815333599589238
+----------------------------------------
+Cost model sim time is: 0.0015180110931396484 s
+Total sim time is: 0.5684425830841064 s
+
+
+---------------------Model: vitbase, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 20 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.08747267723083496 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 188.90284236223997 mm2
+Compute Latency of the Chip is: 1.0154827265257 s
+Memory Latency of the Chip is: 0.006837720000000001 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.006908264750219788 J
+Memory Energy of the Chip is: 9.868375284720002e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.4777195453643799 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 0.7019724800000008
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.013537038000000006
+Total 2D Network NoC energy (in J) 1.6165373492785988e-06
+Total 2.5D Network NoP latency (in s) 0.0049085747324419
+Total 2.5D Network NoP energy (in J) 8.383571006933784e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 212.76459540887913
+Total End-to-End Latency (in s) 1.0407660592581418
+Total Chip Energy (in J) 0.0069281332338607185
+----------------------------------------
+Network model sim time is: 0.2303633689880371 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1125515049.8743267
+Total NRE Cost ($):  81670940.06043044
+Total Cost per Part ($):  24.143719798695145
+----------------------------------------
+Cost model sim time is: 0.0016341209411621094 s
+Total sim time is: 0.8059501647949219 s
+
+
+---------------------Model: vitbase, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 40 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.07274746894836426 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 188.90284236223997 mm2
+Compute Latency of the Chip is: 1.0154827265257 s
+Memory Latency of the Chip is: 0.006837720000000001 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.006908264750219788 J
+Memory Energy of the Chip is: 9.868375284720002e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.46126413345336914 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 1.6988569599999872
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.006769194000000006
+Total 2D Network NoC energy (in J) 1.6363025120756177e-06
+Total 2.5D Network NoP latency (in s) 0.0041819443324419
+Total 2.5D Network NoP energy (in J) 8.3856927198103e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 213.76147988887908
+Total End-to-End Latency (in s) 1.033271584858142
+Total Chip Energy (in J) 0.006928155120736392
+----------------------------------------
+Network model sim time is: 0.2234807014465332 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1129608477.9303944
+Total NRE Cost ($):  81735074.62345125
+Total Cost per Part ($):  24.226871051076913
+----------------------------------------
+Cost model sim time is: 0.001664876937866211 s
+Total sim time is: 0.767420768737793 s
+
+
+---------------------Model: vitbase, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 60 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.07814598083496094 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 188.90284236223997 mm2
+Compute Latency of the Chip is: 1.0154827265257 s
+Memory Latency of the Chip is: 0.006837720000000001 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.006908264750219788 J
+Memory Energy of the Chip is: 9.868375284720002e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.45648813247680664 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 2.990653440000013
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.004513245999999998
+Total 2D Network NoC energy (in J) 1.6560789721331606e-06
+Total 2.5D Network NoP latency (in s) 0.003939734199108568
+Total 2.5D Network NoP energy (in J) 8.38781556241287e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 215.05327636887887
+Total End-to-End Latency (in s) 1.0307734267248083
+Total Chip Energy (in J) 0.0069281770200390535
+----------------------------------------
+Network model sim time is: 0.21828269958496094 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1136640379.0457046
+Total NRE Cost ($):  81818182.34999204
+Total Cost per Part ($):  24.369171227913935
+----------------------------------------
+Cost model sim time is: 0.001516103744506836 s
+Total sim time is: 0.7637875080108643 s
+
+
+---------------------Model: vitbase, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 80 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.07312679290771484 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 188.90284236223997 mm2
+Compute Latency of the Chip is: 1.0154827265257 s
+Memory Latency of the Chip is: 0.006837720000000001 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.006908264750219788 J
+Memory Energy of the Chip is: 9.868375284720002e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.4659841060638428 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 4.577361919999998
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.0033852720000000025
+Total 2D Network NoC energy (in J) 1.6758667294512198e-06
+Total 2.5D Network NoP latency (in s) 0.0038186291324419017
+Total 2.5D Network NoP energy (in J) 8.38993953474149e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 216.63998484887884
+Total End-to-End Latency (in s) 1.0295243476581417
+Total Chip Energy (in J) 0.0069281989317686995
+----------------------------------------
+Network model sim time is: 0.22269678115844727 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1144030772.6703813
+Total NRE Cost ($):  81920263.24005282
+Total Cost per Part ($):  24.51902071820868
+----------------------------------------
+Cost model sim time is: 0.0015020370483398438 s
+Total sim time is: 0.7726178169250488 s
+
+
+---------------------Model: gpt2, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 20 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.07177066802978516 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.226543439299999 mm2
+Memory Area of the Chip is: 753.0475711264 mm2
+Compute Latency of the Chip is: 7.7354035387619 s
+Memory Latency of the Chip is: 0.027987354 s
+DDR Latency of the Chip is: 1.0375000000000001e-07 s
+Compute Energy of the Chip is: 0.04962802495406317 J
+Memory Energy of the Chip is: 4.0392076964003986e-05 J
+DDR Energy of the Chip is: 1.225e-10 J
+----------------------------------------
+Computing model sim time is: 0.36690855026245117 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 0.6580992
+Total NoP Interface Area (in mm^2) 14.235874669124064
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.10568929060000003
+Total 2D Network NoC energy (in J) 1.2621816094843818e-05
+Total 2.5D Network NoP latency (in s) 0.049391167123812696
+Total 2.5D Network NoP energy (in J) 8.434974146385008e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 775.4346230191431
+Total End-to-End Latency (in s) 7.9184713504857145
+Total Chip Energy (in J) 0.04976538858858587
+----------------------------------------
+Network model sim time is: 0.17599892616271973 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  3972861693.1013207
+Total NRE Cost ($):  262615051.02347764
+Total Cost per Part ($):  84.70953488249597
+----------------------------------------
+Cost model sim time is: 0.0015246868133544922 s
+Total sim time is: 0.624906063079834 s
+
+
+---------------------Model: gpt2, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 40 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.0610654354095459 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.226543439299999 mm2
+Memory Area of the Chip is: 753.0475711264 mm2
+Compute Latency of the Chip is: 7.7354035387619 s
+Memory Latency of the Chip is: 0.027987354 s
+DDR Latency of the Chip is: 1.0375000000000001e-07 s
+Compute Energy of the Chip is: 0.04962802495406317 J
+Memory Energy of the Chip is: 4.0392076964003986e-05 J
+DDR Energy of the Chip is: 1.225e-10 J
+----------------------------------------
+Computing model sim time is: 0.366957426071167 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 1.5926783999999896
+Total NoP Interface Area (in mm^2) 14.235874669124064
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.05284526779999998
+Total 2D Network NoC energy (in J) 1.2775792755124062e-05
+Total 2.5D Network NoP latency (in s) 0.042077323923812714
+Total 2.5D Network NoP energy (in J) 8.437105071472193e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 776.3692022191432
+Total End-to-End Latency (in s) 7.8583134844857145
+Total Chip Energy (in J) 0.04976556387449702
+----------------------------------------
+Network model sim time is: 0.17369484901428223 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  3976130286.6622486
+Total NRE Cost ($):  262698611.7497496
+Total Cost per Part ($):  84.77657796823996
+----------------------------------------
+Cost model sim time is: 0.0015337467193603516 s
+Total sim time is: 0.6129117012023926 s
+
+
+---------------------Model: gpt2, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 60 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.09775447845458984 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.226543439299999 mm2
+Memory Area of the Chip is: 753.0475711264 mm2
+Compute Latency of the Chip is: 7.7354035387619 s
+Memory Latency of the Chip is: 0.027987354 s
+DDR Latency of the Chip is: 1.0375000000000001e-07 s
+Compute Energy of the Chip is: 0.04962802495406317 J
+Memory Energy of the Chip is: 4.0392076964003986e-05 J
+DDR Energy of the Chip is: 1.225e-10 J
+----------------------------------------
+Computing model sim time is: 0.3723933696746826 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 2.8037376000000114
+Total NoP Interface Area (in mm^2) 14.235874669124064
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.035230593533333326
+Total 2D Network NoC energy (in J) 1.2929779833989086e-05
+Total 2.5D Network NoP latency (in s) 0.03963937619047937
+Total 2.5D Network NoP energy (in J) 8.439236101163647e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 777.5802614191441
+Total End-to-End Latency (in s) 7.838260862485714
+Total Chip Energy (in J) 0.049765739171872804
+----------------------------------------
+Network model sim time is: 0.1757678985595703 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  3979648020.73115
+Total NRE Cost ($):  262806892.5528217
+Total Cost per Part ($):  84.84909826567943
+----------------------------------------
+Cost model sim time is: 0.0015747547149658203 s
+Total sim time is: 0.6560094356536865 s
+
+
+---------------------Model: gpt2, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 80 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.0883941650390625 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.226543439299999 mm2
+Memory Area of the Chip is: 753.0475711264 mm2
+Compute Latency of the Chip is: 7.7354035387619 s
+Memory Latency of the Chip is: 0.027987354 s
+DDR Latency of the Chip is: 1.0375000000000001e-07 s
+Compute Energy of the Chip is: 0.04962802495406317 J
+Memory Energy of the Chip is: 4.0392076964003986e-05 J
+DDR Energy of the Chip is: 1.225e-10 J
+----------------------------------------
+Computing model sim time is: 0.362107515335083 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 4.291276800000007
+Total NoP Interface Area (in mm^2) 14.235874669124064
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.026423256399999977
+Total 2D Network NoC energy (in J) 1.3083777331438819e-05
+Total 2.5D Network NoP latency (in s) 0.038420402323812705
+Total 2.5D Network NoP energy (in J) 8.441367235459361e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 779.0678006191433
+Total End-to-End Latency (in s) 7.828234551485715
+Total Chip Energy (in J) 0.04976591448071321
+----------------------------------------
+Network model sim time is: 0.1699674129486084 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  3983969520.3843307
+Total NRE Cost ($):  262939893.43269366
+Total Cost per Part ($):  84.93818827634048
+----------------------------------------
+Cost model sim time is: 0.0012993812561035156 s
+Total sim time is: 0.6302762031555176 s
+
+
+---------------------Model: resnet50, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 20 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.07879114151000977 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 78.71406339263997 mm2
+Compute Latency of the Chip is: 0.2633522337786 s
+Memory Latency of the Chip is: 0.00276852 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0017464217956691148 J
+Memory Energy of the Chip is: 3.995600045520001e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.3201324939727783 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 0.7019724800000008
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.010887164599999999
+Total 2D Network NoC energy (in J) 1.3000869502322195e-06
+Total 2.5D Network NoP latency (in s) 0.007322630585660898
+Total 2.5D Network NoP energy (in J) 1.2505859496143153e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 102.57581643927897
+Total End-to-End Latency (in s) 0.2843305489642609
+Total Chip Energy (in J) 0.0017642233421610101
+----------------------------------------
+Network model sim time is: 0.17588424682617188 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  599750205.5284698
+Total NRE Cost ($):  151836282.53808904
+Total Cost per Part ($):  15.031729761331176
+----------------------------------------
+Cost model sim time is: 0.0012423992156982422 s
+Total sim time is: 0.5838139057159424 s
+
+
+---------------------Model: resnet50, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 40 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.061739444732666016 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 78.71406339263997 mm2
+Compute Latency of the Chip is: 0.2633522337786 s
+Memory Latency of the Chip is: 0.00276852 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0017464217956691148 J
+Memory Energy of the Chip is: 3.995600045520001e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.3113534450531006 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 1.6988569599999872
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.005444199800000001
+Total 2D Network NoC energy (in J) 1.315988515838267e-06
+Total 2.5D Network NoP latency (in s) 0.0062384193856609
+Total 2.5D Network NoP energy (in J) 1.2509021861427263e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 103.57270091927897
+Total End-to-End Latency (in s) 0.2778033729642609
+Total Chip Energy (in J) 0.0017642424060919002
+----------------------------------------
+Network model sim time is: 0.1665668487548828 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  604547691.124719
+Total NRE Cost ($):  151922660.08606982
+Total Cost per Part ($):  15.129407024215777
+----------------------------------------
+Cost model sim time is: 0.0011887550354003906 s
+Total sim time is: 0.5492007732391357 s
+
+
+---------------------Model: resnet50, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 60 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.06821107864379883 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 78.71406339263997 mm2
+Compute Latency of the Chip is: 0.2633522337786 s
+Memory Latency of the Chip is: 0.00276852 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0017464217956691148 J
+Memory Energy of the Chip is: 3.995600045520001e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.32416439056396484 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 2.990653440000013
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.0036298781999999966
+Total 2D Network NoC energy (in J) 1.3319004163456042e-06
+Total 2.5D Network NoP latency (in s) 0.005877015652327567
+Total 2.5D Network NoP energy (in J) 1.2512185147228898e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 104.86449739927889
+Total End-to-End Latency (in s) 0.27562764763092756
+Total Chip Energy (in J) 0.0017642614812782092
+----------------------------------------
+Network model sim time is: 0.17503595352172852 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  610381069.0987806
+Total NRE Cost ($):  152034591.02157065
+Total Cost per Part ($):  15.248313202407026
+----------------------------------------
+Cost model sim time is: 0.0011775493621826172 s
+Total sim time is: 0.5762791633605957 s
+
+
+---------------------Model: resnet50, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 80 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.06219291687011719 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 78.71406339263997 mm2
+Compute Latency of the Chip is: 0.2633522337786 s
+Memory Latency of the Chip is: 0.00276852 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0017464217956691148 J
+Memory Energy of the Chip is: 3.995600045520001e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.31867098808288574 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 4.577361919999998
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.002722717400000002
+Total 2D Network NoC energy (in J) 1.3478226517542292e-06
+Total 2.5D Network NoP latency (in s) 0.0056963137856609
+Total 2.5D Network NoP energy (in J) 1.2515349353548057e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 106.45120587927892
+Total End-to-End Latency (in s) 0.2745397849642609
+Total Chip Energy (in J) 0.001764280567719937
+----------------------------------------
+Network model sim time is: 0.17123961448669434 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  617919298.0984042
+Total NRE Cost ($):  152172075.34459144
+Total Cost per Part ($):  15.401827468859912
+----------------------------------------
+Cost model sim time is: 0.0014178752899169922 s
+Total sim time is: 0.562014102935791 s
+
+
+---------------------Model: vgg16, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 20 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.05505633354187012 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.612955128419999 mm2
+Memory Area of the Chip is: 222.72316065984 mm2
+Compute Latency of the Chip is: 0.2639090419974 s
+Memory Latency of the Chip is: 0.008288228 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0030943472014186716 J
+Memory Energy of the Chip is: 1.1961786143527998e-05 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.1647794246673584 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 0.7019724800000008
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.07708850460000002
+Total 2D Network NoC energy (in J) 9.206195693362014e-06
+Total 2.5D Network NoP latency (in s) 0.018311937686428355
+Total 2.5D Network NoP energy (in J) 3.127320015891299e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 246.4895558329789
+Total End-to-End Latency (in s) 0.3675977122838284
+Total Chip Energy (in J) 0.0031467883834144753
+----------------------------------------
+Network model sim time is: 0.11972594261169434 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1338751560.8447046
+Total NRE Cost ($):  167468936.16821384
+Total Cost per Part ($):  30.12440994025837
+----------------------------------------
+Cost model sim time is: 0.0015797615051269531 s
+Total sim time is: 0.34856367111206055 s
+
+
+---------------------Model: vgg16, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 40 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.05063891410827637 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.612955128419999 mm2
+Memory Area of the Chip is: 222.72316065984 mm2
+Compute Latency of the Chip is: 0.2639090419974 s
+Memory Latency of the Chip is: 0.008288228 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0030943472014186716 J
+Memory Energy of the Chip is: 1.1961786143527998e-05 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.16049790382385254 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 1.6988569599999872
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.0385447398
+Total 2D Network NoC energy (in J) 9.318506862473301e-06
+Total 2.5D Network NoP latency (in s) 0.015600385686428353
+Total 2.5D Network NoP energy (in J) 3.128110205438502e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 247.48644031297908
+Total End-to-End Latency (in s) 0.3263423954838284
+Total Chip Energy (in J) 0.0031469085964790588
+----------------------------------------
+Network model sim time is: 0.12094831466674805 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1343493077.1749442
+Total NRE Cost ($):  167552136.14691466
+Total Cost per Part ($):  30.220904266437177
+----------------------------------------
+Cost model sim time is: 0.0012454986572265625 s
+Total sim time is: 0.34096741676330566 s
+
+
+---------------------Model: vgg16, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 60 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.05810117721557617 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.612955128419999 mm2
+Memory Area of the Chip is: 222.72316065984 mm2
+Compute Latency of the Chip is: 0.2639090419974 s
+Memory Latency of the Chip is: 0.008288228 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0030943472014186716 J
+Memory Energy of the Chip is: 1.1961786143527998e-05 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.16929244995117188 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 2.990653440000013
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.025696818199999995
+Total 2D Network NoC energy (in J) 9.430826190717236e-06
+Total 2.5D Network NoP latency (in s) 0.014696535019761687
+Total 2.5D Network NoP energy (in J) 3.128900470300775e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 248.77823679297867
+Total End-to-End Latency (in s) 0.3125906232171617
+Total Chip Energy (in J) 0.0031470288184559255
+----------------------------------------
+Network model sim time is: 0.1226205825805664 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1349167429.59629
+Total NRE Cost ($):  167659949.48113546
+Total Cost per Part ($):  30.33654758154851
+----------------------------------------
+Cost model sim time is: 0.0015766620635986328 s
+Total sim time is: 0.3597683906555176 s
+
+
+---------------------Model: vgg16, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 80 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.052260637283325195 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.612955128419999 mm2
+Memory Area of the Chip is: 222.72316065984 mm2
+Compute Latency of the Chip is: 0.2639090419974 s
+Memory Latency of the Chip is: 0.008288228 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0030943472014186716 J
+Memory Energy of the Chip is: 1.1961786143527998e-05 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.16461610794067383 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 4.577361919999998
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.0192728574
+Total 2D Network NoC energy (in J) 9.54315367809378e-06
+Total 2.5D Network NoP latency (in s) 0.014244609686428352
+Total 2.5D Network NoP energy (in J) 3.1296908104781205e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 250.36494527297876
+Total End-to-End Latency (in s) 0.3057147370838284
+Total Chip Energy (in J) 0.003147149049345075
+----------------------------------------
+Network model sim time is: 0.11681437492370605 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1357588954.7144442
+Total NRE Cost ($):  167792376.17087626
+Total Cost per Part ($):  30.507626617706407
+----------------------------------------
+Cost model sim time is: 0.0015106201171875 s
+Total sim time is: 0.3427295684814453 s
+
+
+---------------------Model: gemma1b, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 20 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.12773633003234863 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 1533.0968479904 mm2
+Compute Latency of the Chip is: 2.3019823205215 s
+Memory Latency of the Chip is: 0.060313396 s
+DDR Latency of the Chip is: 0.00537453625 s
+Compute Energy of the Chip is: 0.02463468158242081 J
+Memory Energy of the Chip is: 8.704586125549602e-05 J
+DDR Energy of the Chip is: 9.175048750000001e-06 J
+----------------------------------------
+Computing model sim time is: 0.8438658714294434 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 0.7019724800000008
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.18824021340000008
+Total 2D Network NoC energy (in J) 2.248045788184621e-05
+Total 2.5D Network NoP latency (in s) 0.09285118714758288
+Total 2.5D Network NoP energy (in J) 0.00015857044123103066
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 1556.9586010370388
+Total End-to-End Latency (in s) 2.6433871170690817
+Total Chip Energy (in J) 0.02490277834278918
+----------------------------------------
+Network model sim time is: 0.2612290382385254 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  9081945614.348593
+Total NRE Cost ($):  225359712.0750208
+Total Cost per Part ($):  186.1461065284723
+----------------------------------------
+Cost model sim time is: 0.0013058185577392578 s
+Total sim time is: 1.2686240673065186 s
+
+
+---------------------Model: gemma1b, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 40 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.11921977996826172 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 1533.0968479904 mm2
+Compute Latency of the Chip is: 2.3019823205215 s
+Memory Latency of the Chip is: 0.060313396 s
+DDR Latency of the Chip is: 0.00537453625 s
+Compute Energy of the Chip is: 0.02463468158242081 J
+Memory Energy of the Chip is: 8.704586125549602e-05 J
+DDR Energy of the Chip is: 9.175048750000001e-06 J
+----------------------------------------
+Computing model sim time is: 0.8649475574493408 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 1.6988569599999872
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.0941206742
+Total 2D Network NoC energy (in J) 2.2754661983236012e-05
+Total 2.5D Network NoP latency (in s) 0.07910173434758279
+Total 2.5D Network NoP energy (in J) 0.00015861049546835813
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 1557.9554855170397
+Total End-to-End Latency (in s) 2.535518125069082
+Total Chip Energy (in J) 0.024903092601127896
+----------------------------------------
+Network model sim time is: 0.2628593444824219 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  9085179539.75197
+Total NRE Cost ($):  225420669.06876165
+Total Cost per Part ($):  186.21200417641464
+----------------------------------------
+Cost model sim time is: 0.001712799072265625 s
+Total sim time is: 1.257805347442627 s
+
+
+---------------------Model: gemma1b, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 60 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.09301161766052246 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 1533.0968479904 mm2
+Compute Latency of the Chip is: 2.3019823205215 s
+Memory Latency of the Chip is: 0.060313396 s
+DDR Latency of the Chip is: 0.00537453625 s
+Compute Energy of the Chip is: 0.02463468158242081 J
+Memory Energy of the Chip is: 8.704586125549602e-05 J
+DDR Energy of the Chip is: 9.175048750000001e-06 J
+----------------------------------------
+Computing model sim time is: 0.8487420082092285 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 2.990653440000013
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.06274749446666666
+Total 2D Network NoC energy (in J) 2.3028875582693132e-05
+Total 2.5D Network NoP latency (in s) 0.0745185834142495
+Total 2.5D Network NoP energy (in J) 0.0001586505504588364
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 1559.24728199704
+Total End-to-End Latency (in s) 2.4995617944024153
+Total Chip Energy (in J) 0.024903406869717835
+----------------------------------------
+Network model sim time is: 0.26084184646606445 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  9089370684.143951
+Total NRE Cost ($):  225499659.19402248
+Total Cost per Part ($):  186.2974068667595
+----------------------------------------
+Cost model sim time is: 0.0014653205871582031 s
+Total sim time is: 1.2152657508850098 s
+
+
+---------------------Model: gemma1b, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 80 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.24641895294189453 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 1533.0968479904 mm2
+Compute Latency of the Chip is: 2.3019823205215 s
+Memory Latency of the Chip is: 0.060313396 s
+DDR Latency of the Chip is: 0.00537453625 s
+Compute Energy of the Chip is: 0.02463468158242081 J
+Memory Energy of the Chip is: 8.704586125549602e-05 J
+DDR Energy of the Chip is: 9.175048750000001e-06 J
+----------------------------------------
+Computing model sim time is: 0.8491387367248535 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 4.577361919999998
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.047060904599999995
+Total 2D Network NoC energy (in J) 2.330309868021748e-05
+Total 2.5D Network NoP latency (in s) 0.07222700794758291
+Total 2.5D Network NoP energy (in J) 0.0001586906062024656
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 1560.8339904770396
+Total End-to-End Latency (in s) 2.481583629069082
+Total Chip Energy (in J) 0.024903721148558988
+----------------------------------------
+Network model sim time is: 0.26227283477783203 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  9094519445.752472
+Total NRE Cost ($):  225596682.45080322
+Total Cost per Part ($):  186.4023225640655
+----------------------------------------
+Cost model sim time is: 0.0014338493347167969 s
+Total sim time is: 1.3681797981262207 s
+
+
+---------------------Model: llama, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 20 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.08711433410644531 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 1748.8922982892796 mm2
+Compute Latency of the Chip is: 1.4745903840768 s
+Memory Latency of the Chip is: 0.06505983 s
+DDR Latency of the Chip is: 2.0458749999999998e-05 s
+Compute Energy of the Chip is: 0.016044176807463898 J
+Memory Energy of the Chip is: 9.389603821157997e-05 J
+DDR Energy of the Chip is: 3.5078750000000006e-08 J
+----------------------------------------
+Computing model sim time is: 0.623626708984375 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 0.7019724800000008
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.05000159200000002
+Total 2D Network NoC energy (in J) 5.971314080742287e-06
+Total 2.5D Network NoP latency (in s) 0.00526138136911395
+Total 2.5D Network NoP energy (in J) 8.985700984795192e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 1772.7540513359188
+Total End-to-End Latency (in s) 1.594913187445913
+Total Chip Energy (in J) 0.016153029860741012
+----------------------------------------
+Network model sim time is: 0.23979401588439941 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  10280951220.464746
+Total NRE Cost ($):  466426879.54293126
+Total Cost per Part ($):  214.94756200015354
+----------------------------------------
+Cost model sim time is: 0.0015892982482910156 s
+Total sim time is: 0.9643571376800537 s
+
+
+---------------------Model: llama, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 40 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.08773446083068848 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 1748.8922982892796 mm2
+Compute Latency of the Chip is: 1.4745903840768 s
+Memory Latency of the Chip is: 0.06505983 s
+DDR Latency of the Chip is: 2.0458749999999998e-05 s
+Compute Energy of the Chip is: 0.016044176807463898 J
+Memory Energy of the Chip is: 9.389603821157997e-05 J
+DDR Energy of the Chip is: 3.5078750000000006e-08 J
+----------------------------------------
+Computing model sim time is: 0.624136209487915 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 1.6988569599999872
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.025001455999999984
+Total 2D Network NoC energy (in J) 6.0441870187694e-06
+Total 2.5D Network NoP latency (in s) 0.004482417969113951
+Total 2.5D Network NoP energy (in J) 8.987974949455878e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 1773.7509358159202
+Total End-to-End Latency (in s) 1.5691340880459128
+Total Chip Energy (in J) 0.016153105007643703
+----------------------------------------
+Network model sim time is: 0.23525691032409668 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  10284258562.72839
+Total NRE Cost ($):  466519612.22947234
+Total Cost per Part ($):  215.01556349915725
+----------------------------------------
+Cost model sim time is: 0.0016486644744873047 s
+Total sim time is: 0.9575915336608887 s
+
+
+---------------------Model: llama, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 60 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.08379125595092773 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 1748.8922982892796 mm2
+Compute Latency of the Chip is: 1.4745903840768 s
+Memory Latency of the Chip is: 0.06505983 s
+DDR Latency of the Chip is: 2.0458749999999998e-05 s
+Compute Energy of the Chip is: 0.016044176807463898 J
+Memory Energy of the Chip is: 9.389603821157997e-05 J
+DDR Energy of the Chip is: 3.5078750000000006e-08 J
+----------------------------------------
+Computing model sim time is: 0.6069667339324951 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 2.990653440000013
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.016668077333333343
+Total 2D Network NoC energy (in J) 6.117071003006831e-06
+Total 2.5D Network NoP latency (in s) 0.004222763502447284
+Total 2.5D Network NoP energy (in J) 8.990250002000906e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 1775.0427322959204
+Total End-to-End Latency (in s) 1.5605410549125796
+Total Chip Energy (in J) 0.016153180166680485
+----------------------------------------
+Network model sim time is: 0.22976231575012207 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  10288544853.526196
+Total NRE Cost ($):  466639778.367533
+Total Cost per Part ($):  215.10369263787456
+----------------------------------------
+Cost model sim time is: 0.0017998218536376953 s
+Total sim time is: 0.9304141998291016 s
+
+
+---------------------Model: llama, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 80 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.1184229850769043 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 1748.8922982892796 mm2
+Compute Latency of the Chip is: 1.4745903840768 s
+Memory Latency of the Chip is: 0.06505983 s
+DDR Latency of the Chip is: 2.0458749999999998e-05 s
+Compute Energy of the Chip is: 0.016044176807463898 J
+Memory Energy of the Chip is: 9.389603821157997e-05 J
+DDR Energy of the Chip is: 3.5078750000000006e-08 J
+----------------------------------------
+Computing model sim time is: 0.6448159217834473 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 4.577361919999998
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.012501387999999987
+Total 2D Network NoC energy (in J) 6.189966033454545e-06
+Total 2.5D Network NoP latency (in s) 0.004092936269113952
+Total 2.5D Network NoP energy (in J) 8.992526142430284e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 1776.6294407759203
+Total End-to-End Latency (in s) 1.556244538345913
+Total Chip Energy (in J) 0.016153255337851363
+----------------------------------------
+Network model sim time is: 0.2415463924407959 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  10294036788.60248
+Total NRE Cost ($):  466787377.95711386
+Total Cost per Part ($):  215.21648333119185
+----------------------------------------
+Cost model sim time is: 0.00156402587890625 s
+Total sim time is: 1.0143628120422363 s
+
+
+---------------------Model: qwen0.6b, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 20 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.08880138397216797 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 952.6965468832 mm2
+Compute Latency of the Chip is: 1.1019438343407 s
+Memory Latency of the Chip is: 0.03697254200000001 s
+DDR Latency of the Chip is: 0.0031255675 s
+Compute Energy of the Chip is: 0.014034456250605088 J
+Memory Energy of the Chip is: 5.335973390049199e-05 J
+DDR Energy of the Chip is: 5.33568e-06 J
+----------------------------------------
+Computing model sim time is: 0.8847246170043945 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 0.7019724800000008
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.10371187500000001
+Total 2D Network NoC energy (in J) 1.2385671621486933e-05
+Total 2.5D Network NoP latency (in s) 0.05678199194499413
+Total 2.5D Network NoP energy (in J) 9.697187860997368e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 976.5582999298385
+Total End-to-End Latency (in s) 1.2994102432856938
+Total Chip Energy (in J) 0.01419717353473704
+----------------------------------------
+Network model sim time is: 0.2658696174621582 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  5195325391.146206
+Total NRE Cost ($):  293793174.89174867
+Total Cost per Part ($):  109.78237132075908
+----------------------------------------
+Cost model sim time is: 0.0019071102142333984 s
+Total sim time is: 1.2515943050384521 s
+
+
+---------------------Model: qwen0.6b, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 40 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.08892440795898438 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 952.6965468832 mm2
+Compute Latency of the Chip is: 1.1019438343407 s
+Memory Latency of the Chip is: 0.03697254200000001 s
+DDR Latency of the Chip is: 0.0031255675 s
+Compute Energy of the Chip is: 0.014034456250605088 J
+Memory Energy of the Chip is: 5.335973390049199e-05 J
+DDR Energy of the Chip is: 5.33568e-06 J
+----------------------------------------
+Computing model sim time is: 0.8881254196166992 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 1.6988569599999872
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.05185651499999998
+Total 2D Network NoC energy (in J) 1.2536764996585401e-05
+Total 2.5D Network NoP latency (in s) 0.0483737231449941
+Total 2.5D Network NoP energy (in J) 9.699637449277409e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 977.5551844098381
+Total End-to-End Latency (in s) 1.2391466144856937
+Total Chip Energy (in J) 0.014197349123994937
+----------------------------------------
+Network model sim time is: 0.25624513626098633 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  5198287887.486302
+Total NRE Cost ($):  293879552.43972945
+Total Cost per Part ($):  109.84334879852064
+----------------------------------------
+Cost model sim time is: 0.0017666816711425781 s
+Total sim time is: 1.2435307502746582 s
+
+
+---------------------Model: qwen0.6b, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 60 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.10694718360900879 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 952.6965468832 mm2
+Compute Latency of the Chip is: 1.1019438343407 s
+Memory Latency of the Chip is: 0.03697254200000001 s
+DDR Latency of the Chip is: 0.0031255675 s
+Compute Energy of the Chip is: 0.014034456250605088 J
+Memory Energy of the Chip is: 5.335973390049199e-05 J
+DDR Energy of the Chip is: 5.33568e-06 J
+----------------------------------------
+Computing model sim time is: 0.8569040298461914 s
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S4 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S4 to S5 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S5 to S6 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S6 to S7 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S7 to S8 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S8 to S9 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S9 to S10 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S10 to S11 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S11 to S12 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S12 to S13 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S13 to S14 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S14 to S15 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S15 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S16 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 2.990653440000013
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.034571395
+Total 2D Network NoC energy (in J) 1.2687868037117941e-05
+Total 2.5D Network NoP latency (in s) 0.04557096687832745
+Total 2.5D Network NoP energy (in J) 9.702087112872531e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 978.8469808898385
+Total End-to-End Latency (in s) 1.2190587382190272
+Total Chip Energy (in J) 0.014197524723671421
+----------------------------------------
+Network model sim time is: 0.25219225883483887 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  5203141560.209681
+Total NRE Cost ($):  293991483.3752303
+Total Cost per Part ($):  109.94266087169822
+----------------------------------------
+Cost model sim time is: 0.0015180110931396484 s
+Total sim time is: 1.226496934890747 s
+
+
+---------------------Model: qwen0.6b, Type: User-Defined, Stack Count: 16, Chip Count: 1, 2DLinkspertile: 80 -------------------------
+Creating files for 2.5D configuration based on user input
+AI mapping sim time is: 0.10921216011047363 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 7.708313001919999 mm2
+Memory Area of the Chip is: 952.6965468832 mm2
+Compute Latency of the Chip is: 1.1019438343407 s
+Memory Latency of the Chip is: 0.03697254200000001 s
+DDR Latency of the Chip is: 0.0031255675 s
+Compute Energy of the Chip is: 0.014034456250605088 J
+Memory Energy of the Chip is: 5.335973390049199e-05 J
+DDR Energy of the Chip is: 5.33568e-06 J
+----------------------------------------
+Computing model sim time is: 0.8798234462738037 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 4.577361919999998
+Total NoP Interface Area (in mm^2) 15.184932980399003
+Total NoP Router Area (in mm^2) 0.26653458432000005
+Total 2D Network NoC latency (in s) 0.025928835000000004
+Total 2D Network NoC energy (in J) 1.2838980743084497e-05
+Total 2.5D Network NoP latency (in s) 0.0441695887449941
+Total 2.5D Network NoP energy (in J) 9.70453685178272e-05
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 980.4336893698378
+Total End-to-End Latency (in s) 1.2090148000856937
+Total Chip Energy (in J) 0.01419770033376649
+----------------------------------------
+Network model sim time is: 0.2571744918823242 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  5208670466.132706
+Total NRE Cost ($):  294128967.69825107
+Total Cost per Part ($):  110.05598867661912
+----------------------------------------
+Cost model sim time is: 0.0015554428100585938 s
+Total sim time is: 1.2568254470825195 s
