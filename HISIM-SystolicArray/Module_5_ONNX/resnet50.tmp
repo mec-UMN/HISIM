@@ -1,0 +1,401 @@
+module attributes {llvm.data_layout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128", llvm.target_triple = "x86_64-unknown-linux-gnu", "onnx-mlir.symbol-postfix" = "model"} {
+  func.func @main_graph(%arg0: tensor<1x3x224x224xf32> {onnx.name = "x"}) -> (tensor<1x1000xf32> {onnx.name = "495"}) {
+    %0 = onnx.Constant dense<[1, 2048, 7, 7]> : tensor<4xi64>
+    %1 = onnx.Constant dense_resource<__elided__> : tensor<1x2048x1xf32>
+    %2 = onnx.Constant dense_resource<__elided__> : tensor<2048x512xf32>
+    %3 = onnx.Constant dense<[1, 512, -1]> : tensor<3xi64>
+    %4 = onnx.Constant dense<[1, 512, 7, 7]> : tensor<4xi64>
+    %5 = onnx.Constant dense_resource<__elided__> : tensor<1x512x1xf32>
+    %6 = onnx.Constant dense_resource<__elided__> : tensor<512x2048xf32>
+    %7 = onnx.Constant dense<[1, 2048, -1]> : tensor<3xi64>
+    %8 = onnx.Constant dense<[1, 2048, 7, 7]> : tensor<4xi64>
+    %9 = onnx.Constant dense_resource<__elided__> : tensor<1x2048x1xf32>
+    %10 = onnx.Constant dense_resource<__elided__> : tensor<2048x512xf32>
+    %11 = onnx.Constant dense<[1, 512, -1]> : tensor<3xi64>
+    %12 = onnx.Constant dense<[1, 512, 7, 7]> : tensor<4xi64>
+    %13 = onnx.Constant dense_resource<__elided__> : tensor<1x512x1xf32>
+    %14 = onnx.Constant dense_resource<__elided__> : tensor<512x2048xf32>
+    %15 = onnx.Constant dense<[1, 2048, -1]> : tensor<3xi64>
+    %16 = onnx.Constant dense<[1, 2048, 7, 7]> : tensor<4xi64>
+    %17 = onnx.Constant dense_resource<__elided__> : tensor<1x2048x1xf32>
+    %18 = onnx.Constant dense_resource<__elided__> : tensor<2048x512xf32>
+    %19 = onnx.Constant dense<[1, 512, -1]> : tensor<3xi64>
+    %20 = onnx.Constant dense<[1, 512, 14, 14]> : tensor<4xi64>
+    %21 = onnx.Constant dense_resource<__elided__> : tensor<1x512x1xf32>
+    %22 = onnx.Constant dense_resource<__elided__> : tensor<512x1024xf32>
+    %23 = onnx.Constant dense<[1, 1024, -1]> : tensor<3xi64>
+    %24 = onnx.Constant dense<[1, 1024, 14, 14]> : tensor<4xi64>
+    %25 = onnx.Constant dense_resource<__elided__> : tensor<1x1024x1xf32>
+    %26 = onnx.Constant dense_resource<__elided__> : tensor<1024x256xf32>
+    %27 = onnx.Constant dense<[1, 256, -1]> : tensor<3xi64>
+    %28 = onnx.Constant dense<[1, 256, 14, 14]> : tensor<4xi64>
+    %29 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %30 = onnx.Constant dense_resource<__elided__> : tensor<256x1024xf32>
+    %31 = onnx.Constant dense<[1, 1024, -1]> : tensor<3xi64>
+    %32 = onnx.Constant dense<[1, 1024, 14, 14]> : tensor<4xi64>
+    %33 = onnx.Constant dense_resource<__elided__> : tensor<1x1024x1xf32>
+    %34 = onnx.Constant dense_resource<__elided__> : tensor<1024x256xf32>
+    %35 = onnx.Constant dense<[1, 256, -1]> : tensor<3xi64>
+    %36 = onnx.Constant dense<[1, 256, 14, 14]> : tensor<4xi64>
+    %37 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %38 = onnx.Constant dense_resource<__elided__> : tensor<256x1024xf32>
+    %39 = onnx.Constant dense<[1, 1024, -1]> : tensor<3xi64>
+    %40 = onnx.Constant dense<[1, 1024, 14, 14]> : tensor<4xi64>
+    %41 = onnx.Constant dense_resource<__elided__> : tensor<1x1024x1xf32>
+    %42 = onnx.Constant dense_resource<__elided__> : tensor<1024x256xf32>
+    %43 = onnx.Constant dense<[1, 256, -1]> : tensor<3xi64>
+    %44 = onnx.Constant dense<[1, 256, 14, 14]> : tensor<4xi64>
+    %45 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %46 = onnx.Constant dense_resource<__elided__> : tensor<256x1024xf32>
+    %47 = onnx.Constant dense<[1, 1024, -1]> : tensor<3xi64>
+    %48 = onnx.Constant dense<[1, 1024, 14, 14]> : tensor<4xi64>
+    %49 = onnx.Constant dense_resource<__elided__> : tensor<1x1024x1xf32>
+    %50 = onnx.Constant dense_resource<__elided__> : tensor<1024x256xf32>
+    %51 = onnx.Constant dense<[1, 256, -1]> : tensor<3xi64>
+    %52 = onnx.Constant dense<[1, 256, 14, 14]> : tensor<4xi64>
+    %53 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %54 = onnx.Constant dense_resource<__elided__> : tensor<256x1024xf32>
+    %55 = onnx.Constant dense<[1, 1024, -1]> : tensor<3xi64>
+    %56 = onnx.Constant dense<[1, 1024, 14, 14]> : tensor<4xi64>
+    %57 = onnx.Constant dense_resource<__elided__> : tensor<1x1024x1xf32>
+    %58 = onnx.Constant dense_resource<__elided__> : tensor<1024x256xf32>
+    %59 = onnx.Constant dense<[1, 256, -1]> : tensor<3xi64>
+    %60 = onnx.Constant dense<[1, 256, 14, 14]> : tensor<4xi64>
+    %61 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %62 = onnx.Constant dense_resource<__elided__> : tensor<256x1024xf32>
+    %63 = onnx.Constant dense<[1, 1024, -1]> : tensor<3xi64>
+    %64 = onnx.Constant dense<[1, 1024, 14, 14]> : tensor<4xi64>
+    %65 = onnx.Constant dense_resource<__elided__> : tensor<1x1024x1xf32>
+    %66 = onnx.Constant dense_resource<__elided__> : tensor<1024x256xf32>
+    %67 = onnx.Constant dense<[1, 256, -1]> : tensor<3xi64>
+    %68 = onnx.Constant dense<[1, 256, 28, 28]> : tensor<4xi64>
+    %69 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %70 = onnx.Constant dense_resource<__elided__> : tensor<256x512xf32>
+    %71 = onnx.Constant dense<[1, 512, -1]> : tensor<3xi64>
+    %72 = onnx.Constant dense<[1, 512, 28, 28]> : tensor<4xi64>
+    %73 = onnx.Constant dense_resource<__elided__> : tensor<1x512x1xf32>
+    %74 = onnx.Constant dense_resource<__elided__> : tensor<512x128xf32>
+    %75 = onnx.Constant dense<[1, 128, -1]> : tensor<3xi64>
+    %76 = onnx.Constant dense<[1, 128, 28, 28]> : tensor<4xi64>
+    %77 = onnx.Constant dense_resource<__elided__> : tensor<1x128x1xf32>
+    %78 = onnx.Constant dense_resource<__elided__> : tensor<128x512xf32>
+    %79 = onnx.Constant dense<[1, 512, -1]> : tensor<3xi64>
+    %80 = onnx.Constant dense<[1, 512, 28, 28]> : tensor<4xi64>
+    %81 = onnx.Constant dense_resource<__elided__> : tensor<1x512x1xf32>
+    %82 = onnx.Constant dense_resource<__elided__> : tensor<512x128xf32>
+    %83 = onnx.Constant dense<[1, 128, -1]> : tensor<3xi64>
+    %84 = onnx.Constant dense<[1, 128, 28, 28]> : tensor<4xi64>
+    %85 = onnx.Constant dense_resource<__elided__> : tensor<1x128x1xf32>
+    %86 = onnx.Constant dense_resource<__elided__> : tensor<128x512xf32>
+    %87 = onnx.Constant dense<[1, 512, -1]> : tensor<3xi64>
+    %88 = onnx.Constant dense<[1, 512, 28, 28]> : tensor<4xi64>
+    %89 = onnx.Constant dense_resource<__elided__> : tensor<1x512x1xf32>
+    %90 = onnx.Constant dense_resource<__elided__> : tensor<512x128xf32>
+    %91 = onnx.Constant dense<[1, 128, -1]> : tensor<3xi64>
+    %92 = onnx.Constant dense<[1, 128, 28, 28]> : tensor<4xi64>
+    %93 = onnx.Constant dense_resource<__elided__> : tensor<1x128x1xf32>
+    %94 = onnx.Constant dense_resource<__elided__> : tensor<128x512xf32>
+    %95 = onnx.Constant dense<[1, 512, -1]> : tensor<3xi64>
+    %96 = onnx.Constant dense<[1, 512, 28, 28]> : tensor<4xi64>
+    %97 = onnx.Constant dense_resource<__elided__> : tensor<1x512x1xf32>
+    %98 = onnx.Constant dense_resource<__elided__> : tensor<512x128xf32>
+    %99 = onnx.Constant dense<[1, 128, -1]> : tensor<3xi64>
+    %100 = onnx.Constant dense<[1, 128, 56, 56]> : tensor<4xi64>
+    %101 = onnx.Constant dense_resource<__elided__> : tensor<1x128x1xf32>
+    %102 = onnx.Constant dense_resource<__elided__> : tensor<128x256xf32>
+    %103 = onnx.Constant dense<[1, 256, -1]> : tensor<3xi64>
+    %104 = onnx.Constant dense<[1, 256, 56, 56]> : tensor<4xi64>
+    %105 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %106 = onnx.Constant dense_resource<__elided__> : tensor<256x64xf32>
+    %107 = onnx.Constant dense<[1, 64, -1]> : tensor<3xi64>
+    %108 = onnx.Constant dense<[1, 64, 56, 56]> : tensor<4xi64>
+    %109 = onnx.Constant dense<[[[-0.199249804], [-0.735752642], [1.47225368], [1.65385413], [3.49325967], [-0.566513896], [0.197477505], [1.40251327], [-0.715384185], [-1.70585716], [0.869367182], [0.827601194], [3.44194245], [1.06719303], [-2.52833986], [0.77264744], [-0.523884892], [-0.881938457], [1.12581515], [1.00812268], [1.82710087], [2.04304814], [0.640808582], [1.10998058], [-0.77387607], [1.37046885], [2.80879402], [0.0632522628], [2.42130446], [2.82617116], [1.7591393], [-8.43260097], [2.17104554], [-0.13846314], [3.47278023], [0.0974372625], [-1.8991431], [0.820594072], [1.08677053], [0.72981882], [-0.801128506], [1.86695647], [0.0321809947], [-0.114385247], [3.02900457], [0.446990073], [-0.403001249], [-0.627649546], [2.59176779], [1.31771636], [-0.501191497], [2.57504869], [0.238178462], [0.55733192], [-3.58958912], [4.93682194], [2.73857737], [0.643453299], [1.81757021], [-3.14900923], [2.23870873], [-0.664471328], [1.35246778], [1.36048281]]]> : tensor<1x64x1xf32>
+    %110 = onnx.Constant dense_resource<__elided__> : tensor<64x256xf32>
+    %111 = onnx.Constant dense<[1, 256, -1]> : tensor<3xi64>
+    %112 = onnx.Constant dense<[1, 256, 56, 56]> : tensor<4xi64>
+    %113 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %114 = onnx.Constant dense_resource<__elided__> : tensor<256x64xf32>
+    %115 = onnx.Constant dense<[1, 64, -1]> : tensor<3xi64>
+    %116 = onnx.Constant dense<[1, 64, 56, 56]> : tensor<4xi64>
+    %117 = onnx.Constant dense<[[[-1.32049644], [1.4919318], [-4.92769432], [-2.53452253], [2.35403633], [-3.10436344], [-9.28235626], [0.464205503], [-0.363740593], [-0.388339549], [2.36387634], [1.80438364], [-0.250774145], [7.00514984], [-2.18853092], [-7.46820259], [0.218382657], [1.28265083], [1.08273363], [-0.722202182], [-1.92269325], [4.3632288], [1.32851934], [0.422288418], [-0.777332901], [-1.15369833], [2.100340e+00], [-1.19019735], [1.22487044], [0.350273967], [0.944098472], [-0.129682243], [-0.0640844404], [1.43309736], [0.354792118], [0.313560218], [0.284187973], [32.3786621], [1.69210529], [0.504733205], [0.0729420185], [1.84813273], [0.417280078], [-2.87883592], [0.920932531], [-0.655965328], [1.08149672], [-0.706139326], [2.14898825], [0.300892949], [-1.96848249], [0.245055884], [2.01651049], [-1.47711015], [4.6256628], [-3.30761671], [-3.66126156], [2.40190101], [2.95676565], [-1.08701277], [0.835194528], [2.07918596], [1.23460674], [-2.60402679]]]> : tensor<1x64x1xf32>
+    %118 = onnx.Constant dense_resource<__elided__> : tensor<64x256xf32>
+    %119 = onnx.Constant dense<[1, 256, -1]> : tensor<3xi64>
+    %120 = onnx.Constant dense<[1, 256, 56, 56]> : tensor<4xi64>
+    %121 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %122 = onnx.Constant dense_resource<__elided__> : tensor<256x64xf32>
+    %123 = onnx.Constant dense<[1, 64, -1]> : tensor<3xi64>
+    %124 = onnx.Constant dense<[1, 256, 56, 56]> : tensor<4xi64>
+    %125 = onnx.Constant dense_resource<__elided__> : tensor<1x256x1xf32>
+    %126 = onnx.Constant dense_resource<__elided__> : tensor<256x64xf32>
+    %127 = onnx.Constant dense<[1, 64, -1]> : tensor<3xi64>
+    %128 = onnx.Constant dense<[1, 64, 56, 56]> : tensor<4xi64>
+    %129 = onnx.Constant dense<[[[5.19580269], [0.940099835], [-7.01642847], [5.18544674], [-4.13485909], [2.01218462], [5.21571922], [3.37140608], [3.76160955], [-3.65932393], [15.9994507], [3.30627632], [5.79019117], [6.33050537], [3.45129061], [2.55318618], [4.27870226], [4.35036135], [8.02577972], [-2.88300371], [2.91511154], [3.59248281], [5.81048107], [3.47433329], [3.52456808], [1.82435989], [8.06972694], [1.40103602], [5.11008167], [-12.87358], [10.9778166], [5.90962744], [-0.400777936], [-20.1472683], [6.64941359], [3.32592106], [5.84471321], [4.47447395], [3.75419307], [-5.1676712], [3.27780557], [-9.06707382], [2.62434387], [1.70020318], [5.47645473], [2.51083565], [3.8569684], [2.31728077], [12.4621391], [7.35592413], [4.14062881], [4.807560e+00], [5.75243092], [4.12883615], [11.4532471], [-12.4825649], [5.59014416], [0.917269706], [4.35681105], [0.993485331], [-4.35489941], [15.8532019], [-5.24113083], [5.96443653]]]> : tensor<1x64x1xf32>
+    %130 = onnx.Constant dense_resource<__elided__> : tensor<64x64xf32>
+    %131 = onnx.Constant dense<[1, 64, -1]> : tensor<3xi64>
+    %132 = onnx.Constant dense_resource<__elided__> : tensor<1000x2048xf32>
+    %133 = onnx.Constant dense_resource<__elided__> : tensor<1000xf32>
+    %134 = onnx.Constant dense_resource<__elided__> : tensor<64x3x7x7xf32>
+    %135 = onnx.Constant dense<[3.08559895, 2.24360609, 4.24435759, 1.40696454, -4.00622034, 2.59577084, 2.72026038, 2.44054174, 1.17599332, 2.02102637, 2.66289926, 6.44522619, -7.0299325, 1.13057935, 2.53714037, 5.45677233, 4.78015471, 10.0399761, 2.91249228, 15.7815428, 2.51543188, 2.62882447, 2.29920506, 2.09505844, -7.93365478, 2.06778693, 4.09485245, 1.67339981, 3.1814425, 22.4949608, 2.232640e+00, 2.64279795, -9.41817474, 1.79097664, 2.37747264, 2.58362198, 2.56082034, 2.28734398, 2.6439085, 16.8590279, 1.86996078, -3.69875264, 2.68615389, 2.89974642, 2.68929338, 2.66540432, 2.37999153, 2.56030869, 3.14612269, 2.71595168, 2.88948679, 2.96613455, -4.96019125, 2.61235476, 1.30741644, 2.20330262, 2.21146202, 4.13284492, 4.8937645, 2.646960e+00, 2.6541369, 1.93119979, 2.88101244, 2.69911933]> : tensor<64xf32>
+    %136 = onnx.Constant dense_resource<__elided__> : tensor<64x64x3x3xf32>
+    %137 = onnx.Constant dense<[-3.07542253, -12.5538025, 10.7631884, -0.512323618, 1.42893791, 0.525986135, -4.38785553, -2.38629293, 10.7355576, 10.8394709, 3.98853683, -5.79940032, 3.06983972, 8.60190582, 1.90907168, -0.245976925, 0.750209928, 12.1188021, -2.26280165, -0.99866271, -0.944435715, -1.70210612, -0.855901896, 0.0242173672, -1.12303495, -3.5779531, -5.05551672, -2.40539646, -1.4306041, 0.773697555, -0.607282459, 8.07255649, -0.130818903, -4.60639381, 1.2204237, -1.16560769, -3.51564193, 1.9440012, 4.08804464, -1.0383513, 7.85466385, -6.87108898, 14.8342037, -0.875952124, 0.849815666, -1.72982943, 0.547674894, -2.023820e+00, -2.11283588, 3.27391076, 1.31423926, -0.68774563, 1.05234516, 5.40561962, 1.9384048, -1.53486264, 1.83428156, -1.37530875, -1.74022901, 4.51476145, 3.43400478, -1.63556457, -0.458732069, -1.75692248]> : tensor<64xf32>
+    %138 = onnx.Constant dense_resource<__elided__> : tensor<64x64x3x3xf32>
+    %139 = onnx.Constant dense<[0.504722238, 0.88514471, 2.60481381, 2.19981098, 1.84941852, 3.33420849, 4.51158571, 0.323998839, 0.120475233, 0.655173957, 0.759344577, 0.313382179, 3.61391926, 0.238358214, 1.44452024, 0.825654268, 2.86389446, 1.34524333, 2.24799395, 0.679952741, 0.0580515862, 0.893869757, 4.15763474, 0.7642107, -1.48655236, 4.37770271, 0.872125685, 1.21194577, -1.06202066, 0.95975548, 3.45178795, 0.729871273, 0.247891665, 2.45582438, 5.62835884, 2.56413198, 0.0146125555, 3.86588454, 0.246194482, 2.90147352, 0.0644066333, 0.710235715, 1.97292757, 0.756281375, 1.41720521, 0.35642004, 3.26129532, -0.256596208, 0.0828369259, 2.67771244, 1.65464139, 1.8137753, 0.945632338, 0.332162559, 1.78678274, 5.23645496, 1.21204102, 3.28124833, 3.2061944, 0.291924953, 1.2488308, 0.487091422, 3.94472504, -0.824524879]> : tensor<64xf32>
+    %140 = onnx.Constant dense_resource<__elided__> : tensor<64x64x3x3xf32>
+    %141 = onnx.Constant dense<[-0.418085933, 0.109069467, -0.161233395, -0.39561969, 5.63770199, -0.578030705, 4.22282076, 2.37939191, 3.24593425, 0.562517524, 4.1089716, -11.869627, 3.67643785, 0.592705965, -0.161464423, 0.299547851, 6.57913256, -0.485992253, 0.832941651, -0.707117796, -0.0979920327, 3.53182769, 0.952395915, 0.600228131, -0.812742888, -6.843220e-01, 0.688102841, 1.18315911, 0.275439501, 1.54619789, 0.414666712, 2.61889505, -6.590960e-01, 2.081160e+00, 0.352464855, -0.00376951694, -0.101128466, 1.53578246, -0.667918324, 0.229345143, 0.65084815, 3.6603322, 0.0881879329, -0.996374845, 0.246735409, 1.05033958, 0.0914158225, 4.1879344, 3.76672697, 0.176301256, 3.721400e+00, -0.133874834, 1.13510525, 1.34499764, 0.304928064, 0.645770967, 2.36731911, 0.371856034, 2.44294119, -0.27004981, 0.20030944, 1.15150416, 0.291244864, 5.32961702]> : tensor<64xf32>
+    %142 = onnx.Constant dense_resource<__elided__> : tensor<128x128x3x3xf32>
+    %143 = onnx.Constant dense_resource<__elided__> : tensor<128xf32>
+    %144 = onnx.Constant dense_resource<__elided__> : tensor<512x256x1x1xf32>
+    %145 = onnx.Constant dense_resource<__elided__> : tensor<512xf32>
+    %146 = onnx.Constant dense_resource<__elided__> : tensor<128x128x3x3xf32>
+    %147 = onnx.Constant dense_resource<__elided__> : tensor<128xf32>
+    %148 = onnx.Constant dense_resource<__elided__> : tensor<128x128x3x3xf32>
+    %149 = onnx.Constant dense_resource<__elided__> : tensor<128xf32>
+    %150 = onnx.Constant dense_resource<__elided__> : tensor<128x128x3x3xf32>
+    %151 = onnx.Constant dense_resource<__elided__> : tensor<128xf32>
+    %152 = onnx.Constant dense_resource<__elided__> : tensor<256x256x3x3xf32>
+    %153 = onnx.Constant dense_resource<__elided__> : tensor<256xf32>
+    %154 = onnx.Constant dense_resource<__elided__> : tensor<1024x512x1x1xf32>
+    %155 = onnx.Constant dense_resource<__elided__> : tensor<1024xf32>
+    %156 = onnx.Constant dense_resource<__elided__> : tensor<256x256x3x3xf32>
+    %157 = onnx.Constant dense_resource<__elided__> : tensor<256xf32>
+    %158 = onnx.Constant dense_resource<__elided__> : tensor<256x256x3x3xf32>
+    %159 = onnx.Constant dense_resource<__elided__> : tensor<256xf32>
+    %160 = onnx.Constant dense_resource<__elided__> : tensor<256x256x3x3xf32>
+    %161 = onnx.Constant dense_resource<__elided__> : tensor<256xf32>
+    %162 = onnx.Constant dense_resource<__elided__> : tensor<256x256x3x3xf32>
+    %163 = onnx.Constant dense_resource<__elided__> : tensor<256xf32>
+    %164 = onnx.Constant dense_resource<__elided__> : tensor<256x256x3x3xf32>
+    %165 = onnx.Constant dense_resource<__elided__> : tensor<256xf32>
+    %166 = onnx.Constant dense_resource<__elided__> : tensor<512x512x3x3xf32>
+    %167 = onnx.Constant dense_resource<__elided__> : tensor<512xf32>
+    %168 = onnx.Constant dense_resource<__elided__> : tensor<2048x1024x1x1xf32>
+    %169 = onnx.Constant dense_resource<__elided__> : tensor<2048xf32>
+    %170 = onnx.Constant dense_resource<__elided__> : tensor<512x512x3x3xf32>
+    %171 = onnx.Constant dense_resource<__elided__> : tensor<512xf32>
+    %172 = onnx.Constant dense_resource<__elided__> : tensor<512x512x3x3xf32>
+    %173 = onnx.Constant dense_resource<__elided__> : tensor<512xf32>
+    %174 = "onnx.Conv"(%arg0, %134, %135) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [7, 7], onnx_node_name = "/conv1/Conv", pads = [3, 3, 3, 3], strides = [2, 2]} : (tensor<1x3x224x224xf32>, tensor<64x3x7x7xf32>, tensor<64xf32>) -> tensor<1x64x112x112xf32>
+    %175 = "onnx.Relu"(%174) {onnx_node_name = "/relu/Relu"} : (tensor<1x64x112x112xf32>) -> tensor<1x64x112x112xf32>
+    %176 = "onnx.MaxPoolSingleOut"(%175) {auto_pad = "NOTSET", ceil_mode = 0 : si64, kernel_shape = [3, 3], onnx_node_name = "/maxpool/MaxPool", pads = [1, 1, 1, 1], storage_order = 0 : si64, strides = [2, 2]} : (tensor<1x64x112x112xf32>) -> tensor<1x64x56x56xf32>
+    %177 = "onnx.Reshape"(%176, %131) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.0/conv1/Conv_75"} : (tensor<1x64x56x56xf32>, tensor<3xi64>) -> tensor<1x64x3136xf32>
+    %178 = "onnx.MatMul"(%130, %177) {onnx_node_name = "/layer1/layer1.0/conv1/Conv_97"} : (tensor<64x64xf32>, tensor<1x64x3136xf32>) -> tensor<1x64x3136xf32>
+    %179 = "onnx.Add"(%178, %129) {onnx_node_name = "/layer1/layer1.0/conv1/Conv_0"} : (tensor<1x64x3136xf32>, tensor<1x64x1xf32>) -> tensor<1x64x3136xf32>
+    %180 = "onnx.Reshape"(%179, %128) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.0/conv1/Conv_76"} : (tensor<1x64x3136xf32>, tensor<4xi64>) -> tensor<1x64x56x56xf32>
+    %181 = "onnx.Relu"(%180) {onnx_node_name = "/layer1/layer1.0/relu/Relu"} : (tensor<1x64x56x56xf32>) -> tensor<1x64x56x56xf32>
+    %182 = "onnx.Conv"(%181, %136, %137) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer1/layer1.0/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x64x56x56xf32>, tensor<64x64x3x3xf32>, tensor<64xf32>) -> tensor<1x64x56x56xf32>
+    %183 = "onnx.Relu"(%182) {onnx_node_name = "/layer1/layer1.0/relu_1/Relu"} : (tensor<1x64x56x56xf32>) -> tensor<1x64x56x56xf32>
+    %184 = "onnx.Reshape"(%183, %127) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.0/conv3/Conv_43"} : (tensor<1x64x56x56xf32>, tensor<3xi64>) -> tensor<1x64x3136xf32>
+    %185 = "onnx.MatMul"(%126, %184) {onnx_node_name = "/layer1/layer1.0/conv3/Conv_99"} : (tensor<256x64xf32>, tensor<1x64x3136xf32>) -> tensor<1x256x3136xf32>
+    %186 = "onnx.Add"(%185, %125) {onnx_node_name = "/layer1/layer1.0/conv3/Conv_36"} : (tensor<1x256x3136xf32>, tensor<1x256x1xf32>) -> tensor<1x256x3136xf32>
+    %187 = "onnx.Reshape"(%186, %124) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.0/conv3/Conv_131"} : (tensor<1x256x3136xf32>, tensor<4xi64>) -> tensor<1x256x56x56xf32>
+    %188 = "onnx.Reshape"(%176, %123) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.0/downsample/downsample.0/Conv_40"} : (tensor<1x64x56x56xf32>, tensor<3xi64>) -> tensor<1x64x3136xf32>
+    %189 = "onnx.MatMul"(%122, %188) {onnx_node_name = "/layer1/layer1.0/downsample/downsample.0/Conv_26"} : (tensor<256x64xf32>, tensor<1x64x3136xf32>) -> tensor<1x256x3136xf32>
+    %190 = "onnx.Add"(%189, %121) {onnx_node_name = "/layer1/layer1.0/downsample/downsample.0/Conv_49"} : (tensor<1x256x3136xf32>, tensor<1x256x1xf32>) -> tensor<1x256x3136xf32>
+    %191 = "onnx.Reshape"(%190, %120) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.0/downsample/downsample.0/Conv_48"} : (tensor<1x256x3136xf32>, tensor<4xi64>) -> tensor<1x256x56x56xf32>
+    %192 = "onnx.Add"(%187, %191) {onnx_node_name = "/layer1/layer1.0/Add"} : (tensor<1x256x56x56xf32>, tensor<1x256x56x56xf32>) -> tensor<1x256x56x56xf32>
+    %193 = "onnx.Relu"(%192) {onnx_node_name = "/layer1/layer1.0/relu_2/Relu"} : (tensor<1x256x56x56xf32>) -> tensor<1x256x56x56xf32>
+    %194 = "onnx.Reshape"(%193, %119) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.1/conv1/Conv_67"} : (tensor<1x256x56x56xf32>, tensor<3xi64>) -> tensor<1x256x3136xf32>
+    %195 = "onnx.MatMul"(%118, %194) {onnx_node_name = "/layer1/layer1.1/conv1/Conv_41"} : (tensor<64x256xf32>, tensor<1x256x3136xf32>) -> tensor<1x64x3136xf32>
+    %196 = "onnx.Add"(%195, %117) {onnx_node_name = "/layer1/layer1.1/conv1/Conv_74"} : (tensor<1x64x3136xf32>, tensor<1x64x1xf32>) -> tensor<1x64x3136xf32>
+    %197 = "onnx.Reshape"(%196, %116) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.1/conv1/Conv_4"} : (tensor<1x64x3136xf32>, tensor<4xi64>) -> tensor<1x64x56x56xf32>
+    %198 = "onnx.Relu"(%197) {onnx_node_name = "/layer1/layer1.1/relu/Relu"} : (tensor<1x64x56x56xf32>) -> tensor<1x64x56x56xf32>
+    %199 = "onnx.Conv"(%198, %138, %139) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer1/layer1.1/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x64x56x56xf32>, tensor<64x64x3x3xf32>, tensor<64xf32>) -> tensor<1x64x56x56xf32>
+    %200 = "onnx.Relu"(%199) {onnx_node_name = "/layer1/layer1.1/relu_1/Relu"} : (tensor<1x64x56x56xf32>) -> tensor<1x64x56x56xf32>
+    %201 = "onnx.Reshape"(%200, %115) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.1/conv3/Conv_55"} : (tensor<1x64x56x56xf32>, tensor<3xi64>) -> tensor<1x64x3136xf32>
+    %202 = "onnx.MatMul"(%114, %201) {onnx_node_name = "/layer1/layer1.1/conv3/Conv_116"} : (tensor<256x64xf32>, tensor<1x64x3136xf32>) -> tensor<1x256x3136xf32>
+    %203 = "onnx.Add"(%202, %113) {onnx_node_name = "/layer1/layer1.1/conv3/Conv_129"} : (tensor<1x256x3136xf32>, tensor<1x256x1xf32>) -> tensor<1x256x3136xf32>
+    %204 = "onnx.Reshape"(%203, %112) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.1/conv3/Conv_22"} : (tensor<1x256x3136xf32>, tensor<4xi64>) -> tensor<1x256x56x56xf32>
+    %205 = "onnx.Add"(%204, %193) {onnx_node_name = "/layer1/layer1.1/Add"} : (tensor<1x256x56x56xf32>, tensor<1x256x56x56xf32>) -> tensor<1x256x56x56xf32>
+    %206 = "onnx.Relu"(%205) {onnx_node_name = "/layer1/layer1.1/relu_2/Relu"} : (tensor<1x256x56x56xf32>) -> tensor<1x256x56x56xf32>
+    %207 = "onnx.Reshape"(%206, %111) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.2/conv1/Conv_51"} : (tensor<1x256x56x56xf32>, tensor<3xi64>) -> tensor<1x256x3136xf32>
+    %208 = "onnx.MatMul"(%110, %207) {onnx_node_name = "/layer1/layer1.2/conv1/Conv_65"} : (tensor<64x256xf32>, tensor<1x256x3136xf32>) -> tensor<1x64x3136xf32>
+    %209 = "onnx.Add"(%208, %109) {onnx_node_name = "/layer1/layer1.2/conv1/Conv_68"} : (tensor<1x64x3136xf32>, tensor<1x64x1xf32>) -> tensor<1x64x3136xf32>
+    %210 = "onnx.Reshape"(%209, %108) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.2/conv1/Conv_91"} : (tensor<1x64x3136xf32>, tensor<4xi64>) -> tensor<1x64x56x56xf32>
+    %211 = "onnx.Relu"(%210) {onnx_node_name = "/layer1/layer1.2/relu/Relu"} : (tensor<1x64x56x56xf32>) -> tensor<1x64x56x56xf32>
+    %212 = "onnx.Conv"(%211, %140, %141) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer1/layer1.2/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x64x56x56xf32>, tensor<64x64x3x3xf32>, tensor<64xf32>) -> tensor<1x64x56x56xf32>
+    %213 = "onnx.Relu"(%212) {onnx_node_name = "/layer1/layer1.2/relu_1/Relu"} : (tensor<1x64x56x56xf32>) -> tensor<1x64x56x56xf32>
+    %214 = "onnx.Reshape"(%213, %107) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.2/conv3/Conv_11"} : (tensor<1x64x56x56xf32>, tensor<3xi64>) -> tensor<1x64x3136xf32>
+    %215 = "onnx.MatMul"(%106, %214) {onnx_node_name = "/layer1/layer1.2/conv3/Conv_92"} : (tensor<256x64xf32>, tensor<1x64x3136xf32>) -> tensor<1x256x3136xf32>
+    %216 = "onnx.Add"(%215, %105) {onnx_node_name = "/layer1/layer1.2/conv3/Conv_61"} : (tensor<1x256x3136xf32>, tensor<1x256x1xf32>) -> tensor<1x256x3136xf32>
+    %217 = "onnx.Reshape"(%216, %104) {allowzero = 0 : si64, onnx_node_name = "/layer1/layer1.2/conv3/Conv_104"} : (tensor<1x256x3136xf32>, tensor<4xi64>) -> tensor<1x256x56x56xf32>
+    %218 = "onnx.Add"(%217, %206) {onnx_node_name = "/layer1/layer1.2/Add"} : (tensor<1x256x56x56xf32>, tensor<1x256x56x56xf32>) -> tensor<1x256x56x56xf32>
+    %219 = "onnx.Relu"(%218) {onnx_node_name = "/layer1/layer1.2/relu_2/Relu"} : (tensor<1x256x56x56xf32>) -> tensor<1x256x56x56xf32>
+    %220 = "onnx.Reshape"(%219, %103) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.0/conv1/Conv_17"} : (tensor<1x256x56x56xf32>, tensor<3xi64>) -> tensor<1x256x3136xf32>
+    %221 = "onnx.MatMul"(%102, %220) {onnx_node_name = "/layer2/layer2.0/conv1/Conv_96"} : (tensor<128x256xf32>, tensor<1x256x3136xf32>) -> tensor<1x128x3136xf32>
+    %222 = "onnx.Add"(%221, %101) {onnx_node_name = "/layer2/layer2.0/conv1/Conv_84"} : (tensor<1x128x3136xf32>, tensor<1x128x1xf32>) -> tensor<1x128x3136xf32>
+    %223 = "onnx.Reshape"(%222, %100) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.0/conv1/Conv_13"} : (tensor<1x128x3136xf32>, tensor<4xi64>) -> tensor<1x128x56x56xf32>
+    %224 = "onnx.Relu"(%223) {onnx_node_name = "/layer2/layer2.0/relu/Relu"} : (tensor<1x128x56x56xf32>) -> tensor<1x128x56x56xf32>
+    %225 = "onnx.Conv"(%224, %142, %143) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer2/layer2.0/conv2/Conv", pads = [1, 1, 1, 1], strides = [2, 2]} : (tensor<1x128x56x56xf32>, tensor<128x128x3x3xf32>, tensor<128xf32>) -> tensor<1x128x28x28xf32>
+    %226 = "onnx.Relu"(%225) {onnx_node_name = "/layer2/layer2.0/relu_1/Relu"} : (tensor<1x128x28x28xf32>) -> tensor<1x128x28x28xf32>
+    %227 = "onnx.Reshape"(%226, %99) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.0/conv3/Conv_106"} : (tensor<1x128x28x28xf32>, tensor<3xi64>) -> tensor<1x128x784xf32>
+    %228 = "onnx.MatMul"(%98, %227) {onnx_node_name = "/layer2/layer2.0/conv3/Conv_20"} : (tensor<512x128xf32>, tensor<1x128x784xf32>) -> tensor<1x512x784xf32>
+    %229 = "onnx.Add"(%228, %97) {onnx_node_name = "/layer2/layer2.0/conv3/Conv_34"} : (tensor<1x512x784xf32>, tensor<1x512x1xf32>) -> tensor<1x512x784xf32>
+    %230 = "onnx.Reshape"(%229, %96) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.0/conv3/Conv_12"} : (tensor<1x512x784xf32>, tensor<4xi64>) -> tensor<1x512x28x28xf32>
+    %231 = "onnx.Conv"(%219, %144, %145) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [1, 1], onnx_node_name = "/layer2/layer2.0/downsample/downsample.0/Conv", pads = [0, 0, 0, 0], strides = [2, 2]} : (tensor<1x256x56x56xf32>, tensor<512x256x1x1xf32>, tensor<512xf32>) -> tensor<1x512x28x28xf32>
+    %232 = "onnx.Add"(%230, %231) {onnx_node_name = "/layer2/layer2.0/Add"} : (tensor<1x512x28x28xf32>, tensor<1x512x28x28xf32>) -> tensor<1x512x28x28xf32>
+    %233 = "onnx.Relu"(%232) {onnx_node_name = "/layer2/layer2.0/relu_2/Relu"} : (tensor<1x512x28x28xf32>) -> tensor<1x512x28x28xf32>
+    %234 = "onnx.Reshape"(%233, %95) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.1/conv1/Conv_78"} : (tensor<1x512x28x28xf32>, tensor<3xi64>) -> tensor<1x512x784xf32>
+    %235 = "onnx.MatMul"(%94, %234) {onnx_node_name = "/layer2/layer2.1/conv1/Conv_8"} : (tensor<128x512xf32>, tensor<1x512x784xf32>) -> tensor<1x128x784xf32>
+    %236 = "onnx.Add"(%235, %93) {onnx_node_name = "/layer2/layer2.1/conv1/Conv_23"} : (tensor<1x128x784xf32>, tensor<1x128x1xf32>) -> tensor<1x128x784xf32>
+    %237 = "onnx.Reshape"(%236, %92) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.1/conv1/Conv_122"} : (tensor<1x128x784xf32>, tensor<4xi64>) -> tensor<1x128x28x28xf32>
+    %238 = "onnx.Relu"(%237) {onnx_node_name = "/layer2/layer2.1/relu/Relu"} : (tensor<1x128x28x28xf32>) -> tensor<1x128x28x28xf32>
+    %239 = "onnx.Conv"(%238, %146, %147) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer2/layer2.1/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x128x28x28xf32>, tensor<128x128x3x3xf32>, tensor<128xf32>) -> tensor<1x128x28x28xf32>
+    %240 = "onnx.Relu"(%239) {onnx_node_name = "/layer2/layer2.1/relu_1/Relu"} : (tensor<1x128x28x28xf32>) -> tensor<1x128x28x28xf32>
+    %241 = "onnx.Reshape"(%240, %91) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.1/conv3/Conv_94"} : (tensor<1x128x28x28xf32>, tensor<3xi64>) -> tensor<1x128x784xf32>
+    %242 = "onnx.MatMul"(%90, %241) {onnx_node_name = "/layer2/layer2.1/conv3/Conv_111"} : (tensor<512x128xf32>, tensor<1x128x784xf32>) -> tensor<1x512x784xf32>
+    %243 = "onnx.Add"(%242, %89) {onnx_node_name = "/layer2/layer2.1/conv3/Conv_15"} : (tensor<1x512x784xf32>, tensor<1x512x1xf32>) -> tensor<1x512x784xf32>
+    %244 = "onnx.Reshape"(%243, %88) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.1/conv3/Conv_86"} : (tensor<1x512x784xf32>, tensor<4xi64>) -> tensor<1x512x28x28xf32>
+    %245 = "onnx.Add"(%244, %233) {onnx_node_name = "/layer2/layer2.1/Add"} : (tensor<1x512x28x28xf32>, tensor<1x512x28x28xf32>) -> tensor<1x512x28x28xf32>
+    %246 = "onnx.Relu"(%245) {onnx_node_name = "/layer2/layer2.1/relu_2/Relu"} : (tensor<1x512x28x28xf32>) -> tensor<1x512x28x28xf32>
+    %247 = "onnx.Reshape"(%246, %87) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.2/conv1/Conv_42"} : (tensor<1x512x28x28xf32>, tensor<3xi64>) -> tensor<1x512x784xf32>
+    %248 = "onnx.MatMul"(%86, %247) {onnx_node_name = "/layer2/layer2.2/conv1/Conv_60"} : (tensor<128x512xf32>, tensor<1x512x784xf32>) -> tensor<1x128x784xf32>
+    %249 = "onnx.Add"(%248, %85) {onnx_node_name = "/layer2/layer2.2/conv1/Conv_120"} : (tensor<1x128x784xf32>, tensor<1x128x1xf32>) -> tensor<1x128x784xf32>
+    %250 = "onnx.Reshape"(%249, %84) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.2/conv1/Conv_16"} : (tensor<1x128x784xf32>, tensor<4xi64>) -> tensor<1x128x28x28xf32>
+    %251 = "onnx.Relu"(%250) {onnx_node_name = "/layer2/layer2.2/relu/Relu"} : (tensor<1x128x28x28xf32>) -> tensor<1x128x28x28xf32>
+    %252 = "onnx.Conv"(%251, %148, %149) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer2/layer2.2/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x128x28x28xf32>, tensor<128x128x3x3xf32>, tensor<128xf32>) -> tensor<1x128x28x28xf32>
+    %253 = "onnx.Relu"(%252) {onnx_node_name = "/layer2/layer2.2/relu_1/Relu"} : (tensor<1x128x28x28xf32>) -> tensor<1x128x28x28xf32>
+    %254 = "onnx.Reshape"(%253, %83) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.2/conv3/Conv_1"} : (tensor<1x128x28x28xf32>, tensor<3xi64>) -> tensor<1x128x784xf32>
+    %255 = "onnx.MatMul"(%82, %254) {onnx_node_name = "/layer2/layer2.2/conv3/Conv_90"} : (tensor<512x128xf32>, tensor<1x128x784xf32>) -> tensor<1x512x784xf32>
+    %256 = "onnx.Add"(%255, %81) {onnx_node_name = "/layer2/layer2.2/conv3/Conv_112"} : (tensor<1x512x784xf32>, tensor<1x512x1xf32>) -> tensor<1x512x784xf32>
+    %257 = "onnx.Reshape"(%256, %80) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.2/conv3/Conv_85"} : (tensor<1x512x784xf32>, tensor<4xi64>) -> tensor<1x512x28x28xf32>
+    %258 = "onnx.Add"(%257, %246) {onnx_node_name = "/layer2/layer2.2/Add"} : (tensor<1x512x28x28xf32>, tensor<1x512x28x28xf32>) -> tensor<1x512x28x28xf32>
+    %259 = "onnx.Relu"(%258) {onnx_node_name = "/layer2/layer2.2/relu_2/Relu"} : (tensor<1x512x28x28xf32>) -> tensor<1x512x28x28xf32>
+    %260 = "onnx.Reshape"(%259, %79) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.3/conv1/Conv_100"} : (tensor<1x512x28x28xf32>, tensor<3xi64>) -> tensor<1x512x784xf32>
+    %261 = "onnx.MatMul"(%78, %260) {onnx_node_name = "/layer2/layer2.3/conv1/Conv_123"} : (tensor<128x512xf32>, tensor<1x512x784xf32>) -> tensor<1x128x784xf32>
+    %262 = "onnx.Add"(%261, %77) {onnx_node_name = "/layer2/layer2.3/conv1/Conv_115"} : (tensor<1x128x784xf32>, tensor<1x128x1xf32>) -> tensor<1x128x784xf32>
+    %263 = "onnx.Reshape"(%262, %76) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.3/conv1/Conv_30"} : (tensor<1x128x784xf32>, tensor<4xi64>) -> tensor<1x128x28x28xf32>
+    %264 = "onnx.Relu"(%263) {onnx_node_name = "/layer2/layer2.3/relu/Relu"} : (tensor<1x128x28x28xf32>) -> tensor<1x128x28x28xf32>
+    %265 = "onnx.Conv"(%264, %150, %151) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer2/layer2.3/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x128x28x28xf32>, tensor<128x128x3x3xf32>, tensor<128xf32>) -> tensor<1x128x28x28xf32>
+    %266 = "onnx.Relu"(%265) {onnx_node_name = "/layer2/layer2.3/relu_1/Relu"} : (tensor<1x128x28x28xf32>) -> tensor<1x128x28x28xf32>
+    %267 = "onnx.Reshape"(%266, %75) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.3/conv3/Conv_73"} : (tensor<1x128x28x28xf32>, tensor<3xi64>) -> tensor<1x128x784xf32>
+    %268 = "onnx.MatMul"(%74, %267) {onnx_node_name = "/layer2/layer2.3/conv3/Conv_132"} : (tensor<512x128xf32>, tensor<1x128x784xf32>) -> tensor<1x512x784xf32>
+    %269 = "onnx.Add"(%268, %73) {onnx_node_name = "/layer2/layer2.3/conv3/Conv_62"} : (tensor<1x512x784xf32>, tensor<1x512x1xf32>) -> tensor<1x512x784xf32>
+    %270 = "onnx.Reshape"(%269, %72) {allowzero = 0 : si64, onnx_node_name = "/layer2/layer2.3/conv3/Conv_19"} : (tensor<1x512x784xf32>, tensor<4xi64>) -> tensor<1x512x28x28xf32>
+    %271 = "onnx.Add"(%270, %259) {onnx_node_name = "/layer2/layer2.3/Add"} : (tensor<1x512x28x28xf32>, tensor<1x512x28x28xf32>) -> tensor<1x512x28x28xf32>
+    %272 = "onnx.Relu"(%271) {onnx_node_name = "/layer2/layer2.3/relu_2/Relu"} : (tensor<1x512x28x28xf32>) -> tensor<1x512x28x28xf32>
+    %273 = "onnx.Reshape"(%272, %71) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.0/conv1/Conv_69"} : (tensor<1x512x28x28xf32>, tensor<3xi64>) -> tensor<1x512x784xf32>
+    %274 = "onnx.MatMul"(%70, %273) {onnx_node_name = "/layer3/layer3.0/conv1/Conv_101"} : (tensor<256x512xf32>, tensor<1x512x784xf32>) -> tensor<1x256x784xf32>
+    %275 = "onnx.Add"(%274, %69) {onnx_node_name = "/layer3/layer3.0/conv1/Conv_124"} : (tensor<1x256x784xf32>, tensor<1x256x1xf32>) -> tensor<1x256x784xf32>
+    %276 = "onnx.Reshape"(%275, %68) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.0/conv1/Conv_7"} : (tensor<1x256x784xf32>, tensor<4xi64>) -> tensor<1x256x28x28xf32>
+    %277 = "onnx.Relu"(%276) {onnx_node_name = "/layer3/layer3.0/relu/Relu"} : (tensor<1x256x28x28xf32>) -> tensor<1x256x28x28xf32>
+    %278 = "onnx.Conv"(%277, %152, %153) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer3/layer3.0/conv2/Conv", pads = [1, 1, 1, 1], strides = [2, 2]} : (tensor<1x256x28x28xf32>, tensor<256x256x3x3xf32>, tensor<256xf32>) -> tensor<1x256x14x14xf32>
+    %279 = "onnx.Relu"(%278) {onnx_node_name = "/layer3/layer3.0/relu_1/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %280 = "onnx.Reshape"(%279, %67) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.0/conv3/Conv_102"} : (tensor<1x256x14x14xf32>, tensor<3xi64>) -> tensor<1x256x196xf32>
+    %281 = "onnx.MatMul"(%66, %280) {onnx_node_name = "/layer3/layer3.0/conv3/Conv_119"} : (tensor<1024x256xf32>, tensor<1x256x196xf32>) -> tensor<1x1024x196xf32>
+    %282 = "onnx.Add"(%281, %65) {onnx_node_name = "/layer3/layer3.0/conv3/Conv_117"} : (tensor<1x1024x196xf32>, tensor<1x1024x1xf32>) -> tensor<1x1024x196xf32>
+    %283 = "onnx.Reshape"(%282, %64) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.0/conv3/Conv_24"} : (tensor<1x1024x196xf32>, tensor<4xi64>) -> tensor<1x1024x14x14xf32>
+    %284 = "onnx.Conv"(%272, %154, %155) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [1, 1], onnx_node_name = "/layer3/layer3.0/downsample/downsample.0/Conv", pads = [0, 0, 0, 0], strides = [2, 2]} : (tensor<1x512x28x28xf32>, tensor<1024x512x1x1xf32>, tensor<1024xf32>) -> tensor<1x1024x14x14xf32>
+    %285 = "onnx.Add"(%283, %284) {onnx_node_name = "/layer3/layer3.0/Add"} : (tensor<1x1024x14x14xf32>, tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %286 = "onnx.Relu"(%285) {onnx_node_name = "/layer3/layer3.0/relu_2/Relu"} : (tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %287 = "onnx.Reshape"(%286, %63) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.1/conv1/Conv_114"} : (tensor<1x1024x14x14xf32>, tensor<3xi64>) -> tensor<1x1024x196xf32>
+    %288 = "onnx.MatMul"(%62, %287) {onnx_node_name = "/layer3/layer3.1/conv1/Conv_2"} : (tensor<256x1024xf32>, tensor<1x1024x196xf32>) -> tensor<1x256x196xf32>
+    %289 = "onnx.Add"(%288, %61) {onnx_node_name = "/layer3/layer3.1/conv1/Conv_9"} : (tensor<1x256x196xf32>, tensor<1x256x1xf32>) -> tensor<1x256x196xf32>
+    %290 = "onnx.Reshape"(%289, %60) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.1/conv1/Conv_89"} : (tensor<1x256x196xf32>, tensor<4xi64>) -> tensor<1x256x14x14xf32>
+    %291 = "onnx.Relu"(%290) {onnx_node_name = "/layer3/layer3.1/relu/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %292 = "onnx.Conv"(%291, %156, %157) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer3/layer3.1/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x256x14x14xf32>, tensor<256x256x3x3xf32>, tensor<256xf32>) -> tensor<1x256x14x14xf32>
+    %293 = "onnx.Relu"(%292) {onnx_node_name = "/layer3/layer3.1/relu_1/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %294 = "onnx.Reshape"(%293, %59) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.1/conv3/Conv_3"} : (tensor<1x256x14x14xf32>, tensor<3xi64>) -> tensor<1x256x196xf32>
+    %295 = "onnx.MatMul"(%58, %294) {onnx_node_name = "/layer3/layer3.1/conv3/Conv_121"} : (tensor<1024x256xf32>, tensor<1x256x196xf32>) -> tensor<1x1024x196xf32>
+    %296 = "onnx.Add"(%295, %57) {onnx_node_name = "/layer3/layer3.1/conv3/Conv_5"} : (tensor<1x1024x196xf32>, tensor<1x1024x1xf32>) -> tensor<1x1024x196xf32>
+    %297 = "onnx.Reshape"(%296, %56) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.1/conv3/Conv_66"} : (tensor<1x1024x196xf32>, tensor<4xi64>) -> tensor<1x1024x14x14xf32>
+    %298 = "onnx.Add"(%297, %286) {onnx_node_name = "/layer3/layer3.1/Add"} : (tensor<1x1024x14x14xf32>, tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %299 = "onnx.Relu"(%298) {onnx_node_name = "/layer3/layer3.1/relu_2/Relu"} : (tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %300 = "onnx.Reshape"(%299, %55) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.2/conv1/Conv_125"} : (tensor<1x1024x14x14xf32>, tensor<3xi64>) -> tensor<1x1024x196xf32>
+    %301 = "onnx.MatMul"(%54, %300) {onnx_node_name = "/layer3/layer3.2/conv1/Conv_107"} : (tensor<256x1024xf32>, tensor<1x1024x196xf32>) -> tensor<1x256x196xf32>
+    %302 = "onnx.Add"(%301, %53) {onnx_node_name = "/layer3/layer3.2/conv1/Conv_127"} : (tensor<1x256x196xf32>, tensor<1x256x1xf32>) -> tensor<1x256x196xf32>
+    %303 = "onnx.Reshape"(%302, %52) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.2/conv1/Conv_98"} : (tensor<1x256x196xf32>, tensor<4xi64>) -> tensor<1x256x14x14xf32>
+    %304 = "onnx.Relu"(%303) {onnx_node_name = "/layer3/layer3.2/relu/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %305 = "onnx.Conv"(%304, %158, %159) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer3/layer3.2/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x256x14x14xf32>, tensor<256x256x3x3xf32>, tensor<256xf32>) -> tensor<1x256x14x14xf32>
+    %306 = "onnx.Relu"(%305) {onnx_node_name = "/layer3/layer3.2/relu_1/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %307 = "onnx.Reshape"(%306, %51) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.2/conv3/Conv_80"} : (tensor<1x256x14x14xf32>, tensor<3xi64>) -> tensor<1x256x196xf32>
+    %308 = "onnx.MatMul"(%50, %307) {onnx_node_name = "/layer3/layer3.2/conv3/Conv_105"} : (tensor<1024x256xf32>, tensor<1x256x196xf32>) -> tensor<1x1024x196xf32>
+    %309 = "onnx.Add"(%308, %49) {onnx_node_name = "/layer3/layer3.2/conv3/Conv_108"} : (tensor<1x1024x196xf32>, tensor<1x1024x1xf32>) -> tensor<1x1024x196xf32>
+    %310 = "onnx.Reshape"(%309, %48) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.2/conv3/Conv_130"} : (tensor<1x1024x196xf32>, tensor<4xi64>) -> tensor<1x1024x14x14xf32>
+    %311 = "onnx.Add"(%310, %299) {onnx_node_name = "/layer3/layer3.2/Add"} : (tensor<1x1024x14x14xf32>, tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %312 = "onnx.Relu"(%311) {onnx_node_name = "/layer3/layer3.2/relu_2/Relu"} : (tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %313 = "onnx.Reshape"(%312, %47) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.3/conv1/Conv_35"} : (tensor<1x1024x14x14xf32>, tensor<3xi64>) -> tensor<1x1024x196xf32>
+    %314 = "onnx.MatMul"(%46, %313) {onnx_node_name = "/layer3/layer3.3/conv1/Conv_38"} : (tensor<256x1024xf32>, tensor<1x1024x196xf32>) -> tensor<1x256x196xf32>
+    %315 = "onnx.Add"(%314, %45) {onnx_node_name = "/layer3/layer3.3/conv1/Conv_93"} : (tensor<1x256x196xf32>, tensor<1x256x1xf32>) -> tensor<1x256x196xf32>
+    %316 = "onnx.Reshape"(%315, %44) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.3/conv1/Conv_50"} : (tensor<1x256x196xf32>, tensor<4xi64>) -> tensor<1x256x14x14xf32>
+    %317 = "onnx.Relu"(%316) {onnx_node_name = "/layer3/layer3.3/relu/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %318 = "onnx.Conv"(%317, %160, %161) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer3/layer3.3/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x256x14x14xf32>, tensor<256x256x3x3xf32>, tensor<256xf32>) -> tensor<1x256x14x14xf32>
+    %319 = "onnx.Relu"(%318) {onnx_node_name = "/layer3/layer3.3/relu_1/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %320 = "onnx.Reshape"(%319, %43) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.3/conv3/Conv_31"} : (tensor<1x256x14x14xf32>, tensor<3xi64>) -> tensor<1x256x196xf32>
+    %321 = "onnx.MatMul"(%42, %320) {onnx_node_name = "/layer3/layer3.3/conv3/Conv_21"} : (tensor<1024x256xf32>, tensor<1x256x196xf32>) -> tensor<1x1024x196xf32>
+    %322 = "onnx.Add"(%321, %41) {onnx_node_name = "/layer3/layer3.3/conv3/Conv_110"} : (tensor<1x1024x196xf32>, tensor<1x1024x1xf32>) -> tensor<1x1024x196xf32>
+    %323 = "onnx.Reshape"(%322, %40) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.3/conv3/Conv_29"} : (tensor<1x1024x196xf32>, tensor<4xi64>) -> tensor<1x1024x14x14xf32>
+    %324 = "onnx.Add"(%323, %312) {onnx_node_name = "/layer3/layer3.3/Add"} : (tensor<1x1024x14x14xf32>, tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %325 = "onnx.Relu"(%324) {onnx_node_name = "/layer3/layer3.3/relu_2/Relu"} : (tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %326 = "onnx.Reshape"(%325, %39) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.4/conv1/Conv_47"} : (tensor<1x1024x14x14xf32>, tensor<3xi64>) -> tensor<1x1024x196xf32>
+    %327 = "onnx.MatMul"(%38, %326) {onnx_node_name = "/layer3/layer3.4/conv1/Conv_25"} : (tensor<256x1024xf32>, tensor<1x1024x196xf32>) -> tensor<1x256x196xf32>
+    %328 = "onnx.Add"(%327, %37) {onnx_node_name = "/layer3/layer3.4/conv1/Conv_10"} : (tensor<1x256x196xf32>, tensor<1x256x1xf32>) -> tensor<1x256x196xf32>
+    %329 = "onnx.Reshape"(%328, %36) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.4/conv1/Conv_27"} : (tensor<1x256x196xf32>, tensor<4xi64>) -> tensor<1x256x14x14xf32>
+    %330 = "onnx.Relu"(%329) {onnx_node_name = "/layer3/layer3.4/relu/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %331 = "onnx.Conv"(%330, %162, %163) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer3/layer3.4/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x256x14x14xf32>, tensor<256x256x3x3xf32>, tensor<256xf32>) -> tensor<1x256x14x14xf32>
+    %332 = "onnx.Relu"(%331) {onnx_node_name = "/layer3/layer3.4/relu_1/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %333 = "onnx.Reshape"(%332, %35) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.4/conv3/Conv_77"} : (tensor<1x256x14x14xf32>, tensor<3xi64>) -> tensor<1x256x196xf32>
+    %334 = "onnx.MatMul"(%34, %333) {onnx_node_name = "/layer3/layer3.4/conv3/Conv_28"} : (tensor<1024x256xf32>, tensor<1x256x196xf32>) -> tensor<1x1024x196xf32>
+    %335 = "onnx.Add"(%334, %33) {onnx_node_name = "/layer3/layer3.4/conv3/Conv_18"} : (tensor<1x1024x196xf32>, tensor<1x1024x1xf32>) -> tensor<1x1024x196xf32>
+    %336 = "onnx.Reshape"(%335, %32) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.4/conv3/Conv_82"} : (tensor<1x1024x196xf32>, tensor<4xi64>) -> tensor<1x1024x14x14xf32>
+    %337 = "onnx.Add"(%336, %325) {onnx_node_name = "/layer3/layer3.4/Add"} : (tensor<1x1024x14x14xf32>, tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %338 = "onnx.Relu"(%337) {onnx_node_name = "/layer3/layer3.4/relu_2/Relu"} : (tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %339 = "onnx.Reshape"(%338, %31) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.5/conv1/Conv_33"} : (tensor<1x1024x14x14xf32>, tensor<3xi64>) -> tensor<1x1024x196xf32>
+    %340 = "onnx.MatMul"(%30, %339) {onnx_node_name = "/layer3/layer3.5/conv1/Conv_87"} : (tensor<256x1024xf32>, tensor<1x1024x196xf32>) -> tensor<1x256x196xf32>
+    %341 = "onnx.Add"(%340, %29) {onnx_node_name = "/layer3/layer3.5/conv1/Conv_103"} : (tensor<1x256x196xf32>, tensor<1x256x1xf32>) -> tensor<1x256x196xf32>
+    %342 = "onnx.Reshape"(%341, %28) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.5/conv1/Conv_79"} : (tensor<1x256x196xf32>, tensor<4xi64>) -> tensor<1x256x14x14xf32>
+    %343 = "onnx.Relu"(%342) {onnx_node_name = "/layer3/layer3.5/relu/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %344 = "onnx.Conv"(%343, %164, %165) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer3/layer3.5/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x256x14x14xf32>, tensor<256x256x3x3xf32>, tensor<256xf32>) -> tensor<1x256x14x14xf32>
+    %345 = "onnx.Relu"(%344) {onnx_node_name = "/layer3/layer3.5/relu_1/Relu"} : (tensor<1x256x14x14xf32>) -> tensor<1x256x14x14xf32>
+    %346 = "onnx.Reshape"(%345, %27) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.5/conv3/Conv_14"} : (tensor<1x256x14x14xf32>, tensor<3xi64>) -> tensor<1x256x196xf32>
+    %347 = "onnx.MatMul"(%26, %346) {onnx_node_name = "/layer3/layer3.5/conv3/Conv_70"} : (tensor<1024x256xf32>, tensor<1x256x196xf32>) -> tensor<1x1024x196xf32>
+    %348 = "onnx.Add"(%347, %25) {onnx_node_name = "/layer3/layer3.5/conv3/Conv_88"} : (tensor<1x1024x196xf32>, tensor<1x1024x1xf32>) -> tensor<1x1024x196xf32>
+    %349 = "onnx.Reshape"(%348, %24) {allowzero = 0 : si64, onnx_node_name = "/layer3/layer3.5/conv3/Conv_32"} : (tensor<1x1024x196xf32>, tensor<4xi64>) -> tensor<1x1024x14x14xf32>
+    %350 = "onnx.Add"(%349, %338) {onnx_node_name = "/layer3/layer3.5/Add"} : (tensor<1x1024x14x14xf32>, tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %351 = "onnx.Relu"(%350) {onnx_node_name = "/layer3/layer3.5/relu_2/Relu"} : (tensor<1x1024x14x14xf32>) -> tensor<1x1024x14x14xf32>
+    %352 = "onnx.Reshape"(%351, %23) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.0/conv1/Conv_81"} : (tensor<1x1024x14x14xf32>, tensor<3xi64>) -> tensor<1x1024x196xf32>
+    %353 = "onnx.MatMul"(%22, %352) {onnx_node_name = "/layer4/layer4.0/conv1/Conv_95"} : (tensor<512x1024xf32>, tensor<1x1024x196xf32>) -> tensor<1x512x196xf32>
+    %354 = "onnx.Add"(%353, %21) {onnx_node_name = "/layer4/layer4.0/conv1/Conv_52"} : (tensor<1x512x196xf32>, tensor<1x512x1xf32>) -> tensor<1x512x196xf32>
+    %355 = "onnx.Reshape"(%354, %20) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.0/conv1/Conv_109"} : (tensor<1x512x196xf32>, tensor<4xi64>) -> tensor<1x512x14x14xf32>
+    %356 = "onnx.Relu"(%355) {onnx_node_name = "/layer4/layer4.0/relu/Relu"} : (tensor<1x512x14x14xf32>) -> tensor<1x512x14x14xf32>
+    %357 = "onnx.Conv"(%356, %166, %167) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer4/layer4.0/conv2/Conv", pads = [1, 1, 1, 1], strides = [2, 2]} : (tensor<1x512x14x14xf32>, tensor<512x512x3x3xf32>, tensor<512xf32>) -> tensor<1x512x7x7xf32>
+    %358 = "onnx.Relu"(%357) {onnx_node_name = "/layer4/layer4.0/relu_1/Relu"} : (tensor<1x512x7x7xf32>) -> tensor<1x512x7x7xf32>
+    %359 = "onnx.Reshape"(%358, %19) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.0/conv3/Conv_44"} : (tensor<1x512x7x7xf32>, tensor<3xi64>) -> tensor<1x512x49xf32>
+    %360 = "onnx.MatMul"(%18, %359) {onnx_node_name = "/layer4/layer4.0/conv3/Conv_6"} : (tensor<2048x512xf32>, tensor<1x512x49xf32>) -> tensor<1x2048x49xf32>
+    %361 = "onnx.Add"(%360, %17) {onnx_node_name = "/layer4/layer4.0/conv3/Conv_56"} : (tensor<1x2048x49xf32>, tensor<1x2048x1xf32>) -> tensor<1x2048x49xf32>
+    %362 = "onnx.Reshape"(%361, %16) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.0/conv3/Conv_118"} : (tensor<1x2048x49xf32>, tensor<4xi64>) -> tensor<1x2048x7x7xf32>
+    %363 = "onnx.Conv"(%351, %168, %169) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [1, 1], onnx_node_name = "/layer4/layer4.0/downsample/downsample.0/Conv", pads = [0, 0, 0, 0], strides = [2, 2]} : (tensor<1x1024x14x14xf32>, tensor<2048x1024x1x1xf32>, tensor<2048xf32>) -> tensor<1x2048x7x7xf32>
+    %364 = "onnx.Add"(%362, %363) {onnx_node_name = "/layer4/layer4.0/Add"} : (tensor<1x2048x7x7xf32>, tensor<1x2048x7x7xf32>) -> tensor<1x2048x7x7xf32>
+    %365 = "onnx.Relu"(%364) {onnx_node_name = "/layer4/layer4.0/relu_2/Relu"} : (tensor<1x2048x7x7xf32>) -> tensor<1x2048x7x7xf32>
+    %366 = "onnx.Reshape"(%365, %15) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.1/conv1/Conv_57"} : (tensor<1x2048x7x7xf32>, tensor<3xi64>) -> tensor<1x2048x49xf32>
+    %367 = "onnx.MatMul"(%14, %366) {onnx_node_name = "/layer4/layer4.1/conv1/Conv_39"} : (tensor<512x2048xf32>, tensor<1x2048x49xf32>) -> tensor<1x512x49xf32>
+    %368 = "onnx.Add"(%367, %13) {onnx_node_name = "/layer4/layer4.1/conv1/Conv_45"} : (tensor<1x512x49xf32>, tensor<1x512x1xf32>) -> tensor<1x512x49xf32>
+    %369 = "onnx.Reshape"(%368, %12) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.1/conv1/Conv_63"} : (tensor<1x512x49xf32>, tensor<4xi64>) -> tensor<1x512x7x7xf32>
+    %370 = "onnx.Relu"(%369) {onnx_node_name = "/layer4/layer4.1/relu/Relu"} : (tensor<1x512x7x7xf32>) -> tensor<1x512x7x7xf32>
+    %371 = "onnx.Conv"(%370, %170, %171) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer4/layer4.1/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x512x7x7xf32>, tensor<512x512x3x3xf32>, tensor<512xf32>) -> tensor<1x512x7x7xf32>
+    %372 = "onnx.Relu"(%371) {onnx_node_name = "/layer4/layer4.1/relu_1/Relu"} : (tensor<1x512x7x7xf32>) -> tensor<1x512x7x7xf32>
+    %373 = "onnx.Reshape"(%372, %11) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.1/conv3/Conv_54"} : (tensor<1x512x7x7xf32>, tensor<3xi64>) -> tensor<1x512x49xf32>
+    %374 = "onnx.MatMul"(%10, %373) {onnx_node_name = "/layer4/layer4.1/conv3/Conv_83"} : (tensor<2048x512xf32>, tensor<1x512x49xf32>) -> tensor<1x2048x49xf32>
+    %375 = "onnx.Add"(%374, %9) {onnx_node_name = "/layer4/layer4.1/conv3/Conv_37"} : (tensor<1x2048x49xf32>, tensor<1x2048x1xf32>) -> tensor<1x2048x49xf32>
+    %376 = "onnx.Reshape"(%375, %8) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.1/conv3/Conv_126"} : (tensor<1x2048x49xf32>, tensor<4xi64>) -> tensor<1x2048x7x7xf32>
+    %377 = "onnx.Add"(%376, %365) {onnx_node_name = "/layer4/layer4.1/Add"} : (tensor<1x2048x7x7xf32>, tensor<1x2048x7x7xf32>) -> tensor<1x2048x7x7xf32>
+    %378 = "onnx.Relu"(%377) {onnx_node_name = "/layer4/layer4.1/relu_2/Relu"} : (tensor<1x2048x7x7xf32>) -> tensor<1x2048x7x7xf32>
+    %379 = "onnx.Reshape"(%378, %7) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.2/conv1/Conv_53"} : (tensor<1x2048x7x7xf32>, tensor<3xi64>) -> tensor<1x2048x49xf32>
+    %380 = "onnx.MatMul"(%6, %379) {onnx_node_name = "/layer4/layer4.2/conv1/Conv_59"} : (tensor<512x2048xf32>, tensor<1x2048x49xf32>) -> tensor<1x512x49xf32>
+    %381 = "onnx.Add"(%380, %5) {onnx_node_name = "/layer4/layer4.2/conv1/Conv_46"} : (tensor<1x512x49xf32>, tensor<1x512x1xf32>) -> tensor<1x512x49xf32>
+    %382 = "onnx.Reshape"(%381, %4) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.2/conv1/Conv_128"} : (tensor<1x512x49xf32>, tensor<4xi64>) -> tensor<1x512x7x7xf32>
+    %383 = "onnx.Relu"(%382) {onnx_node_name = "/layer4/layer4.2/relu/Relu"} : (tensor<1x512x7x7xf32>) -> tensor<1x512x7x7xf32>
+    %384 = "onnx.Conv"(%383, %172, %173) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [3, 3], onnx_node_name = "/layer4/layer4.2/conv2/Conv", pads = [1, 1, 1, 1], strides = [1, 1]} : (tensor<1x512x7x7xf32>, tensor<512x512x3x3xf32>, tensor<512xf32>) -> tensor<1x512x7x7xf32>
+    %385 = "onnx.Relu"(%384) {onnx_node_name = "/layer4/layer4.2/relu_1/Relu"} : (tensor<1x512x7x7xf32>) -> tensor<1x512x7x7xf32>
+    %386 = "onnx.Reshape"(%385, %3) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.2/conv3/Conv_72"} : (tensor<1x512x7x7xf32>, tensor<3xi64>) -> tensor<1x512x49xf32>
+    %387 = "onnx.MatMul"(%2, %386) {onnx_node_name = "/layer4/layer4.2/conv3/Conv_64"} : (tensor<2048x512xf32>, tensor<1x512x49xf32>) -> tensor<1x2048x49xf32>
+    %388 = "onnx.Add"(%387, %1) {onnx_node_name = "/layer4/layer4.2/conv3/Conv_58"} : (tensor<1x2048x49xf32>, tensor<1x2048x1xf32>) -> tensor<1x2048x49xf32>
+    %389 = "onnx.Reshape"(%388, %0) {allowzero = 0 : si64, onnx_node_name = "/layer4/layer4.2/conv3/Conv_113"} : (tensor<1x2048x49xf32>, tensor<4xi64>) -> tensor<1x2048x7x7xf32>
+    %390 = "onnx.Add"(%389, %378) {onnx_node_name = "/layer4/layer4.2/Add"} : (tensor<1x2048x7x7xf32>, tensor<1x2048x7x7xf32>) -> tensor<1x2048x7x7xf32>
+    %391 = "onnx.Relu"(%390) {onnx_node_name = "/layer4/layer4.2/relu_2/Relu"} : (tensor<1x2048x7x7xf32>) -> tensor<1x2048x7x7xf32>
+    %392 = "onnx.ReduceMeanV13"(%391) {axes = [2, 3], keepdims = 1 : si64, onnx_node_name = "/avgpool/GlobalAveragePool_71"} : (tensor<1x2048x7x7xf32>) -> tensor<1x2048x1x1xf32>
+    %393 = "onnx.Flatten"(%392) {axis = 1 : si64, onnx_node_name = "/Flatten"} : (tensor<1x2048x1x1xf32>) -> tensor<1x2048xf32>
+    %394 = "onnx.Gemm"(%393, %132, %133) {alpha = 1.000000e+00 : f32, beta = 1.000000e+00 : f32, onnx_node_name = "/fc/Gemm", transA = 0 : si64, transB = 1 : si64} : (tensor<1x2048xf32>, tensor<1000x2048xf32>, tensor<1000xf32>) -> tensor<1x1000xf32>
+    return %394 : tensor<1x1000xf32>
+  }
+  "onnx.EntryPoint"() {func = @main_graph} : () -> ()
+}

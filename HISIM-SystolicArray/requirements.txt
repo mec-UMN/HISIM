@@ -4,4 +4,6 @@ numpy
 torch
 matplotlib
 scipy
-
+prettytable
+tabulate
+pygraphviz

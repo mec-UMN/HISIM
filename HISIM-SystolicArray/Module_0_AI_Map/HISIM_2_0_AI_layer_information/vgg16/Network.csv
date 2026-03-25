@@ -1,0 +1,32 @@
+Layer_ID,Original_ID,Type,in1_dim1,in1_dim2,in1_dim3,in1_dim4,in2_dim1,in2_dim2,in2_dim3,in2_dim4,in3_dim1,in3_dim2,in3_dim3,in3_dim4,prec,out1_dim1,out1_dim2,out1_dim3,out1_dim4,NodeName,Dilations,Groups,KernelShape,Pads,Strides
+L1,%32,Conv,1,3,224,224,64,3,3,3,64,NA,NA,NA,8,1,64,224,224,/features/features.0/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L2,%33,Relu,1,64,224,224,NA,NA,NA,NA,NA,NA,NA,NA,8,1,64,224,224,/features/features.1/Relu,NA,NA,NA,NA,NA
+L3,%34,Conv,1,64,224,224,64,64,3,3,64,NA,NA,NA,8,1,64,224,224,/features/features.2/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L4,%35,Relu,1,64,224,224,NA,NA,NA,NA,NA,NA,NA,NA,8,1,64,224,224,/features/features.3/Relu,NA,NA,NA,NA,NA
+L5,%37,Conv,1,64,112,112,128,64,3,3,128,NA,NA,NA,8,1,128,112,112,/features/features.5/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L6,%38,Relu,1,128,112,112,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,112,112,/features/features.6/Relu,NA,NA,NA,NA,NA
+L7,%39,Conv,1,128,112,112,128,128,3,3,128,NA,NA,NA,8,1,128,112,112,/features/features.7/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L8,%40,Relu,1,128,112,112,NA,NA,NA,NA,NA,NA,NA,NA,8,1,128,112,112,/features/features.8/Relu,NA,NA,NA,NA,NA
+L9,%42,Conv,1,128,56,56,256,128,3,3,256,NA,NA,NA,8,1,256,56,56,/features/features.10/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L10,%43,Relu,1,256,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,56,56,/features/features.11/Relu,NA,NA,NA,NA,NA
+L11,%44,Conv,1,256,56,56,256,256,3,3,256,NA,NA,NA,8,1,256,56,56,/features/features.12/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L12,%45,Relu,1,256,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,56,56,/features/features.13/Relu,NA,NA,NA,NA,NA
+L13,%46,Conv,1,256,56,56,256,256,3,3,256,NA,NA,NA,8,1,256,56,56,/features/features.14/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L14,%47,Relu,1,256,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,256,56,56,/features/features.15/Relu,NA,NA,NA,NA,NA
+L15,%49,Conv,1,256,28,28,512,256,3,3,512,NA,NA,NA,8,1,512,28,28,/features/features.17/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L16,%50,Relu,1,512,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,28,28,/features/features.18/Relu,NA,NA,NA,NA,NA
+L17,%51,Conv,1,512,28,28,512,512,3,3,512,NA,NA,NA,8,1,512,28,28,/features/features.19/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L18,%52,Relu,1,512,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,28,28,/features/features.20/Relu,NA,NA,NA,NA,NA
+L19,%53,Conv,1,512,28,28,512,512,3,3,512,NA,NA,NA,8,1,512,28,28,/features/features.21/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L20,%54,Relu,1,512,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,28,28,/features/features.22/Relu,NA,NA,NA,NA,NA
+L21,%56,Conv,1,512,14,14,512,512,3,3,512,NA,NA,NA,8,1,512,14,14,/features/features.24/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L22,%57,Relu,1,512,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,14,14,/features/features.25/Relu,NA,NA,NA,NA,NA
+L23,%58,Conv,1,512,14,14,512,512,3,3,512,NA,NA,NA,8,1,512,14,14,/features/features.26/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L24,%59,Relu,1,512,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,14,14,/features/features.27/Relu,NA,NA,NA,NA,NA
+L25,%60,Conv,1,512,14,14,512,512,3,3,512,NA,NA,NA,8,1,512,14,14,/features/features.28/Conv,"[1, 1]",1 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L26,%61,Relu,1,512,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,512,14,14,/features/features.29/Relu,NA,NA,NA,NA,NA
+L27,%65,Gemm,1,25088,NA,NA,4096,25088,NA,NA,4096,NA,NA,NA,8,1,4096,NA,NA,/classifier/classifier.0/Gemm,NA,NA,NA,NA,NA
+L28,%66,Relu,1,4096,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,8,1,4096,NA,NA,/classifier/classifier.1/Relu,NA,NA,NA,NA,NA
+L29,%67,Gemm,1,4096,NA,NA,4096,4096,NA,NA,4096,NA,NA,NA,8,1,4096,NA,NA,/classifier/classifier.3/Gemm,NA,NA,NA,NA,NA
+L30,%68,Relu,1,4096,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,8,1,4096,NA,NA,/classifier/classifier.4/Relu,NA,NA,NA,NA,NA
+L31,%69,Gemm,1,4096,NA,NA,1000,4096,NA,NA,1000,NA,NA,NA,8,1,1000,NA,NA,/classifier/classifier.6/Gemm,NA,NA,NA,NA,NA

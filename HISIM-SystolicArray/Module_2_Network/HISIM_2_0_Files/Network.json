@@ -1,0 +1,20 @@
+{
+    "trc_cycles_noc": 1,
+    "tva_cycles_noc": 1,
+    "tsa_cycles_noc": 1,
+    "tst_cycles_noc": 1,
+    "tl_cycles_noc": 1,
+    "tenq_cycles_noc": 1,
+
+    "trc_cycles_nop": 1,
+    "tva_cycles_nop": 1,
+    "tsa_cycles_nop": 1,
+    "tst_cycles_nop": 1,
+    "tl_cycles_nop": 1,
+    "tenq_cycles_nop": 1,
+
+    "noc_metal_layer_pitch_nm": 500,
+    "link_3d_Pitch": 1,
+    "f_noc": 1e9,
+    "f_nop": 1e9
+}
