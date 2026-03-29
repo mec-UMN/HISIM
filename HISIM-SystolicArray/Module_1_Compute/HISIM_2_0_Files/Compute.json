@@ -12,13 +12,13 @@
     "Average_CPI_Clip":3.12,
     "Average_CPI_Sigmoid":3.7,
 
-    "W_other":22.54e-3,
-    "W_cell":0.53e-3,
-    "W_dri":7.5e-3,
+    "W_other":27e-3,
+    "W_cell":0.64e-3,
+    "W_dri":9e-3,
     "MP1": 640,
     "CenDec": 2,
-    "H_other":22.944e-3,
-    "H_cell":0.208e-3,
+    "H_other":27.5e-3,
+    "H_cell":0.25e-3,
 
     "A_pe":674.73e-6,
     "A_pe_toprow":419.20e-6,
