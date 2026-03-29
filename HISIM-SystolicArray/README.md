@@ -1,6 +1,8 @@
 # HISIM_V2.0_Systolic Array
 HISIM introduces a suite of analytical models for compute, memory, ddr, network to speed up performance prediction for AI models, covering logic-on-logic architectures across 2D, 2.5D, 3D and 3.5D integration.
 
+![HISIM Overview](https://github.com/mec-UMN/HISIM/blob/main/HISIM-SystolicArray/HISIM_2_0_Overview.jpg "HISIM Overview")
+
 ## File Lists
 The main directory structure of the repository is shown below. Please run 'python HISIM.py' to run the tool. Input files for the AI layer, compute modules, network, and their interactions can be found in the respective folders below.
 ```
