@@ -1,9 +1,9 @@
 # requirements.txt
-pandas
-numpy
-torch
-matplotlib
+python >3.8
+pandas 
+networkx 
+matplotlib 
+prettytable 
+tabulate 
 scipy
-prettytable
-tabulate
 pygraphviz
