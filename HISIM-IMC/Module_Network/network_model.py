@@ -2,6 +2,15 @@ import math
 import numpy as np
 from Module_Network.orion_power_area import power_summary_router
 from Module_Network.aib_2_5d import aib
+import os
+import matplotlib
+# The tile map is a visualisation aid, not part of the model. Building it and
+# calling plt.show() ran unconditionally on every invocation and blocked on an
+# interactive window, so both are now opt-in.
+HISIM_PLOT = os.environ.get('HISIM_PLOT', '0') == '1'   # build and save Results/tile_map.png
+HISIM_SHOW = os.environ.get('HISIM_SHOW', '0') == '1'   # additionally open a blocking window
+if not HISIM_SHOW:
+    matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from Module_AI_Map.util_chip.util_mapping import create_tile
 
@@ -389,42 +398,41 @@ def network_model(N_tier_real, N_stack_real, N_tile,N_tier,computing_data,placem
 
     result_list.append(Total_area_routers+Total_channel_area)
 
-    #import pdb;pdb.set_trace()
-    fig = plt.figure(figsize=(20, 10))
-    start=0
-    nrows, ncols = 1, N_stack_real
-    axes = []
-
-    for i in range(nrows):
-        for j in range(ncols):
-            ax = fig.add_subplot(nrows, ncols, i*ncols + j + 1, projection='3d')
-            axes.append(ax)
     result_dictionary['2d_3d_router_area (mm2)'] = Total_area_routers+Total_channel_area
-    
-    for i, ax in enumerate(axes):
-        for item in empty_tile_total[start:start+N_tier_real]:
-            for tile in item:
-                count=False
-                x=0
-                idx=''
-                while not count and x<len(tile_total):
-                    for y in range(len(tile_total[x])-1):
-                        if not (tile-tile_total[x][y]).any():
-                            count=True
-                            break
-                    x+=1
-                if x<=len(tile_total)-1:
-                    #print(x-1, tile)
-                    #import pdb;pdb.set_trace()
-                    idx=x
-                create_tile(ax, *tile[:3], 0.5, 0.5, 0, 'blue',idx)
-        start+=N_tier_real
-        ax.set_axis_off()
-        ax.set_title(f'3D Stack {i+1}', fontsize=16) 
-        #import pdb;pdb.set_trace()
-    plt.savefig('./Results/tile_map.png')
-    plt.show()
-    plt.close()
+
+    if HISIM_PLOT or HISIM_SHOW:
+        fig = plt.figure(figsize=(20, 10))
+        start=0
+        nrows, ncols = 1, N_stack_real
+        axes = []
+
+        for i in range(nrows):
+            for j in range(ncols):
+                ax = fig.add_subplot(nrows, ncols, i*ncols + j + 1, projection='3d')
+                axes.append(ax)
+
+        for i, ax in enumerate(axes):
+            for item in empty_tile_total[start:start+N_tier_real]:
+                for tile in item:
+                    count=False
+                    x=0
+                    idx=''
+                    while not count and x<len(tile_total):
+                        for y in range(len(tile_total[x])-1):
+                            if not (tile-tile_total[x][y]).any():
+                                count=True
+                                break
+                        x+=1
+                    if x<=len(tile_total)-1:
+                        idx=x
+                    create_tile(ax, *tile[:3], 0.5, 0.5, 0, 'blue',idx)
+            start+=N_tier_real
+            ax.set_axis_off()
+            ax.set_title(f'3D Stack {i+1}', fontsize=16)
+        plt.savefig('./Results/tile_map.png')
+        if HISIM_SHOW:
+            plt.show()
+        plt.close()
 
 
     
