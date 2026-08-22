@@ -1,0 +1,12 @@
+{
+  "name": "hisim-sim-proxy",
+  "version": "1.0.0",
+  "description": "Reverse proxy exposing the HISIM simulator at sim.ganaptewary.com",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
