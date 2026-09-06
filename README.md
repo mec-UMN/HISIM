@@ -70,16 +70,6 @@ For custom heterogeneous chiplet designs, open **HISIM input files** in the Desi
 - Memory Spec
 - Network Spec
 
-## Command-line HISIM
-
-The analytical engine can also run without the GUI:
-
-```bash
-cd HISIM-SystolicArray
-python HISIM.py
-```
-
-Set `CREATE_DEFAULT_FILES = True` in `HISIM-SystolicArray/config.py` to generate default inputs. Set it to `False` when supplying a complete validated custom file set.
 
 ## Notes
 
@@ -88,5 +78,3 @@ Set `CREATE_DEFAULT_FILES = True` in `HISIM-SystolicArray/config.py` to generate
 - Debug plots require Graphviz plus `pygraphviz`; this is not required for normal GUI simulations.
 
 ## License
-
-This distribution is released under the MIT License. See [LICENSE](LICENSE). Please retain the included HISIM attribution and citation information in [HISIM-SystolicArray/README.md](HISIM-SystolicArray/README.md) when using the analytical engine in research.
