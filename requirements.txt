@@ -1,0 +1,15 @@
+# HISIM Workbench runtime dependencies
+# Python 3.9+
+fastapi>=0.110
+uvicorn[standard]>=0.27
+pydantic>=2.6
+pandas>=2.0
+networkx
+matplotlib
+prettytable
+tabulate
+scipy
+python-multipart>=0.0.9
+
+# Optional: install pygraphviz and system Graphviz only when HISIM DEBUG
+# figure generation is required.
