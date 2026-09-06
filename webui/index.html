@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HISIM Workbench · 2.5D/3D AI Accelerator Explorer</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="css/app.css?v=20260906-sweep-model-buttons" />
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" defer></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="js/architecture3d.js?v=20260906-sweep-model-buttons"></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">HI<span>SIM</span></div>
+    <div class="brand-text">
+      <h1>HISIM Workbench</h1>
+      <p>Analytical Model for 2D · 2.5D · 3D · 3.5D AI accelerators</p>
+    </div>
+  </div>
+
+  <div class="topbar-status">
+    <div class="pill" id="pill-backend"><span class="dot"></span><span id="backend-text">connecting…</span></div>
+    <div class="pill" id="pill-run"><span class="dot idle"></span><span id="run-text">no active run</span></div>
+    <div class="pill ghost" id="pill-models"><span id="models-text">— models</span></div>
+  </div>
+
+  <div class="topbar-actions">
+    <button class="btn ghost" id="btn-theme" title="Toggle light / dark" aria-label="Toggle light or dark theme">◐</button>
+    <button class="btn ghost" id="btn-layout" title="Reset panel width and chart heights" aria-label="Reset layout">↺ Layout</button>
+    <button class="btn ghost" id="btn-panel" title="Show / hide control panel" aria-label="Show or hide design knobs">Knobs</button>
+    <button class="btn primary" id="btn-run" type="button">▶ Run simulation</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <!-- ────────────────────────  CONTROL PANEL  ──────────────────────── -->
+  <aside class="panel" id="panel">
+    <div class="panel-head">
+      <h2>Design knobs</h2>
+      <div class="panel-head-actions">
+        <button class="chip" id="btn-reset">Reset</button>
+        <button class="chip" id="btn-expand-all">Expand all</button>
+      </div>
+    </div>
+
+    <div class="panel-scroll">
+      <div id="knob-groups">
+        <div class="skeleton-block"></div>
+        <div class="skeleton-block"></div>
+        <div class="skeleton-block"></div>
+      </div>
+
+      <details class="input-files-box" id="input-files-box" open>
+        <summary class="input-files-head">
+          <strong>HISIM input files</strong>
+          <span class="hint">Download or upload CSVs for the selected model.</span>
+        </summary>
+        <div class="input-files-body">
+          <div class="input-files-overview" id="input-files-overview">Select a model to inspect its input files.</div>
+          <details class="input-files-subsection" open>
+            <summary>Download input files <span class="hint">current files or templates</span></summary>
+            <div class="mapping-files" id="mapping-download-files"></div>
+          </details>
+          <details class="input-files-subsection">
+            <summary>Upload replacement files <span class="hint">custom heterogeneous design</span></summary>
+            <div class="mapping-files" id="mapping-upload-files"></div>
+          </details>
+          <div class="input-files-actions">
+            <button class="btn primary wide" id="btn-run-new-model" type="button">▶ Run new model</button>
+            <button class="btn wide" id="btn-run-uploaded-files" type="button">▶ Run uploaded files</button>
+          </div>
+          <div class="help input-files-note">Run new model regenerates HISIM's maps and specs. Run uploaded files validates and uses the CSVs shown above.</div>
+          <div class="input-files-ack" id="mapping-file-ack" role="status" aria-live="polite">Select a model to see its input-file status.</div>
+        </div>
+      </details>
+
+      <div class="sweep-box" id="sweep-box">
+        <div class="sweep-head">
+          <label class="switch">
+            <input type="checkbox" id="sweep-enable" aria-label="Enable design-space sweep" />
+            <span></span>
+          </label>
+          <strong>Design-space sweep</strong>
+          <span class="hint" id="sweep-mode-label">off · one run</span>
+        </div>
+        <div class="sweep-body" id="sweep-body" hidden>
+          <label class="field">
+            <span>Knob</span>
+            <select id="sweep-knob"></select>
+          </label>
+          <label class="field">
+            <span>Values for <span id="sweep-values-label">selected knob</span></span>
+            <input type="text" id="sweep-values" placeholder="1, 2, 4, 8, 16" />
+          </label>
+          <div class="sweep-presets" id="sweep-presets"></div>
+          <label class="sweep-compare-toggle" id="sweep-compare-models-field">
+            <input type="checkbox" id="sweep-compare-models" />
+            <span>Compare multiple models</span>
+          </label>
+          <div class="field" id="sweep-models-field" hidden>
+            <span>Models <span class="hint" id="sweep-models-hint"></span></span>
+            <div class="model-chips sweep-model-buttons" id="sweep-models"></div>
+          </div>
+          <p class="sweep-model-note" id="sweep-model-note">Runs the model currently selected in Design Knobs. Enable comparison to add models.</p>
+          <div class="sweep-count" id="sweep-count"></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="splitter" id="splitter" title="Drag to resize · double-click to reset"></div>
+
+  <!-- ────────────────────────  MAIN  ──────────────────────── -->
+  <main class="main">
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-tab="design">Compute, Interconnect &amp; Cost</button>
+      <button class="tab" data-tab="architecture">Architecture 3D</button>
+      <button class="tab" data-tab="runs">Runs &amp; Compare</button>
+      <button class="tab" data-tab="logs">Logs</button>
+    </nav>
+
+    <div class="tab-body">
+
+      <!-- DESIGN: overview · compute & memory · interconnect · cost & yield -->
+      <section class="view active" id="view-design">
+        <div class="empty-state" id="overview-empty">
+          <div class="empty-art">▚▚▚</div>
+          <h3>No results yet</h3>
+          <p>Pick a workload and topology on the left, then run one simulation or enable a design-space sweep.
+             HISIM will map the AI graph onto the package and report power, performance, area and cost.</p>
+          <div class="empty-quick" id="quick-configs"></div>
+        </div>
+
+        <div id="overview-content" hidden>
+          <div class="kpi-grid" id="kpi-grid"></div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>Current model &amp; input overview</h3>
+              <span class="hint" id="model-input-source"></span>
+            </div>
+            <div class="help model-overview" id="model-input-overview"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h3>Model health</h3>
+              <span class="hint" id="diag-count"></span>
+            </div>
+            <div class="diagnostics" id="diagnostics"></div>
+          </div>
+
+          <h2 class="section-title">Latency</h2>
+          <div class="card">
+              <div class="card-head">
+                <h3>End-to-end latency breakdown</h3>
+                <div class="seg" data-seg="latency-mode">
+                  <button class="active" data-value="bar">Ranked bars</button>
+                  <button data-value="pie">Share</button>
+                </div>
+              </div>
+              <div class="plot tall resizable" id="plot-latency"></div>
+          </div>
+
+          <h2 class="section-title">Energy</h2>
+          <div class="card">
+            <div class="card-head">
+              <h3>Energy breakdown</h3>
+              <span class="hint">per inference</span>
+            </div>
+            <div class="plot resizable" id="plot-energy"></div>
+          </div>
+
+        <h2 class="section-title">Compute</h2>
+        <div class="card">
+          <div class="card-head">
+            <h3>Tile design space</h3>
+            <div class="card-tools">
+              <label class="mini">Colour
+                <select id="tile-color">
+                  <option value="hw_class">HW type</option>
+                  <option value="stack">Stack</option>
+                  <option value="chiplet">Chiplet</option>
+                </select>
+              </label>
+              <label class="mini">Size
+                <select id="tile-size">
+                  <option value="energy_j">Energy</option>
+                  <option value="area_mm2">Area</option>
+                  <option value="latency_s">Latency</option>
+                </select>
+              </label>
+            </div>
+          </div>
+          <div class="plot tall resizable" id="plot-tiles"></div>
+        </div>
+
+        <h2 class="section-title">Memory &amp; DDR</h2>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Silicon area composition</h3></div>
+            <div class="chartjs-wrap resizable"><canvas id="chart-area"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Compute vs. memory vs. DDR</h3></div>
+            <div class="plot resizable" id="plot-compute-split"></div>
+          </div>
+        </div>
+
+        <h2 class="section-title">Interconnect</h2>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Latency &amp; energy by interconnect tier</h3><span class="hint">dual axis</span></div>
+            <div class="plot resizable" id="plot-network"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Interconnect area</h3><span class="hint">NoC routers · NoP routers · D2D PHY</span></div>
+            <div class="chartjs-wrap resizable"><canvas id="chart-network-area"></canvas></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Package interconnect graph</h3>
+            <div class="card-tools">
+              <label class="mini"><input type="checkbox" id="net-labels" checked /> labels</label>
+              <button class="chip" id="net-relayout">Re-layout</button>
+            </div>
+          </div>
+          <div class="d3-wrap resizable" id="graph-network"></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Heaviest data transfers</h3><span class="hint">bytes moved between tiles</span></div>
+            <div class="plot resizable" id="plot-traffic"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Hop-count distribution</h3><span class="hint">2D · 2.5D · 3D hops per transfer</span></div>
+            <div class="plot resizable" id="plot-hops"></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Router area per tile</h3></div>
+            <div class="plot resizable" id="plot-router"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Bandwidth bottlenecks</h3><span class="hint">reported by Module_2_Network</span></div>
+            <div class="diagnostics scroll resizable" id="net-warnings"></div>
+          </div>
+        </div>
+
+        <h2 class="section-title">Cost &amp; Yield</h2>
+        <div class="kpi-grid small" id="cost-kpis"></div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Cost hierarchy</h3><span class="hint">click to drill down · hover legend for values</span></div>
+            <div class="plot tall resizable" id="plot-cost-sunburst"></div>
+            <div class="sunburst-legend" id="cost-sunburst-legend"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Recurring cost by category</h3></div>
+            <div class="plot tall resizable" id="plot-cost-bars"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>Per-die cost</h3><span class="hint">die · assembly · test contributions</span></div>
+          <div class="plot resizable" id="plot-cost-die"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Simulator stage timing</h3><span class="hint">analytical model runtime, not chip performance</span></div>
+          <div class="plot resizable" id="plot-stages"></div>
+        </div>
+        </div>
+      </section>
+
+      <!-- ARCHITECTURE -->
+      <section class="view" id="view-architecture">
+        <div class="card">
+          <div class="card-head">
+            <h3>Package explorer</h3>
+            <div class="card-tools">
+              <label class="mini">Heat by
+                <select id="arch-metric">
+                  <option value="hw_class">HW type</option>
+                  <option value="latency_s">Latency</option>
+                  <option value="energy_j">Energy</option>
+                  <option value="area_mm2">Area</option>
+                  <option value="router_area_mm2">Router area</option>
+                </select>
+              </label>
+              <label class="mini"><input type="checkbox" id="arch-links" checked /> NoC links</label>
+              <button class="chip" id="arch-reset">Reset view</button>
+            </div>
+          </div>
+          <div class="plot xtall resizable" id="plot-arch3d"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h3>Tile inventory</h3>
+            <div class="card-tools">
+              <input class="search" id="tile-search" type="search" placeholder="filter tiles, chiplets, layers…" />
+              <button class="chip" id="tile-csv">⤓ Download CSV</button>
+            </div>
+          </div>
+          <div class="table-wrap resizable"><table class="data" id="table-tiles"></table></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head">
+              <h3>Chiplet floorplan</h3>
+              <select class="mini-select" id="floorplan-chiplet"></select>
+            </div>
+            <div class="d3-wrap resizable" id="floorplan"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Stack composition</h3></div>
+            <div class="plot resizable" id="plot-stacks"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RUNS -->
+      <section class="view" id="view-runs">
+        <div class="card">
+          <div class="card-head">
+            <h3>Finished sweep runs</h3>
+            <div class="card-tools">
+              <label class="mini">Sweep launch <select class="mini-select" id="compare-group-filter"></select></label>
+              <div class="model-chips" id="compare-model-filter"></div>
+              <input class="search" id="run-search" type="search" placeholder="filter runs…" />
+              <label class="mini select-visible"><input type="checkbox" id="select-visible-runs" /> Select visible</label>
+              <button class="chip danger-chip" id="btn-delete-selected" type="button" disabled>Delete selected (0)</button>
+              <button class="chip" id="btn-refresh-runs">↻ Refresh</button>
+            </div>
+          </div>
+          <div class="table-wrap resizable"><table class="data" id="table-runs"></table></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-head"><h3>Sweep response</h3><span class="hint" id="sweep-plot-hint">swept knob on X-axis</span></div>
+            <div class="card-tools inline">
+              <label class="mini">Metric <select id="sweep-metric"></select></label>
+            </div>
+            <div class="plot resizable" id="plot-sweep"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Design trade-off</h3><span class="hint">metric vs metric · Pareto front</span></div>
+            <div class="card-tools inline">
+              <label class="mini">X <select id="pareto-x"></select></label>
+              <label class="mini">Y <select id="pareto-y"></select></label>
+            </div>
+            <div class="plot resizable" id="plot-pareto"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Scorecard vs reference</h3><span class="hint">higher score is better</span></div>
+          <div class="card-tools inline">
+            <label class="mini">Reference <select id="radar-baseline"></select></label>
+          </div>
+          <div class="help chart-note">Scores are relative to the selected reference run: 100% means equal, 120% means 20% better, and 80% means 20% worse. Select runs in the table to compare them.</div>
+          <div class="chartjs-wrap resizable"><canvas id="chart-radar"></canvas></div>
+        </div>
+      </section>
+
+      <!-- LOGS -->
+      <section class="view" id="view-logs">
+        <div class="card">
+          <div class="card-head">
+            <h3>Simulator console</h3>
+            <span class="hint" id="log-run-label"></span>
+            <div class="card-tools">
+              <label class="mini"><input type="checkbox" id="log-follow" checked /> follow</label>
+              <select class="mini-select" id="log-stream">
+                <option value="stdout">stdout</option>
+                <option value="stderr">stderr</option>
+              </select>
+              <button class="chip" id="log-copy">Copy</button>
+            </div>
+          </div>
+          <pre class="console resizable" id="console"></pre>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="js/api.js?v=20260906-sweep-model-buttons"></script>
+<script src="js/format.js?v=20260906-sweep-model-buttons"></script>
+<script src="js/charts.js?v=20260906-sweep-model-buttons"></script>
+<script src="js/csv.js?v=20260906-sweep-model-buttons"></script>
+<script src="js/mapping.js?v=20260906-sweep-model-buttons"></script>
+<script src="js/controls.js?v=20260906-sweep-model-buttons"></script>
+<script src="js/views.js?v=20260906-sweep-model-buttons"></script>
+<script src="js/architecture.js?v=20260906-sweep-model-buttons"></script>
+<script src="js/runs.js?v=20260906-sweep-model-buttons"></script>
+<script src="js/app.js?v=20260906-sweep-model-buttons"></script>
+</body>
+</html>
