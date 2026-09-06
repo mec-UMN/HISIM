@@ -1,0 +1,579 @@
+module attributes {llvm.data_layout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128", llvm.target_triple = "x86_64-unknown-linux-gnu", "onnx-mlir.symbol-postfix" = "model"} {
+  func.func @main_graph(%arg0: tensor<1x3x224x224xf32> {onnx.dim_params = "0:batch_size,1:num_channels,2:height,3:width", onnx.name = "pixel_values"}) -> (tensor<1x1000xf32> {onnx.dim_params = "0:batch_size", onnx.name = "logits"}) {
+    %0 = onnx.Constant dense_resource<__elided__> : tensor<1x1x768xf32>
+    %1 = onnx.Constant dense<[1, 768, -1]> : tensor<3xi64>
+    %2 = onnx.Constant dense_resource<__elided__> : tensor<768x3x16x16xf32>
+    %3 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %4 = onnx.Constant dense<0> : tensor<i64>
+    %5 = onnx.Constant dense_resource<__elided__> : tensor<1x197x768xf32>
+    %6 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %7 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %8 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %9 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %10 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %11 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %12 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %13 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %14 = onnx.Constant dense<[-1, 197, 12, 64]> : tensor<4xi64>
+    %15 = onnx.Constant dense<0.353553385> : tensor<1xf32>
+    %16 = onnx.Constant dense<[-1, 197, 768]> : tensor<3xi64>
+    %17 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %18 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %19 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %20 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %21 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %22 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %23 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %24 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %25 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %26 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %27 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %28 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %29 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %30 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %31 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %32 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %33 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %34 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %35 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %36 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %37 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %38 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %39 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %40 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %41 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %42 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %43 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %44 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %45 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %46 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %47 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %48 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %49 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %50 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %51 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %52 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %53 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %54 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %55 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %56 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %57 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %58 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %59 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %60 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %61 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %62 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %63 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %64 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %65 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %66 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %67 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %68 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %69 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %70 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %71 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %72 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %73 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %74 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %75 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %76 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %77 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %78 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %79 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %80 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %81 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %82 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %83 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %84 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %85 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %86 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %87 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %88 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %89 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %90 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %91 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %92 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %93 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %94 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %95 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %96 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %97 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %98 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %99 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %100 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %101 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %102 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %103 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %104 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %105 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %106 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %107 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %108 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %109 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %110 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %111 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %112 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %113 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %114 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %115 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %116 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %117 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %118 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %119 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %120 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %121 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %122 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %123 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %124 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %125 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %126 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %127 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %128 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %129 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %130 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %131 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %132 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %133 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %134 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %135 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %136 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %137 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %138 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %139 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %140 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %141 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %142 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %143 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %144 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %145 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %146 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %147 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %148 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %149 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %150 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %151 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %152 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %153 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %154 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %155 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %156 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %157 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %158 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %159 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %160 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %161 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %162 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %163 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %164 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %165 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %166 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %167 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %168 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %169 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %170 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %171 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %172 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %173 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %174 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %175 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %176 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %177 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %178 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %179 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %180 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %181 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %182 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %183 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %184 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %185 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %186 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %187 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %188 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %189 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %190 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %191 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %192 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %193 = onnx.Constant dense_resource<__elided__> : tensor<768x768xf32>
+    %194 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %195 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %196 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %197 = onnx.Constant dense_resource<__elided__> : tensor<768x3072xf32>
+    %198 = onnx.Constant dense_resource<__elided__> : tensor<3072xf32>
+    %199 = onnx.Constant dense_resource<__elided__> : tensor<3072x768xf32>
+    %200 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %201 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %202 = onnx.Constant dense_resource<__elided__> : tensor<768xf32>
+    %203 = onnx.Constant dense_resource<__elided__> : tensor<1000x768xf32>
+    %204 = onnx.Constant dense_resource<__elided__> : tensor<1000xf32>
+    %205 = "onnx.Conv"(%arg0, %2, %3) {auto_pad = "NOTSET", dilations = [1, 1], group = 1 : si64, kernel_shape = [16, 16], onnx_node_name = "/vit/embeddings/patch_embeddings/projection/Conv", pads = [0, 0, 0, 0], strides = [16, 16]} : (tensor<1x3x224x224xf32>, tensor<768x3x16x16xf32>, tensor<768xf32>) -> tensor<1x768x14x14xf32>
+    %206 = "onnx.Reshape"(%205, %1) {allowzero = 0 : si64, onnx_node_name = "/vit/embeddings/patch_embeddings/Reshape"} : (tensor<1x768x14x14xf32>, tensor<3xi64>) -> tensor<1x768x196xf32>
+    %207 = "onnx.Transpose"(%206) {onnx_node_name = "/vit/embeddings/patch_embeddings/Transpose", perm = [0, 2, 1]} : (tensor<1x768x196xf32>) -> tensor<1x196x768xf32>
+    %208 = "onnx.Concat"(%0, %207) {axis = 1 : si64, onnx_node_name = "/vit/embeddings/Concat_1"} : (tensor<1x1x768xf32>, tensor<1x196x768xf32>) -> tensor<1x197x768xf32>
+    %209 = "onnx.Add"(%208, %5) {onnx_node_name = "/vit/embeddings/Add"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %Y, %Mean, %InvStdDev = "onnx.LayerNormalization"(%209, %6, %7) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.0/layernorm_before/Add_1_129", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %210 = "onnx.MatMul"(%Y, %8) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %211 = "onnx.MatMul"(%Y, %9) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %212 = "onnx.MatMul"(%Y, %10) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %213 = "onnx.Add"(%210, %11) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/query/Add_46"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %214 = "onnx.Add"(%211, %12) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/key/Add_58"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %215 = "onnx.Add"(%212, %13) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/value/Add_3"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %216 = "onnx.Reshape"(%214, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.0/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %217 = "onnx.Reshape"(%215, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.0/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %218 = "onnx.Reshape"(%213, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.0/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %219 = "onnx.Transpose"(%217) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %220 = "onnx.Transpose"(%218) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %221 = "onnx.Transpose"(%216) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %222 = "onnx.Mul"(%220, %15) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %223 = "onnx.Mul"(%221, %15) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %224 = "onnx.MatMul"(%222, %223) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %225 = "onnx.Softmax"(%224) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.0/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %226 = "onnx.MatMul"(%225, %219) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %227 = "onnx.Transpose"(%226) {onnx_node_name = "/vit/encoder/layer.0/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %228 = "onnx.Reshape"(%227, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.0/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %229 = "onnx.MatMul"(%228, %17) {onnx_node_name = "/vit/encoder/layer.0/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %230 = "onnx.Add"(%229, %209) {onnx_node_name = "/vit/encoder/layer.0/Add-Initializer_vit.encoder.layer.0.attention.output.dense.bias-/vit/encoder/layer.0/attention/output/dense/Add_63"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %231 = "onnx.Add"(%230, %18) {onnx_node_name = "/vit/encoder/layer.0/Add-Initializer_vit.encoder.layer.0.attention.output.dense.bias-/vit/encoder/layer.0/attention/output/dense/Add_14"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_0, %Mean_1, %InvStdDev_2 = "onnx.LayerNormalization"(%231, %19, %20) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.0/layernorm_after/Add_1_56", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %232 = "onnx.MatMul"(%Y_0, %21) {onnx_node_name = "/vit/encoder/layer.0/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %233 = "onnx.Add"(%232, %22) {onnx_node_name = "/vit/encoder/layer.0/intermediate/dense/Add_5"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %234 = "onnx.Gelu"(%233) {approximate = "none", onnx_node_name = "/vit/encoder/layer.0/intermediate/intermediate_act_fn/Mul_1_12"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %235 = "onnx.MatMul"(%234, %23) {onnx_node_name = "/vit/encoder/layer.0/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %236 = "onnx.Add"(%235, %231) {onnx_node_name = "/vit/encoder/layer.0/output/Add-Initializer_vit.encoder.layer.0.output.dense.bias-/vit/encoder/layer.0/output/dense/Add_127"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %237 = "onnx.Add"(%236, %24) {onnx_node_name = "/vit/encoder/layer.0/output/Add-Initializer_vit.encoder.layer.0.output.dense.bias-/vit/encoder/layer.0/output/dense/Add_48"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_3, %Mean_4, %InvStdDev_5 = "onnx.LayerNormalization"(%237, %25, %26) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.1/layernorm_before/Add_1_61", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %238 = "onnx.MatMul"(%Y_3, %27) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %239 = "onnx.MatMul"(%Y_3, %28) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %240 = "onnx.MatMul"(%Y_3, %29) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %241 = "onnx.Add"(%238, %30) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/query/Add_67"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %242 = "onnx.Add"(%239, %31) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/key/Add_59"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %243 = "onnx.Add"(%240, %32) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/value/Add_70"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %244 = "onnx.Reshape"(%242, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.1/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %245 = "onnx.Reshape"(%243, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.1/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %246 = "onnx.Reshape"(%241, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.1/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %247 = "onnx.Transpose"(%245) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %248 = "onnx.Transpose"(%246) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %249 = "onnx.Transpose"(%244) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %250 = "onnx.Mul"(%248, %15) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %251 = "onnx.Mul"(%249, %15) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %252 = "onnx.MatMul"(%250, %251) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %253 = "onnx.Softmax"(%252) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.1/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %254 = "onnx.MatMul"(%253, %247) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %255 = "onnx.Transpose"(%254) {onnx_node_name = "/vit/encoder/layer.1/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %256 = "onnx.Reshape"(%255, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.1/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %257 = "onnx.MatMul"(%256, %33) {onnx_node_name = "/vit/encoder/layer.1/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %258 = "onnx.Add"(%257, %237) {onnx_node_name = "/vit/encoder/layer.1/Add-Initializer_vit.encoder.layer.1.attention.output.dense.bias-/vit/encoder/layer.1/attention/output/dense/Add_15"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %259 = "onnx.Add"(%258, %34) {onnx_node_name = "/vit/encoder/layer.1/Add-Initializer_vit.encoder.layer.1.attention.output.dense.bias-/vit/encoder/layer.1/attention/output/dense/Add_123"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_6, %Mean_7, %InvStdDev_8 = "onnx.LayerNormalization"(%259, %35, %36) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.1/layernorm_after/Add_1_54", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %260 = "onnx.MatMul"(%Y_6, %37) {onnx_node_name = "/vit/encoder/layer.1/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %261 = "onnx.Add"(%260, %38) {onnx_node_name = "/vit/encoder/layer.1/intermediate/dense/Add_83"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %262 = "onnx.Gelu"(%261) {approximate = "none", onnx_node_name = "/vit/encoder/layer.1/intermediate/intermediate_act_fn/Mul_1_30"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %263 = "onnx.MatMul"(%262, %39) {onnx_node_name = "/vit/encoder/layer.1/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %264 = "onnx.Add"(%263, %259) {onnx_node_name = "/vit/encoder/layer.1/output/Add-Initializer_vit.encoder.layer.1.output.dense.bias-/vit/encoder/layer.1/output/dense/Add_69"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %265 = "onnx.Add"(%264, %40) {onnx_node_name = "/vit/encoder/layer.1/output/Add-Initializer_vit.encoder.layer.1.output.dense.bias-/vit/encoder/layer.1/output/dense/Add_50"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_9, %Mean_10, %InvStdDev_11 = "onnx.LayerNormalization"(%265, %41, %42) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.2/layernorm_before/Add_1_29", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %266 = "onnx.MatMul"(%Y_9, %43) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %267 = "onnx.MatMul"(%Y_9, %44) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %268 = "onnx.MatMul"(%Y_9, %45) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %269 = "onnx.Add"(%266, %46) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/query/Add_102"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %270 = "onnx.Add"(%267, %47) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/key/Add_81"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %271 = "onnx.Add"(%268, %48) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/value/Add_71"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %272 = "onnx.Reshape"(%270, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.2/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %273 = "onnx.Reshape"(%271, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.2/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %274 = "onnx.Reshape"(%269, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.2/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %275 = "onnx.Transpose"(%273) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %276 = "onnx.Transpose"(%274) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %277 = "onnx.Transpose"(%272) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %278 = "onnx.Mul"(%276, %15) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %279 = "onnx.Mul"(%277, %15) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %280 = "onnx.MatMul"(%278, %279) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %281 = "onnx.Softmax"(%280) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.2/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %282 = "onnx.MatMul"(%281, %275) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %283 = "onnx.Transpose"(%282) {onnx_node_name = "/vit/encoder/layer.2/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %284 = "onnx.Reshape"(%283, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.2/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %285 = "onnx.MatMul"(%284, %49) {onnx_node_name = "/vit/encoder/layer.2/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %286 = "onnx.Add"(%285, %265) {onnx_node_name = "/vit/encoder/layer.2/Add-Initializer_vit.encoder.layer.2.attention.output.dense.bias-/vit/encoder/layer.2/attention/output/dense/Add_44"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %287 = "onnx.Add"(%286, %50) {onnx_node_name = "/vit/encoder/layer.2/Add-Initializer_vit.encoder.layer.2.attention.output.dense.bias-/vit/encoder/layer.2/attention/output/dense/Add_80"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_12, %Mean_13, %InvStdDev_14 = "onnx.LayerNormalization"(%287, %51, %52) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.2/layernorm_after/Add_1_23", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %288 = "onnx.MatMul"(%Y_12, %53) {onnx_node_name = "/vit/encoder/layer.2/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %289 = "onnx.Add"(%288, %54) {onnx_node_name = "/vit/encoder/layer.2/intermediate/dense/Add_6"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %290 = "onnx.Gelu"(%289) {approximate = "none", onnx_node_name = "/vit/encoder/layer.2/intermediate/intermediate_act_fn/Mul_1_85"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %291 = "onnx.MatMul"(%290, %55) {onnx_node_name = "/vit/encoder/layer.2/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %292 = "onnx.Add"(%291, %287) {onnx_node_name = "/vit/encoder/layer.2/output/Add-Initializer_vit.encoder.layer.2.output.dense.bias-/vit/encoder/layer.2/output/dense/Add_11"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %293 = "onnx.Add"(%292, %56) {onnx_node_name = "/vit/encoder/layer.2/output/Add-Initializer_vit.encoder.layer.2.output.dense.bias-/vit/encoder/layer.2/output/dense/Add_18"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_15, %Mean_16, %InvStdDev_17 = "onnx.LayerNormalization"(%293, %57, %58) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.3/layernorm_before/Add_1_13", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %294 = "onnx.MatMul"(%Y_15, %59) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %295 = "onnx.MatMul"(%Y_15, %60) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %296 = "onnx.MatMul"(%Y_15, %61) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %297 = "onnx.Add"(%294, %62) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/query/Add_103"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %298 = "onnx.Add"(%295, %63) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/key/Add_34"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %299 = "onnx.Add"(%296, %64) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/value/Add_49"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %300 = "onnx.Reshape"(%298, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.3/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %301 = "onnx.Reshape"(%299, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.3/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %302 = "onnx.Reshape"(%297, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.3/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %303 = "onnx.Transpose"(%301) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %304 = "onnx.Transpose"(%302) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %305 = "onnx.Transpose"(%300) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %306 = "onnx.Mul"(%304, %15) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %307 = "onnx.Mul"(%305, %15) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %308 = "onnx.MatMul"(%306, %307) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %309 = "onnx.Softmax"(%308) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.3/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %310 = "onnx.MatMul"(%309, %303) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %311 = "onnx.Transpose"(%310) {onnx_node_name = "/vit/encoder/layer.3/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %312 = "onnx.Reshape"(%311, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.3/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %313 = "onnx.MatMul"(%312, %65) {onnx_node_name = "/vit/encoder/layer.3/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %314 = "onnx.Add"(%313, %293) {onnx_node_name = "/vit/encoder/layer.3/Add-Initializer_vit.encoder.layer.3.attention.output.dense.bias-/vit/encoder/layer.3/attention/output/dense/Add_55"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %315 = "onnx.Add"(%314, %66) {onnx_node_name = "/vit/encoder/layer.3/Add-Initializer_vit.encoder.layer.3.attention.output.dense.bias-/vit/encoder/layer.3/attention/output/dense/Add_118"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_18, %Mean_19, %InvStdDev_20 = "onnx.LayerNormalization"(%315, %67, %68) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.3/layernorm_after/Add_1_0", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %316 = "onnx.MatMul"(%Y_18, %69) {onnx_node_name = "/vit/encoder/layer.3/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %317 = "onnx.Add"(%316, %70) {onnx_node_name = "/vit/encoder/layer.3/intermediate/dense/Add_22"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %318 = "onnx.Gelu"(%317) {approximate = "none", onnx_node_name = "/vit/encoder/layer.3/intermediate/intermediate_act_fn/Mul_1_90"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %319 = "onnx.MatMul"(%318, %71) {onnx_node_name = "/vit/encoder/layer.3/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %320 = "onnx.Add"(%319, %315) {onnx_node_name = "/vit/encoder/layer.3/output/Add-Initializer_vit.encoder.layer.3.output.dense.bias-/vit/encoder/layer.3/output/dense/Add_84"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %321 = "onnx.Add"(%320, %72) {onnx_node_name = "/vit/encoder/layer.3/output/Add-Initializer_vit.encoder.layer.3.output.dense.bias-/vit/encoder/layer.3/output/dense/Add_66"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_21, %Mean_22, %InvStdDev_23 = "onnx.LayerNormalization"(%321, %73, %74) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.4/layernorm_before/Add_1_130", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %322 = "onnx.MatMul"(%Y_21, %75) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %323 = "onnx.MatMul"(%Y_21, %76) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %324 = "onnx.MatMul"(%Y_21, %77) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %325 = "onnx.Add"(%322, %78) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/query/Add_41"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %326 = "onnx.Add"(%323, %79) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/key/Add_95"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %327 = "onnx.Add"(%324, %80) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/value/Add_73"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %328 = "onnx.Reshape"(%326, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.4/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %329 = "onnx.Reshape"(%327, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.4/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %330 = "onnx.Reshape"(%325, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.4/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %331 = "onnx.Transpose"(%329) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %332 = "onnx.Transpose"(%330) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %333 = "onnx.Transpose"(%328) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %334 = "onnx.Mul"(%332, %15) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %335 = "onnx.Mul"(%333, %15) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %336 = "onnx.MatMul"(%334, %335) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %337 = "onnx.Softmax"(%336) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.4/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %338 = "onnx.MatMul"(%337, %331) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %339 = "onnx.Transpose"(%338) {onnx_node_name = "/vit/encoder/layer.4/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %340 = "onnx.Reshape"(%339, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.4/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %341 = "onnx.MatMul"(%340, %81) {onnx_node_name = "/vit/encoder/layer.4/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %342 = "onnx.Add"(%341, %321) {onnx_node_name = "/vit/encoder/layer.4/Add-Initializer_vit.encoder.layer.4.attention.output.dense.bias-/vit/encoder/layer.4/attention/output/dense/Add_128"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %343 = "onnx.Add"(%342, %82) {onnx_node_name = "/vit/encoder/layer.4/Add-Initializer_vit.encoder.layer.4.attention.output.dense.bias-/vit/encoder/layer.4/attention/output/dense/Add_75"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_24, %Mean_25, %InvStdDev_26 = "onnx.LayerNormalization"(%343, %83, %84) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.4/layernorm_after/Add_1_121", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %344 = "onnx.MatMul"(%Y_24, %85) {onnx_node_name = "/vit/encoder/layer.4/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %345 = "onnx.Add"(%344, %86) {onnx_node_name = "/vit/encoder/layer.4/intermediate/dense/Add_53"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %346 = "onnx.Gelu"(%345) {approximate = "none", onnx_node_name = "/vit/encoder/layer.4/intermediate/intermediate_act_fn/Mul_1_88"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %347 = "onnx.MatMul"(%346, %87) {onnx_node_name = "/vit/encoder/layer.4/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %348 = "onnx.Add"(%347, %343) {onnx_node_name = "/vit/encoder/layer.4/output/Add-Initializer_vit.encoder.layer.4.output.dense.bias-/vit/encoder/layer.4/output/dense/Add_99"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %349 = "onnx.Add"(%348, %88) {onnx_node_name = "/vit/encoder/layer.4/output/Add-Initializer_vit.encoder.layer.4.output.dense.bias-/vit/encoder/layer.4/output/dense/Add_93"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_27, %Mean_28, %InvStdDev_29 = "onnx.LayerNormalization"(%349, %89, %90) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.5/layernorm_before/Add_1_112", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %350 = "onnx.MatMul"(%Y_27, %91) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %351 = "onnx.MatMul"(%Y_27, %92) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %352 = "onnx.MatMul"(%Y_27, %93) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %353 = "onnx.Add"(%350, %94) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/query/Add_10"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %354 = "onnx.Add"(%351, %95) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/key/Add_115"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %355 = "onnx.Add"(%352, %96) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/value/Add_101"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %356 = "onnx.Reshape"(%354, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.5/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %357 = "onnx.Reshape"(%355, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.5/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %358 = "onnx.Reshape"(%353, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.5/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %359 = "onnx.Transpose"(%357) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %360 = "onnx.Transpose"(%358) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %361 = "onnx.Transpose"(%356) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %362 = "onnx.Mul"(%360, %15) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %363 = "onnx.Mul"(%361, %15) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %364 = "onnx.MatMul"(%362, %363) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %365 = "onnx.Softmax"(%364) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.5/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %366 = "onnx.MatMul"(%365, %359) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %367 = "onnx.Transpose"(%366) {onnx_node_name = "/vit/encoder/layer.5/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %368 = "onnx.Reshape"(%367, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.5/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %369 = "onnx.MatMul"(%368, %97) {onnx_node_name = "/vit/encoder/layer.5/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %370 = "onnx.Add"(%369, %349) {onnx_node_name = "/vit/encoder/layer.5/Add-Initializer_vit.encoder.layer.5.attention.output.dense.bias-/vit/encoder/layer.5/attention/output/dense/Add_16"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %371 = "onnx.Add"(%370, %98) {onnx_node_name = "/vit/encoder/layer.5/Add-Initializer_vit.encoder.layer.5.attention.output.dense.bias-/vit/encoder/layer.5/attention/output/dense/Add_108"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_30, %Mean_31, %InvStdDev_32 = "onnx.LayerNormalization"(%371, %99, %100) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.5/layernorm_after/Add_1_9", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %372 = "onnx.MatMul"(%Y_30, %101) {onnx_node_name = "/vit/encoder/layer.5/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %373 = "onnx.Add"(%372, %102) {onnx_node_name = "/vit/encoder/layer.5/intermediate/dense/Add_64"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %374 = "onnx.Gelu"(%373) {approximate = "none", onnx_node_name = "/vit/encoder/layer.5/intermediate/intermediate_act_fn/Mul_1_119"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %375 = "onnx.MatMul"(%374, %103) {onnx_node_name = "/vit/encoder/layer.5/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %376 = "onnx.Add"(%375, %371) {onnx_node_name = "/vit/encoder/layer.5/output/Add-Initializer_vit.encoder.layer.5.output.dense.bias-/vit/encoder/layer.5/output/dense/Add_33"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %377 = "onnx.Add"(%376, %104) {onnx_node_name = "/vit/encoder/layer.5/output/Add-Initializer_vit.encoder.layer.5.output.dense.bias-/vit/encoder/layer.5/output/dense/Add_28"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_33, %Mean_34, %InvStdDev_35 = "onnx.LayerNormalization"(%377, %105, %106) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.6/layernorm_before/Add_1_89", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %378 = "onnx.MatMul"(%Y_33, %107) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %379 = "onnx.MatMul"(%Y_33, %108) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %380 = "onnx.MatMul"(%Y_33, %109) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %381 = "onnx.Add"(%378, %110) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/query/Add_68"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %382 = "onnx.Add"(%379, %111) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/key/Add_31"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %383 = "onnx.Add"(%380, %112) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/value/Add_113"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %384 = "onnx.Reshape"(%382, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.6/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %385 = "onnx.Reshape"(%383, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.6/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %386 = "onnx.Reshape"(%381, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.6/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %387 = "onnx.Transpose"(%385) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %388 = "onnx.Transpose"(%386) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %389 = "onnx.Transpose"(%384) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %390 = "onnx.Mul"(%388, %15) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %391 = "onnx.Mul"(%389, %15) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %392 = "onnx.MatMul"(%390, %391) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %393 = "onnx.Softmax"(%392) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.6/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %394 = "onnx.MatMul"(%393, %387) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %395 = "onnx.Transpose"(%394) {onnx_node_name = "/vit/encoder/layer.6/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %396 = "onnx.Reshape"(%395, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.6/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %397 = "onnx.MatMul"(%396, %113) {onnx_node_name = "/vit/encoder/layer.6/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %398 = "onnx.Add"(%397, %377) {onnx_node_name = "/vit/encoder/layer.6/Add-Initializer_vit.encoder.layer.6.attention.output.dense.bias-/vit/encoder/layer.6/attention/output/dense/Add_79"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %399 = "onnx.Add"(%398, %114) {onnx_node_name = "/vit/encoder/layer.6/Add-Initializer_vit.encoder.layer.6.attention.output.dense.bias-/vit/encoder/layer.6/attention/output/dense/Add_98"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_36, %Mean_37, %InvStdDev_38 = "onnx.LayerNormalization"(%399, %115, %116) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.6/layernorm_after/Add_1_96", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %400 = "onnx.MatMul"(%Y_36, %117) {onnx_node_name = "/vit/encoder/layer.6/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %401 = "onnx.Add"(%400, %118) {onnx_node_name = "/vit/encoder/layer.6/intermediate/dense/Add_39"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %402 = "onnx.Gelu"(%401) {approximate = "none", onnx_node_name = "/vit/encoder/layer.6/intermediate/intermediate_act_fn/Mul_1_125"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %403 = "onnx.MatMul"(%402, %119) {onnx_node_name = "/vit/encoder/layer.6/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %404 = "onnx.Add"(%403, %399) {onnx_node_name = "/vit/encoder/layer.6/output/Add-Initializer_vit.encoder.layer.6.output.dense.bias-/vit/encoder/layer.6/output/dense/Add_38"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %405 = "onnx.Add"(%404, %120) {onnx_node_name = "/vit/encoder/layer.6/output/Add-Initializer_vit.encoder.layer.6.output.dense.bias-/vit/encoder/layer.6/output/dense/Add_76"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_39, %Mean_40, %InvStdDev_41 = "onnx.LayerNormalization"(%405, %121, %122) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.7/layernorm_before/Add_1_106", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %406 = "onnx.MatMul"(%Y_39, %123) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %407 = "onnx.MatMul"(%Y_39, %124) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %408 = "onnx.MatMul"(%Y_39, %125) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %409 = "onnx.Add"(%406, %126) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/query/Add_7"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %410 = "onnx.Add"(%407, %127) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/key/Add_40"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %411 = "onnx.Add"(%408, %128) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/value/Add_47"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %412 = "onnx.Reshape"(%410, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.7/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %413 = "onnx.Reshape"(%411, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.7/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %414 = "onnx.Reshape"(%409, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.7/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %415 = "onnx.Transpose"(%413) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %416 = "onnx.Transpose"(%414) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %417 = "onnx.Transpose"(%412) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %418 = "onnx.Mul"(%416, %15) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %419 = "onnx.Mul"(%417, %15) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %420 = "onnx.MatMul"(%418, %419) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %421 = "onnx.Softmax"(%420) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.7/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %422 = "onnx.MatMul"(%421, %415) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %423 = "onnx.Transpose"(%422) {onnx_node_name = "/vit/encoder/layer.7/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %424 = "onnx.Reshape"(%423, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.7/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %425 = "onnx.MatMul"(%424, %129) {onnx_node_name = "/vit/encoder/layer.7/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %426 = "onnx.Add"(%425, %405) {onnx_node_name = "/vit/encoder/layer.7/Add-Initializer_vit.encoder.layer.7.attention.output.dense.bias-/vit/encoder/layer.7/attention/output/dense/Add_78"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %427 = "onnx.Add"(%426, %130) {onnx_node_name = "/vit/encoder/layer.7/Add-Initializer_vit.encoder.layer.7.attention.output.dense.bias-/vit/encoder/layer.7/attention/output/dense/Add_21"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_42, %Mean_43, %InvStdDev_44 = "onnx.LayerNormalization"(%427, %131, %132) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.7/layernorm_after/Add_1_1", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %428 = "onnx.MatMul"(%Y_42, %133) {onnx_node_name = "/vit/encoder/layer.7/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %429 = "onnx.Add"(%428, %134) {onnx_node_name = "/vit/encoder/layer.7/intermediate/dense/Add_105"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %430 = "onnx.Gelu"(%429) {approximate = "none", onnx_node_name = "/vit/encoder/layer.7/intermediate/intermediate_act_fn/Mul_1_87"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %431 = "onnx.MatMul"(%430, %135) {onnx_node_name = "/vit/encoder/layer.7/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %432 = "onnx.Add"(%431, %427) {onnx_node_name = "/vit/encoder/layer.7/output/Add-Initializer_vit.encoder.layer.7.output.dense.bias-/vit/encoder/layer.7/output/dense/Add_126"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %433 = "onnx.Add"(%432, %136) {onnx_node_name = "/vit/encoder/layer.7/output/Add-Initializer_vit.encoder.layer.7.output.dense.bias-/vit/encoder/layer.7/output/dense/Add_82"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_45, %Mean_46, %InvStdDev_47 = "onnx.LayerNormalization"(%433, %137, %138) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.8/layernorm_before/Add_1_114", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %434 = "onnx.MatMul"(%Y_45, %139) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %435 = "onnx.MatMul"(%Y_45, %140) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %436 = "onnx.MatMul"(%Y_45, %141) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %437 = "onnx.Add"(%434, %142) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/query/Add_24"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %438 = "onnx.Add"(%435, %143) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/key/Add_109"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %439 = "onnx.Add"(%436, %144) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/value/Add_17"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %440 = "onnx.Reshape"(%438, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.8/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %441 = "onnx.Reshape"(%439, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.8/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %442 = "onnx.Reshape"(%437, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.8/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %443 = "onnx.Transpose"(%441) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %444 = "onnx.Transpose"(%442) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %445 = "onnx.Transpose"(%440) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %446 = "onnx.Mul"(%444, %15) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %447 = "onnx.Mul"(%445, %15) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %448 = "onnx.MatMul"(%446, %447) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %449 = "onnx.Softmax"(%448) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.8/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %450 = "onnx.MatMul"(%449, %443) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %451 = "onnx.Transpose"(%450) {onnx_node_name = "/vit/encoder/layer.8/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %452 = "onnx.Reshape"(%451, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.8/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %453 = "onnx.MatMul"(%452, %145) {onnx_node_name = "/vit/encoder/layer.8/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %454 = "onnx.Add"(%453, %433) {onnx_node_name = "/vit/encoder/layer.8/Add-Initializer_vit.encoder.layer.8.attention.output.dense.bias-/vit/encoder/layer.8/attention/output/dense/Add_2"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %455 = "onnx.Add"(%454, %146) {onnx_node_name = "/vit/encoder/layer.8/Add-Initializer_vit.encoder.layer.8.attention.output.dense.bias-/vit/encoder/layer.8/attention/output/dense/Add_122"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_48, %Mean_49, %InvStdDev_50 = "onnx.LayerNormalization"(%455, %147, %148) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.8/layernorm_after/Add_1_86", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %456 = "onnx.MatMul"(%Y_48, %149) {onnx_node_name = "/vit/encoder/layer.8/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %457 = "onnx.Add"(%456, %150) {onnx_node_name = "/vit/encoder/layer.8/intermediate/dense/Add_100"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %458 = "onnx.Gelu"(%457) {approximate = "none", onnx_node_name = "/vit/encoder/layer.8/intermediate/intermediate_act_fn/Mul_1_97"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %459 = "onnx.MatMul"(%458, %151) {onnx_node_name = "/vit/encoder/layer.8/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %460 = "onnx.Add"(%459, %455) {onnx_node_name = "/vit/encoder/layer.8/output/Add-Initializer_vit.encoder.layer.8.output.dense.bias-/vit/encoder/layer.8/output/dense/Add_91"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %461 = "onnx.Add"(%460, %152) {onnx_node_name = "/vit/encoder/layer.8/output/Add-Initializer_vit.encoder.layer.8.output.dense.bias-/vit/encoder/layer.8/output/dense/Add_57"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_51, %Mean_52, %InvStdDev_53 = "onnx.LayerNormalization"(%461, %153, %154) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.9/layernorm_before/Add_1_120", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %462 = "onnx.MatMul"(%Y_51, %155) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %463 = "onnx.MatMul"(%Y_51, %156) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %464 = "onnx.MatMul"(%Y_51, %157) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %465 = "onnx.Add"(%462, %158) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/query/Add_92"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %466 = "onnx.Add"(%463, %159) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/key/Add_19"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %467 = "onnx.Add"(%464, %160) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/value/Add_26"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %468 = "onnx.Reshape"(%466, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.9/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %469 = "onnx.Reshape"(%467, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.9/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %470 = "onnx.Reshape"(%465, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.9/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %471 = "onnx.Transpose"(%469) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %472 = "onnx.Transpose"(%470) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %473 = "onnx.Transpose"(%468) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %474 = "onnx.Mul"(%472, %15) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %475 = "onnx.Mul"(%473, %15) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %476 = "onnx.MatMul"(%474, %475) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %477 = "onnx.Softmax"(%476) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.9/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %478 = "onnx.MatMul"(%477, %471) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %479 = "onnx.Transpose"(%478) {onnx_node_name = "/vit/encoder/layer.9/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %480 = "onnx.Reshape"(%479, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.9/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %481 = "onnx.MatMul"(%480, %161) {onnx_node_name = "/vit/encoder/layer.9/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %482 = "onnx.Add"(%481, %461) {onnx_node_name = "/vit/encoder/layer.9/Add-Initializer_vit.encoder.layer.9.attention.output.dense.bias-/vit/encoder/layer.9/attention/output/dense/Add_35"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %483 = "onnx.Add"(%482, %162) {onnx_node_name = "/vit/encoder/layer.9/Add-Initializer_vit.encoder.layer.9.attention.output.dense.bias-/vit/encoder/layer.9/attention/output/dense/Add_131"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_54, %Mean_55, %InvStdDev_56 = "onnx.LayerNormalization"(%483, %163, %164) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.9/layernorm_after/Add_1_60", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %484 = "onnx.MatMul"(%Y_54, %165) {onnx_node_name = "/vit/encoder/layer.9/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %485 = "onnx.Add"(%484, %166) {onnx_node_name = "/vit/encoder/layer.9/intermediate/dense/Add_36"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %486 = "onnx.Gelu"(%485) {approximate = "none", onnx_node_name = "/vit/encoder/layer.9/intermediate/intermediate_act_fn/Mul_1_104"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %487 = "onnx.MatMul"(%486, %167) {onnx_node_name = "/vit/encoder/layer.9/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %488 = "onnx.Add"(%487, %483) {onnx_node_name = "/vit/encoder/layer.9/output/Add-Initializer_vit.encoder.layer.9.output.dense.bias-/vit/encoder/layer.9/output/dense/Add_62"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %489 = "onnx.Add"(%488, %168) {onnx_node_name = "/vit/encoder/layer.9/output/Add-Initializer_vit.encoder.layer.9.output.dense.bias-/vit/encoder/layer.9/output/dense/Add_111"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_57, %Mean_58, %InvStdDev_59 = "onnx.LayerNormalization"(%489, %169, %170) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.10/layernorm_before/Add_1_65", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %490 = "onnx.MatMul"(%Y_57, %171) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %491 = "onnx.MatMul"(%Y_57, %172) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %492 = "onnx.MatMul"(%Y_57, %173) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %493 = "onnx.Add"(%490, %174) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/query/Add_94"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %494 = "onnx.Add"(%491, %175) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/key/Add_27"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %495 = "onnx.Add"(%492, %176) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/value/Add_20"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %496 = "onnx.Reshape"(%494, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.10/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %497 = "onnx.Reshape"(%495, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.10/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %498 = "onnx.Reshape"(%493, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.10/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %499 = "onnx.Transpose"(%497) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %500 = "onnx.Transpose"(%498) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %501 = "onnx.Transpose"(%496) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %502 = "onnx.Mul"(%500, %15) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %503 = "onnx.Mul"(%501, %15) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %504 = "onnx.MatMul"(%502, %503) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %505 = "onnx.Softmax"(%504) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.10/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %506 = "onnx.MatMul"(%505, %499) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %507 = "onnx.Transpose"(%506) {onnx_node_name = "/vit/encoder/layer.10/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %508 = "onnx.Reshape"(%507, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.10/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %509 = "onnx.MatMul"(%508, %177) {onnx_node_name = "/vit/encoder/layer.10/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %510 = "onnx.Add"(%509, %489) {onnx_node_name = "/vit/encoder/layer.10/Add-Initializer_vit.encoder.layer.10.attention.output.dense.bias-/vit/encoder/layer.10/attention/output/dense/Add_43"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %511 = "onnx.Add"(%510, %178) {onnx_node_name = "/vit/encoder/layer.10/Add-Initializer_vit.encoder.layer.10.attention.output.dense.bias-/vit/encoder/layer.10/attention/output/dense/Add_74"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_60, %Mean_61, %InvStdDev_62 = "onnx.LayerNormalization"(%511, %179, %180) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.10/layernorm_after/Add_1_32", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %512 = "onnx.MatMul"(%Y_60, %181) {onnx_node_name = "/vit/encoder/layer.10/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %513 = "onnx.Add"(%512, %182) {onnx_node_name = "/vit/encoder/layer.10/intermediate/dense/Add_72"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %514 = "onnx.Gelu"(%513) {approximate = "none", onnx_node_name = "/vit/encoder/layer.10/intermediate/intermediate_act_fn/Mul_1_116"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %515 = "onnx.MatMul"(%514, %183) {onnx_node_name = "/vit/encoder/layer.10/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %516 = "onnx.Add"(%515, %511) {onnx_node_name = "/vit/encoder/layer.10/output/Add-Initializer_vit.encoder.layer.10.output.dense.bias-/vit/encoder/layer.10/output/dense/Add_51"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %517 = "onnx.Add"(%516, %184) {onnx_node_name = "/vit/encoder/layer.10/output/Add-Initializer_vit.encoder.layer.10.output.dense.bias-/vit/encoder/layer.10/output/dense/Add_37"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_63, %Mean_64, %InvStdDev_65 = "onnx.LayerNormalization"(%517, %185, %186) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.11/layernorm_before/Add_1_8", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %518 = "onnx.MatMul"(%Y_63, %187) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/query/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %519 = "onnx.MatMul"(%Y_63, %188) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/key/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %520 = "onnx.MatMul"(%Y_63, %189) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/value/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %521 = "onnx.Add"(%518, %190) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/query/Add_4"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %522 = "onnx.Add"(%519, %191) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/key/Add_107"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %523 = "onnx.Add"(%520, %192) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/value/Add_117"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %524 = "onnx.Reshape"(%522, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.11/attention/attention/Reshape"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %525 = "onnx.Reshape"(%523, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.11/attention/attention/Reshape_1"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %526 = "onnx.Reshape"(%521, %14) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.11/attention/attention/Reshape_2"} : (tensor<1x197x768xf32>, tensor<4xi64>) -> tensor<1x197x12x64xf32>
+    %527 = "onnx.Transpose"(%525) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/Transpose", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %528 = "onnx.Transpose"(%526) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/Transpose_1", perm = [0, 2, 1, 3]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x197x64xf32>
+    %529 = "onnx.Transpose"(%524) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/Transpose_2", perm = [0, 2, 3, 1]} : (tensor<1x197x12x64xf32>) -> tensor<1x12x64x197xf32>
+    %530 = "onnx.Mul"(%528, %15) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/Mul"} : (tensor<1x12x197x64xf32>, tensor<1xf32>) -> tensor<1x12x197x64xf32>
+    %531 = "onnx.Mul"(%529, %15) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/Mul_1"} : (tensor<1x12x64x197xf32>, tensor<1xf32>) -> tensor<1x12x64x197xf32>
+    %532 = "onnx.MatMul"(%530, %531) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/MatMul"} : (tensor<1x12x197x64xf32>, tensor<1x12x64x197xf32>) -> tensor<1x12x197x197xf32>
+    %533 = "onnx.Softmax"(%532) {axis = -1 : si64, onnx_node_name = "/vit/encoder/layer.11/attention/attention/Softmax"} : (tensor<1x12x197x197xf32>) -> tensor<1x12x197x197xf32>
+    %534 = "onnx.MatMul"(%533, %527) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/MatMul_1"} : (tensor<1x12x197x197xf32>, tensor<1x12x197x64xf32>) -> tensor<1x12x197x64xf32>
+    %535 = "onnx.Transpose"(%534) {onnx_node_name = "/vit/encoder/layer.11/attention/attention/Transpose_3", perm = [0, 2, 1, 3]} : (tensor<1x12x197x64xf32>) -> tensor<1x197x12x64xf32>
+    %536 = "onnx.Reshape"(%535, %16) {allowzero = 0 : si64, onnx_node_name = "/vit/encoder/layer.11/attention/attention/Reshape_3"} : (tensor<1x197x12x64xf32>, tensor<3xi64>) -> tensor<1x197x768xf32>
+    %537 = "onnx.MatMul"(%536, %193) {onnx_node_name = "/vit/encoder/layer.11/attention/output/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x768xf32>) -> tensor<1x197x768xf32>
+    %538 = "onnx.Add"(%537, %517) {onnx_node_name = "/vit/encoder/layer.11/Add-Initializer_vit.encoder.layer.11.attention.output.dense.bias-/vit/encoder/layer.11/attention/output/dense/Add_132"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %539 = "onnx.Add"(%538, %194) {onnx_node_name = "/vit/encoder/layer.11/Add-Initializer_vit.encoder.layer.11.attention.output.dense.bias-/vit/encoder/layer.11/attention/output/dense/Add_124"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_66, %Mean_67, %InvStdDev_68 = "onnx.LayerNormalization"(%539, %195, %196) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/encoder/layer.11/layernorm_after/Add_1_42", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %540 = "onnx.MatMul"(%Y_66, %197) {onnx_node_name = "/vit/encoder/layer.11/intermediate/dense/MatMul"} : (tensor<1x197x768xf32>, tensor<768x3072xf32>) -> tensor<1x197x3072xf32>
+    %541 = "onnx.Add"(%540, %198) {onnx_node_name = "/vit/encoder/layer.11/intermediate/dense/Add_25"} : (tensor<1x197x3072xf32>, tensor<3072xf32>) -> tensor<1x197x3072xf32>
+    %542 = "onnx.Gelu"(%541) {approximate = "none", onnx_node_name = "/vit/encoder/layer.11/intermediate/intermediate_act_fn/Mul_1_77"} : (tensor<1x197x3072xf32>) -> tensor<1x197x3072xf32>
+    %543 = "onnx.MatMul"(%542, %199) {onnx_node_name = "/vit/encoder/layer.11/output/dense/MatMul"} : (tensor<1x197x3072xf32>, tensor<3072x768xf32>) -> tensor<1x197x768xf32>
+    %544 = "onnx.Add"(%543, %539) {onnx_node_name = "/vit/encoder/layer.11/output/Add-Initializer_vit.encoder.layer.11.output.dense.bias-/vit/encoder/layer.11/output/dense/Add_45"} : (tensor<1x197x768xf32>, tensor<1x197x768xf32>) -> tensor<1x197x768xf32>
+    %545 = "onnx.Add"(%544, %200) {onnx_node_name = "/vit/encoder/layer.11/output/Add-Initializer_vit.encoder.layer.11.output.dense.bias-/vit/encoder/layer.11/output/dense/Add_110"} : (tensor<1x197x768xf32>, tensor<768xf32>) -> tensor<1x197x768xf32>
+    %Y_69, %Mean_70, %InvStdDev_71 = "onnx.LayerNormalization"(%545, %201, %202) {axis = 2 : si64, epsilon = 9.99999974E-6 : f32, onnx_node_name = "/vit/layernorm/Add_1_52", stash_type = 1 : si64} : (tensor<1x197x768xf32>, tensor<768xf32>, tensor<768xf32>) -> (tensor<1x197x768xf32>, none, none)
+    %546 = "onnx.Gather"(%Y_69, %4) {axis = 1 : si64, onnx_node_name = "/Gather"} : (tensor<1x197x768xf32>, tensor<i64>) -> tensor<1x768xf32>
+    %547 = "onnx.Gemm"(%546, %203, %204) {alpha = 1.000000e+00 : f32, beta = 1.000000e+00 : f32, onnx_node_name = "/classifier/Gemm", transA = 0 : si64, transB = 1 : si64} : (tensor<1x768xf32>, tensor<1000x768xf32>, tensor<1000xf32>) -> tensor<1x1000xf32>
+    return %547 : tensor<1x1000xf32>
+  }
+  "onnx.EntryPoint"() {func = @main_graph} : () -> ()
+}

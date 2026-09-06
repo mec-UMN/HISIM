@@ -1,0 +1,19 @@
+Chiplet ID,Tile ID,HW Type,Nbank,NW,NB,CM,prec,Clock Frequency (Hz)
+C2,T1,Mem Tile,1,1024,320,4, 8, 1e9
+C2,T2,Mem Tile,1,1024,320,4, 8, 1e9
+C2,T4,Mem Tile,1,1024,320,4, 8, 1e9
+C2,T5,Mem Tile,1,1024,320,4, 8, 1e9
+C2,T7,Mem Tile,1,1024,320,4, 8, 1e9
+C2,T8,Mem Tile,1,1024,320,4, 8, 1e9
+C2,T10,Mem Tile,1,1024,320,4, 8, 1e9
+C3,T2,Mem Tile,1,1024,320,4, 8, 1e9
+C3,T4,Mem Tile,1,1024,320,4, 8, 1e9
+C3,T6,Mem Tile,1,1024,320,4, 8, 1e9
+C3,T8,Mem Tile,1,1024,320,4, 8, 1e9
+C3,T10,Mem Tile,1,1024,320,4, 8, 1e9
+C2,T12,Mem Tile,1,512,320,4, 8, 1e9
+C3,T12,Mem Tile,1,512,320,4, 8, 1e9
+C2,T14,Mem Tile,1,512,320,4, 8, 1e9
+C2,T15,Mem Tile,1,512,320,4, 8, 1e9
+C2,T17,Mem Tile,1,512,320,4, 8, 1e9
+C1,T1,DDR,1,1024,256,4, 8, 1e9

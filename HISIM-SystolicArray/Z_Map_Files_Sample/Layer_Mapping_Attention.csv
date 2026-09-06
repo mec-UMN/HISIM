@@ -1,0 +1,7 @@
+Layer ID,Type,Function,in1_dim1,in1_dim2,in1_dim3,in1_dim4,in2_dim1,in2_dim2,in2_dim3,in2_dim4,Parallel,A,B,C
+L1,MatMul,AxB mul BxC,Temporal,A,B,NA,B,C,NA,NA,NA,SA_size_y,n_SA*SA_size_x,Auto
+L2,MatMul,AxB mul BxC,Temporal,A,B,NA,B,C,NA,NA,NA,n_SA*SA_size_y,SA_size_x,Auto
+L3,MatMul,AxB mul BxC,Temporal,A,B,NA,B,C,NA,NA,NA,SA_size_y,n_SA*SA_size_x,Auto
+L9,MatMul,AxB mul BxC,Temporal,Parallel,A,B,Temporal,Parallel,B,C,n_SA,SA_size_y,SA_size_x,Auto
+L11,MatMul,AxB mul BxC,Temporal,Parallel,A,B,Temporal,Parallel,B,C,n_SA,SA_size_y,SA_size_x,Auto
+L12,MatMul,AxB mul BxC,Temporal,A,B,NA,B,C,NA,NA,NA,SA_size_y,n_SA*SA_size_x,Auto
