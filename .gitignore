@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Run outputs (keep the dirs, not their contents)
+runs/*
+!runs/.gitkeep
+generated_files/*
+!generated_files/.gitkeep
+uploaded_files/*
+!uploaded_files/.gitkeep
+
+# Already tracked in mec-UMN/HISIM -- don't duplicate here
+HISIM-IMC/
+examples/
