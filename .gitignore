@@ -13,6 +13,3 @@ generated_files/*
 uploaded_files/*
 !uploaded_files/.gitkeep
 
-# Already tracked in mec-UMN/HISIM -- don't duplicate here
-HISIM-IMC/
-examples/

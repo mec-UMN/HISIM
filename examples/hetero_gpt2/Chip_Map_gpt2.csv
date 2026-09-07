@@ -1,0 +1,57 @@
+Chiplet ID,Tile ID,HW Type,NoC Position,AI Layer,NodeName
+C1,T1,Mem Tile,"0,0",['DDR'],['DDR']
+C1,T2,Mem Tile,"1,0",['L1'],['Input']
+C1,T3,Mem Tile,"2,0","['L4', 'L12', 'L14', 'L17', 'L25']",['Weight']
+C1,T4,SA,"3,0","['L4', 'L12', 'L14', 'L17', 'L25']","['Gemm', 'Gemm', 'Gemm', 'Gemm', 'Gemm']"
+C1,T5,Mem Tile,"4,0","['L4', 'L12', 'L14', 'L17', 'L25']",['Output']
+C1,T6,Mem Tile,"5,0","['L27', 'L30', 'L38', 'L40', 'L43']",['Weight']
+C1,T7,SA,"0,1","['L27', 'L30', 'L38', 'L40', 'L43']","['Gemm', 'Gemm', 'Gemm', 'Gemm', 'Gemm']"
+C1,T8,Mem Tile,"1,1","['L27', 'L30', 'L38', 'L40', 'L43']",['Output']
+C1,T9,Mem Tile,"2,1","['L51', 'L53', 'L56', 'L64', 'L66']",['Weight']
+C1,T10,SA,"3,1","['L51', 'L53', 'L56', 'L64', 'L66']","['Gemm', 'Gemm', 'Gemm', 'Gemm', 'Gemm']"
+C1,T11,Mem Tile,"4,1","['L51', 'L53', 'L56', 'L64', 'L66']",['Output']
+C1,T12,Mem Tile,"5,1","['L69', 'L77', 'L79', 'L82', 'L90']",['Weight']
+C1,T13,SA,"0,2","['L69', 'L77', 'L79', 'L82', 'L90']","['Gemm', 'Gemm', 'Gemm', 'Gemm', 'Gemm']"
+C1,T14,Mem Tile,"1,2","['L69', 'L77', 'L79', 'L82', 'L90']",['Output']
+C1,T15,Mem Tile,"2,2","['L92', 'L95', 'L103', 'L105', 'L108']",['Weight']
+C1,T16,SA,"3,2","['L92', 'L95', 'L103', 'L105', 'L108']","['Gemm', 'Gemm', 'Gemm', 'Gemm', 'Gemm']"
+C1,T17,Mem Tile,"4,2","['L92', 'L95', 'L103', 'L105', 'L108']",['Output']
+C1,T18,Mem Tile,"5,2","['L116', 'L118', 'L121', 'L129', 'L131']",['Weight']
+C1,T19,SA,"0,3","['L116', 'L118', 'L121', 'L129', 'L131']","['Gemm', 'Gemm', 'Gemm', 'Gemm', 'Gemm']"
+C1,T20,Mem Tile,"1,3","['L116', 'L118', 'L121', 'L129', 'L131']",['Output']
+C1,T21,Mem Tile,"2,3","['L134', 'L142', 'L144', 'L147', 'L155']",['Weight']
+C1,T22,SA,"3,3","['L134', 'L142', 'L144', 'L147', 'L155']","['Gemm', 'Gemm', 'Gemm', 'Gemm', 'Gemm']"
+C1,T23,Mem Tile,"4,3","['L134', 'L142', 'L144', 'L147', 'L155']",['Output']
+C1,T24,Mem Tile,"5,3","['L157', 'L160']",['Weight']
+C1,T25,SA,"0,4","['L157', 'L160']","['Gemm', 'MatMul']"
+C1,T26,Mem Tile,"1,4","['L157', 'L160']",['Output']
+C2,T1,Mem Tile,"0,0","['L5', 'L8', 'L9', 'L18', 'L21', 'L22']",['Weight']
+C2,T2,SA,"1,0","['L5', 'L8', 'L9', 'L18', 'L21', 'L22']","['MatMul', 'MatMul', 'Gemm', 'MatMul', 'MatMul', 'Gemm']"
+C2,T3,Mem Tile,"2,0","['L31', 'L34', 'L35', 'L44', 'L47', 'L48']",['Weight']
+C2,T4,SA,"3,0","['L31', 'L34', 'L35', 'L44', 'L47', 'L48']","['MatMul', 'MatMul', 'Gemm', 'MatMul', 'MatMul', 'Gemm']"
+C2,T5,Mem Tile,"4,0","['L57', 'L60', 'L61', 'L70', 'L73', 'L74']",['Weight']
+C2,T6,SA,"5,0","['L57', 'L60', 'L61', 'L70', 'L73', 'L74']","['MatMul', 'MatMul', 'Gemm', 'MatMul', 'MatMul', 'Gemm']"
+C2,T7,Mem Tile,"0,1","['L83', 'L86', 'L87', 'L96', 'L99', 'L100']",['Weight']
+C2,T8,SA,"1,1","['L83', 'L86', 'L87', 'L96', 'L99', 'L100']","['MatMul', 'MatMul', 'Gemm', 'MatMul', 'MatMul', 'Gemm']"
+C2,T9,Mem Tile,"2,1","['L109', 'L112', 'L113', 'L122', 'L125', 'L126']",['Weight']
+C2,T10,SA,"3,1","['L109', 'L112', 'L113', 'L122', 'L125', 'L126']","['MatMul', 'MatMul', 'Gemm', 'MatMul', 'MatMul', 'Gemm']"
+C2,T11,Mem Tile,"4,1","['L135', 'L138', 'L139', 'L148', 'L151', 'L152']",['Weight']
+C2,T12,SA,"5,1","['L135', 'L138', 'L139', 'L148', 'L151', 'L152']","['MatMul', 'MatMul', 'Gemm', 'MatMul', 'MatMul', 'Gemm']"
+C2,T13,CPU,"0,2","['L1', 'L2', 'L3', 'L6', 'L7', 'L10', 'L11', 'L13', 'L15', 'L16', 'L19', 'L20']","['Add', 'Add', 'LayerNormalization', 'Add', 'Softmax', 'Add', 'LayerNormalization', 'Gelu', 'Add', 'LayerNormalization', 'Add', 'Softmax']"
+C2,T14,CPU,"1,2","['L23', 'L24', 'L26', 'L28', 'L29', 'L32', 'L33', 'L36', 'L37', 'L39', 'L41', 'L42']","['Add', 'LayerNormalization', 'Gelu', 'Add', 'LayerNormalization', 'Add', 'Softmax', 'Add', 'LayerNormalization', 'Gelu', 'Add', 'LayerNormalization']"
+C2,T15,CPU,"2,2","['L45', 'L46', 'L49', 'L50', 'L52', 'L54', 'L55', 'L58', 'L59', 'L62', 'L63', 'L65']","['Add', 'Softmax', 'Add', 'LayerNormalization', 'Gelu', 'Add', 'LayerNormalization', 'Add', 'Softmax', 'Add', 'LayerNormalization', 'Gelu']"
+C2,T16,CPU,"3,2","['L67', 'L68', 'L71', 'L72', 'L75', 'L76', 'L78', 'L80', 'L81', 'L84', 'L85', 'L88']","['Add', 'LayerNormalization', 'Add', 'Softmax', 'Add', 'LayerNormalization', 'Gelu', 'Add', 'LayerNormalization', 'Add', 'Softmax', 'Add']"
+C2,T17,CPU,"4,2","['L89', 'L91', 'L93', 'L94', 'L97', 'L98', 'L101', 'L102', 'L104', 'L106', 'L107', 'L110']","['LayerNormalization', 'Gelu', 'Add', 'LayerNormalization', 'Add', 'Softmax', 'Add', 'LayerNormalization', 'Gelu', 'Add', 'LayerNormalization', 'Add']"
+C2,T18,CPU,"5,2","['L111', 'L114', 'L115', 'L117', 'L119', 'L120', 'L123', 'L124', 'L127', 'L128', 'L130', 'L132']","['Softmax', 'Add', 'LayerNormalization', 'Gelu', 'Add', 'LayerNormalization', 'Add', 'Softmax', 'Add', 'LayerNormalization', 'Gelu', 'Add']"
+C2,T19,CPU,"0,3","['L133', 'L136', 'L137', 'L140', 'L141', 'L143', 'L145', 'L146', 'L149', 'L150', 'L153', 'L154']","['LayerNormalization', 'Add', 'Softmax', 'Add', 'LayerNormalization', 'Gelu', 'Add', 'LayerNormalization', 'Add', 'Softmax', 'Add', 'LayerNormalization']"
+C2,T20,CPU,"1,3","['L156', 'L158', 'L159', 'L161', 'L162']","['Gelu', 'Add', 'LayerNormalization', 'Softmax', 'Add']"
+C2,T21,Mem Tile,"2,3","['L5', 'L8', 'L9', 'L18', 'L21', 'L22', 'L31', 'L34', 'L35', 'L44', 'L47', 'L48', 'L57']",['Output']
+C2,T22,Mem Tile,"3,3","['L60', 'L61', 'L70', 'L73', 'L74', 'L83', 'L86', 'L87', 'L96', 'L99', 'L100', 'L109', 'L112']",['Output']
+C2,T23,Mem Tile,"4,3","['L113', 'L122', 'L125', 'L126', 'L135', 'L138', 'L139', 'L148', 'L151', 'L152', 'L1', 'L2', 'L3']",['Output']
+C2,T24,Mem Tile,"5,3","['L6', 'L7', 'L10', 'L11', 'L13', 'L15', 'L16', 'L19', 'L20', 'L23', 'L24', 'L26', 'L28']",['Output']
+C2,T25,Mem Tile,"0,4","['L29', 'L32', 'L33', 'L36', 'L37', 'L39', 'L41', 'L42', 'L45', 'L46', 'L49', 'L50', 'L52']",['Output']
+C2,T26,Mem Tile,"1,4","['L54', 'L55', 'L58', 'L59', 'L62', 'L63', 'L65', 'L67', 'L68', 'L71', 'L72', 'L75', 'L76']",['Output']
+C2,T27,Mem Tile,"2,4","['L78', 'L80', 'L81', 'L84', 'L85', 'L88', 'L89', 'L91', 'L93', 'L94', 'L97', 'L98', 'L101']",['Output']
+C2,T28,Mem Tile,"3,4","['L102', 'L104', 'L106', 'L107', 'L110', 'L111', 'L114', 'L115', 'L117', 'L119', 'L120', 'L123', 'L124']",['Output']
+C2,T29,Mem Tile,"4,4","['L127', 'L128', 'L130', 'L132', 'L133', 'L136', 'L137', 'L140', 'L141', 'L143', 'L145', 'L146', 'L149']",['Output']
+C2,T30,Mem Tile,"5,4","['L150', 'L153', 'L154', 'L156', 'L158', 'L159', 'L161', 'L162']",['Output']
