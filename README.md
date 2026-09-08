@@ -545,5 +545,6 @@ If you find HISIM useful, please cite the following works.
 -   Vidya A. Chhabria
 -   Jeff Zhang
 -   Chaitali Chakrabarti
+-   Sachin S. Sapatnekar
 -   Umit Y. Ogras
 -   Yu Cao
