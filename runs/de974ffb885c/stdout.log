@@ -1,0 +1,13 @@
+AI mapping sim time is: 14.627890825271606 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 103.2296340370006 mm2
+Memory Area of the Chip is: 1381.0326495000058 mm2
+Compute Latency of the Chip is: 1.1019438343406998 s
+Memory Latency of the Chip is: 0.03697254200000008 s
+DDR Latency of the Chip is: 0.0031255675 s
+Compute Energy of the Chip is: 0.014034456250605076 J
+Memory Energy of the Chip is: 5.3359733900492016e-05 J
+DDR Energy of the Chip is: 5.33568e-06 J
+----------------------------------------
+Input for files in /Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/HW_configs,
+ Enter the number of tiles to plot: 

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 465, in main
+    G_chip, tile_map, mem_req, ip_list = compute_main_fn(G_ai_model, G_chip, tile_ids)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/Compute.py", line 432, in compute_main_fn
+    num_layers_from_input = int(input(f"Input for files in {target_file_path},\n Enter the number of tiles to plot: "))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+EOFError: EOF when reading a line
+
+Traceback (most recent call last):
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 563, in <module>
+    main()
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 465, in main
+    G_chip, tile_map, mem_req, ip_list = compute_main_fn(G_ai_model, G_chip, tile_ids)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/Compute.py", line 432, in compute_main_fn
+    num_layers_from_input = int(input(f"Input for files in {target_file_path},\n Enter the number of tiles to plot: "))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+EOFError: EOF when reading a line

@@ -1,0 +1,133 @@
+Layer_ID,Original_ID,Type,in1_dim1,in1_dim2,in1_dim3,in1_dim4,in2_dim1,in2_dim2,in2_dim3,in2_dim4,in3_dim1,in3_dim2,in3_dim3,in3_dim4,prec,out1_dim1,out1_dim2,out1_dim3,out1_dim4,NodeName,Dilations,Groups,KernelShape,Pads,Strides
+L1,%235,Conv,1,3,224,224,32,3,3,3,32,NA,NA,NA,8,1,32,112,112,/mobilenet_v2/conv_stem/first_conv/convolution/Conv,"[1, 1]",1 : si64,"[3, 3]","[0, 0, 1, 1]","[2, 2]"
+L2,%236,Clip,1,32,112,112,NA,NA,NA,NA,NA,NA,NA,NA,8,1,32,112,112,/mobilenet_v2/conv_stem/first_conv/activation/Clip_117,NA,NA,NA,NA,NA
+L3,%237,Conv,1,32,112,112,32,1,3,3,32,NA,NA,NA,8,1,32,112,112,/mobilenet_v2/conv_stem/conv_3x3/convolution/Conv,"[1, 1]",32 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L4,%238,Clip,1,32,112,112,NA,NA,NA,NA,NA,NA,NA,NA,8,1,32,112,112,/mobilenet_v2/conv_stem/conv_3x3/activation/Clip_116,NA,NA,NA,NA,NA
+L5,%240,MatMul,16,32,NA,NA,1,32,12544,NA,NA,NA,NA,NA,8,1,16,12544,NA,/mobilenet_v2/conv_stem/reduce_1x1/convolution/Conv_100,NA,NA,NA,NA,NA
+L6,%241,Add,1,16,12544,NA,1,16,1,NA,NA,NA,NA,NA,8,1,16,12544,NA,/mobilenet_v2/conv_stem/reduce_1x1/convolution/Conv_119,NA,NA,NA,NA,NA
+L7,%242,MatMul,96,16,NA,NA,1,16,12544,NA,NA,NA,NA,NA,8,1,96,12544,NA,/mobilenet_v2/layer.0/expand_1x1/convolution/Conv_37,NA,NA,NA,NA,NA
+L8,%243,Add,1,96,12544,NA,1,96,1,NA,NA,NA,NA,NA,8,1,96,12544,NA,/mobilenet_v2/layer.0/expand_1x1/convolution/Conv_0,NA,NA,NA,NA,NA
+L9,%245,Clip,1,96,112,112,NA,NA,NA,NA,NA,NA,NA,NA,8,1,96,112,112,/mobilenet_v2/layer.0/expand_1x1/activation/Clip_28,NA,NA,NA,NA,NA
+L10,%246,Conv,1,96,112,112,96,1,3,3,96,NA,NA,NA,8,1,96,56,56,/mobilenet_v2/layer.0/conv_3x3/convolution/Conv,"[1, 1]",96 : si64,"[3, 3]","[0, 0, 1, 1]","[2, 2]"
+L11,%247,Clip,1,96,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,96,56,56,/mobilenet_v2/layer.0/conv_3x3/activation/Clip_14,NA,NA,NA,NA,NA
+L12,%249,MatMul,24,96,NA,NA,1,96,3136,NA,NA,NA,NA,NA,8,1,24,3136,NA,/mobilenet_v2/layer.0/reduce_1x1/convolution/Conv_57,NA,NA,NA,NA,NA
+L13,%250,Add,1,24,3136,NA,1,24,1,NA,NA,NA,NA,NA,8,1,24,3136,NA,/mobilenet_v2/layer.0/reduce_1x1/convolution/Conv_79,NA,NA,NA,NA,NA
+L14,%252,MatMul,144,24,NA,NA,1,24,3136,NA,NA,NA,NA,NA,8,1,144,3136,NA,/mobilenet_v2/layer.1/expand_1x1/convolution/Conv_146,NA,NA,NA,NA,NA
+L15,%253,Add,1,144,3136,NA,1,144,1,NA,NA,NA,NA,NA,8,1,144,3136,NA,/mobilenet_v2/layer.1/expand_1x1/convolution/Conv_6,NA,NA,NA,NA,NA
+L16,%255,Clip,1,144,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,144,56,56,/mobilenet_v2/layer.1/expand_1x1/activation/Clip_39,NA,NA,NA,NA,NA
+L17,%256,Conv,1,144,56,56,144,1,3,3,144,NA,NA,NA,8,1,144,56,56,/mobilenet_v2/layer.1/conv_3x3/convolution/Conv,"[1, 1]",144 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L18,%257,Clip,1,144,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,144,56,56,/mobilenet_v2/layer.1/conv_3x3/activation/Clip_141,NA,NA,NA,NA,NA
+L19,%259,MatMul,24,144,NA,NA,1,144,3136,NA,NA,NA,NA,NA,8,1,24,3136,NA,/mobilenet_v2/layer.1/reduce_1x1/convolution/Conv_142,NA,NA,NA,NA,NA
+L20,%260,Add,1,24,3136,NA,1,24,1,NA,NA,NA,NA,NA,8,1,24,3136,NA,/mobilenet_v2/layer.1/reduce_1x1/convolution/Conv_127,NA,NA,NA,NA,NA
+L21,%262,Add,1,24,56,56,1,24,56,56,NA,NA,NA,NA,8,1,24,56,56,/mobilenet_v2/layer.1/Add,NA,NA,NA,NA,NA
+L22,%264,MatMul,144,24,NA,NA,1,24,3136,NA,NA,NA,NA,NA,8,1,144,3136,NA,/mobilenet_v2/layer.2/expand_1x1/convolution/Conv_130,NA,NA,NA,NA,NA
+L23,%265,Add,1,144,3136,NA,1,144,1,NA,NA,NA,NA,NA,8,1,144,3136,NA,/mobilenet_v2/layer.2/expand_1x1/convolution/Conv_111,NA,NA,NA,NA,NA
+L24,%267,Clip,1,144,56,56,NA,NA,NA,NA,NA,NA,NA,NA,8,1,144,56,56,/mobilenet_v2/layer.2/expand_1x1/activation/Clip_151,NA,NA,NA,NA,NA
+L25,%268,Conv,1,144,56,56,144,1,3,3,144,NA,NA,NA,8,1,144,28,28,/mobilenet_v2/layer.2/conv_3x3/convolution/Conv,"[1, 1]",144 : si64,"[3, 3]","[0, 0, 1, 1]","[2, 2]"
+L26,%269,Clip,1,144,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,144,28,28,/mobilenet_v2/layer.2/conv_3x3/activation/Clip_74,NA,NA,NA,NA,NA
+L27,%271,MatMul,32,144,NA,NA,1,144,784,NA,NA,NA,NA,NA,8,1,32,784,NA,/mobilenet_v2/layer.2/reduce_1x1/convolution/Conv_137,NA,NA,NA,NA,NA
+L28,%272,Add,1,32,784,NA,1,32,1,NA,NA,NA,NA,NA,8,1,32,784,NA,/mobilenet_v2/layer.2/reduce_1x1/convolution/Conv_35,NA,NA,NA,NA,NA
+L29,%274,MatMul,192,32,NA,NA,1,32,784,NA,NA,NA,NA,NA,8,1,192,784,NA,/mobilenet_v2/layer.3/expand_1x1/convolution/Conv_78,NA,NA,NA,NA,NA
+L30,%275,Add,1,192,784,NA,1,192,1,NA,NA,NA,NA,NA,8,1,192,784,NA,/mobilenet_v2/layer.3/expand_1x1/convolution/Conv_88,NA,NA,NA,NA,NA
+L31,%277,Clip,1,192,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,192,28,28,/mobilenet_v2/layer.3/expand_1x1/activation/Clip_42,NA,NA,NA,NA,NA
+L32,%278,Conv,1,192,28,28,192,1,3,3,192,NA,NA,NA,8,1,192,28,28,/mobilenet_v2/layer.3/conv_3x3/convolution/Conv,"[1, 1]",192 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L33,%279,Clip,1,192,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,192,28,28,/mobilenet_v2/layer.3/conv_3x3/activation/Clip_60,NA,NA,NA,NA,NA
+L34,%281,MatMul,32,192,NA,NA,1,192,784,NA,NA,NA,NA,NA,8,1,32,784,NA,/mobilenet_v2/layer.3/reduce_1x1/convolution/Conv_158,NA,NA,NA,NA,NA
+L35,%282,Add,1,32,784,NA,1,32,1,NA,NA,NA,NA,NA,8,1,32,784,NA,/mobilenet_v2/layer.3/reduce_1x1/convolution/Conv_84,NA,NA,NA,NA,NA
+L36,%284,Add,1,32,28,28,1,32,28,28,NA,NA,NA,NA,8,1,32,28,28,/mobilenet_v2/layer.3/Add,NA,NA,NA,NA,NA
+L37,%286,MatMul,192,32,NA,NA,1,32,784,NA,NA,NA,NA,NA,8,1,192,784,NA,/mobilenet_v2/layer.4/expand_1x1/convolution/Conv_162,NA,NA,NA,NA,NA
+L38,%287,Add,1,192,784,NA,1,192,1,NA,NA,NA,NA,NA,8,1,192,784,NA,/mobilenet_v2/layer.4/expand_1x1/convolution/Conv_143,NA,NA,NA,NA,NA
+L39,%289,Clip,1,192,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,192,28,28,/mobilenet_v2/layer.4/expand_1x1/activation/Clip_5,NA,NA,NA,NA,NA
+L40,%290,Conv,1,192,28,28,192,1,3,3,192,NA,NA,NA,8,1,192,28,28,/mobilenet_v2/layer.4/conv_3x3/convolution/Conv,"[1, 1]",192 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L41,%291,Clip,1,192,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,192,28,28,/mobilenet_v2/layer.4/conv_3x3/activation/Clip_148,NA,NA,NA,NA,NA
+L42,%293,MatMul,32,192,NA,NA,1,192,784,NA,NA,NA,NA,NA,8,1,32,784,NA,/mobilenet_v2/layer.4/reduce_1x1/convolution/Conv_11,NA,NA,NA,NA,NA
+L43,%294,Add,1,32,784,NA,1,32,1,NA,NA,NA,NA,NA,8,1,32,784,NA,/mobilenet_v2/layer.4/reduce_1x1/convolution/Conv_62,NA,NA,NA,NA,NA
+L44,%296,Add,1,32,28,28,1,32,28,28,NA,NA,NA,NA,8,1,32,28,28,/mobilenet_v2/layer.4/Add,NA,NA,NA,NA,NA
+L45,%298,MatMul,192,32,NA,NA,1,32,784,NA,NA,NA,NA,NA,8,1,192,784,NA,/mobilenet_v2/layer.5/expand_1x1/convolution/Conv_50,NA,NA,NA,NA,NA
+L46,%299,Add,1,192,784,NA,1,192,1,NA,NA,NA,NA,NA,8,1,192,784,NA,/mobilenet_v2/layer.5/expand_1x1/convolution/Conv_66,NA,NA,NA,NA,NA
+L47,%301,Clip,1,192,28,28,NA,NA,NA,NA,NA,NA,NA,NA,8,1,192,28,28,/mobilenet_v2/layer.5/expand_1x1/activation/Clip_129,NA,NA,NA,NA,NA
+L48,%302,Conv,1,192,28,28,192,1,3,3,192,NA,NA,NA,8,1,192,14,14,/mobilenet_v2/layer.5/conv_3x3/convolution/Conv,"[1, 1]",192 : si64,"[3, 3]","[0, 0, 1, 1]","[2, 2]"
+L49,%303,Clip,1,192,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,192,14,14,/mobilenet_v2/layer.5/conv_3x3/activation/Clip_108,NA,NA,NA,NA,NA
+L50,%305,MatMul,64,192,NA,NA,1,192,196,NA,NA,NA,NA,NA,8,1,64,196,NA,/mobilenet_v2/layer.5/reduce_1x1/convolution/Conv_109,NA,NA,NA,NA,NA
+L51,%306,Add,1,64,196,NA,1,64,1,NA,NA,NA,NA,NA,8,1,64,196,NA,/mobilenet_v2/layer.5/reduce_1x1/convolution/Conv_63,NA,NA,NA,NA,NA
+L52,%308,MatMul,384,64,NA,NA,1,64,196,NA,NA,NA,NA,NA,8,1,384,196,NA,/mobilenet_v2/layer.6/expand_1x1/convolution/Conv_115,NA,NA,NA,NA,NA
+L53,%309,Add,1,384,196,NA,1,384,1,NA,NA,NA,NA,NA,8,1,384,196,NA,/mobilenet_v2/layer.6/expand_1x1/convolution/Conv_95,NA,NA,NA,NA,NA
+L54,%311,Clip,1,384,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.6/expand_1x1/activation/Clip_90,NA,NA,NA,NA,NA
+L55,%312,Conv,1,384,14,14,384,1,3,3,384,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.6/conv_3x3/convolution/Conv,"[1, 1]",384 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L56,%313,Clip,1,384,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.6/conv_3x3/activation/Clip_72,NA,NA,NA,NA,NA
+L57,%315,MatMul,64,384,NA,NA,1,384,196,NA,NA,NA,NA,NA,8,1,64,196,NA,/mobilenet_v2/layer.6/reduce_1x1/convolution/Conv_122,NA,NA,NA,NA,NA
+L58,%316,Add,1,64,196,NA,1,64,1,NA,NA,NA,NA,NA,8,1,64,196,NA,/mobilenet_v2/layer.6/reduce_1x1/convolution/Conv_102,NA,NA,NA,NA,NA
+L59,%318,Add,1,64,14,14,1,64,14,14,NA,NA,NA,NA,8,1,64,14,14,/mobilenet_v2/layer.6/Add,NA,NA,NA,NA,NA
+L60,%320,MatMul,384,64,NA,NA,1,64,196,NA,NA,NA,NA,NA,8,1,384,196,NA,/mobilenet_v2/layer.7/expand_1x1/convolution/Conv_31,NA,NA,NA,NA,NA
+L61,%321,Add,1,384,196,NA,1,384,1,NA,NA,NA,NA,NA,8,1,384,196,NA,/mobilenet_v2/layer.7/expand_1x1/convolution/Conv_32,NA,NA,NA,NA,NA
+L62,%323,Clip,1,384,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.7/expand_1x1/activation/Clip_3,NA,NA,NA,NA,NA
+L63,%324,Conv,1,384,14,14,384,1,3,3,384,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.7/conv_3x3/convolution/Conv,"[1, 1]",384 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L64,%325,Clip,1,384,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.7/conv_3x3/activation/Clip_155,NA,NA,NA,NA,NA
+L65,%327,MatMul,64,384,NA,NA,1,384,196,NA,NA,NA,NA,NA,8,1,64,196,NA,/mobilenet_v2/layer.7/reduce_1x1/convolution/Conv_4,NA,NA,NA,NA,NA
+L66,%328,Add,1,64,196,NA,1,64,1,NA,NA,NA,NA,NA,8,1,64,196,NA,/mobilenet_v2/layer.7/reduce_1x1/convolution/Conv_27,NA,NA,NA,NA,NA
+L67,%330,Add,1,64,14,14,1,64,14,14,NA,NA,NA,NA,8,1,64,14,14,/mobilenet_v2/layer.7/Add,NA,NA,NA,NA,NA
+L68,%332,MatMul,384,64,NA,NA,1,64,196,NA,NA,NA,NA,NA,8,1,384,196,NA,/mobilenet_v2/layer.8/expand_1x1/convolution/Conv_25,NA,NA,NA,NA,NA
+L69,%333,Add,1,384,196,NA,1,384,1,NA,NA,NA,NA,NA,8,1,384,196,NA,/mobilenet_v2/layer.8/expand_1x1/convolution/Conv_7,NA,NA,NA,NA,NA
+L70,%335,Clip,1,384,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.8/expand_1x1/activation/Clip_128,NA,NA,NA,NA,NA
+L71,%336,Conv,1,384,14,14,384,1,3,3,384,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.8/conv_3x3/convolution/Conv,"[1, 1]",384 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L72,%337,Clip,1,384,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.8/conv_3x3/activation/Clip_118,NA,NA,NA,NA,NA
+L73,%339,MatMul,64,384,NA,NA,1,384,196,NA,NA,NA,NA,NA,8,1,64,196,NA,/mobilenet_v2/layer.8/reduce_1x1/convolution/Conv_106,NA,NA,NA,NA,NA
+L74,%340,Add,1,64,196,NA,1,64,1,NA,NA,NA,NA,NA,8,1,64,196,NA,/mobilenet_v2/layer.8/reduce_1x1/convolution/Conv_133,NA,NA,NA,NA,NA
+L75,%342,Add,1,64,14,14,1,64,14,14,NA,NA,NA,NA,8,1,64,14,14,/mobilenet_v2/layer.8/Add,NA,NA,NA,NA,NA
+L76,%344,MatMul,384,64,NA,NA,1,64,196,NA,NA,NA,NA,NA,8,1,384,196,NA,/mobilenet_v2/layer.9/expand_1x1/convolution/Conv_134,NA,NA,NA,NA,NA
+L77,%345,Add,1,384,196,NA,1,384,1,NA,NA,NA,NA,NA,8,1,384,196,NA,/mobilenet_v2/layer.9/expand_1x1/convolution/Conv_87,NA,NA,NA,NA,NA
+L78,%347,Clip,1,384,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.9/expand_1x1/activation/Clip_86,NA,NA,NA,NA,NA
+L79,%348,Conv,1,384,14,14,384,1,3,3,384,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.9/conv_3x3/convolution/Conv,"[1, 1]",384 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L80,%349,Clip,1,384,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,384,14,14,/mobilenet_v2/layer.9/conv_3x3/activation/Clip_64,NA,NA,NA,NA,NA
+L81,%351,MatMul,96,384,NA,NA,1,384,196,NA,NA,NA,NA,NA,8,1,96,196,NA,/mobilenet_v2/layer.9/reduce_1x1/convolution/Conv_113,NA,NA,NA,NA,NA
+L82,%352,Add,1,96,196,NA,1,96,1,NA,NA,NA,NA,NA,8,1,96,196,NA,/mobilenet_v2/layer.9/reduce_1x1/convolution/Conv_105,NA,NA,NA,NA,NA
+L83,%354,MatMul,576,96,NA,NA,1,96,196,NA,NA,NA,NA,NA,8,1,576,196,NA,/mobilenet_v2/layer.10/expand_1x1/convolution/Conv_149,NA,NA,NA,NA,NA
+L84,%355,Add,1,576,196,NA,1,576,1,NA,NA,NA,NA,NA,8,1,576,196,NA,/mobilenet_v2/layer.10/expand_1x1/convolution/Conv_132,NA,NA,NA,NA,NA
+L85,%357,Clip,1,576,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,576,14,14,/mobilenet_v2/layer.10/expand_1x1/activation/Clip_29,NA,NA,NA,NA,NA
+L86,%358,Conv,1,576,14,14,576,1,3,3,576,NA,NA,NA,8,1,576,14,14,/mobilenet_v2/layer.10/conv_3x3/convolution/Conv,"[1, 1]",576 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L87,%359,Clip,1,576,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,576,14,14,/mobilenet_v2/layer.10/conv_3x3/activation/Clip_2,NA,NA,NA,NA,NA
+L88,%361,MatMul,96,576,NA,NA,1,576,196,NA,NA,NA,NA,NA,8,1,96,196,NA,/mobilenet_v2/layer.10/reduce_1x1/convolution/Conv_73,NA,NA,NA,NA,NA
+L89,%362,Add,1,96,196,NA,1,96,1,NA,NA,NA,NA,NA,8,1,96,196,NA,/mobilenet_v2/layer.10/reduce_1x1/convolution/Conv_51,NA,NA,NA,NA,NA
+L90,%364,Add,1,96,14,14,1,96,14,14,NA,NA,NA,NA,8,1,96,14,14,/mobilenet_v2/layer.10/Add,NA,NA,NA,NA,NA
+L91,%366,MatMul,576,96,NA,NA,1,96,196,NA,NA,NA,NA,NA,8,1,576,196,NA,/mobilenet_v2/layer.11/expand_1x1/convolution/Conv_85,NA,NA,NA,NA,NA
+L92,%367,Add,1,576,196,NA,1,576,1,NA,NA,NA,NA,NA,8,1,576,196,NA,/mobilenet_v2/layer.11/expand_1x1/convolution/Conv_61,NA,NA,NA,NA,NA
+L93,%369,Clip,1,576,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,576,14,14,/mobilenet_v2/layer.11/expand_1x1/activation/Clip_69,NA,NA,NA,NA,NA
+L94,%370,Conv,1,576,14,14,576,1,3,3,576,NA,NA,NA,8,1,576,14,14,/mobilenet_v2/layer.11/conv_3x3/convolution/Conv,"[1, 1]",576 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L95,%371,Clip,1,576,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,576,14,14,/mobilenet_v2/layer.11/conv_3x3/activation/Clip_15,NA,NA,NA,NA,NA
+L96,%373,MatMul,96,576,NA,NA,1,576,196,NA,NA,NA,NA,NA,8,1,96,196,NA,/mobilenet_v2/layer.11/reduce_1x1/convolution/Conv_91,NA,NA,NA,NA,NA
+L97,%374,Add,1,96,196,NA,1,96,1,NA,NA,NA,NA,NA,8,1,96,196,NA,/mobilenet_v2/layer.11/reduce_1x1/convolution/Conv_83,NA,NA,NA,NA,NA
+L98,%376,Add,1,96,14,14,1,96,14,14,NA,NA,NA,NA,8,1,96,14,14,/mobilenet_v2/layer.11/Add,NA,NA,NA,NA,NA
+L99,%378,MatMul,576,96,NA,NA,1,96,196,NA,NA,NA,NA,NA,8,1,576,196,NA,/mobilenet_v2/layer.12/expand_1x1/convolution/Conv_54,NA,NA,NA,NA,NA
+L100,%379,Add,1,576,196,NA,1,576,1,NA,NA,NA,NA,NA,8,1,576,196,NA,/mobilenet_v2/layer.12/expand_1x1/convolution/Conv_82,NA,NA,NA,NA,NA
+L101,%381,Clip,1,576,14,14,NA,NA,NA,NA,NA,NA,NA,NA,8,1,576,14,14,/mobilenet_v2/layer.12/expand_1x1/activation/Clip_136,NA,NA,NA,NA,NA
+L102,%382,Conv,1,576,14,14,576,1,3,3,576,NA,NA,NA,8,1,576,7,7,/mobilenet_v2/layer.12/conv_3x3/convolution/Conv,"[1, 1]",576 : si64,"[3, 3]","[0, 0, 1, 1]","[2, 2]"
+L103,%383,Clip,1,576,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,576,7,7,/mobilenet_v2/layer.12/conv_3x3/activation/Clip_161,NA,NA,NA,NA,NA
+L104,%385,MatMul,160,576,NA,NA,1,576,49,NA,NA,NA,NA,NA,8,1,160,49,NA,/mobilenet_v2/layer.12/reduce_1x1/convolution/Conv_23,NA,NA,NA,NA,NA
+L105,%386,Add,1,160,49,NA,1,160,1,NA,NA,NA,NA,NA,8,1,160,49,NA,/mobilenet_v2/layer.12/reduce_1x1/convolution/Conv_68,NA,NA,NA,NA,NA
+L106,%388,MatMul,960,160,NA,NA,1,160,49,NA,NA,NA,NA,NA,8,1,960,49,NA,/mobilenet_v2/layer.13/expand_1x1/convolution/Conv_17,NA,NA,NA,NA,NA
+L107,%389,Add,1,960,49,NA,1,960,1,NA,NA,NA,NA,NA,8,1,960,49,NA,/mobilenet_v2/layer.13/expand_1x1/convolution/Conv_65,NA,NA,NA,NA,NA
+L108,%391,Clip,1,960,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,960,7,7,/mobilenet_v2/layer.13/expand_1x1/activation/Clip_98,NA,NA,NA,NA,NA
+L109,%392,Conv,1,960,7,7,960,1,3,3,960,NA,NA,NA,8,1,960,7,7,/mobilenet_v2/layer.13/conv_3x3/convolution/Conv,"[1, 1]",960 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L110,%393,Clip,1,960,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,960,7,7,/mobilenet_v2/layer.13/conv_3x3/activation/Clip_12,NA,NA,NA,NA,NA
+L111,%395,MatMul,160,960,NA,NA,1,960,49,NA,NA,NA,NA,NA,8,1,160,49,NA,/mobilenet_v2/layer.13/reduce_1x1/convolution/Conv_45,NA,NA,NA,NA,NA
+L112,%396,Add,1,160,49,NA,1,160,1,NA,NA,NA,NA,NA,8,1,160,49,NA,/mobilenet_v2/layer.13/reduce_1x1/convolution/Conv_67,NA,NA,NA,NA,NA
+L113,%398,Add,1,160,7,7,1,160,7,7,NA,NA,NA,NA,8,1,160,7,7,/mobilenet_v2/layer.13/Add,NA,NA,NA,NA,NA
+L114,%400,MatMul,960,160,NA,NA,1,160,49,NA,NA,NA,NA,NA,8,1,960,49,NA,/mobilenet_v2/layer.14/expand_1x1/convolution/Conv_107,NA,NA,NA,NA,NA
+L115,%401,Add,1,960,49,NA,1,960,1,NA,NA,NA,NA,NA,8,1,960,49,NA,/mobilenet_v2/layer.14/expand_1x1/convolution/Conv_44,NA,NA,NA,NA,NA
+L116,%403,Clip,1,960,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,960,7,7,/mobilenet_v2/layer.14/expand_1x1/activation/Clip_16,NA,NA,NA,NA,NA
+L117,%404,Conv,1,960,7,7,960,1,3,3,960,NA,NA,NA,8,1,960,7,7,/mobilenet_v2/layer.14/conv_3x3/convolution/Conv,"[1, 1]",960 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L118,%405,Clip,1,960,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,960,7,7,/mobilenet_v2/layer.14/conv_3x3/activation/Clip_36,NA,NA,NA,NA,NA
+L119,%407,MatMul,160,960,NA,NA,1,960,49,NA,NA,NA,NA,NA,8,1,160,49,NA,/mobilenet_v2/layer.14/reduce_1x1/convolution/Conv_34,NA,NA,NA,NA,NA
+L120,%408,Add,1,160,49,NA,1,160,1,NA,NA,NA,NA,NA,8,1,160,49,NA,/mobilenet_v2/layer.14/reduce_1x1/convolution/Conv_10,NA,NA,NA,NA,NA
+L121,%410,Add,1,160,7,7,1,160,7,7,NA,NA,NA,NA,8,1,160,7,7,/mobilenet_v2/layer.14/Add,NA,NA,NA,NA,NA
+L122,%412,MatMul,960,160,NA,NA,1,160,49,NA,NA,NA,NA,NA,8,1,960,49,NA,/mobilenet_v2/layer.15/expand_1x1/convolution/Conv_40,NA,NA,NA,NA,NA
+L123,%413,Add,1,960,49,NA,1,960,1,NA,NA,NA,NA,NA,8,1,960,49,NA,/mobilenet_v2/layer.15/expand_1x1/convolution/Conv_24,NA,NA,NA,NA,NA
+L124,%415,Clip,1,960,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,960,7,7,/mobilenet_v2/layer.15/expand_1x1/activation/Clip_94,NA,NA,NA,NA,NA
+L125,%416,Conv,1,960,7,7,960,1,3,3,960,NA,NA,NA,8,1,960,7,7,/mobilenet_v2/layer.15/conv_3x3/convolution/Conv,"[1, 1]",960 : si64,"[3, 3]","[1, 1, 1, 1]","[1, 1]"
+L126,%417,Clip,1,960,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,960,7,7,/mobilenet_v2/layer.15/conv_3x3/activation/Clip_124,NA,NA,NA,NA,NA
+L127,%419,MatMul,320,960,NA,NA,1,960,49,NA,NA,NA,NA,NA,8,1,320,49,NA,/mobilenet_v2/layer.15/reduce_1x1/convolution/Conv_125,NA,NA,NA,NA,NA
+L128,%420,Add,1,320,49,NA,1,320,1,NA,NA,NA,NA,NA,8,1,320,49,NA,/mobilenet_v2/layer.15/reduce_1x1/convolution/Conv_138,NA,NA,NA,NA,NA
+L129,%421,MatMul,1280,320,NA,NA,1,320,49,NA,NA,NA,NA,NA,8,1,1280,49,NA,/mobilenet_v2/conv_1x1/convolution/Conv_114,NA,NA,NA,NA,NA
+L130,%422,Add,1,1280,49,NA,1,1280,1,NA,NA,NA,NA,NA,8,1,1280,49,NA,/mobilenet_v2/conv_1x1/convolution/Conv_139,NA,NA,NA,NA,NA
+L131,%424,Clip,1,1280,7,7,NA,NA,NA,NA,NA,NA,NA,NA,8,1,1280,7,7,/mobilenet_v2/conv_1x1/activation/Clip_152,NA,NA,NA,NA,NA
+L132,%427,Gemm,1,1280,NA,NA,1001,1280,NA,NA,1001,NA,NA,NA,8,1,1001,NA,NA,/classifier/Gemm,NA,NA,NA,NA,NA

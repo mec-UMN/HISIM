@@ -1,0 +1,98 @@
+HISIM-main-thermal-v1.1  local-run package
+built:   2026-10-02 16:49:29 CDT on ece-mecai-02
+source:  the hisim_thermal v1.1 development workspace on the server (live copy taken 2026-10-02 16:41:46)
+         HISIM-IMC/, HISIM-SystolicArray/ as in the workspace; hisim_thermal/ embedded into each (identical copies)
+         upstream base: HISIM-main.zip (HEAD bbdb07a)
+status:  PRE-FREEZE build. The final audit of v1.1 was still running at build time; hisim_thermal/ and the two
+         thermal wrappers may still change. Compare MD5SUMS with the workspace's snapshots/v1.0/MD5SUMS once frozen.
+checked: fresh Python 3.12.11 venv with requirements.txt only, no env vars:
+         IMC README case peak 315.112 K (37 s); SA default peak 298.321 K (2 min 49 s); 84 unit tests OK (2 slow skipped)
+english: 2026-10-02 README_LOCAL.md and CHANGELOG.md translated to English; one comment in
+         HISIM-SystolicArray/config.py (line 34) reworded to drop a non-ASCII folder path. No code logic changed;
+         that file's md5 is now 60c7faa26e6fd754c1de9d0875fa5e15 (workspace md5 listed below).
+source md5 of copied .py files (paths relative to the workspace):
+  7e1614ca2c4ed1087b46f2dca07dce6b  HISIM-IMC/analy_model.py
+  52cbac42f4b15f0df6fd9dde4ceeaded  HISIM-IMC/hisim_model.py
+  e1ee843c81ac0acf76b329abb72974a0  HISIM-IMC/Module_AI_Map/AI_Networks/MLP/mlp.py
+  c40f2fa2e8d196e8d2e0b8166aae2f0d  HISIM-IMC/Module_AI_Map/AI_Networks/MNIST/mnist_base.py
+  c87849ee3ab6d427fdea16dd445c7354  HISIM-IMC/Module_AI_Map/AI_Networks/NiN/data_utility.py
+  0a2f9bc243608bfd674ede380f99736a  HISIM-IMC/Module_AI_Map/AI_Networks/NiN/nin.py
+  c9036e2be76ceaf7a39f8de74015a0e0  HISIM-IMC/Module_AI_Map/util_chip/util_mapping.py
+  ab2a829e722eb055c6cdeff5c716bc3b  HISIM-IMC/Module_Compute/compute_IMC_model.py
+  f9e678e34fec7eb6ac9d5faf21e6fa87  HISIM-IMC/Module_Compute/functions.py
+  eb560e8927df36f5bbb97e88dab921c7  HISIM-IMC/Module_Network/aib_2_5d.py
+  8f822b0c06b8a51f21c213f2949c4f26  HISIM-IMC/Module_Network/network_model.py
+  0a523353b79bd101bc91c465ec02a5dd  HISIM-IMC/Module_Network/orion_power_area.py
+  2a353031def5d639d0c97c4b079e5d56  HISIM-IMC/Module_Thermal/H2_5D_thermal.py
+  6a6cf6b860f29a3a36c2bfb974c71a8c  HISIM-IMC/Module_Thermal/H2_5D_thermal_v1.py
+  74260588d4e74ac55ee2457566931086  HISIM-IMC/Module_Thermal/legacy_exact/H2_5D_thermal.py
+  268d84eb5d22a2db4c24df13f6dfca4c  HISIM-IMC/Module_Thermal/legacy_exact/__init__.py
+  e33f92e0e1281f4582821ce7a26ea646  HISIM-IMC/Module_Thermal/legacy_exact/thermal_model.py
+  d2e00e5a82ff9c7943ff14511c484754  HISIM-IMC/Module_Thermal/legacy_exact/util.py
+  4ed3ebf7d9bea88d345a4406a0c240d2  HISIM-IMC/Module_Thermal/legacy/H2_5D_thermal.py
+  645c042085f090ed2557383e39fde5b1  HISIM-IMC/Module_Thermal/legacy/__init__.py
+  58e7d89c3b60723bf876b8e45018e074  HISIM-IMC/Module_Thermal/legacy/thermal_model.py
+  fce1c3572ba69165596a4a550194a695  HISIM-IMC/Module_Thermal/legacy/util.py
+  c8ce083ebf27457ce803349e3a78f79c  HISIM-IMC/Module_Thermal/thermal_model.py
+  f49aa8a9a8472de5ea203b06be64d125  HISIM-IMC/Module_Thermal/util.py
+  fcd6e65322903ec432101f12f6370081  HISIM-IMC/Module_Thermal/util_thermal.py
+  7f933cc55017b42d5248a7ddc4a6fd78  HISIM-IMC/Previous/H2_5D_thermal.py
+  fcd6e65322903ec432101f12f6370081  HISIM-IMC/Previous/util_thermal.py
+  5eabb213fd38ff97efbf376049079177  HISIM-IMC/run.py
+  4e104e5bb2c4bf41f1111724fd1e400e  HISIM-IMC/run_tb.py
+  8b17b5396e69ab9ecdb0e393ce048a4a  HISIM-SystolicArray/config_golden.py
+  c2b4a94d8a8aac360ca63e8e91179541  HISIM-SystolicArray/config.py
+  f07e4895743f6bcd929beb82822b4f07  HISIM-SystolicArray/HISIM_1_0_Files_Main/hisim_model.py
+  99dfebf147944f89dc5fdd532ccbc84b  HISIM-SystolicArray/HISIM_1_0_Files_Main/SA_run_tb.py
+  2b9bf94fce6843fa0d90790f90effcbc  HISIM-SystolicArray/HISIM.py
+  e1ee843c81ac0acf76b329abb72974a0  HISIM-SystolicArray/Module_0_AI_Map/HISIM_1_0_Network_csv/AI_Networks/MLP/mlp.py
+  c40f2fa2e8d196e8d2e0b8166aae2f0d  HISIM-SystolicArray/Module_0_AI_Map/HISIM_1_0_Network_csv/AI_Networks/MNIST/mnist_base.py
+  c87849ee3ab6d427fdea16dd445c7354  HISIM-SystolicArray/Module_0_AI_Map/HISIM_1_0_Network_csv/AI_Networks/NiN/data_utility.py
+  0a2f9bc243608bfd674ede380f99736a  HISIM-SystolicArray/Module_0_AI_Map/HISIM_1_0_Network_csv/AI_Networks/NiN/nin.py
+  8109bf3cbeeaed55d8539a153f265974  HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_1_0_Files/util_mapping.py
+  021742a5271c1ee847d3dc7cb7196647  HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_2_0_Files/HW_Map.py
+  15302b9bc910bbf0a0c427895ec4dd37  HISIM-SystolicArray/Module_1_Compute/HISIM_1_0_Files/compute_SA_model.py
+  89b7b0d5a13d5ed792d60309f0d9ac52  HISIM-SystolicArray/Module_1_Compute/HISIM_1_0_Files/functions_SA.py
+  577462d9f5cfcded8db864e5ed24e6b2  HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/Compute.py
+  4ecb7187b07d525f97a37acb2cf9e702  HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/CPU.py
+  562e0f1aecd54ec56282c43d8c08e8f2  HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/Mem.py
+  067bfdfc53ac86fc7f5b53a0e7230a37  HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/SA.py
+  103c47abb422505120b852cf32677f3a  HISIM-SystolicArray/Module_2_Network/aib_2_5d.py
+  c5ebc35daff8ff099c2ad11f08d8f8fa  HISIM-SystolicArray/Module_2_Network/HISIM_1_0_Files/network_model.py
+  f2c168d5db5e5e322b03bac068857553  HISIM-SystolicArray/Module_2_Network/HISIM_2_0_Files/Network.py
+  9bce6a1fdab0d03ec1c01a337544b9c3  HISIM-SystolicArray/Module_2_Network/HISIM_2_0_Files/Optimizer.py
+  e43443de0c4e7d47e220bd1a2c9e507e  HISIM-SystolicArray/Module_2_Network/orion_power_area.py
+  e99887f52629e3f730af3b7819cd40c3  HISIM-SystolicArray/Module_3_Cost/Cost_Models.py
+  0c27f964fa1fadc2e8cb2c309007b9e7  HISIM-SystolicArray/Module_3_Cost/Cost.py
+  c2c72e539776798b6c9ad13616415d2c  HISIM-SystolicArray/Module_4_Thermal/HISIM_1_0_Files/H2_5D_thermal.py
+  6a6cf6b860f29a3a36c2bfb974c71a8c  HISIM-SystolicArray/Module_4_Thermal/HISIM_1_0_Files/H2_5D_thermal_v1.py
+  c7bae9e123d3eab363ee8ebe1e670d2d  HISIM-SystolicArray/Module_4_Thermal/HISIM_1_0_Files/thermal_model.py
+  a6c4a18b5553eedc465e2123ffaffa9d  HISIM-SystolicArray/Module_4_Thermal/HISIM_1_0_Files/util.py
+  fcd6e65322903ec432101f12f6370081  HISIM-SystolicArray/Module_4_Thermal/HISIM_1_0_Files/util_thermal.py
+  81dfa3b5cf2e9b94ca564ba4b5aa77c3  HISIM-SystolicArray/Module_4_Thermal/HISIM_2_0_Files/thermal.py
+  397196303ef18d2ddbcd96f434af5c69  HISIM-SystolicArray/Module_5_ONNX/parser_filter.py
+  56710a2277f0f2eb92ca8601e69a1577  HISIM-SystolicArray/Postprocessing_Files/chiplet_dse/run_postprocess_chipletdse.py
+  c43d9854854e04a1dfb8a22ba49dbb1f  HISIM-SystolicArray/Postprocessing_Files/mem_dse/run_postprocess_memdse.py
+  4e86059182b9d4f477223dd10a1fee58  HISIM-SystolicArray/Postprocessing_Files/network_dse/run_postprocess_networkdse.py
+  efe247d5db0e40f30835de44e6557b6a  HISIM-SystolicArray/run_HISIM_chipletdse.py
+  1818560476b4356e095529d9926f6389  HISIM-SystolicArray/run_HISIM_memdse.py
+  edea86c0ecb969a49b55ef76008a4492  HISIM-SystolicArray/run_HISIM_networkdse.py
+  f0f27ef6ba59f360da12a16346788ce3  hisim_thermal/adapters/imc.py
+  d41d8cd98f00b204e9800998ecf8427e  hisim_thermal/adapters/__init__.py
+  dce0834d88eee4857aee62ef7ba8e6cf  hisim_thermal/adapters/sa.py
+  7b59c6cb7c605e9e68c84787ba742584  hisim_thermal/assemble.py
+  7a7f8bc79c916bb6aeea7e383a346cfa  hisim_thermal/config.py
+  a7888339019384f700997c8343866908  hisim_thermal/driver.py
+  993bfd2237ecbbd737539a5d62bc7a5b  hisim_thermal/floorplan.py
+  d157afaf725bd7bf9332e0ed52315b6a  hisim_thermal/gci.py
+  8967f41752198b0eddae40b07b628a58  hisim_thermal/__init__.py
+  65b0f70eb911a487ec9ff68dd45b43c7  hisim_thermal/layout.py
+  bdd1d84637046b5ce18085194668755e  hisim_thermal/materials.py
+  4b86ac903f3dc45b4c256d3310757f52  hisim_thermal/mesh.py
+  490cf37294c800972bcf45660ba3929d  hisim_thermal/neutral_input.py
+  75b92a026fc5f9a8ff9723794ae5fbda  hisim_thermal/output.py
+  c716623a7e8f09532428eaa28fc2e1ff  hisim_thermal/plots.py
+  312b85893223bccf1e25e3ff578f4859  hisim_thermal/power.py
+  1fbe9ff1a39d20cb69ce8726c0ec080c  hisim_thermal/solve.py
+  270a3c4469f25d86d797594a973f39cf  hisim_thermal/stack.py
+  c1483760a485eebd47aa400938b6935b  hisim_thermal/viewer.py

@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 601, in main
+    thermal = run_thermal_step(G_chip, G_stack, G_sys, mesh_size, thermal_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 140, in run_thermal_step
+    plan = _plan_resolution(G_chip, G_stack, G_sys, mesh_size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 133, in _plan_resolution
+    return plan_resolution(G_chip, G_stack, G_sys, mesh_size,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_thermal.py", line 65, in plan_resolution
+    ti = from_sa(G_chip, G_stack, G_sys, cfg, mesh_size=mesh_size, rule=rule)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/hisim_thermal/adapters/sa.py", line 92, in from_sa
+    raise NotImplementedError('stacks with different tier counts ({}) are not supported'.format(
+NotImplementedError: stacks with different tier counts ({'S1': 1, 'S2': 2}) are not supported
+
+Traceback (most recent call last):
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 696, in <module>
+    main()
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 601, in main
+    thermal = run_thermal_step(G_chip, G_stack, G_sys, mesh_size, thermal_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 140, in run_thermal_step
+    plan = _plan_resolution(G_chip, G_stack, G_sys, mesh_size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 133, in _plan_resolution
+    return plan_resolution(G_chip, G_stack, G_sys, mesh_size,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_thermal.py", line 65, in plan_resolution
+    ti = from_sa(G_chip, G_stack, G_sys, cfg, mesh_size=mesh_size, rule=rule)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/hisim_thermal/adapters/sa.py", line 92, in from_sa
+    raise NotImplementedError('stacks with different tier counts ({}) are not supported'.format(
+NotImplementedError: stacks with different tier counts ({'S1': 1, 'S2': 2}) are not supported

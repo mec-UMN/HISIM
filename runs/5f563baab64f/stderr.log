@@ -1,0 +1,27 @@
+Matplotlib created a temporary cache directory at /var/folders/66/x1dxz7w53flfmrkdb5kjlkwh0000gn/T/matplotlib-mk4125py because the default path (/Users/ganapat0706/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+
+Fontconfig error: No writable cache directories
+	/opt/homebrew/var/cache/fontconfig
+	/Users/ganapat0706/.cache/fontconfig
+	/Users/ganapat0706/.fontconfig
+
+Fontconfig error: No writable cache directories
+	/opt/homebrew/var/cache/fontconfig
+	/Users/ganapat0706/.cache/fontconfig
+	/Users/ganapat0706/.fontconfig
+
+Fontconfig error: No writable cache directories
+	/opt/homebrew/var/cache/fontconfig
+	/Users/ganapat0706/.cache/fontconfig
+	/Users/ganapat0706/.fontconfig
+
+Fontconfig error: No writable cache directories
+	/opt/homebrew/var/cache/fontconfig
+	/Users/ganapat0706/.cache/fontconfig
+	/Users/ganapat0706/.fontconfig
+Traceback (most recent call last):
+  File "/Users/ganapat0706/HISIM_GUI/HISIM-SystolicArray/HISIM.py", line 2, in <module>
+    from Module_1_Compute.HISIM_2_0_Files.Compute import compute_main_fn
+  File "/Users/ganapat0706/HISIM_GUI/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/Compute.py", line 10, in <module>
+    from prettytable import PrettyTable
+ModuleNotFoundError: No module named 'prettytable'

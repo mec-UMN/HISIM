@@ -1,0 +1,13 @@
+AI mapping sim time is: 0.0560450553894043 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 37.585888821499886 mm2
+Memory Area of the Chip is: 2059.779218400002 mm2
+Compute Latency of the Chip is: 7.735403538761898 s
+Memory Latency of the Chip is: 0.027987354000000027 s
+DDR Latency of the Chip is: 1.0375000000000001e-07 s
+Compute Energy of the Chip is: 0.04962802495406317 J
+Memory Energy of the Chip is: 4.039015073436493e-05 J
+DDR Energy of the Chip is: 1.225e-10 J
+----------------------------------------
+Computing model sim time is: 0.5680530071258545 s
+Error: Tile C1_T2 has router area 0.0347 mm^2 greater than half of the tile area 0.0376 mm^2. Please increase the tile area or reduce the number of links.

@@ -1,0 +1,35 @@
+{
+  "id": "0b0556721c71",
+  "name": "mobilenetv2 3D_Mesh",
+  "status": "failed",
+  "created_at": "2026-05-18T08:32:01.542463",
+  "updated_at": "2026-05-18T08:32:02.466989",
+  "config": {
+    "aimodel": "mobilenetv2",
+    "debug": false,
+    "create_default_files": true,
+    "default_files_generic": true,
+    "type_default_files": "3D_Mesh",
+    "set_suff_banks": true,
+    "stack_count": 3,
+    "chip_count": 6,
+    "tile_count_dict": {
+      "SA": 4,
+      "CPU": 5,
+      "Mem_I": 11,
+      "Mem_W": 12,
+      "Mem_O": 11
+    },
+    "extra_parameters": {}
+  },
+  "return_code": 1,
+  "error": "Traceback (most recent call last):\n  File \"/Users/ganapat0706/HISIM_GUI/HISIM-SystolicArray/HISIM.py\", line 65, in <module>\n    G_ai_model=load_ai_network(aimodel)\n               ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/ganapat0706/HISIM_GUI/HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_2_0_Files/HW_Map.py\", line 444, in load_ai_network\n    chip_map, mem_spec, sa_spec, layer_spec, sys_map, net_spec = create_default_files(G, TYPE_DEFAULT_FILES)\n                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/ganapat0706/HISIM_GUI/HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_2_0_Files/HW_Map.py\", line 130, in create_default_files\n    chip_idx+=chip_increment\n              ^^^^^^^^^^^^^^\nUnboundLocalError: cannot access local variable 'chip_increment' where it is not associated with a value\n",
+  "stdout_path": "/Users/ganapat0706/HISIM_GUI/runs/0b0556721c71/stdout.log",
+  "stderr_path": "/Users/ganapat0706/HISIM_GUI/runs/0b0556721c71/stderr.log",
+  "artifacts": [
+    "/Users/ganapat0706/HISIM_GUI/runs/0b0556721c71/artifacts/output_summary.txt",
+    "/Users/ganapat0706/HISIM_GUI/runs/0b0556721c71/artifacts/HW_configs",
+    "/Users/ganapat0706/HISIM_GUI/runs/0b0556721c71/artifacts/Network_configs"
+  ],
+  "metrics": {}
+}

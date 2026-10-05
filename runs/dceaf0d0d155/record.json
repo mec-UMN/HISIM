@@ -1,0 +1,65 @@
+{
+  "id": "dceaf0d0d155",
+  "name": "gpt2 · 2_5D_Mesh",
+  "status": "failed",
+  "created_at": "2026-08-20T13:03:46.881009Z",
+  "updated_at": "2026-08-20T13:03:49.219555Z",
+  "config": {
+    "aimodel": "gpt2",
+    "parse_mlir_output": true,
+    "debug": false,
+    "create_default_files": true,
+    "default_files_generic": true,
+    "type_default_files": "2_5D_Mesh",
+    "set_suff_banks": true,
+    "stack_count": 4,
+    "chip_count": 4,
+    "tile_count_dict": {
+      "SA": 2,
+      "CPU": 2,
+      "Mem_I": 1,
+      "Mem_W": 1,
+      "Mem_O": 1
+    },
+    "sa_size_x": 369,
+    "sa_size_y": 16,
+    "n_sa": 26,
+    "precision_bits": 4,
+    "clock_hz": 1500000000.0,
+    "n_bank": 1,
+    "n_word": 1024,
+    "n_bit": 320,
+    "col_mux": 4,
+    "n_2d_links_per_tile": 80,
+    "n_3d_links_per_tile": 80,
+    "n_2_5d_channels_per_chiplet_edge": 1,
+    "extra_parameters": {}
+  },
+  "return_code": 1,
+  "error": "/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/SA.py\", line 168, in energy_sa_tile\n    energy_buf += determine_buffer_energy(lut_row[\"P_freq_uW_MHz_read\"], lut_row[\"P_freq_uW_MHz_write\"],row[\"Clock Frequency (Hz)\"], lut_row[\"K_lut_read\"], lut_row[\"K_lut_write\"], row_buf[\"F_actbitlines\"], row_buf[\"F_non_zeros_r\"],row_buf[\"F_non_zeros_w\"], tile_latency_breakdown[chip_tile_idx][layer_idx][\"latency_buf_rd\"][buf_type], 0)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/Mem.py\", line 135, in determine_buffer_energy\n    K_lut_read.values[0]=0.5018\n    ~~~~~~~~~~~~~~~~~^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py\", line 2237, in __setitem__\n    value = self._maybe_convert_setitem_value(value)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/core/arrays/string_arrow.py\", line 287, in _maybe_convert_setitem_value\n    raise TypeError(\nTypeError: Invalid value '0.5018' for dtype 'str'. Value should be a string or missing value, got 'float' instead.\n\nTraceback (most recent call last):\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py\", line 563, in <module>\n    main()\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py\", line 465, in main\n    G_chip, tile_map, mem_req, ip_list = compute_main_fn(G_ai_model, G_chip, tile_ids)\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/Compute.py\", line 396, in compute_main_fn\n    tile_energy, tile_energy_breakdown, compute_energy = energy_sa_tile(sa_df, compute_json_data, tile_energy, tile_latency_breakdown, tile_latency,tile_buf_df, lut_df)\n                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/SA.py\", line 168, in energy_sa_tile\n    energy_buf += determine_buffer_energy(lut_row[\"P_freq_uW_MHz_read\"], lut_row[\"P_freq_uW_MHz_write\"],row[\"Clock Frequency (Hz)\"], lut_row[\"K_lut_read\"], lut_row[\"K_lut_write\"], row_buf[\"F_actbitlines\"], row_buf[\"F_non_zeros_r\"],row_buf[\"F_non_zeros_w\"], tile_latency_breakdown[chip_tile_idx][layer_idx][\"latency_buf_rd\"][buf_type], 0)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/Mem.py\", line 135, in determine_buffer_energy\n    K_lut_read.values[0]=0.5018\n    ~~~~~~~~~~~~~~~~~^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/core/arrays/arrow/array.py\", line 2237, in __setitem__\n    value = self._maybe_convert_setitem_value(value)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/core/arrays/string_arrow.py\", line 287, in _maybe_convert_setitem_value\n    raise TypeError(\nTypeError: Invalid value '0.5018' for dtype 'str'. Value should be a string or missing value, got 'float' instead.\n",
+  "stdout_path": "/Users/ganapat0706/HISIM_GUI_nice/runs/dceaf0d0d155/stdout.log",
+  "stderr_path": "/Users/ganapat0706/HISIM_GUI_nice/runs/dceaf0d0d155/stderr.log",
+  "artifacts": [
+    "output_summary.txt",
+    "HW_configs",
+    "Network_configs",
+    "Chip_Map_gpt2.csv",
+    "Sys_Map_gpt2.csv",
+    "Layer_Mapping_gpt2.csv"
+  ],
+  "metrics": {
+    "ai_mapping_sim_time": 0.03615283966064453
+  },
+  "counts": {},
+  "warnings": [],
+  "errors": [
+    "Error: Invalid value '0.5018' for dtype 'str'. Value should be a string or missing value, got 'float' instead."
+  ],
+  "duration_s": 2.334573,
+  "group": null,
+  "group_label": null,
+  "sweep_knob": null,
+  "sweep_knob_label": null,
+  "sweep_value": null,
+  "sweep_model": null
+}

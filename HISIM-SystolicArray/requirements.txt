@@ -1,0 +1,5 @@
+# The complete runtime dependency set is maintained at the repository root.
+-r ../requirements.txt
+
+# Optional: install pygraphviz and system Graphviz only when HISIM DEBUG
+# figure generation is enabled.

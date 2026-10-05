@@ -1,0 +1,48 @@
+Exported the generated input files for 'gpt2' to:
+  /Users/ganapat0706/HISIM_GUI_nice/runs/14eef1316c52/input_files/gpt2
+  Edit them there, then set config.CREATE_DEFAULT_FILES = False to run on your own files.
+==========================================================================
+Validating input CSV files for 'gpt2'
+==========================================================================
+Warnings: C013 x1
+  (run `python validate_maps.py -v` or set config.VALIDATE_VERBOSE = True for details)
+0 error(s), 1 warning(s).
+Validation passed. Running HISIM.
+==========================================================================
+AI mapping sim time is: 0.10651016235351562 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 37.585888821499886 mm2
+Memory Area of the Chip is: 1091.6207115000013 mm2
+Compute Latency of the Chip is: 7.735403538761898 s
+Memory Latency of the Chip is: 0.027987354000000027 s
+DDR Latency of the Chip is: 1.0375000000000001e-07 s
+Compute Energy of the Chip is: 0.04962802495406317 J
+Memory Energy of the Chip is: 4.039207696400394e-05 J
+DDR Energy of the Chip is: 1.225e-10 J
+----------------------------------------
+Computing model sim time is: 0.5212297439575195 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 5.538607923199965
+Total NoP Interface Area (in mm^2) 0.9490583112749368
+Total NoP Router Area (in mm^2) 0.016658411520000003
+Total 2D Network NoC latency (in s) 0.09959489830000011
+Total 2D Network NoC energy (in J) 4.93158929465584e-05
+Total 2.5D Network NoP latency (in s) 0
+Total 2.5D Network NoP energy (in J) 0
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 1135.7109249674993
+Total End-to-End Latency (in s) 7.862985791061876
+Total Chip Energy (in J) 0.049717732923973655
+----------------------------------------
+Network model sim time is: 0.09984731674194336 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  20704783741.556023
+Total NRE Cost ($):  85747869.28620577
+Total Cost per Part ($):  415.81063221684457
+----------------------------------------
+Cost model sim time is: 0.002977609634399414 s
+Total sim time is: 0.7305648326873779 s

@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 38, in <module>
+    from Module_2_Network.HISIM_2_0_Files.Network import network_main_fn
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_2_Network/HISIM_2_0_Files/Network.py", line 6, in <module>
+    from Module_2_Network.orion_power_area import power_router_single, area_router_single
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_2_Network/orion_power_area.py", line 3, in <module>
+    import scipy.sparse as sparse_mat
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/__init__.py", line 315, in <module>
+    from . import csgraph
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/csgraph/__init__.py", line 187, in <module>
+    from ._laplacian import laplacian
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/csgraph/_laplacian.py", line 7, in <module>
+    from scipy.sparse.linalg import LinearOperator
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/linalg/__init__.py", line 132, in <module>
+    from ._eigen import *
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/linalg/_eigen/__init__.py", line 11, in <module>
+    from ._svds import svds
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/linalg/_eigen/_svds.py", line 10, in <module>
+    from scipy.sparse.linalg._svdp import _svdp
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/linalg/_svdp.py", line 23, in <module>
+    from ._propack import _spropack  # type: ignore[attr-defined]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: dlopen(/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-311-darwin.so, 0x0002): tried: '/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-311-darwin.so' (section '__DATA/__thread_bss' has a zero-fill section type, but offset field is not zero), '/System/Volumes/Preboot/Cryptexes/OS/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-311-darwin.so' (no such file), '/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/scipy/sparse/linalg/_propack/_spropack.cpython-311-darwin.so' (section '__DATA/__thread_bss' has a zero-fill section type, but offset field is not zero)

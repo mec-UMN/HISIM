@@ -1,0 +1,2 @@
+/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_3_Cost/Cost_Models.py:40: RuntimeWarning: divide by zero encountered in scalar divide
+  C_die = k_die/Y_die

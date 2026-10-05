@@ -1,0 +1,61 @@
+{
+  "id": "2f2b0e0dbfc9",
+  "name": "llama · 3_5D_Mesh",
+  "status": "failed",
+  "created_at": "2026-08-21T15:44:07.021463Z",
+  "updated_at": "2026-08-21T15:44:09.363742Z",
+  "config": {
+    "aimodel": "llama",
+    "parse_mlir_output": false,
+    "debug": false,
+    "create_default_files": false,
+    "default_files_generic": true,
+    "type_default_files": "3_5D_Mesh",
+    "set_suff_banks": false,
+    "stack_count": 3,
+    "chip_count": 2,
+    "tile_count_dict": {
+      "SA": 2,
+      "CPU": 2,
+      "Mem_I": 1,
+      "Mem_W": 1,
+      "Mem_O": 1
+    },
+    "sa_size_x": 16,
+    "sa_size_y": 16,
+    "n_sa": 2,
+    "precision_bits": 8,
+    "clock_hz": 1000000000.0,
+    "n_bank": 1,
+    "n_word": 1024,
+    "n_bit": 320,
+    "col_mux": 4,
+    "n_2d_links_per_tile": 80,
+    "n_3d_links_per_tile": 80,
+    "n_2_5d_channels_per_chiplet_edge": 1,
+    "extra_parameters": {}
+  },
+  "return_code": 1,
+  "error": "Traceback (most recent call last):\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py\", line 458, in main\n    ) = load_ai_chip(\n        ^^^^^^^^^^^^^\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_2_0_Files/HW_Map.py\", line 482, in load_ai_chip\n    chip_df = pd.read_csv(chip_config)\n              ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 873, in read_csv\n    return _read(filepath_or_buffer, kwds)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 300, in _read\n    parser = TextFileReader(filepath_or_buffer, **kwds)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 1645, in __init__\n    self._engine = self._make_engine(f, self.engine)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 1904, in _make_engine\n    self.handles = get_handle(\n                   ^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/common.py\", line 930, in get_handle\n    handle = open(\n             ^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Chip_Map_llama.csv'\n\nTraceback (most recent call last):\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py\", line 563, in <module>\n    main()\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py\", line 458, in main\n    ) = load_ai_chip(\n        ^^^^^^^^^^^^^\n  File \"/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_2_0_Files/HW_Map.py\", line 482, in load_ai_chip\n    chip_df = pd.read_csv(chip_config)\n              ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 873, in read_csv\n    return _read(filepath_or_buffer, kwds)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 300, in _read\n    parser = TextFileReader(filepath_or_buffer, **kwds)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 1645, in __init__\n    self._engine = self._make_engine(f, self.engine)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/parsers/readers.py\", line 1904, in _make_engine\n    self.handles = get_handle(\n                   ^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/pandas/io/common.py\", line 930, in get_handle\n    handle = open(\n             ^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Chip_Map_llama.csv'\n",
+  "stdout_path": "/Users/ganapat0706/HISIM_GUI_nice/runs/2f2b0e0dbfc9/stdout.log",
+  "stderr_path": "/Users/ganapat0706/HISIM_GUI_nice/runs/2f2b0e0dbfc9/stderr.log",
+  "artifacts": [
+    "Results",
+    "output_summary.txt",
+    "HW_configs",
+    "Network_configs"
+  ],
+  "metrics": {},
+  "counts": {},
+  "warnings": [],
+  "errors": [
+    "Error: [Errno 2] No such file or directory: '/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Chip_Map_llama.csv'"
+  ],
+  "duration_s": 2.341827,
+  "group": null,
+  "group_label": null,
+  "sweep_knob": null,
+  "sweep_knob_label": null,
+  "sweep_value": null,
+  "sweep_model": null
+}

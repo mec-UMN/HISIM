@@ -1,0 +1,37 @@
+AI mapping sim time is: 0.037866830825805664 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 168.41900125100065 mm2
+Memory Area of the Chip is: 81.92097480000004 mm2
+Compute Latency of the Chip is: 0.2335005977785997 s
+Memory Latency of the Chip is: 0.006523731999999987 s
+DDR Latency of the Chip is: 0.006024591250000005 s
+Compute Energy of the Chip is: 0.0017047246987060719 J
+Memory Energy of the Chip is: 9.41521963943203e-06 J
+DDR Energy of the Chip is: 1.0289019999999996e-05 J
+----------------------------------------
+Computing model sim time is: 0.3639490604400635 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 5.607268351999963
+Total NoP Interface Area (in mm^2) 2.8471749338248107
+Total NoP Router Area (in mm^2) 0.06663364608000001
+Total 2D Network NoC latency (in s) 0.017034716799999947
+Total 2D Network NoC energy (in J) 8.42986584063003e-06
+Total 2.5D Network NoP latency (in s) 0.10390185268270456
+Total 2.5D Network NoP energy (in J) 0.00022828303055301945
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 258.861052982904
+Total End-to-End Latency (in s) 0.360960899261304
+Total Chip Energy (in J) 0.0019508528147391515
+----------------------------------------
+Network model sim time is: 0.15225815773010254 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1376610344.2715974
+Total NRE Cost ($):  57229904.33266378
+Total Cost per Part ($):  28.676804972085222
+----------------------------------------
+Cost model sim time is: 0.00341796875 s
+Total sim time is: 0.5574920177459717 s

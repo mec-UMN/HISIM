@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 446, in main
+    G_ai_model = load_ai_network(aimodel)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_2_0_Files/HW_Map.py", line 444, in load_ai_network
+    chip_map, mem_spec, sa_spec, layer_spec, sys_map, net_spec = create_default_files(G, TYPE_DEFAULT_FILES)
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_2_0_Files/HW_Map.py", line 130, in create_default_files
+    chip_idx+=chip_increment
+              ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'chip_increment' where it is not associated with a value
+
+Traceback (most recent call last):
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 563, in <module>
+    main()
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/gui_run.py", line 446, in main
+    G_ai_model = load_ai_network(aimodel)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_2_0_Files/HW_Map.py", line 444, in load_ai_network
+    chip_map, mem_spec, sa_spec, layer_spec, sys_map, net_spec = create_default_files(G, TYPE_DEFAULT_FILES)
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ganapat0706/HISIM_GUI_nice/HISIM-SystolicArray/Module_0_AI_Map/util_chip/HISIM_2_0_Files/HW_Map.py", line 130, in create_default_files
+    chip_idx+=chip_increment
+              ^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'chip_increment' where it is not associated with a value

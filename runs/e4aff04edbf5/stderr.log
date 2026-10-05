@@ -1,0 +1,22 @@
+
+Fontconfig error: No writable cache directories
+	/opt/homebrew/var/cache/fontconfig
+	/Users/ganapat0706/.cache/fontconfig
+	/Users/ganapat0706/.fontconfig
+
+Fontconfig error: No writable cache directories
+	/opt/homebrew/var/cache/fontconfig
+	/Users/ganapat0706/.cache/fontconfig
+	/Users/ganapat0706/.fontconfig
+
+Fontconfig error: No writable cache directories
+	/opt/homebrew/var/cache/fontconfig
+	/Users/ganapat0706/.cache/fontconfig
+	/Users/ganapat0706/.fontconfig
+
+Fontconfig error: No writable cache directories
+	/opt/homebrew/var/cache/fontconfig
+	/Users/ganapat0706/.cache/fontconfig
+	/Users/ganapat0706/.fontconfig
+/Users/ganapat0706/HISIM_GUI/HISIM-SystolicArray/Module_1_Compute/HISIM_2_0_Files/Compute.py:135: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value 'True' has dtype incompatible with float64, please explicitly cast to a compatible dtype first.
+  mem_df.loc[idx, "DDR_access_tn"]=ddr_access_bn

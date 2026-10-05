@@ -1,0 +1,4 @@
+Chiplet ID,Stack ID,Tier ID,NoP Position
+C1,S1,TR0,"0,0,0"
+C2,S2,TR0,"0,1,0"
+C3,S2,TR1,"0,1,1"

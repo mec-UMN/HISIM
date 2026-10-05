@@ -1,0 +1,21 @@
+# Python / OS
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.DS_Store
+
+# Per-run scratch the GUI does not read back (each run keeps record.json, gui_result.json,
+# logs, config_used.py and thermal/maps.json)
+runs/*/engine/
+runs/*/input_files/
+runs/*/artifacts/
+runs/*/matplotlib/
+runs/*/thermal/*
+!runs/*/thermal/maps.json
+runs/*/thermal_result.json
+
+# Engine outputs written by command-line runs
+HISIM-SystolicArray/Results/
+HISIM-SystolicArray/output_summary.txt
+HISIM-SystolicArray/G_chip_G_stack.pkl

@@ -1,0 +1,9 @@
+Layer ID,Type,Function,in1_dim1,in1_dim2,in1_dim3,in1_dim4,in2_dim1,in2_dim2,in2_dim3,in2_dim4,Parallel,A,B,C
+L1,Conv,AxB mul BxC,Temporal,B1,C1-Unroll-out1_dim3,C2-Unroll-out1_dim4,A,B1,B2,B3,NA,Auto,SA_size_x,n_SA*SA_size_y
+L3,Conv,AxB mul BxC,Temporal,B1,C1-Unroll-out1_dim3,C2-Unroll-out1_dim4,A,B1,B2,B3,NA,Auto,SA_size_x,n_SA*SA_size_y
+L5,Conv,AxB mul BxC,Temporal,B1,C1-Unroll-out1_dim3,C2-Unroll-out1_dim4,A,B1,B2,B3,NA,Auto,SA_size_x,n_SA*SA_size_y
+L7,Conv,AxB mul BxC,Temporal,B1,C1-Unroll-out1_dim3,C2-Unroll-out1_dim4,A,B1,B2,B3,NA,Auto,SA_size_x,n_SA*SA_size_y
+L9,Conv,AxB mul BxC,Temporal,B1,C1-Unroll-out1_dim3,C2-Unroll-out1_dim4,A,B1,B2,B3,NA,Auto,SA_size_x,n_SA*SA_size_y
+L11,Gemm,AxB mul BxC,A,B,NA,NA,C,B,NA,NA,NA,Auto,SA_size_x,n_SA*SA_size_y
+L13,Gemm,AxB mul BxC,A,B,NA,NA,B,C,NA,NA,NA,Auto,SA_size_x,n_SA*SA_size_y
+L15,Gemm,AxB mul BxC,A,B,NA,NA,C,B,NA,NA,NA,Auto,SA_size_x,n_SA*SA_size_y

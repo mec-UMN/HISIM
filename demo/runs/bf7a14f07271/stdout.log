@@ -1,0 +1,53 @@
+Creating files for 2.5D configuration based on user input
+Exported the generated input files for 'resnet50' to:
+  /Users/ganapat0706/HISIM_GUI_nice/uploaded_files/resnet50
+  (the previous set was kept in /Users/ganapat0706/HISIM_GUI_nice/uploaded_files/resnet50/previous)
+  Edit them there, then set config.CREATE_DEFAULT_FILES = False to run on your own files.
+==========================================================================
+Validating input CSV files for 'resnet50'
+==========================================================================
+Warnings: C013 x4
+  (run `python validate_maps.py -v` or set config.VALIDATE_VERBOSE = True for details)
+0 error(s), 4 warning(s).
+Validation passed. Running HISIM.
+==========================================================================
+AI mapping sim time is: 0.03797006607055664 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 3.951798667999998 mm2
+Memory Area of the Chip is: 114.10421490000002 mm2
+Compute Latency of the Chip is: 0.26335223377860006 s
+Memory Latency of the Chip is: 0.0027685200000000004 s
+DDR Latency of the Chip is: 1.216625e-05 s
+Compute Energy of the Chip is: 0.0017464217956691148 J
+Memory Energy of the Chip is: 3.99560004552e-06 J
+DDR Energy of the Chip is: 2.086e-08 J
+----------------------------------------
+Computing model sim time is: 0.2234327793121338 s
+----------Network Summary---------------
+Total NoC Area (in mm^2) 1.1443404800000032
+Total NoP Interface Area (in mm^2) 3.796233245099748
+Total NoP Router Area (in mm^2) 0.06663364608000001
+Total 2D Network NoC latency (in s) 0.0012017884
+Total 2D Network NoC energy (in J) 5.948720962812405e-07
+Total 2.5D Network NoP latency (in s) 0.0011093660483096502
+Total 2.5D Network NoP energy (in J) 2.4373678383672694e-06
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 123.06322093917981
+Total End-to-End Latency (in s) 0.26843190822690965
+Total Chip Energy (in J) 0.0017534496356492837
+----------------------------------------
+Network model sim time is: 0.07117319107055664 s
+hisim_thermal [SA, H2_5D]: power 0.236816 W, energy balance rel 3.01e-14, peaks: domain 298.393 K, device 298.393 K, active 298.393 K, tile 298.393 K, router 298.356 K, aib 298.360 K, emib 298.243 K
+hisim_thermal [SA]: die area / upstream area = {'S1': 1.552, 'S2': 1.364, 'S4': 1.446, 'S3': 1.263} (floorplan rule rowshelf); results in /Users/ganapat0706/HISIM_GUI_nice/runs/bf7a14f07271/thermal
+Thermal peak temperature (K): 298.3926541514524
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  615295264.5295228
+Total NRE Cost ($):  64121030.676693045
+Total Cost per Part ($):  13.588325904124318
+----------------------------------------
+Cost model sim time is: 3.7557036876678467 s
+Total sim time is: 4.088279724121094 s

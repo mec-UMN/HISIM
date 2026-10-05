@@ -1,0 +1,201 @@
+AI mapping sim time is: 0.03592109680175781 s
+----------Compute and Memory Summary---------------
+Compute Area of the Chip is: 168.41900125100065 mm2
+Memory Area of the Chip is: 81.92097480000004 mm2
+Compute Latency of the Chip is: 0.2335005977785997 s
+Memory Latency of the Chip is: 0.006523731999999987 s
+DDR Latency of the Chip is: 0.006024591250000005 s
+Compute Energy of the Chip is: 0.0017047246987060719 J
+Memory Energy of the Chip is: 9.41521963943203e-06 J
+DDR Energy of the Chip is: 1.0289019999999996e-05 J
+----------------------------------------
+Computing model sim time is: 0.42056989669799805 s
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S3 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S2 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S2 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+Warning: Bandwidth for 2.5D connection from S1 to S3 has been limited by 2D links.Please increase number of 2D links or decrease the number of 2.5D channels
+----------Network Summary---------------
+Total NoC Area (in mm^2) 5.607268351999963
+Total NoP Interface Area (in mm^2) 22.777399470598485
+Total NoP Router Area (in mm^2) 2.6808542822400003
+Total 2D Network NoC latency (in s) 0.017034716799999947
+Total 2D Network NoC energy (in J) 8.42986584063003e-06
+Total 2.5D Network NoP latency (in s) 0.10390185268270456
+Total 2.5D Network NoP energy (in J) 0.00022828303055301945
+Total 3D Network NoC latency (in s) 0
+Total 3D Network NoC energy (in J) 0
+----------------------------------------
+----------Combined Summary (Compute+Noc+NoP+Memory)---------------
+Note: Total Chip Area is different from total silicon area in 3D and 3.5D configurations due to 3D stacking
+Total Chip Area (in mm^2) 281.4054981558377
+Total End-to-End Latency (in s) 0.360960899261304
+Total Chip Energy (in J) 0.0019508528147391515
+----------------------------------------
+Network model sim time is: 0.1844940185546875 s
+----------Cost Summary---------------
+Total Recurring Cost for  50000000.0  units ($):  1480309476.220228
+Total NRE Cost ($):  65923667.57784981
+Total Cost per Part ($):  30.924662875961555
+----------------------------------------
+Cost model sim time is: 0.0030908584594726562 s
+Total sim time is: 0.644075870513916 s
